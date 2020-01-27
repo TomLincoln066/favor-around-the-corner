@@ -15,5 +15,9 @@
     <string name="post_request_fragment">Hello post request fragment</string>
     <string name="profile_fragment">Hello profile fragment</string>
 
+    <string name="tab_text_task_posted">張貼中</string>
+    <string name="tab_text_task_on_going">案件進行中</string>
+    <string name="tab_text_task_finished">已完成案件</string>
+
 
 </resources>

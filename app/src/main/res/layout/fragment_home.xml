@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_f0f0f0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_fragment" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_posted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/tab_text_task_posted" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_on_going"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/tab_text_task_on_going" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_finished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/tab_text_task_finished" />
+
+        </com.google.android.material.tabs.TabLayout>
 
 
-</RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-<!--<ImageView-->
-<!--android:id="@+id/logo"-->
-<!--android:layout_width="128dp"-->
-<!--android:layout_height="20dp"-->
-<!--android:layout_marginStart="124dp"/>-->
 
 
 
