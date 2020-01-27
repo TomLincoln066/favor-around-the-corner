@@ -4,10 +4,16 @@
     <string name="tab_text_2">Tab 2</string>
 
 
-    <string name="title_post_request">需求</string>
+    <string name="title_post_request">需求刊登</string>
     <string name="title_ranking_list">排行榜</string>
     <string name="title_profile">個人</string>
     <string name="navigation_home">navigation_home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ranking_list_fragment">Hello ranking list fragment</string>
+    <string name="home_fragment">Hello home fragment</string>
+    <string name="post_request_fragment">Hello post request fragment</string>
+    <string name="profile_fragment">Hello profile fragment</string>
 
 
 </resources>

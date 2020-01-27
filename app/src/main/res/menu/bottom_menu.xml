@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/fragment_home"
-
+        android:icon="@drawable/bottomhome_selector"
         android:title="@string/navigation_home" />
     <item
         android:id="@+id/fragment_post_request"
-
+        android:icon="@drawable/bottomhome_selector"
         android:title="@string/title_post_request" />
 
     <item
         android:id="@+id/fragment_ranking_list"
-
+        android:icon="@drawable/bottomhome_selector"
         android:title="@string/title_ranking_list" />
     <item
-        android:id="@+id/fragment_profile"
-
+        android:id="@+id/text_view_fragment_profile"
+        android:icon="@drawable/bottomhome_selector"
         android:title="@string/title_profile" />
 </menu>
