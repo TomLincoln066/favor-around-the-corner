@@ -17,6 +17,6 @@
         android:title="@string/title_ranking_list" />
     <item
         android:id="@+id/text_view_fragment_profile"
-        android:icon="@drawable/bottomhome_selector"
+        android:icon="@drawable/bottomprofile_selector"
         android:title="@string/title_profile" />
 </menu>
