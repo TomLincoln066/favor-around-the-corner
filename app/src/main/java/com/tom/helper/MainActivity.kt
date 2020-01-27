@@ -20,11 +20,48 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val navController = findNavController(R.id.myNavHostFragment)
-//        val bottomNavigation = findViewById<BottomNavigationView>(R.id.navigationView)
+        val navController = findNavController(R.id.myNavHostFragment)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.navigationView)
+
+//        if you match menu item id in bottom_menu.xml  with  fragment id in navigation.xml, then you only need the code of following line to do the navigating job.
 //        bottomNavigation.setupWithNavController(navController)
 
 
+        bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.fragment_profile ->{
+//                    if (!UserManager.isLoggedIn()){
+//                        fragment = FacebookBottomSheet.newInstance()
+//                        fragment.show(supportFragmentManager, "facebook_login")
+//                        false
+//                    } else {
+                        navController.navigate(R.id.action_global_profileFragment)
+                        true
+                    }
+
+
+                R.id.fragment_home ->{
+                    navController.navigate(R.id.action_global_homeFragment)
+                    true
+                }
+
+                R.id.fragment_post_request ->{
+                    navController.navigate(R.id.action_global_postRequestFragment)
+                    true
+                }
+
+                R.id.fragment_ranking_list ->{
+                    navController.navigate(R.id.rankingListFragment)
+                    true
+                }
+                else ->{
+                    false
+                }
+
+
+            }
+
+        }
 
 
     }
