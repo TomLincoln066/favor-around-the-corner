@@ -8,6 +8,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tom.helper.ui.main.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +19,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        val navController = findNavController(R.id.myNavHostFragment)
+//        val bottomNavigation = findViewById<BottomNavigationView>(R.id.navigationView)
+//        bottomNavigation.setupWithNavController(navController)
 
+
+
+
+    }
+}
 
 //        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
 //        val viewPager: ViewPager = findViewById(R.id.view_pager)
@@ -30,6 +41,3 @@ class MainActivity : AppCompatActivity() {
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
 //        }
-
-    }
-}
