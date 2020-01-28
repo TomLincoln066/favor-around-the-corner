@@ -8,12 +8,12 @@
         android:title="@string/navigation_home" />
     <item
         android:id="@+id/fragment_post_request"
-        android:icon="@drawable/bottomhome_selector"
+        android:icon="@drawable/bottomaddrequest_selector"
         android:title="@string/title_post_request" />
 
     <item
         android:id="@+id/fragment_ranking_list"
-        android:icon="@drawable/bottomhome_selector"
+        android:icon="@drawable/bottomranking_selector"
         android:title="@string/title_ranking_list" />
     <item
         android:id="@+id/fragment_profile"
