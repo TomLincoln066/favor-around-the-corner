@@ -1,12 +1,12 @@
 package com.tom.helper.source
 
 
-//Interface to the Helper layers.
+// Main entry point for accessing Publisher sources.
 
-interface HelperRepository {
+interface HelperDataSource {
 
 //    suspend fun login(id: String): Result<Author>
-
+//
 //    suspend fun getArticles(): Result<List<Article>>
 //
 //    suspend fun publish(article: Article): Result<Boolean>
