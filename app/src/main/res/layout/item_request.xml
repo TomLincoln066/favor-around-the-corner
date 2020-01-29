@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="360dp"
+    android:layout_margin="10dp"
+    android:background="@color/gray_f0f0f0">
+
+
+    <TextView
+        android:id="@+id/textView_request_item_ordinal_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1."
+        tools:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_request_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="@id/textView_request_item_ordinal_number"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="My computer crashes, sos........................"
+        tools:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView_emergency"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alarm" />
+
+    <EditText
+        android:id="@+id/editText_progress_item"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        app:layout_constraintStart_toEndOf="@+id/radioButton_item_1"
+        app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+        tools:text="Check Memory Card" />
+
+    <EditText
+        android:id="@+id/editText_progress_item2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        app:layout_constraintStart_toEndOf="@+id/radioButton_item_2"
+        app:layout_constraintTop_toBottomOf="@+id/editText_progress_item"
+        tools:text="Check CPU Fan" />
+
+    <EditText
+        android:id="@+id/editText_progress_item3"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        app:layout_constraintStart_toEndOf="@+id/radioButton_item_3"
+        app:layout_constraintTop_toBottomOf="@+id/editText_progress_item2"
+        tools:text="Reboot" />
+
+    <EditText
+        android:id="@+id/editText_progress_item4"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        app:layout_constraintStart_toEndOf="@+id/radioButton_item_4"
+        app:layout_constraintTop_toBottomOf="@+id/editText_progress_item3"
+        tools:text="Works Again" />
+
+    <RadioButton
+        android:id="@+id/radioButton_item_1"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
+
+    <RadioButton
+        android:id="@+id/radioButton_item_2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton_item_1" />
+
+    <RadioButton
+        android:id="@+id/radioButton_item_3"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton_item_2" />
+
+    <RadioButton
+        android:id="@+id/radioButton_item_4"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton_item_3" />
+
+    <Button
+        android:id="@+id/button_item_request_send_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/button_item_request_send_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_item_request"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_progress_item4"
+        app:layout_constraintVertical_bias="0.575" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

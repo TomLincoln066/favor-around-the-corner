@@ -19,5 +19,9 @@
     <string name="tab_text_task_on_going">案件進行中</string>
     <string name="tab_text_task_finished">已完成案件</string>
 
+    <string name="button_item_request_send_out">Close The Case</string>
+
+
+
 
 </resources>
