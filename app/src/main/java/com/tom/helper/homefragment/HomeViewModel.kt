@@ -27,9 +27,27 @@ class HomeViewModel : ViewModel() {
     val tasks: LiveData<List<Task>>
         get() = _tasks
 
+
+    //To test Mock data display of item_request on fragment_home.xml
     fun prepareTasks() {
-        _tasks.value = listOf(Task("123", title = "123"), Task("123", title = "456"), Task("123", title = "789"))
-        
+        _tasks.value = listOf(
+            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100),
+            Task("123", title = "I need a ride to interview"),
+            Task("123", title = "Who want's to play UNO")
+        )
+
+
+//        data class Task(
+//            var id: String = "",
+//            var price: Long = -1,
+//            var createdTime: Long = -1,
+//            var title: String = "",
+//            var content: String = "",
+//            val user: User? = null,
+//            val status: Int = -1,
+//            var subContent : List<String> = listOf())
+
+
     }
 
 

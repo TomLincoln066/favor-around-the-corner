@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentHomeBinding
+import com.tom.helper.ext.getVmFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -36,7 +37,7 @@ class HomeFragment : Fragment() {
 
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-//        binding.viewModel = viewModel
+        binding.viewModel = viewModel
 
         binding.homeRequestRecycler.layoutManager = LinearLayoutManager(context)
         binding.homeRequestRecycler.addItemDecoration(
@@ -48,11 +49,13 @@ class HomeFragment : Fragment() {
         binding.homeRequestRecycler.adapter =
             HomeRecyclerAdapter(HomeRecyclerAdapter.OnClickListener {
                 //            Logger.d("click, it=$it")
-//            viewModel.delete(it)
+                //            viewModel.delete(it)
             })
+
 
         viewModel.tasks.observe(this, Observer {
             (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
+
         })
 
         viewModel.prepareTasks()

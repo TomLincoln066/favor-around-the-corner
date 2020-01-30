@@ -11,5 +11,8 @@ data class Task(
     var title: String = "",
     var content: String = "",
     val user: User? = null,
-    val status: Int = -1
+    val taskCreator : String = "",
+    val status: Int = -1,
+    var subContent : List<String> = listOf()
+
 ) : Parcelable

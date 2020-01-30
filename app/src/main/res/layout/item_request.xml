@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="task"
             type="com.tom.helper.source.Task" />
     </data>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="400dp"
         android:layout_margin="10dp"
         android:background="@color/gray_f0f0f0">
 
@@ -33,11 +33,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:text="@{task.title}"
             app:layout_constraintStart_toStartOf="@id/textView_request_item_ordinal_number"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="My computer crashes, sos........................"
-            tools:textSize="18sp"
-            android:text="@{task.title}"/>
+            tools:textSize="18sp" />
 
         <ImageView
             android:id="@+id/imageView_emergency"
@@ -47,48 +47,52 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/alarm" />
 
-        <EditText
-            android:id="@+id/editText_progress_item"
+        <TextView
+            android:id="@+id/Text_progress_item"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_1"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_1"
             app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
             tools:text="Check Memory Card" />
 
-        <EditText
-            android:id="@+id/editText_progress_item2"
+        <TextView
+            android:id="@+id/Text_progress_item2"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_2"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_2"
-            app:layout_constraintTop_toBottomOf="@+id/editText_progress_item"
+            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item"
             tools:text="Check CPU Fan" />
 
-        <EditText
-            android:id="@+id/editText_progress_item3"
+        <TextView
+            android:id="@+id/Text_progress_item3"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_3"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_3"
-            app:layout_constraintTop_toBottomOf="@+id/editText_progress_item2"
+            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item2"
             tools:text="Reboot" />
 
-        <EditText
-            android:id="@+id/editText_progress_item4"
+        <TextView
+            android:id="@+id/Text_progress_item4"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:ems="10"
+            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_4"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_4"
-            app:layout_constraintTop_toBottomOf="@+id/editText_progress_item3"
+            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item3"
             tools:text="Works Again" />
 
         <RadioButton
@@ -134,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/button_item_request_send_out"
+            android:text="@string/button_item_request_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
@@ -145,13 +149,62 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out"
-            app:layout_constraintHorizontal_bias="0.176"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_progress_item4"
-            app:layout_constraintVertical_bias="0.575" />
+            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item4"
+            app:layout_constraintVertical_bias="0.156" />
+
+        <TextView
+            android:id="@+id/textView_task_creator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="68dp"
+            android:text="@{task.taskCreator}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_task_creator_blank"
+            tools:text="Tom" />
+
+        <TextView
+            android:id="@+id/textView_task_creator_blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="68dp"
+            android:text="@string/textView_task_creator_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_task_create_time_blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/textView_task_create_time_blank"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_task_creator_blank"
+            tools:text="發案時間 :" />
+
+        <TextView
+            android:id="@+id/textView_task_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/textView_task_create_time"
+            app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
+            app:layout_constraintTop_toBottomOf="@+id/textView_task_creator"
+            tools:text="2020.1.30" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+
+    <!--    android:text="@{task.createdTime}"-->
