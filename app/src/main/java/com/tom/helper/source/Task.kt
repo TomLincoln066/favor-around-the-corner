@@ -10,7 +10,7 @@ data class Task(
     var createdTime: Long = -1,
     var title: String = "",
     var content: String = "",
-    val user: User? = null,
+    val userID:String = "",
     val taskCreator : String = "",
     val status: Int = -1,
     var subContent : List<String> = listOf()

@@ -14,7 +14,7 @@ import kotlinx.coroutines.Job
 // The [ViewModel] that is attached to the [HomeFragment].
 
 // private val repository: HelperRepository
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     private val _user = MutableLiveData<User>()
 
@@ -31,9 +31,9 @@ class HomeViewModel : ViewModel() {
     //To test Mock data display of item_request on fragment_home.xml
     fun prepareTasks() {
         _tasks.value = listOf(
-            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100),
-            Task("123", title = "I need a ride to interview"),
-            Task("123", title = "Who want's to play UNO")
+            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
+            Task("123", title = "I need a ride to interview", subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
+            Task("123", title = "Who want's to play UNO", subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now"))
         )
 
 

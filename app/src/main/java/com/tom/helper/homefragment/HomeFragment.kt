@@ -24,11 +24,11 @@ class HomeFragment : Fragment() {
     /**
      * Lazily initialize our [HomeViewModel].
      */
-//    private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
+    private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(HomeViewModel::class.java)
-    }
+//    private val viewModel by lazy {
+//        ViewModelProviders.of(this).get(HomeViewModel::class.java)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,10 +53,11 @@ class HomeFragment : Fragment() {
             })
 
 
-        viewModel.tasks.observe(this, Observer {
-            (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
-
-        })
+        //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.
+//        viewModel.tasks.observe(this, Observer {
+//            (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
+//
+//        })
 
         viewModel.prepareTasks()
 

@@ -23,7 +23,9 @@
 
     <string name="textView_task_creator_name">發起人 :</string>
     <string name="textView_task_create_time_blank">發案時間 :</string>
-    <string name="textView_task_create_time">2020.1.30</string>
+    <string name="textView_task_create_time">1小時前</string>
+    <string name="textView_proposals_word">提案人數 :</string>
+    <string name="textView_proposals_numbers">5</string>
 
 
 </resources>

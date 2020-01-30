@@ -20,7 +20,7 @@ class ViewModelFactory constructor(
 //                    MainViewModel(repository)
 
                 isAssignableFrom(HomeViewModel::class.java) ->
-                    HomeViewModel()
+                    HomeViewModel(repository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

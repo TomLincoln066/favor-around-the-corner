@@ -57,6 +57,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_1"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_1"
             app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+            android:text="@{task.subContent.get(0)}"
             tools:text="Check Memory Card" />
 
         <TextView
@@ -199,7 +200,27 @@
             android:text="@string/textView_task_create_time"
             app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
             app:layout_constraintTop_toBottomOf="@+id/textView_task_creator"
-            tools:text="2020.1.30" />
+            tools:text="1小時前" />
+
+        <TextView
+            android:id="@+id/textView_proposals_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/textView_proposals_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time_blank" />
+
+        <TextView
+            android:id="@+id/textView_proposals_numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/textView_proposals_numbers"
+            app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"
+            app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
