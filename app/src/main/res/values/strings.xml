@@ -37,5 +37,7 @@
     <string name="editText_post_request_price">1500</string>
     <string name="editText_post_request_content">想要吃漢堡</string>
 
+    <string name="textView_fragment_profile_name">Tom</string>
+
 
 </resources>

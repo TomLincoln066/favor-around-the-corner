@@ -87,6 +87,13 @@
     <dimen name="size_particle_logo">30dp</dimen>
 
 
+    <dimen name="icon_size">36dp</dimen>
+    <dimen name="basic_spacing">16dp</dimen>
+    <dimen name="grid_item_top_textsize">15sp</dimen>
+    <dimen name="small_spacing">8dp</dimen>
+    <dimen name="large_spacing">24dp</dimen>
+
+
 
 
 </resources>
