@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tom.helper.MainActivity
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentHomeBinding
@@ -61,6 +62,8 @@ class HomeFragment : Fragment() {
 
         viewModel.prepareTasks()
 
+        //handle changing the title while selecting HomeFragment
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.HOME)
 
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_home, container, false)

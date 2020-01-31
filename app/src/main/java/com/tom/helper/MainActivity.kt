@@ -81,7 +81,8 @@ class MainActivity : AppCompatActivity() {
 
         when (forCheck) {
             EnumCheck.HOME -> {//when selected home
-
+                binding.title.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.visibility = View.GONE
             }
             EnumCheck.POSTREQUEST -> {//postrequest
                 binding.title.visibility = View.INVISIBLE
