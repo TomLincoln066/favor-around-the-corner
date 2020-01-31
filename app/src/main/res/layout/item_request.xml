@@ -70,6 +70,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_2"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_2"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item"
+            android:text="@{task.subContent.get(1)}"
             tools:text="Check CPU Fan" />
 
         <TextView
@@ -82,6 +83,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_3"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_3"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item2"
+            android:text="@{task.subContent.get(2)}"
             tools:text="Reboot" />
 
         <TextView
@@ -94,6 +96,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_4"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_4"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item3"
+            android:text="@{task.subContent.get(3)}"
             tools:text="Works Again" />
 
         <RadioButton

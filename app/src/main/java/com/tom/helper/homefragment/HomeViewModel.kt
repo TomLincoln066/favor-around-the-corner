@@ -32,8 +32,8 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     fun prepareTasks() {
         _tasks.value = listOf(
             Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
-            Task("123", title = "I need a ride to interview", subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
-            Task("123", title = "Who want's to play UNO", subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now"))
+            Task("456", title = "I need a ride to interview", subContent = listOf("kill it","sit on it","let's do that again", "oh god it works now")),
+            Task("789", title = "Who want's to play UNO", subContent = listOf("go for it","sit on it","let's do that again", "oh god it works now"))
         )
 
 
