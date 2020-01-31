@@ -42,4 +42,8 @@
     <string name="Button_facebook_log_in">Facebook 登入</string>
 
 
+    <!--facebook login-->
+    <string name="facebook_app_id">112927453482177</string>
+    <string name="fb_login_protocol_scheme">fb112927453482177</string>
+
 </resources>
