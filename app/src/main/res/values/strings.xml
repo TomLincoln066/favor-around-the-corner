@@ -38,6 +38,8 @@
     <string name="editText_post_request_content">想要吃漢堡</string>
 
     <string name="textView_fragment_profile_name">Tom</string>
+    <string name="fragment_textView_fb_log_in">請先登入會員</string>
+    <string name="Button_facebook_log_in">Facebook 登入</string>
 
 
 </resources>
