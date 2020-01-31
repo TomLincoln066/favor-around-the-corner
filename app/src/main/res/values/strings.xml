@@ -4,7 +4,7 @@
     <string name="tab_text_2">Tab 2</string>
 
 
-    <string name="title_post_request">需求刊登</string>
+    <string name="title_post_request">新增任務</string>
     <string name="title_ranking_list">排行榜</string>
     <string name="title_profile">個人</string>
     <string name="navigation_home">navigation_home</string>
@@ -26,6 +26,16 @@
     <string name="textView_task_create_time">1小時前</string>
     <string name="textView_proposals_word">提案人數 :</string>
     <string name="textView_proposals_numbers">5</string>
+
+
+    <string name="textView_post_request_title"><![CDATA[標題 >]]></string>
+    <string name="textView_post_request_price"><![CDATA[價格 >]]></string>
+    <string name="textView_post_request_content"><![CDATA[內容 >]]></string>
+    <string name="textView_post_request_post_pictures"><![CDATA[照片 >]]></string>
+    <string name="button_post_request_send">送出任務</string>
+    <string name="editText_post_request_title">我要吃午餐</string>
+    <string name="editText_post_request_price">1500</string>
+    <string name="editText_post_request_content">想要吃漢堡</string>
 
 
 </resources>
