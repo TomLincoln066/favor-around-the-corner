@@ -9,17 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tom.helper.databinding.ActivityMainBinding
 import com.tom.helper.ui.main.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val navController = findNavController(R.id.myNavHostFragment)
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.navigationView)
@@ -69,35 +73,35 @@ class MainActivity : AppCompatActivity() {
 
 
     //handle changing the title while selecting different fragments
-
     enum class EnumCheck {
         HOME, POSTREQUEST, RANKINGLIST, PROFILE
     }
 
-//    fun setLogo(forCheck: EnumCheck) {
-//
-//        when (forCheck) {
-//            EnumCheck.HOME -> {//when selected home
-//
-//            }
-//            EnumCheck.POSTREQUEST -> {//postrequest
-//                binding.stylishImage.visibility = View.INVISIBLE
-//                binding.mainTitleText.visibility = View.VISIBLE
-//                binding.mainTitleText.text = "需求刊登"
-//            }
-//            EnumCheck.RANKINGLIST -> {//rankinglist
-//                binding.stylishImage.visibility = View.INVISIBLE
-//                binding.mainTitleText.visibility = View.VISIBLE
-//                binding.mainTitleText.text = "排行榜"
-//            }
-//            EnumCheck.PROFILE -> {//profile
-//                binding.stylishImage.visibility = View.INVISIBLE
-//                binding.mainTitleText.visibility = View.VISIBLE
-//                binding.mainTitleText.text = "個人"
-//            }
-//
-//        }
-//    }
+    fun setLogo(forCheck: EnumCheck) {
+
+        when (forCheck) {
+            EnumCheck.HOME -> {//when selected home
+
+            }
+            EnumCheck.POSTREQUEST -> {//postrequest
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "新增任務"
+            }
+            EnumCheck.RANKINGLIST -> {//rankinglist
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "工具榜"
+            }
+            EnumCheck.PROFILE -> {//profile
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "個人頁面"
+            }
+
+        }
+    }
+
 
 }
 
