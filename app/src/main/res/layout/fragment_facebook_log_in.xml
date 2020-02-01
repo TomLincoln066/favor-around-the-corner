@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/please_log_in_fb_description" />
 
-        <Button
+        <com.facebook.login.widget.LoginButton
 
             android:id="@+id/Button_facebook_log_in"
             android:layout_width="match_parent"
