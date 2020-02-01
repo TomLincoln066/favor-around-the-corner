@@ -7,6 +7,9 @@
 
 
     <data>
+        <variable
+            name="facebookLogInDialog"
+            type="com.tom.helper.logindialog.FacebookLogInBottomSheet" />
 
     </data>
 
@@ -82,6 +85,7 @@
 
         <Button
             android:id="@+id/close_login_window"
+            android:onClick="@{facebookLogInDialog::funOnClick}"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="320dp"

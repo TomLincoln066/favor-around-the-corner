@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,6 +14,7 @@ import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FacebookAuthProvider
@@ -33,12 +35,22 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
     ): View? {
 
         binding = FragmentFacebookLogInBinding.inflate(inflater, container, false)
+        binding.facebookLogInDialog = this
+        binding.lifecycleOwner = this
+        binding.closeLoginWindow.setOnClickListener {
+            (it as? Button)?.let{ button ->
+                funOnClick(button)
+            }
+        }
+
+
         return binding.root
+
+
     }
 
 
     //facebook login
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -62,8 +74,6 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
 
             }
         })
-
-
 
 
     }
@@ -96,9 +106,13 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
     }
 
 
-
-
-
+    fun funOnClick(view: View) {
+//        if (view.id == binding.ButtonFacebookLogIn.id) {
+//            LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
+//        } else {
+            dismiss()
+//        }
+    }
 
 
 }

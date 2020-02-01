@@ -2,29 +2,23 @@ package com.tom.helper
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
+
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+
 import android.view.View
-import android.widget.Toast
+
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation.findNavController
+
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
+
 import com.facebook.*
-import com.facebook.appevents.AppEventsLogger
-import com.facebook.login.LoginResult
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FacebookAuthProvider
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.databinding.ActivityMainBinding
-import com.tom.helper.databinding.FragmentFacebookLogInBinding
+
 import com.tom.helper.logindialog.FacebookLogInBottomSheet
 import com.tom.helper.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -73,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         //let FacebookLogInBottomSheetDialog show up when open app
         supportFragmentManager.let {
-            FacebookLogInBottomSheet().show(it, "Will")
+            FacebookLogInBottomSheet().show(it, "supportFragmentManager")
         }
 
 
@@ -88,11 +82,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.fragment_profile -> {
+
 //                    if (!UserManager.isLoggedIn()){
-//                        fragment = FacebookBottomSheet.newInstance()
+//                        fragment = FacebookLogInBottomSheet.newInstance()
 //                        fragment.show(supportFragmentManager, "facebook_login")
 //                        false
 //                    } else {
+                    supportFragmentManager.let {
+                        FacebookLogInBottomSheet().show(it, "supportFragmentManager")
+                    }
                     navController.navigate(R.id.action_global_profileFragment)
                     true
                 }
