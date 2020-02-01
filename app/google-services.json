@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "690355010186-fts884860urtmvk9kntoho4cchs18uh0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tom.helper",
+            "certificate_hash": "e4fdeb1528c10aa7b07c4b9d9a3472f2941f3891"
+          }
+        },
+        {
           "client_id": "690355010186-sk4ovmkn73cilj5pck9cm4vc6lmse8ml.apps.googleusercontent.com",
           "client_type": 3
         }

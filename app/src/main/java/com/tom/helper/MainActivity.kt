@@ -1,6 +1,7 @@
 package com.tom.helper
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -9,13 +10,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.databinding.ActivityMainBinding
+import com.tom.helper.logindialog.FacebookLogInBottomSheet
 import com.tom.helper.ui.main.SectionsPagerAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +35,12 @@ class MainActivity : AppCompatActivity() {
 
 //        if you match menu item id in bottom_menu.xml  with  fragment id in navigation.xml, then you only need the code of following line to do the navigating job.
 //        bottomNavigation.setupWithNavController(navController)
+
+
+        //let FacebookLogInBottomSheetDialog show up when open app
+        supportFragmentManager.let {
+            FacebookLogInBottomSheet().show(it,"Will")
+        }
 
 
         bottomNavigation.setOnNavigationItemSelectedListener {
@@ -70,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
 
     //handle changing the title while selecting different fragments

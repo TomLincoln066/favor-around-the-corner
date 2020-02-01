@@ -31,6 +31,13 @@
     <action
         android:id="@+id/action_global_rankingListFragment"
         app:destination="@id/rankingListFragment" />
+    <fragment
+        android:id="@+id/facebookLogInBottomSheet"
+        android:name="com.tom.helper.logindialog.FacebookLogInBottomSheet"
+        android:label="FacebookLogInBottomSheet" />
+    <action
+        android:id="@+id/action_global_facebookLogInBottomSheet"
+        app:destination="@id/facebookLogInBottomSheet" />
 
 
 </navigation>

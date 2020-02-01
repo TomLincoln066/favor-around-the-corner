@@ -51,6 +51,7 @@ dependencies {
     // Room and Lifecycle dependencies
     implementation "androidx.room:room-runtime:$version_room"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
     kapt "androidx.room:room-compiler:$version_room"
 
     // Navigation
@@ -102,9 +103,6 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-auth:19.2.0'
-
-
-
 
 
 }
