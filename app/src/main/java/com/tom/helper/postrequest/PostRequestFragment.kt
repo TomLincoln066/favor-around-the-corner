@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.MainActivity
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentPostRequestBinding
+import com.tom.helper.ext.getVmFactory
 import kotlinx.android.synthetic.main.fragment_post_request.*
 import kotlinx.android.synthetic.main.item_request.*
 import java.text.SimpleDateFormat
@@ -23,9 +25,16 @@ import java.util.*
 class PostRequestFragment : Fragment() {
 
 
-    private val viewModel: PostRequestViewModel by lazy {
-        ViewModelProviders.of(this).get(PostRequestViewModel::class.java)
-    }
+    //Stylish  method of creating ViewModel
+//    private val viewModel: PostRequestViewModel by lazy {
+//        ViewModelProviders.of(this).get(PostRequestViewModel::class.java)
+//    }
+
+
+    /**
+     * Lazily initialize our [HomeViewModel].
+     */
+    private val viewModel by viewModels<PostRequestViewModel> { getVmFactory() }
 
 
     override fun onCreateView(
@@ -33,19 +42,19 @@ class PostRequestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding =FragmentPostRequestBinding.inflate(inflater,container,false)
+        val binding = FragmentPostRequestBinding.inflate(inflater, container, false)
 
         //handle changing the title while selecting PostRequestFragment
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.POSTREQUEST)
 
-//        binding.lifecycleOwner=this
-//        binding.viewModel = viewModel
+
+        binding.lifecycleOwner=this
+        binding.viewModel = viewModel
+
         binding.buttonPostRequestSend.setOnClickListener {
-            sendNewRequest()
-
+//            sendNewRequest()
+//            viewModel.submitTask()
         }
-
-
 
 
         // Inflate the layout for this fragment
@@ -55,7 +64,8 @@ class PostRequestFragment : Fragment() {
     }
 
 
-    fun sendNewRequest(){
+    // send some mock data to fireBase
+    fun sendNewRequest() {
 
 
         val db = FirebaseFirestore.getInstance()
@@ -81,12 +91,17 @@ class PostRequestFragment : Fragment() {
 
     }
 
+
+
+
+
+
+
+
     private fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
             .format(systemTime).toString()
     }
-
-
 
 
 }

@@ -3,13 +3,14 @@ package com.tom.helper.postrequest
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.HelperRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.util.*
 
 class PostRequestViewModel(private val repository: HelperRepository) : ViewModel() {
-
 
 
     val taskTitle = MutableLiveData<String>()
@@ -35,6 +36,38 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+
+    //get editText's data and send out to firebase
+    fun submitTask() {
+
+        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
+            _error.value = "Task Title not complete"
+        } else {
+            val db = FirebaseFirestore.getInstance()
+
+            val task = FirebaseFirestore.getInstance().collection("task")
+
+            val document = task.document()
+
+            val data = hashMapOf(
+
+                "task_title" to taskTitle.value!!
+
+
+            )
+
+            document.set(data as Map<String, Any>)
+        }
+
+
+    }
+
+
+    fun errorReceived() {
+
+        _error.value = null
     }
 
 

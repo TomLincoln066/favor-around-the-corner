@@ -161,6 +161,7 @@
 
         <Button
             android:id="@+id/button_post_request_send"
+            android:onClick="@{()->viewModel.submitTask()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

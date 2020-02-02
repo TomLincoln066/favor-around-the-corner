@@ -3,6 +3,7 @@ package com.tom.helper.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tom.helper.homefragment.HomeViewModel
+import com.tom.helper.postrequest.PostRequestViewModel
 import com.tom.helper.source.HelperRepository
 
 //* Factory for all ViewModels.
@@ -21,6 +22,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(HomeViewModel::class.java) ->
                     HomeViewModel(repository)
+
+                isAssignableFrom(PostRequestViewModel::class.java) ->
+                    PostRequestViewModel(repository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
