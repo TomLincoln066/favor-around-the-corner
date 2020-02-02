@@ -225,6 +225,15 @@
             app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"
             app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time" />
 
+        <Button
+            android:id="@+id/button_mission_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/button_mission_detail"
+            app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_send_out"
+            app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

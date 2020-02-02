@@ -36,6 +36,8 @@
     <string name="editText_post_request_title">我要吃午餐</string>
     <string name="editText_post_request_price">1500</string>
     <string name="editText_post_request_content">想要吃漢堡</string>
+    <string name="textView_post_request_person">發起人</string>
+    <string name="editText_post_request_person">Tom</string>
 
     <string name="textView_fragment_profile_name">Tom</string>
     <string name="fragment_textView_fb_log_in">請先登入會員</string>
@@ -45,5 +47,8 @@
     <!--facebook login-->
     <string name="facebook_app_id">112927453482177</string>
     <string name="fb_login_protocol_scheme">fb112927453482177</string>
+    <string name="button_mission_detail">任務細節</string>
+
+
 
 </resources>

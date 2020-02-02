@@ -1,144 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tom.helper.postrequest.PostRequestViewModel" />
+    </data>
+    
 
-    <TextView
-        android:id="@+id/textView_post_request_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/textView_post_request_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView_post_request_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/textView_post_request_price"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
+        <TextView
+            android:id="@+id/textView_post_request_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/textView_post_request_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_post_request_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="62dp"
-        android:text="@string/textView_post_request_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_post_request_price" />
+        <TextView
+            android:id="@+id/textView_post_request_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/textView_post_request_person"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
 
-    <EditText
-        android:id="@+id/editText_post_request_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="52dp"
-        android:ems="10"
-        android:hint="@string/editText_post_request_title"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toEndOf="@+id/textView_post_request_title"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/editText_post_request_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="52dp"
+            android:ems="10"
+            android:hint="@string/editText_post_request_title"
+            android:text="@={viewModel.taskTitle}"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/textView_post_request_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText_post_request_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/editText_post_request_price"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toEndOf="@+id/textView_post_request_price"
-        app:layout_constraintTop_toBottomOf="@+id/editText_post_request_title" />
+        <EditText
+            android:id="@+id/editText_post_request_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="52dp"
+            android:ems="10"
+            android:hint="@string/editText_post_request_person"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/textView_post_request_title"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText_post_request_content"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="52dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/editText_post_request_content"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toEndOf="@+id/textView_post_request_content"
-        app:layout_constraintTop_toBottomOf="@+id/editText_post_request_price" />
+        <EditText
+            android:id="@+id/editText_post_request_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:ems="10"
+            android:hint="@string/editText_post_request_price"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.261"
+            app:layout_constraintStart_toEndOf="@+id/textView_post_request_price"
+            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_title" />
 
-    <ImageButton
-        android:id="@+id/imageView_post_request_upload_picture2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
-        app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_upload_pictures" />
+        <TextView
+            android:id="@+id/textView_post_request_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="104dp"
+            android:text="@string/textView_post_request_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
 
-    <ImageButton
-        android:id="@+id/imageView_post_request_upload_pictur1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
-        app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_upload_pictures" />
+        <EditText
+            android:id="@+id/editText_post_request_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="52dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/editText_post_request_content"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/textView_post_request_content"
+            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_price" />
 
-    <ImageButton
-        android:id="@+id/imageView_post_request_upload_picture3"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
-        app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_upload_pictures" />
+        <TextView
+            android:id="@+id/textView_post_request_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="96dp"
+            android:text="@string/textView_post_request_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_post_request_price" />
 
-    <TextView
-        android:id="@+id/textView_post_request_post_pictures"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="172dp"
-        android:text="@string/textView_post_request_post_pictures"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_post_request_content" />
+        <ImageButton
+            android:id="@+id/imageView_post_request_upload_picture2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
+            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/image_upload_pictures" />
 
-    <Button
-        android:id="@+id/button_post_request_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@color/blue_voyage"
-        android:text="@string/button_post_request_send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_post_request_upload_picture3" />
+        <ImageButton
+            android:id="@+id/imageView_post_request_upload_pictur1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
+            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/image_upload_pictures" />
+
+        <ImageButton
+            android:id="@+id/imageView_post_request_upload_picture3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
+            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/image_upload_pictures" />
+
+        <TextView
+            android:id="@+id/textView_post_request_post_pictures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="150dp"
+            android:text="@string/textView_post_request_post_pictures"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_post_request_content" />
+
+        <Button
+            android:id="@+id/button_post_request_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/blue_voyage"
+            android:text="@string/button_post_request_send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_post_request_upload_picture3" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+</layout>
 
