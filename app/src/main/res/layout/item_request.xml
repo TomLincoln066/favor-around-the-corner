@@ -15,8 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_margin="10dp"
-        android:background="@color/gray_f0f0f0">
+        android:layout_margin="3dp"
+        android:background="#ffeadb">
 
 
         <TextView
@@ -142,6 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#f5c3bc"
             android:text="@string/button_item_request_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -230,6 +231,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:background="#e89da2"
             android:text="@string/button_mission_detail"
             app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_send_out"
             app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out" />

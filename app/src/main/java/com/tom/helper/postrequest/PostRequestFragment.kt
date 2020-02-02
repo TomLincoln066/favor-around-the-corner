@@ -93,11 +93,6 @@ class PostRequestFragment : Fragment() {
 
 
 
-
-
-
-
-
     private fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
             .format(systemTime).toString()

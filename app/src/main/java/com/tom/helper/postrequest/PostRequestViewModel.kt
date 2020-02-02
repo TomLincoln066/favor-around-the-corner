@@ -42,6 +42,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     //get editText's data and send out to firebase
     fun submitTask() {
 
+        //check whether taskTitle.value is not valid
         if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
             _error.value = "Task Title not complete"
         } else {

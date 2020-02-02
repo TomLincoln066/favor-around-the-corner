@@ -9,11 +9,12 @@
             name="viewModel"
             type="com.tom.helper.postrequest.PostRequestViewModel" />
     </data>
-    
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#ffeadb"
         android:orientation="vertical">
 
         <TextView
@@ -165,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/blue_voyage"
+            android:background="#f09c67"
             android:text="@string/button_post_request_send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
