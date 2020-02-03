@@ -7,6 +7,11 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.tom.helper.homefragment.HomeViewModel" />
+
+
+        <variable
             name="task"
             type="com.tom.helper.source.Task" />
     </data>
@@ -50,7 +55,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_1"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_1"
             app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-            android:text="@{task.subContent.get(0)}"
+
             tools:text="Check Memory Card" />
 
         <TextView
@@ -63,7 +68,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_2"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_2"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item"
-            android:text="@{task.subContent.get(1)}"
+
             tools:text="Check CPU Fan" />
 
         <TextView
@@ -76,7 +81,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_3"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_3"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item2"
-            android:text="@{task.subContent.get(2)}"
+
             tools:text="Reboot" />
 
         <TextView
@@ -89,7 +94,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_4"
             app:layout_constraintStart_toEndOf="@+id/radioButton_item_4"
             app:layout_constraintTop_toBottomOf="@+id/Text_progress_item3"
-            android:text="@{task.subContent.get(3)}"
+
             tools:text="Works Again" />
 
         <RadioButton
@@ -179,7 +184,6 @@
             android:id="@+id/textView_task_create_time_blank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="@string/textView_task_create_time_blank"
@@ -194,7 +198,7 @@
 
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:text="@string/textView_task_create_time"
+
             app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
             app:layout_constraintTop_toBottomOf="@+id/textView_task_creator"
             tools:text="1小時前" />
@@ -235,4 +239,9 @@
 </layout>
 
 
-    <!--    android:text="@{task.createdTime}"-->
+<!--    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"-->
+
+    <!--    android:text="@{task.subContent.get(0)}"-->
+    <!--    android:text="@{task.subContent.get(1)}"-->
+    <!--    android:text="@{task.subContent.get(2)}"-->
+    <!--    android:text="@{task.subContent.get(3)}"-->

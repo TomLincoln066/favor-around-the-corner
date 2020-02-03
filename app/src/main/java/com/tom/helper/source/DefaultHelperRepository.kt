@@ -6,13 +6,13 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
                                  private val localDataSource: HelperDataSource
 ) : HelperRepository {
 
-//    override suspend fun login(id: String): Result<Author> {
-//        return localDataSource.login(id)
-//    }
-//
-//    override suspend fun getArticles(): Result<List<Article>> {
-//        return remoteDataSource.getArticles()
-//    }
+    override suspend fun login(id: String): Result<User> {
+        return localDataSource.login(id)
+    }
+
+    override suspend fun getTasks(): Result<List<Task>> {
+        return remoteDataSource.getTasks()
+    }
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {
 //        return remoteDataSource.publish(article)

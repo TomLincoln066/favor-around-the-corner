@@ -5,9 +5,9 @@ package com.tom.helper.source
 
 interface HelperDataSource {
 
-//    suspend fun login(id: String): Result<Author>
-//
-//    suspend fun getArticles(): Result<List<Article>>
+    suspend fun login(id: String): Result<User>
+
+    suspend fun getTasks(): Result<List<Task>>
 //
 //    suspend fun publish(article: Article): Result<Boolean>
 //

@@ -72,16 +72,31 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         val data = hashMapOf(
 
-            "task_provider" to taskProvider.value!!,
+            "taskCreator" to taskProvider.value!!,
             "task_price" to taskPrice.value!!,
             "task_content" to taskContent.value!!,
-            "task_title" to taskTitle.value!!,
-            "task_id" to document.id,
-//            "task_create_time" to Calendar.getInstance().timeInMillis,
+            "title" to taskTitle.value!!,
+            "id" to document.id,
             "task_create_time" to convertLongToDateString(System.currentTimeMillis())
 //            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
-
+//            "task_create_time" to Calendar.getInstance().timeInMillis,
         )
+
+        //@Parcelize
+//data class Task(
+//    var id: String = "",
+//    var price: Long = -1,
+//    var createdTime: Long = -1,
+//    var title: String = "",
+//    var content: String = "",
+//    val userID:String = "",
+//    val taskCreator : String = "",
+//    val status: Int = -1,
+//    var subContent : List<String> = listOf()
+//
+//) : Parcelable
+
+
 
         document.set(data as Map<String, Any>)
 
@@ -133,4 +148,11 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 }
 
 
-//|| taskContent.value == null || taskContent.value?.isEmpty() == true || taskProvider.value == null || taskProvider.value?.isEmpty() == true
+//"task_provider" to taskProvider.value!!,
+//"task_price" to taskPrice.value!!,
+//"task_content" to taskContent.value!!,
+//"task_title" to taskTitle.value!!,
+//"task_id" to document.id,
+//"task_create_time" to convertLongToDateString(System.currentTimeMillis())
+//            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
+//            "task_create_time" to Calendar.getInstance().timeInMillis,

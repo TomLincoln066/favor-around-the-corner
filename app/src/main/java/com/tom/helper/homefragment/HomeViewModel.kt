@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.source.Result
 import com.tom.helper.source.Task
 import com.tom.helper.source.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 
 
 // The [ViewModel] that is attached to the [HomeFragment].
@@ -31,13 +34,40 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     //To test Mock data display of item_request on fragment_home.xml
     fun prepareTasks() {
         _tasks.value = listOf(
-            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
-            Task("456", title = "I need a ride to interview", subContent = listOf("kill it","sit on it","let's do that again", "oh god it works now")),
-            Task("789", title = "Who want's to play UNO", subContent = listOf("go for it","sit on it","let's do that again", "oh god it works now"))
+//            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
+//            Task("456", title = "I need a ride to interview", subContent = listOf("kill it","sit on it","let's do that again", "oh god it works now")),
+//            Task("789", title = "Who want's to play UNO", subContent = listOf("go for it","sit on it","let's do that again", "oh god it works now"))
+              Task("789", title = "Who want's to play UNO")
         )
 
+    }
+
+     fun getTasksResult() {
+
+        coroutineScope.launch {
+            val result = repository.getTasks()
+
+            when(result) {
+                is Result.Success -> {
+                    _tasks.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+//            _tasks.value = listOf(
+//                Task(Task.id, Task.price, Task.title,Task.content,Task.createdTime)
+//            )
+        }
 
     }
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -66,6 +96,12 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
+
+//     fun convertLongToDateString(systemTime: Long): String {
+//        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+//            .format(systemTime).toString()
+//    }
 
 
 }

@@ -60,7 +60,8 @@ class HomeFragment : Fragment() {
 //
 //        })
 
-        viewModel.prepareTasks()
+//        viewModel.prepareTasks()
+        viewModel.getTasksResult()
 
         //handle changing the title while selecting HomeFragment
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.HOME)
