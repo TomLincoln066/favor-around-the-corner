@@ -59,6 +59,7 @@
             android:layout_marginTop="88dp"
             android:layout_marginEnd="52dp"
             android:ems="10"
+            android:text="@={viewModel.taskProvider}"
             android:hint="@string/editText_post_request_person"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:ems="10"
+            android:text="@={viewModel.convertLongToString(viewModel.taskPrice)}"
             android:hint="@string/editText_post_request_price"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,6 +99,7 @@
             android:layout_marginEnd="52dp"
             android:ems="10"
             android:gravity="start|top"
+            android:text="@={viewModel.taskContent}"
             android:hint="@string/editText_post_request_content"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,3 +181,4 @@
 
 </layout>
 
+<!--    android:text="@={viewModel.taskPrice}"-->

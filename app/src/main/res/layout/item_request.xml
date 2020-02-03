@@ -39,13 +39,6 @@
             tools:text="My computer crashes, sos........................"
             tools:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/imageView_emergency"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/alarm" />
 
         <TextView
             android:id="@+id/Text_progress_item"

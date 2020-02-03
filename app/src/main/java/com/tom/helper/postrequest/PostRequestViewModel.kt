@@ -1,5 +1,6 @@
 package com.tom.helper.postrequest
 
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,9 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
 
     val taskTitle = MutableLiveData<String>()
+    val taskProvider = MutableLiveData<String>()
+    val taskPrice = MutableLiveData<Long>()
+    val taskContent = MutableLiveData<String>()
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -42,25 +46,40 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     //get editText's data and send out to firebase
     fun submitTask() {
 
+        _error.value = null
+
         //check whether taskTitle.value is not valid
+        if (taskContent.value == null || taskContent.value?.isEmpty() == true) {
+            _error.value = "Task Content cannot be empty"
+            return
+        }
+        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
+            _error.value = "Task Title cannot be empty"
+            return
+        }
         if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
             _error.value = "Task Title not complete"
-        } else {
-            val db = FirebaseFirestore.getInstance()
-
-            val task = FirebaseFirestore.getInstance().collection("task")
-
-            val document = task.document()
-
-            val data = hashMapOf(
-
-                "task_title" to taskTitle.value!!
-
-
-            )
-
-            document.set(data as Map<String, Any>)
+            return
         }
+
+        val db = FirebaseFirestore.getInstance()
+
+        val task = FirebaseFirestore.getInstance().collection("task")
+
+        val document = task.document()
+
+        val data = hashMapOf(
+
+            "task_provider" to taskProvider.value!!,
+            "task_price" to taskPrice.value!!,
+            "task_content" to taskContent.value!!,
+            "task_title" to taskTitle.value!!,
+            "task_id" to document.id,
+            "task_create_time" to Calendar.getInstance().timeInMillis
+
+        )
+
+        document.set(data as Map<String, Any>)
 
 
     }
@@ -72,4 +91,26 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
+    // handle taskPrice input type convert problem( Long to String and String to Long)
+    @InverseMethod("convertLongToString")
+    fun convertStringToLong(value: String): Long {
+        return try {
+            value.toLong().let {
+                when (it) {
+                    0L -> 0
+                    else -> it
+                }
+            }
+        } catch (e: NumberFormatException) {
+            1
+        }
+    }
+
+    fun convertLongToString(value: Long): String {
+        return value.toString()
+    }
+
 }
+
+
+//|| taskContent.value == null || taskContent.value?.isEmpty() == true || taskProvider.value == null || taskProvider.value?.isEmpty() == true

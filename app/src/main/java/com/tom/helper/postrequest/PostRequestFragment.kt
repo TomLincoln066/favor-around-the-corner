@@ -68,7 +68,7 @@ class PostRequestFragment : Fragment() {
     fun sendNewRequest() {
 
 
-        val db = FirebaseFirestore.getInstance()
+//        val db = FirebaseFirestore.getInstance()
 
         val task = FirebaseFirestore.getInstance().collection("task")
 
@@ -97,6 +97,9 @@ class PostRequestFragment : Fragment() {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
             .format(systemTime).toString()
     }
+
+
+
 
 
 }
