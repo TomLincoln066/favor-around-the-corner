@@ -48,7 +48,8 @@
     <string name="facebook_app_id">112927453482177</string>
     <string name="fb_login_protocol_scheme">fb112927453482177</string>
     <string name="button_mission_detail">任務細節</string>
-
+    <string name="button_ranking_item_invite">邀請我</string>
+    <string name="textView_ranking_item_name">Vishal</string>
 
 
 </resources>

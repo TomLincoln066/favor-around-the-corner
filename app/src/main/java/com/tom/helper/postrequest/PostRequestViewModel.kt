@@ -1,5 +1,6 @@
 package com.tom.helper.postrequest
 
+import java.util.concurrent.TimeUnit
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +10,7 @@ import com.tom.helper.source.HelperRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PostRequestViewModel(private val repository: HelperRepository) : ViewModel() {
@@ -75,7 +77,9 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
             "task_content" to taskContent.value!!,
             "task_title" to taskTitle.value!!,
             "task_id" to document.id,
-            "task_create_time" to Calendar.getInstance().timeInMillis
+//            "task_create_time" to Calendar.getInstance().timeInMillis,
+            "task_create_time" to convertLongToDateString(System.currentTimeMillis())
+//            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
 
         )
 
@@ -108,6 +112,22 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
     fun convertLongToString(value: Long): String {
         return value.toString()
+    }
+
+
+    private fun convertLongToDateString(systemTime: Long): String {
+        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+            .format(systemTime).toString()
+    }
+
+
+    fun convertLongToTimeAgo(systemTime: Long): String{
+        val currentTime = Calendar.getInstance().timeInMillis
+        val diff =  currentTime - systemTime
+        var minutes = TimeUnit.MINUTES.convert(diff,TimeUnit.MILLISECONDS)
+        val hours = minutes / 60
+            val t = diff / hours
+            return "$t + 分鐘前"
     }
 
 }
