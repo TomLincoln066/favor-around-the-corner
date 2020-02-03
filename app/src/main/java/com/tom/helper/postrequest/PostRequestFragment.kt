@@ -68,7 +68,6 @@ class PostRequestFragment : Fragment() {
     fun sendNewRequest() {
 
 
-//        val db = FirebaseFirestore.getInstance()
 
         val task = FirebaseFirestore.getInstance().collection("task")
 
@@ -79,7 +78,6 @@ class PostRequestFragment : Fragment() {
             "task_title" to "我的電腦crashes \n" +
                     "Help me!!! \"",
             "task_content" to " 我的電腦突然沒辦法開機，徵求勇士一名，酬勞另計。 ",
-//            "task_createTime" to Calendar.getInstance().timeInMillis,
             "task_createTime" to Calendar.getInstance().timeInMillis,
             "task_price" to "20000",
             "task_id" to document.id
