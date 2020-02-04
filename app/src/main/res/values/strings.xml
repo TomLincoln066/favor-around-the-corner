@@ -55,9 +55,11 @@
 
     <string name="you_know_nothing">You know nothing</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <!-- job detail fragment -->
+    <string name="button_job_detail_connect_to_project_owner">即時聯繫業主</string>
+    <string name="button_job_detail_send_proposal">我要接案</string>
+    <string name="textView_job_detail_content_blank">Content :</string>
+    <string name="textView_job_detail_picture_from_task_owner">情鏡圖 :</string>
 
 
 </resources>

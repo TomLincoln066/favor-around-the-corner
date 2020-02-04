@@ -83,19 +83,6 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 //            "task_create_time" to Calendar.getInstance().timeInMillis,
         )
 
-        //@Parcelize
-//data class Task(
-//    var id: String = "",
-//    var price: Long = -1,
-//    var createdTime: Long = -1,
-//    var title: String = "",
-//    var content: String = "",
-//    val userID:String = "",
-//    val taskCreator : String = "",
-//    val status: Int = -1,
-//    var subContent : List<String> = listOf()
-//
-//) : Parcelable
 
 
 
@@ -137,23 +124,15 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-    fun convertLongToTimeAgo(systemTime: Long): String{
+    fun convertLongToTimeAgo(systemTime: Long): String {
         val currentTime = Calendar.getInstance().timeInMillis
-        val diff =  currentTime - systemTime
-        var minutes = TimeUnit.MINUTES.convert(diff,TimeUnit.MILLISECONDS)
+        val diff = currentTime - systemTime
+        var minutes = TimeUnit.MINUTES.convert(diff, TimeUnit.MILLISECONDS)
         val hours = minutes / 60
-            val t = diff / hours
-            return "$t + 分鐘前"
+        val t = diff / hours
+        return "$t + 分鐘前"
     }
 
 }
 
 
-//"task_provider" to taskProvider.value!!,
-//"task_price" to taskPrice.value!!,
-//"task_content" to taskContent.value!!,
-//"task_title" to taskTitle.value!!,
-//"task_id" to document.id,
-//"task_create_time" to convertLongToDateString(System.currentTimeMillis())
-//            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
-//            "task_create_time" to Calendar.getInstance().timeInMillis,
