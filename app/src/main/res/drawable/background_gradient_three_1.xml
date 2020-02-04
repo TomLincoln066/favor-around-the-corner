@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:angle="45"
+        android:centerColor="#F8C471"
+        android:endColor="@color/yellow_medium"
+        android:startColor="@color/yellow_medium" />
+
+</shape>
+
+
+    <!--    android:angle="45" // 漸變角度-->
+    <!--    android:startColor="@color/amber_400" // 起始顏色-->
+    <!--    android:centerColor="@color/purple_600" // 中間顏色-->
+    <!--    android:endColor="@color/orange_deep_600" /> // 結束顏色-->

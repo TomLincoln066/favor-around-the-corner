@@ -19,9 +19,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_margin="3dp"
-        android:background="#ffeadb">
+        android:background="#ffeadb"
+        android:padding="10dp">
 
 
         <TextView
@@ -49,115 +50,26 @@
             android:id="@+id/Text_progress_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_1"
-            app:layout_constraintStart_toEndOf="@+id/radioButton_item_1"
-            app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-
-            tools:text="Check Memory Card" />
-
-        <TextView
-            android:id="@+id/Text_progress_item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_2"
-            app:layout_constraintStart_toEndOf="@+id/radioButton_item_2"
-            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item"
-
-            tools:text="Check CPU Fan" />
-
-        <TextView
-            android:id="@+id/Text_progress_item3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_3"
-            app:layout_constraintStart_toEndOf="@+id/radioButton_item_3"
-            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item2"
-
-            tools:text="Reboot" />
-
-        <TextView
-            android:id="@+id/Text_progress_item4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            app:layout_constraintBaseline_toBaselineOf="@id/radioButton_item_4"
-            app:layout_constraintStart_toEndOf="@+id/radioButton_item_4"
-            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item3"
-
-            tools:text="Works Again" />
-
-        <RadioButton
-            android:id="@+id/radioButton_item_1"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
-
-        <RadioButton
-            android:id="@+id/radioButton_item_2"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="32dp"
+            android:ems="10"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton_item_1" />
 
-        <RadioButton
-            android:id="@+id/radioButton_item_3"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton_item_2" />
-
-        <RadioButton
-            android:id="@+id/radioButton_item_4"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton_item_3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+            tools:text="Check Memory Card" />
 
         <Button
             android:id="@+id/button_item_request_send_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#f5c3bc"
+            android:background="@drawable/background_gradient_1"
             android:text="@string/button_item_request_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBar_item_request"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Text_progress_item4"
-            app:layout_constraintVertical_bias="0.156" />
 
         <TextView
             android:id="@+id/textView_task_creator"
@@ -225,10 +137,10 @@
 
         <Button
             android:id="@+id/button_mission_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="10dp"
-            android:background="#e89da2"
+            android:background="@drawable/background_gradient_1"
             android:text="@string/button_mission_detail"
             app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_send_out"
             app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out" />
@@ -245,3 +157,16 @@
     <!--    android:text="@{task.subContent.get(1)}"-->
     <!--    android:text="@{task.subContent.get(2)}"-->
     <!--    android:text="@{task.subContent.get(3)}"-->
+
+
+<!--<ProgressBar-->
+<!--android:id="@+id/progressBar_item_request"-->
+<!--style="?android:attr/progressBarStyleHorizontal"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="20dp"-->
+<!--android:layout_marginStart="10dp"-->
+<!--android:layout_marginTop="10dp"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toBottomOf="@+id/Text_progress_item4"-->
+<!--app:layout_constraintVertical_bias="0.156" />-->

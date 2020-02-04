@@ -33,14 +33,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icons_36px_profile_normal" />
+            app:srcCompat="@drawable/alesso_profile" />
 
         <Button
             android:id="@+id/button_ranking_item_invite"
             android:layout_width="70dp"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
-            android:background="#CEE8CE"
+            android:background="@drawable/background_gradient_1"
             android:text="@string/button_ranking_item_invite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -10,5 +10,6 @@ data class Rank(
 //    val email: String = "",
 //    val level: Int = -1,
     val intro: String = "",
-    val earning: Long = -1
+    val earning: Long = -1,
+    val image: String? = null
 ) : Parcelable

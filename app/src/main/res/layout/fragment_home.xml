@@ -55,7 +55,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabs"
             app:tasks="@{viewModel.tasks}"
-            tools:listitem="@layout/item_request"/>
+            tools:listitem="@layout/item_request" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

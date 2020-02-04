@@ -27,8 +27,10 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     fun addRankUser() {
         _ranks.value = listOf(
             Rank(
-                "123", "will", "burger king", 1000000
-            ), Rank("456", "Tom", "king", 1000), Rank("789", "Bill", "man", 20000)
+                "123", "will", "burger king", 1000000),
+            Rank("456", "Tom", "king", 1000),
+            Rank("789", "Bill", "man", 20000),
+            Rank("101112", "James", "computer expert", 10000)
 
         )
 
@@ -62,7 +64,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     // handle taskPrice input type convert problem( Long to String and String to Long)
 
 
-
     @InverseMethod("convertLongToString")
     fun convertStringToLong(value: String): Long {
         return try {
@@ -80,7 +81,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     fun convertLongToString(value: Long): String {
         return value.toString()
     }
-
 
 
 }

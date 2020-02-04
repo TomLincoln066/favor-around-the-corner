@@ -45,6 +45,12 @@
     <color name="blue_voyage">#33a4cc</color>
 
 
+    <!-- Yellow Series-->
+    <color name="yellow_light">#FCF3CF</color>
+    <color name="yellow_medium">#F9E79F </color>
+    <color name="yellow_hard">#D4AC0D</color>
+
+
 
 
 </resources>
