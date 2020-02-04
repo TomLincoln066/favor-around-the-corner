@@ -26,6 +26,7 @@
     <string name="textView_task_create_time">1小時前</string>
     <string name="textView_proposals_word">提案人數 :</string>
     <string name="textView_proposals_numbers">5</string>
+    <string name="textView_task_price_blank">價錢:</string>
 
 
     <string name="textView_post_request_title"><![CDATA[標題 >]]></string>
@@ -53,6 +54,10 @@
 
 
     <string name="you_know_nothing">You know nothing</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
 </resources>

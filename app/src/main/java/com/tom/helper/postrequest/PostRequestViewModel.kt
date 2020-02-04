@@ -73,8 +73,8 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
         val data = hashMapOf(
 
             "taskCreator" to taskProvider.value!!,
-            "task_price" to taskPrice.value!!,
-            "task_content" to taskContent.value!!,
+            "price" to taskPrice.value!!,
+            "content" to taskContent.value!!,
             "title" to taskTitle.value!!,
             "id" to document.id,
             "task_create_time" to convertLongToDateString(System.currentTimeMillis())

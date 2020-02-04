@@ -9,28 +9,42 @@ import com.tom.helper.databinding.ItemRequestBinding
 import com.tom.helper.source.Task
 
 //* This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
-//* [Article], including computing diffs between lists.
+//* [Task], including computing diffs between lists.
 //* @param onClickListener a lambda that takes the
 //*/
 
-class HomeRecyclerAdapter(private val onClickListener: OnClickListener ) :
+class HomeRecyclerAdapter(
+    private val onClickListener: OnClickListener,
+    val viewModel: HomeViewModel
+) :
     ListAdapter<Task, RecyclerView.ViewHolder>(DiffCallback) {
     /**
      * Custom listener that handles clicks on [RecyclerView] items.  Passes the [Article]
      * associated with the current item to the [onClick] function.
      * @param clickListener lambda that will be called with the current [Article]
      */
-    class OnClickListener(val clickListener: (task : Task) -> Unit) {
+    class OnClickListener(val clickListener: (task: Task) -> Unit) {
         fun onClick(task: Task) = clickListener(task)
     }
 
-    class TaskViewHolder(private var binding: ItemRequestBinding):
+    class TaskViewHolder(private var binding: ItemRequestBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(task : Task, onClickListener: OnClickListener) {
+        fun bind(task: Task, onClickListener: OnClickListener, viewModel: HomeViewModel) {
+
+
+            //give HomeRecyclerAdapter HomeViewModel so item_request.xml would show price.
+            binding.viewModel = viewModel
 
             binding.task = task
-            binding.root.setOnClickListener { onClickListener.onClick(task) }
+            //press buttonMissionDetail and do what HomeFragment about to do, pls check HomeFragment.kt for the code following.
+            /**
+             *        binding.homeRequestRecycler.adapter = HomeRecyclerAdapter(HomeRecyclerAdapter.OnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+            })
+             */
+
+            binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
             binding.executePendingBindings()
         }
     }
@@ -39,6 +53,7 @@ class HomeRecyclerAdapter(private val onClickListener: OnClickListener ) :
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem === newItem
         }
+
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id
         }
@@ -50,7 +65,9 @@ class HomeRecyclerAdapter(private val onClickListener: OnClickListener ) :
         return when (viewType) {
             ITEM_VIEW_TYPE_TASK -> TaskViewHolder(
                 ItemRequestBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false))
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
@@ -62,7 +79,7 @@ class HomeRecyclerAdapter(private val onClickListener: OnClickListener ) :
 
         when (holder) {
             is TaskViewHolder -> {
-                holder.bind((getItem(position) as Task), onClickListener)
+                holder.bind((getItem(position)), onClickListener, viewModel)
             }
         }
     }

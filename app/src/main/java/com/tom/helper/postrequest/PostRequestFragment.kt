@@ -48,13 +48,8 @@ class PostRequestFragment : Fragment() {
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.POSTREQUEST)
 
 
-        binding.lifecycleOwner=this
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-        binding.buttonPostRequestSend.setOnClickListener {
-//            sendNewRequest()
-//            viewModel.submitTask()
-        }
 
 
         // Inflate the layout for this fragment
@@ -66,7 +61,6 @@ class PostRequestFragment : Fragment() {
 
     // send some mock data to fireBase
     fun sendNewRequest() {
-
 
 
         val task = FirebaseFirestore.getInstance().collection("task")
@@ -90,16 +84,16 @@ class PostRequestFragment : Fragment() {
     }
 
 
-
 //    private fun convertLongToDateString(systemTime: Long): String {
 //        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
 //            .format(systemTime).toString()
 //    }
 
 
-
-
-
 }
 
 
+//        binding.buttonPostRequestSend.setOnClickListener {
+//            sendNewRequest()
+//            viewModel.submitTask()
+//        }

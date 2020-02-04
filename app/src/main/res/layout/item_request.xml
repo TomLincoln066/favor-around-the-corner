@@ -19,7 +19,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_margin="3dp"
         android:background="#ffeadb"
         android:padding="10dp">
@@ -47,19 +47,20 @@
 
 
         <TextView
-            android:id="@+id/Text_progress_item"
+            android:id="@+id/Text_item_request_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="26dp"
             android:ems="10"
+            android:text="@{task.content}"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
             tools:text="Check Memory Card" />
 
         <Button
-            android:id="@+id/button_item_request_send_out"
-            android:layout_width="80dp"
+            android:id="@+id/button_item_request_close"
+            android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
@@ -89,6 +90,16 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="68dp"
             android:text="@string/textView_task_creator_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_task_price_blank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="100dp"
+            android:text="@string/textView_task_price_blank"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -137,13 +148,23 @@
 
         <Button
             android:id="@+id/button_mission_detail"
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/background_gradient_1"
             android:text="@string/button_mission_detail"
-            app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_send_out"
-            app:layout_constraintEnd_toStartOf="@+id/button_item_request_send_out" />
+            app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_close"
+            app:layout_constraintEnd_toStartOf="@+id/button_item_request_close" />
+
+        <TextView
+            android:id="@+id/textView_item_request_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="100dp"
+            android:text="@{viewModel.convertLongToString(task.price)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_task_price_blank" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -151,7 +172,7 @@
 </layout>
 
 
-<!--    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"-->
+    <!--    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"-->
 
     <!--    android:text="@{task.subContent.get(0)}"-->
     <!--    android:text="@{task.subContent.get(1)}"-->
@@ -159,14 +180,14 @@
     <!--    android:text="@{task.subContent.get(3)}"-->
 
 
-<!--<ProgressBar-->
-<!--android:id="@+id/progressBar_item_request"-->
-<!--style="?android:attr/progressBarStyleHorizontal"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="20dp"-->
-<!--android:layout_marginStart="10dp"-->
-<!--android:layout_marginTop="10dp"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/Text_progress_item4"-->
-<!--app:layout_constraintVertical_bias="0.156" />-->
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressBar_item_request"-->
+    <!--style="?android:attr/progressBarStyleHorizontal"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="20dp"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/Text_progress_item4"-->
+    <!--app:layout_constraintVertical_bias="0.156" />-->

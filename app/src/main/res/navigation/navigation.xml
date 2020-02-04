@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
     app:startDestination="@id/homeFragment">
 
     <fragment
@@ -38,6 +40,18 @@
     <action
         android:id="@+id/action_global_facebookLogInBottomSheet"
         app:destination="@id/facebookLogInBottomSheet" />
+    <fragment
+        android:id="@+id/jobDetailFragment"
+        android:name="com.tom.helper.jobdetailfragment.JobDetailFragment"
+        android:label="fragment_job_detail"
+        tools:layout="@layout/fragment_job_detail" >
+        <argument
+            android:name="task"
+            app:argType="com.tom.helper.source.Task" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_jobDetailFragment"
+        app:destination="@id/jobDetailFragment" />
 
 
 </navigation>

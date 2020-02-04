@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tom.helper.MainActivity
@@ -47,11 +48,16 @@ class HomeFragment : Fragment() {
                 LinearLayoutManager.VERTICAL
             )
         )
+
         binding.homeRequestRecycler.adapter =
-            HomeRecyclerAdapter(HomeRecyclerAdapter.OnClickListener {
-                //            Logger.d("click, it=$it")
-                //            viewModel.delete(it)
-            })
+            HomeRecyclerAdapter(
+                HomeRecyclerAdapter.OnClickListener {
+
+                    //press buttonMissionDetail of item_request.xml, and it'll navigate to job details fragment
+                    findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+                },
+                viewModel
+            )
 
 
         //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.
@@ -59,6 +65,8 @@ class HomeFragment : Fragment() {
 //            (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
 //
 //        })
+
+
 
 //        viewModel.prepareTasks()
         viewModel.getTasksResult()

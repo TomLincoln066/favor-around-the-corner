@@ -1,5 +1,6 @@
 package com.tom.helper.homefragment
 
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,18 @@ import java.text.SimpleDateFormat
 
 // private val repository: HelperRepository
 class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
+
+//    private val _selelctedTask = MutableLiveData<Task>()
+//    val selectedTask: LiveData<Task>
+//        get() = _selelctedTask
+//
+//    fun selectTask(task: Task) {
+//        _selelctedTask.value = task
+//    }
+//
+//    fun doneNavigatingToTask() {
+//        _selelctedTask.value = null
+//    }
 
     private val _user = MutableLiveData<User>()
 
@@ -61,9 +74,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
                 }
             }
 
-//            _tasks.value = listOf(
-//                Task(Task.id, Task.price, Task.title,Task.content,Task.createdTime)
-//            )
         }
 
     }
@@ -95,6 +105,26 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+
+
+    @InverseMethod("convertLongToString")
+    fun convertStringToLong(value: String): Long {
+        return try {
+            value.toLong().let {
+                when (it) {
+                    0L -> 0
+                    else -> it
+                }
+            }
+        } catch (e: NumberFormatException) {
+            1
+        }
+    }
+
+    fun convertLongToString(value: Long): String {
+        return value.toString()
     }
 
 
