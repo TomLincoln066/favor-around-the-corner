@@ -1,5 +1,6 @@
 package com.tom.helper.homefragment
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -76,6 +77,8 @@ class HomeRecyclerAdapter(
      * Replaces the contents of a view (invoked by the layout manager)
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        Log.i("TEST ADAPTER","TASK $position = ${getItem(position)}" )
 
         when (holder) {
             is TaskViewHolder -> {

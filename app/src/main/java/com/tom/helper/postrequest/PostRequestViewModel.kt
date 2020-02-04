@@ -77,7 +77,8 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
             "content" to taskContent.value!!,
             "title" to taskTitle.value!!,
             "id" to document.id,
-            "task_create_time" to convertLongToDateString(System.currentTimeMillis())
+//            "task_create_time" to convertLongToDateString(System.currentTimeMillis()),
+            "createdTime" to System.currentTimeMillis()
 //            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
 //            "task_create_time" to Calendar.getInstance().timeInMillis,
         )

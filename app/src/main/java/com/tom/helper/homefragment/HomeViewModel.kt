@@ -128,10 +128,10 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-//     fun convertLongToDateString(systemTime: Long): String {
-//        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
-//            .format(systemTime).toString()
-//    }
+     fun convertLongToDateString(systemTime: Long): String {
+        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+            .format(systemTime).toString()
+    }
 
 
 }
