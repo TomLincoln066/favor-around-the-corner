@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProposalListBinding
 import com.tom.helper.ext.getVmFactory
 

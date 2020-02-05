@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="task"
-            type="com.tom.helper.source.Task" />
+            name="proposal"
+            type="com.tom.helper.source.Proposal" />
 
     </data>
 

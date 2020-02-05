@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Task
+import com.tom.helper.source.Proposal
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,19 +15,22 @@ import kotlinx.coroutines.Job
 class ProposalListViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
-    private val _tasks = MutableLiveData<List<Task>>()
+    private val _proposals = MutableLiveData<List<Proposal>>()
 
-    val tasks: LiveData<List<Task>>
-        get() = _tasks
+    val proposals: LiveData<List<Proposal>>
+        get() = _proposals
 
 
     //To test Mock data display of item_proposal on fragment_proposal_list.xml
     fun addProposal() {
-        _tasks.value = listOf(
-            Task(
-                "123", 20000L, 1000000),
-            Task(
-                "456", 10000000L)
+        _proposals.value = listOf(
+            Proposal(
+                "123", 20000L, "I got your back"),
+            Proposal(
+                "456", 10000000L),
+            Proposal(),
+            Proposal(),
+            Proposal()
         )
 
 
