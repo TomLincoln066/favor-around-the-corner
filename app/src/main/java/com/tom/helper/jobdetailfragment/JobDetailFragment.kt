@@ -8,12 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-
-
-import com.tom.helper.R
 import com.tom.helper.databinding.FragmentJobDetailBinding
-import com.tom.helper.proposaleditfragment.ProposalEditFragmentDirections
 import com.tom.helper.source.Task
 
 /**

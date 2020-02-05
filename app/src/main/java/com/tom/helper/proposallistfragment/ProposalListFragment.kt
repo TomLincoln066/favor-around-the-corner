@@ -14,6 +14,9 @@ import com.tom.helper.R
  */
 class ProposalListFragment : Fragment() {
 
+
+    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
