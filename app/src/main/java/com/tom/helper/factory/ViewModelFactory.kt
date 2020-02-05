@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tom.helper.homefragment.HomeViewModel
 import com.tom.helper.postrequest.PostRequestViewModel
+import com.tom.helper.proposallistfragment.ProposalListViewModel
 import com.tom.helper.rankinglist.RankingListViewModel
 import com.tom.helper.source.HelperRepository
 
@@ -30,6 +31,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(RankingListViewModel::class.java) ->
                     RankingListViewModel(repository)
 
+                isAssignableFrom(ProposalListViewModel::class.java) ->
+                    ProposalListViewModel(repository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
