@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffeadb"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_proposal_sender_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="88dp"
+            android:text="@string/textView_proposal_sender_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_proposal_edit_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="56dp"
+            android:ems="10"
+            android:hint="@string/editText_post_request_person"
+            android:inputType="textPersonName"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_proposal_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="108dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/editText_proposal_content"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_edit_person" />
+
+        <TextView
+            android:id="@+id/textView_proposal_request_content_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="76dp"
+            android:text="@string/textView_proposal_request_content_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_proposal_sender_name" />
+
+        <Button
+            android:id="@+id/button_proposal_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#f09c67"
+            android:text="@string/button_proposal_send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content"
+            app:layout_constraintVertical_bias="0.283" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

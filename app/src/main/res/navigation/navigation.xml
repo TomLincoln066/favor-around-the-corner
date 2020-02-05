@@ -52,6 +52,17 @@
     <action
         android:id="@+id/action_global_jobDetailFragment"
         app:destination="@id/jobDetailFragment" />
+    <fragment
+        android:id="@+id/proposalEditFragment"
+        android:name="com.tom.helper.proposaleditfragment.ProposalEditFragment"
+        android:label="ProposalEditFragment" >
+        <argument
+            android:name="task"
+            app:argType="com.tom.helper.source.Task" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_proposalEditFragment"
+        app:destination="@id/proposalEditFragment" />
 
 
 </navigation>

@@ -75,4 +75,11 @@
     <string name="select_amount">選擇數量</string>
     <string name="stock_not_enough">庫存不足</string>
 
+    <!-- Proposals Edit fragment-->
+
+    <string name="textView_proposal_sender_name">Helper名稱 :</string>
+    <string name="textView_proposal_request_content_tag">為甚麼要選我 :</string>
+    <string name="button_proposal_send">送出</string>
+    <string name="editText_proposal_content">你同事口中最強的電玩神手就是我啦!遇到甚麼麻煩交給我保證沒問題。</string>
+
 </resources>
