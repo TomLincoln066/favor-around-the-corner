@@ -82,4 +82,8 @@
     <string name="button_proposal_send">送出</string>
     <string name="editText_proposal_content">你同事口中最強的電玩神手就是我啦!遇到甚麼麻煩交給我保證沒問題。</string>
 
+    <!-- Proposals list fragment and item -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_proposal_content_tag">內容</string>
+
 </resources>
