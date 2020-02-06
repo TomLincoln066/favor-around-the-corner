@@ -9,7 +9,7 @@ interface HelperRepository {
 
     suspend fun getTasks(): Result<List<Task>>
 
-//    suspend fun getProposals():Result<List<Proposal>>
+    suspend fun getProposals(): Result<List<Proposal>>
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

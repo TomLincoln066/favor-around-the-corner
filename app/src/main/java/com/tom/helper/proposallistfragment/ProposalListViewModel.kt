@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
+import com.tom.helper.source.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 // The [ViewModel] that is attached to the [ProposalListFragment].
 
@@ -35,6 +37,31 @@ class ProposalListViewModel(private val repository: HelperRepository) : ViewMode
 
 
     }
+
+
+    fun getProposalsResult() {
+
+        coroutineScope.launch {
+            val result = repository.getProposals()
+
+            when (result) {
+                is Result.Success -> {
+                    _proposals.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request

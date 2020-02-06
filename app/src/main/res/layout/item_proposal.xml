@@ -40,7 +40,7 @@
             android:maxLines="2"
             android:textColor="@color/black_3f3a3a"
             android:textSize="15sp"
-
+            android:text="@{proposal.senderName}"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
@@ -75,7 +75,7 @@
             android:fontFamily="@font/noto_sans"
             android:gravity="center"
             android:letterSpacing="0.15"
-
+            android:text="@{proposal.content}"
             android:textColor="@color/black_3f3a3a"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/view_item_proposal_separation"

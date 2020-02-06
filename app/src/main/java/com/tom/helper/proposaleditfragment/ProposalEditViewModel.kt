@@ -90,7 +90,7 @@ class ProposalEditViewModel(private val repository: HelperRepository) : ViewMode
                 Toast.makeText(HelperApplication.context, "Add Proposal Success", Toast.LENGTH_SHORT).show()
                 Log.i("SUCCESS", "SU")
             }
-        
+
     }
 
 

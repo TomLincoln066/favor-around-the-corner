@@ -45,7 +45,8 @@ class ProposalListFragment : Fragment() {
             })
 
 
-        viewModel.addProposal()
+//        viewModel.addProposal()
+        viewModel.getProposalsResult()
 
 
 
