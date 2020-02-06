@@ -7,6 +7,7 @@
 
 
     <data>
+
         <variable
             name="facebookLogInDialog"
             type="com.tom.helper.logindialog.FacebookLogInBottomSheet" />
@@ -17,17 +18,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/facebook_ellipse_frame">
+        android:background="#ecf3f9"
+        android:padding="10dp">
 
+
+        <ImageView
+            android:id="@+id/login_logo"
+            android:layout_width="316dp"
+            android:layout_height="312dp"
+            android:layout_marginTop="116dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/lamp_sketch" />
 
         <TextView
             android:id="@+id/fragment_textView_fb_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
             android:textAlignment="center"
@@ -36,32 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/please_log_in_fb_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_textView_fb_log_in" />
-
-        <View
-            android:id="@+id/line_view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:background="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/please_log_in_fb_description" />
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
 
         <com.facebook.login.widget.LoginButton
 
@@ -69,7 +55,6 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="#3b5998"
@@ -78,9 +63,10 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line_view" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_textView_fb_log_in"
+            app:layout_constraintVertical_bias="0.061" />
 
         <Button
             android:id="@+id/close_login_window"
@@ -98,3 +84,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+    <!--    android:background="@drawable/facebook_ellipse_frame"-->

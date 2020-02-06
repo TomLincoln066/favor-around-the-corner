@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.databinding.ActivityMainBinding
 
 import com.tom.helper.logindialog.FacebookLogInBottomSheet
-import com.tom.helper.ui.main.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_facebook_log_in.*
 

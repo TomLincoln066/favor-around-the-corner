@@ -4,6 +4,7 @@ import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Result
 import com.tom.helper.source.Task
@@ -32,6 +33,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 //        _selelctedTask.value = null
 //    }
 
+
     private val _user = MutableLiveData<User>()
 
     val user: LiveData<User>
@@ -50,17 +52,32 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 //            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
 //            Task("456", title = "I need a ride to interview", subContent = listOf("kill it","sit on it","let's do that again", "oh god it works now")),
 //            Task("789", title = "Who want's to play UNO", subContent = listOf("go for it","sit on it","let's do that again", "oh god it works now"))
-              Task("789", title = "Who want's to play UNO")
+            Task("789", title = "Who want's to play UNO")
         )
 
     }
 
-     fun getTasksResult() {
+
+    //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment
+    private val _shouldNavigateToProposalList = MutableLiveData<Boolean>()
+    val shouldNavigateToProposalList: LiveData<Boolean>
+        get() = _shouldNavigateToProposalList
+
+    fun navToProposalList() {
+        _shouldNavigateToProposalList.value = true
+    }
+
+    fun doneNavigatingToProposalList() {
+        _shouldNavigateToProposalList.value = null
+    }
+
+
+    fun getTasksResult() {
 
         coroutineScope.launch {
             val result = repository.getTasks()
 
-            when(result) {
+            when (result) {
                 is Result.Success -> {
                     _tasks.value = result.data
                 }
@@ -77,7 +94,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
     }
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -108,7 +124,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
     @InverseMethod("convertLongToString")
     fun convertStringToLong(value: String): Long {
         return try {
@@ -128,7 +143,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-     fun convertLongToDateString(systemTime: Long): String {
+    fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
             .format(systemTime).toString()
     }

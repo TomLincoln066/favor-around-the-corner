@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-
-
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProposalEditBinding
 import com.tom.helper.source.Task
@@ -32,7 +30,7 @@ class ProposalEditFragment : Fragment() {
             //requireArguments().get("task") as Task) : handle getting the task argument from fragment_job_detail * should try navArg<>() instead
             findNavController().navigate(
                 ProposalEditFragmentDirections.actionGlobalProposalListFragment(
-                    requireArguments().get("task") as Task
+
                 )
             )
 //            findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))

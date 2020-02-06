@@ -12,7 +12,9 @@ data class Task(
     var content: String = "",
     val userID:String = "",
     val taskCreator : String = "",
-    val status: Int = -1
+    val status: Int = -1,
+    val proposal: List<Proposal> = listOf()
+
 //    var subContent : List<String> = listOf()
 
 ) : Parcelable

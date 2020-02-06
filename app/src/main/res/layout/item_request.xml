@@ -21,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="3dp"
-        android:background="#ffeadb"
-        android:padding="10dp">
+        android:background="@drawable/facebook_ellipse_frame"
+        >
 
 
         <TextView
@@ -62,8 +62,8 @@
             android:id="@+id/button_item_request_close"
             android:layout_width="60dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/background_gradient_1"
             android:text="@string/button_item_request_close"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -155,6 +155,18 @@
             app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_close"
             app:layout_constraintEnd_toStartOf="@+id/button_item_request_close" />
 
+        <Button
+            android:id="@+id/button_mission_detail_proposal_total"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/background_gradient_1"
+            android:text="@string/button_mission_detail_proposal_total"
+            app:layout_constraintBaseline_toBaselineOf="@id/button_item_request_close"
+            app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
+            android:onClick="@{()->viewModel.navToProposalList()}"
+            />
+
         <TextView
             android:id="@+id/textView_item_request_price"
             android:layout_width="wrap_content"
@@ -178,3 +190,4 @@
     <!--    android:text="@{task.subContent.get(2)}"-->
     <!--    android:text="@{task.subContent.get(3)}"-->
 
+<!--    android:onClick="@{()->viewModel.NavToProposalList()}"-->

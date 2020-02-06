@@ -47,6 +47,8 @@ class HomeRecyclerAdapter(
 
             binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
             binding.executePendingBindings()
+
+
         }
     }
 
