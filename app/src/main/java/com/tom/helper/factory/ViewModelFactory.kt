@@ -3,6 +3,7 @@ package com.tom.helper.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tom.helper.homefragment.HomeViewModel
+import com.tom.helper.jobdetailfragment.JobDetailViewModel
 import com.tom.helper.postrequest.PostRequestViewModel
 import com.tom.helper.proposallistfragment.ProposalListViewModel
 import com.tom.helper.rankinglist.RankingListViewModel
@@ -33,6 +34,10 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(ProposalListViewModel::class.java) ->
                     ProposalListViewModel(repository)
+
+                isAssignableFrom(JobDetailViewModel::class.java) ->
+                    JobDetailViewModel(repository)
+
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

@@ -5,6 +5,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.tom.helper.jobdetailfragment.JobDetailViewModel" />
+
+        <variable
+            name="task"
+            type="com.tom.helper.source.Task" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,14 +45,17 @@
                     android:ellipsize="end"
                     android:letterSpacing="0.15"
                     android:lines="2"
-                    android:text="UI好難設計，徵求幫手。"
+
+                    android:text="@{task.title}"
+
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toStartOf="@+id/text_job_detail_price"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="UI好難設計，徵求幫手。"/>
 
                 <TextView
                     android:id="@+id/text_job_detail_price"
@@ -55,13 +67,16 @@
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lines="1"
-                    android:text="10000"
+
+
+
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/text_job_detail_title"
-                    app:layout_constraintTop_toTopOf="@+id/text_job_detail_title" />
+                    app:layout_constraintTop_toTopOf="@+id/text_job_detail_title"
+                    tools:text="10000"/>
 
                 <TextView
                     android:id="@+id/text_job_detail_seperation"
@@ -72,7 +87,7 @@
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
-                    android:text="10000"
+
                     android:letterSpacing="0.15"
                     android:lines="1"
                     android:textColor="@color/gray_888888"
@@ -96,20 +111,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_seperation"
-                    android:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
+                    android:text="@{task.content}"
+                    tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
 
                 <!-- color -->
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageView_job_detail_picture_post_by_task_owner"
                     android:layout_width="395dp"
                     android:layout_height="288dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/alesso_profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content"
-                    android:src ="@drawable/alesso_profile"
-                     />
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
 
                 <Button
                     android:id="@+id/button_job_detail_live_chat"
@@ -125,7 +140,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView_job_detail_picture_post_by_task_owner" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
