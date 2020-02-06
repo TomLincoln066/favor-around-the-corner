@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProposalEditBinding
+import com.tom.helper.ext.getVmFactory
 import com.tom.helper.source.Task
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProposalEditFragment : Fragment() {
+
+    private val viewModel by viewModels<ProposalEditViewModel> { getVmFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,18 +28,15 @@ class ProposalEditFragment : Fragment() {
 
         val binding = FragmentProposalEditBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        binding.buttonProposalSend.setOnClickListener {
+        //observe when shouldNavigateToProposalListFragment change from false to true then proceed findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
+        viewModel.shouldNavigateToProposalListFragment.observe(this, Observer {
+            if(it){
+                findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
+            }
+        })
 
-            //requireArguments().get("task") as Task) : handle getting the task argument from fragment_job_detail * should try navArg<>() instead
-            findNavController().navigate(
-                ProposalEditFragmentDirections.actionGlobalProposalListFragment(
-
-                )
-            )
-//            findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))
-
-        }
 
 
         // Inflate the layout for this fragment
@@ -45,3 +46,20 @@ class ProposalEditFragment : Fragment() {
 
 
 }
+
+
+//binding.buttonProposalSend.setOnClickListener {
+//
+//    //requireArguments().get("task") as Task) : handle getting the task argument from fragment_job_detail * should try navArg<>() instead
+//    // findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))
+
+
+
+//    findNavController().navigate(
+//        ProposalEditFragmentDirections.actionGlobalProposalListFragment(
+//
+//        )
+//    )
+//
+//
+//}

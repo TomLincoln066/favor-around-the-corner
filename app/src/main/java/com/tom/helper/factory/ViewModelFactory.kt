@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tom.helper.homefragment.HomeViewModel
 import com.tom.helper.jobdetailfragment.JobDetailViewModel
 import com.tom.helper.postrequest.PostRequestViewModel
+import com.tom.helper.proposaleditfragment.ProposalEditViewModel
 import com.tom.helper.proposallistfragment.ProposalListViewModel
 import com.tom.helper.rankinglist.RankingListViewModel
 import com.tom.helper.source.HelperRepository
@@ -37,6 +38,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(JobDetailViewModel::class.java) ->
                     JobDetailViewModel(repository)
+
+                isAssignableFrom(ProposalEditViewModel::class.java) ->
+                    ProposalEditViewModel(repository)
 
 
                 else ->

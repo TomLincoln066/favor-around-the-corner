@@ -70,12 +70,6 @@ class PostRequestFragment : Fragment() {
 
 
 
-
-
-
-
-
-
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_post_request, container, false)
         return binding.root
@@ -84,28 +78,28 @@ class PostRequestFragment : Fragment() {
 
 
     // send some mock data to fireBase
-    fun sendNewRequest() {
-
-
-        val task = FirebaseFirestore.getInstance().collection("task")
-
-        val document = task.document()
-
-        val data = hashMapOf(
-            "task_provider" to "Tom",
-            "task_title" to "我的電腦crashes \n" +
-                    "Help me!!! \"",
-            "task_content" to " 我的電腦突然沒辦法開機，徵求勇士一名，酬勞另計。 ",
-            "task_createTime" to Calendar.getInstance().timeInMillis,
-            "task_price" to "20000",
-            "task_id" to document.id
-
-        )
-
-        document.set(data as Map<String, Any>)
-
-
-    }
+//    fun sendNewRequest() {
+//
+//
+//        val task = FirebaseFirestore.getInstance().collection("task")
+//
+//        val document = task.document()
+//
+//        val data = hashMapOf(
+//            "task_provider" to "Tom",
+//            "task_title" to "我的電腦crashes \n" +
+//                    "Help me!!! \"",
+//            "task_content" to " 我的電腦突然沒辦法開機，徵求勇士一名，酬勞另計。 ",
+//            "task_createTime" to Calendar.getInstance().timeInMillis,
+//            "task_price" to "20000",
+//            "task_id" to document.id
+//
+//        )
+//
+//        document.set(data as Map<String, Any>)
+//
+//
+//    }
 
 
 
