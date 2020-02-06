@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.MainActivity
-
-import com.tom.helper.R
 import com.tom.helper.databinding.FragmentPostRequestBinding
 import com.tom.helper.ext.getVmFactory
 import kotlinx.android.synthetic.main.fragment_post_request.*
@@ -52,6 +51,31 @@ class PostRequestFragment : Fragment() {
         binding.viewModel = viewModel
 
 
+        //try to handle when button_post_request_send is clicked in fragment_post_request.xml is pressed, will navigate to Home Fragment
+//        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
+//            it?.let {
+//
+//                findNavController().navigate(PostRequestFragmentDirections.actionGlobalHomeFragment())
+//
+//                viewModel.doneNavigatingToHomeFragment()
+//
+//            }
+//        })
+
+        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
+            if (it){
+                findNavController().navigate(PostRequestFragmentDirections.actionGlobalHomeFragment())
+            }
+        })
+
+
+
+
+
+
+
+
+
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_post_request, container, false)
         return binding.root
@@ -84,10 +108,7 @@ class PostRequestFragment : Fragment() {
     }
 
 
-//    private fun convertLongToDateString(systemTime: Long): String {
-//        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
-//            .format(systemTime).toString()
-//    }
+
 
 
 }

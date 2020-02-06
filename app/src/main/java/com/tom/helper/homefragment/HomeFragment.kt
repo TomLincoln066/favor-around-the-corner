@@ -59,6 +59,7 @@ class HomeFragment : Fragment() {
                 viewModel
             )
 
+        //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeViewModel.kt)
         viewModel.shouldNavigateToProposalList.observe(this, Observer {
             it?.let {
 

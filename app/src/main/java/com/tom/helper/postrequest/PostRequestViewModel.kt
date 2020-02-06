@@ -1,11 +1,13 @@
 package com.tom.helper.postrequest
 
+import android.widget.Toast
 import java.util.concurrent.TimeUnit
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tom.helper.HelperApplication
 import com.tom.helper.source.HelperRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +46,13 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
         viewModelJob.cancel()
     }
 
+
+    //try to handle when button_post_request_send is clicked in fragment_post_request.xml is pressed, will navigate to Home Fragment
+    val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
+
+    init {
+        shouldNavigateToHomeFragment.value = false
+    }
 
     //get editText's data and send out to firebase
     fun submitTask() {
@@ -87,7 +96,15 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
 
         document.set(data as Map<String, Any>)
-
+            //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
+            .addOnSuccessListener {
+                shouldNavigateToHomeFragment.value = true
+                Toast.makeText(HelperApplication.context, "Add Success", Toast.LENGTH_SHORT).show()
+            }
+//            .addOnFailureListener {
+//                shouldNavigateToHomeFragment.value = false
+//                Toast.makeText(HelperApplication.context, "You need to fill in all the blanks", Toast.LENGTH_SHORT).show()
+//            }
 
     }
 
@@ -96,6 +113,20 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         _error.value = null
     }
+
+
+    //try to handle when button_post_request_send is clicked in fragment_post_request.xml is pressed, will navigate to Home Fragment
+//    private val _shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
+//    val shouldNavigateToHomeFragment: LiveData<Boolean>
+//        get() = _shouldNavigateToHomeFragment
+//
+//    fun navToHomeFragment() {
+//        _shouldNavigateToHomeFragment.value = true
+//    }
+//
+//    fun doneNavigatingToHomeFragment() {
+//        _shouldNavigateToHomeFragment.value = null
+//    }
 
 
     // handle taskPrice input type convert problem( Long to String and String to Long)

@@ -68,7 +68,7 @@
                     android:letterSpacing="0.15"
                     android:lines="1"
 
-
+                    android:text="@{viewModel.convertLongToString(task.price)}"
 
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="18sp"
@@ -79,20 +79,18 @@
                     tools:text="10000"/>
 
                 <TextView
-                    android:id="@+id/text_job_detail_seperation"
-                    android:layout_width="0dp"
+                    android:id="@+id/textView_job_detail_task_owner_tag"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="6dp"
-                    android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
-
+                    android:text="@string/textView_post_request_person"
                     android:letterSpacing="0.15"
                     android:lines="1"
                     android:textColor="@color/gray_888888"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title" />
 
@@ -110,7 +108,7 @@
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_seperation"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag"
                     android:text="@{task.content}"
                     tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
 
@@ -141,6 +139,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView_job_detail_picture_post_by_task_owner" />
+
+                <TextView
+                    android:id="@+id/textView_job_detail_task_owner_name"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/textView_job_detail_task_owner_tag"
+                    android:text="@{task.taskCreator}"
+                    app:layout_constraintStart_toEndOf="@+id/textView_job_detail_task_owner_tag"
+                    tools:layout_editor_absoluteY="52dp" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-    //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment
+    //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeFragment.kt)
     private val _shouldNavigateToProposalList = MutableLiveData<Boolean>()
     val shouldNavigateToProposalList: LiveData<Boolean>
         get() = _shouldNavigateToProposalList

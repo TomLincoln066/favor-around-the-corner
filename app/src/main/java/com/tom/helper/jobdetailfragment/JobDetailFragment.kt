@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.InverseMethod
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
@@ -53,6 +54,8 @@ class JobDetailFragment : Fragment() {
 //        return inflater.inflate(R.layout.fragment_job_detail, container, false)
         return binding.root
     }
+
+
 
 
 }

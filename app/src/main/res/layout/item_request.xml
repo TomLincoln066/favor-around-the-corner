@@ -47,18 +47,6 @@
             tools:textSize="18sp" />
 
 
-        <TextView
-            android:id="@+id/Text_item_request_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="26dp"
-            android:ems="10"
-            android:text="@{task.content}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-            tools:text="Check Memory Card" />
-
         <Button
             android:id="@+id/button_item_request_close"
             android:layout_width="60dp"

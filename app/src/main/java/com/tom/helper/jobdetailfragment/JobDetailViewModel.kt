@@ -1,5 +1,6 @@
 package com.tom.helper.jobdetailfragment
 
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -72,7 +73,23 @@ class JobDetailViewModel(private val repository: HelperRepository) : ViewModel()
         viewModelJob.cancel()
     }
 
+    @InverseMethod("convertLongToString")
+    fun convertStringToLong(value: String): Long {
+        return try {
+            value.toLong().let {
+                when (it) {
+                    0L -> 0
+                    else -> it
+                }
+            }
+        } catch (e: NumberFormatException) {
+            1
+        }
+    }
 
+    fun convertLongToString(value: Long): String {
+        return value.toString()
+    }
 
 
 
