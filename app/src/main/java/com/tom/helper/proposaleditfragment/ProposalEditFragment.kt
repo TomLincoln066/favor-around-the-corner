@@ -18,12 +18,18 @@ import com.tom.helper.source.Task
  */
 class ProposalEditFragment : Fragment() {
 
-    private val viewModel by viewModels<ProposalEditViewModel> { getVmFactory() }
+    private val viewModel by viewModels<ProposalEditViewModel> { getVmFactory(ProposalEditFragmentArgs.fromBundle(arguments!!).task) }
+
+    private lateinit var task: Task
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        task  = requireArguments().get("task") as Task
+
 
 
         val binding = FragmentProposalEditBinding.inflate(inflater, container, false)

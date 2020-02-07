@@ -8,12 +8,13 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.HelperApplication
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.source.Task
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 
-class ProposalEditViewModel(private val repository: HelperRepository) : ViewModel() {
+class ProposalEditViewModel(private val repository: HelperRepository, private val task: Task) : ViewModel() {
 
 
     val proposalProvider = MutableLiveData<String>()
@@ -67,9 +68,11 @@ class ProposalEditViewModel(private val repository: HelperRepository) : ViewMode
         }
 
 
-        val proposal = FirebaseFirestore.getInstance().collection("proposal")
+//        val proposal = FirebaseFirestore.getInstance().collection("proposal")
+        val proposal = FirebaseFirestore.getInstance().collection("task")
 
-        val document = proposal.document()
+        //handle inputting proposal into specific task
+        val document = proposal.document(task.id).collection("proposal").document()
 
         val data = hashMapOf(
 

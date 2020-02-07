@@ -53,6 +53,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
     override suspend fun getProposals(): Result<List<Proposal>> = suspendCoroutine {continuation ->
         FirebaseFirestore.getInstance()
+//            .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
             .collection(PATH_PROPOSALS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .get()
@@ -64,7 +65,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
                         val proposal = document.toObject(Proposal::class.java)
                         list.add(proposal)
-                        Log.d("Will","get data form firebase")
+                        Log.d("Will","get proposals form firebase")
                     }
                     continuation.resume(Result.Success(list))
                 } else {

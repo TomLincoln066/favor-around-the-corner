@@ -39,8 +39,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(JobDetailViewModel::class.java) ->
                     JobDetailViewModel(repository)
 
-                isAssignableFrom(ProposalEditViewModel::class.java) ->
-                    ProposalEditViewModel(repository)
+//                isAssignableFrom(ProposalEditViewModel::class.java) ->
+//                    ProposalEditViewModel(repository)
 
 
                 else ->
