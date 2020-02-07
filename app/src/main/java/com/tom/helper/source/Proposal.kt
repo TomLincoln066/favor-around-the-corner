@@ -10,6 +10,7 @@ data class Proposal(
     var title: String = "",
     var content: String = "",
     val senderName: String = "",
-    val accepted: Boolean = false
+    val accepted: Boolean = false,
+    val userID:String = ""
 
 ) : Parcelable

@@ -5,20 +5,24 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.HelperApplication
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.source.Proposal
 import com.tom.helper.source.Task
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 
-class ProposalEditViewModel(private val repository: HelperRepository, private val task: Task) : ViewModel() {
+class ProposalEditViewModel(private val repository: HelperRepository, private val task: Task) :
+    ViewModel() {
 
 
     val proposalProvider = MutableLiveData<String>()
     val proposalContent = MutableLiveData<String>()
+    val proposalAccepted = false
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -68,29 +72,52 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         }
 
 
-//        val proposal = FirebaseFirestore.getInstance().collection("proposal")
-        val proposal = FirebaseFirestore.getInstance().collection("task")
+//        val proposal = FirebaseFirestore.getInstance().collection("proposal")  have proposal input in the task collection
+        val proposal = FirebaseFirestore.getInstance().collection("tasks")
 
         //handle inputting proposal into specific task
         val document = proposal.document(task.id).collection("proposal").document()
 
-        val data = hashMapOf(
+        val user = FirebaseAuth.getInstance().currentUser!!
 
-            "senderName" to proposalProvider.value!!,
-            "content" to proposalContent.value!!,
-            "id" to document.id,
-            "createdTime" to System.currentTimeMillis()
+        val userCurrent = user.uid
+
+
+//        val data = hashMapOf(
+//
+//            "senderName" to proposalProvider.value!!,
+//            "content" to proposalContent.value!!,
+//            "id" to document.id,
+//            "createdTime" to System.currentTimeMillis(),
+//            "accepted" to proposalAccepted,
+//            "user" to userCurrent
+//
+//        )
+
+        val data = Proposal(
+            document.id,
+            System.currentTimeMillis(),
+            proposalProvider.value!!,
+            proposalContent.value!!,
+            proposalProvider.value!!,
+            proposalAccepted,
+            userCurrent
 
         )
 
 
-        document.set(data as Map<String, Any>)
+//        document.set(data as Map<String, Any>)
+        document.set(data)
             .addOnFailureListener {
                 Log.i("EXCEPTIONX", "exc = ${it.message}")
             }.addOnSuccessListener {
                 //after sending proposal successfully, set shouldNavigateToProposalListFragment.value = true
                 shouldNavigateToProposalListFragment.value = true
-                Toast.makeText(HelperApplication.context, "Add Proposal Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    HelperApplication.context,
+                    "Add Proposal Success",
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.i("SUCCESS", "SU")
             }
 

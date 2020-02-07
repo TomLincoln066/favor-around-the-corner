@@ -11,3 +11,4 @@ data class User(
     val level: Int = -1,
     val earning: Long = -1
 ) : Parcelable
+

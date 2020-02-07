@@ -14,7 +14,7 @@ import kotlin.coroutines.suspendCoroutine
 
 object HelperRemoteDataSource : HelperDataSource {
 
-    private const val PATH_TASKS = "task"
+    private const val PATH_TASKS = "tasks"
     private const val KEY_CREATED_TIME = "createdTime"
 
     private const val PATH_PROPOSALS = "proposal"

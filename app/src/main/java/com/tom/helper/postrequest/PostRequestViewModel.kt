@@ -6,9 +6,12 @@ import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.HelperApplication
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.source.Task
+import com.tom.helper.source.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -22,6 +25,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     val taskProvider = MutableLiveData<String>()
     val taskPrice = MutableLiveData<Long>()
     val taskContent = MutableLiveData<String>()
+    val taskStatus = -1
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -75,27 +79,46 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         val db = FirebaseFirestore.getInstance()
 
-        val task = FirebaseFirestore.getInstance().collection("task")
+        val task = FirebaseFirestore.getInstance().collection("tasks")
+
+        val user = FirebaseAuth.getInstance().currentUser!!
+//        val user = FirebaseAuth.getInstance().currentUser
+
+        val userCurrent = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
+//        val userCurrent = user.uid
 
         val document = task.document()
 
-        val data = hashMapOf(
+//        val data = hashMapOf(
+//
+//            "taskCreator" to taskProvider.value!!,
+//            "price" to taskPrice.value!!,
+//            "content" to taskContent.value!!,
+//            "title" to taskTitle.value!!,
+//            "id" to document.id,
+////            "task_create_time" to convertLongToDateString(System.currentTimeMillis()),
+//            "createdTime" to System.currentTimeMillis(),
+//            "status" to taskStatus,
+//            "user" to userCurrent
+//
+////            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
+////            "task_create_time" to Calendar.getInstance().timeInMillis,
+//        )
 
-            "taskCreator" to taskProvider.value!!,
-            "price" to taskPrice.value!!,
-            "content" to taskContent.value!!,
-            "title" to taskTitle.value!!,
-            "id" to document.id,
-//            "task_create_time" to convertLongToDateString(System.currentTimeMillis()),
-            "createdTime" to System.currentTimeMillis()
-//            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
-//            "task_create_time" to Calendar.getInstance().timeInMillis,
+        val data = Task(
+            document.id,
+            taskPrice.value!!,
+            System.currentTimeMillis(),
+            taskTitle.value!!,
+            taskContent.value!!,
+            userCurrent,
+            taskProvider.value!!,
+            taskStatus,
+            listOf()
         )
 
-
-
-
-        document.set(data as Map<String, Any>)
+//        document.set(data as Map<String, Any>)
+        document.set(data)
             //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
             .addOnSuccessListener {
                 shouldNavigateToHomeFragment.value = true
