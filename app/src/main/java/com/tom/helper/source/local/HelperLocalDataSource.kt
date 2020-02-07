@@ -30,7 +30,7 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getProposals(): Result<List<Proposal>> {
+    override suspend fun getProposals(task: Task): Result<List<Proposal>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

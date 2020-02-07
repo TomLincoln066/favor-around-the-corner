@@ -18,7 +18,7 @@ import com.tom.helper.ext.getVmFactory
 class ProposalListFragment : Fragment() {
 
 
-    private val viewModel by viewModels<ProposalListViewModel>{getVmFactory()}
+    private val viewModel by viewModels<ProposalListViewModel>{getVmFactory(ProposalListFragmentArgs.fromBundle(arguments!!).task)}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

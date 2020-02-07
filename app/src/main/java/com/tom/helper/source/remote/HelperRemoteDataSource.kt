@@ -51,10 +51,10 @@ object HelperRemoteDataSource : HelperDataSource {
             }
     }
 
-    override suspend fun getProposals(): Result<List<Proposal>> = suspendCoroutine {continuation ->
+    override suspend fun getProposals(task: Task): Result<List<Proposal>> = suspendCoroutine {continuation ->
         FirebaseFirestore.getInstance()
-//            .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
-            .collection(PATH_PROPOSALS)
+            .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
+//            .collection(PATH_PROPOSALS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .get()
             .addOnCompleteListener { task ->

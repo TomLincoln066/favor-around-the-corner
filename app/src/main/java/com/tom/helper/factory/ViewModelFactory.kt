@@ -33,8 +33,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(RankingListViewModel::class.java) ->
                     RankingListViewModel(repository)
 
-                isAssignableFrom(ProposalListViewModel::class.java) ->
-                    ProposalListViewModel(repository)
+//                isAssignableFrom(ProposalListViewModel::class.java) ->
+//                    ProposalListViewModel(repository)
 
                 isAssignableFrom(JobDetailViewModel::class.java) ->
                     JobDetailViewModel(repository)

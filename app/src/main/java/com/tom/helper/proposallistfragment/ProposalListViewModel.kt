@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.Result
+import com.tom.helper.source.Task
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 // The [ViewModel] that is attached to the [ProposalListFragment].
 
 // private val repository: HelperRepository
-class ProposalListViewModel(private val repository: HelperRepository) : ViewModel() {
+class ProposalListViewModel(private val repository: HelperRepository, private val task: Task) : ViewModel() {
 
 
     private val _proposals = MutableLiveData<List<Proposal>>()
@@ -42,7 +43,7 @@ class ProposalListViewModel(private val repository: HelperRepository) : ViewMode
     fun getProposalsResult() {
 
         coroutineScope.launch {
-            val result = repository.getProposals()
+            val result = repository.getProposals(task)
 
             when (result) {
                 is Result.Success -> {

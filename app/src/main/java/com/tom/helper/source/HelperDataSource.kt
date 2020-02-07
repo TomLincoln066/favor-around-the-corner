@@ -9,7 +9,7 @@ interface HelperDataSource {
 
     suspend fun getTasks(): Result<List<Task>>
 
-    suspend fun getProposals(): Result<List<Proposal>>
+    suspend fun getProposals(task: Task): Result<List<Proposal>>
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //
