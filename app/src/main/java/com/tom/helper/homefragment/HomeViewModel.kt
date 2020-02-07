@@ -58,14 +58,28 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
+
+    //try to handle when button_mission_detail in item_request.xml is pressed, will navigate to JobDetailFragment(see HomeFragment.kt)
+    private val _shouldNavigateToJobDetail = MutableLiveData<Task>()
+    val shouldNavigateToJobDetail: LiveData<Task>
+        get() = _shouldNavigateToJobDetail
+
+
+    fun doneNavigatingToJobDetail() {
+        _shouldNavigateToJobDetail.value = null
+    }
+
+
+
+
     //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeFragment.kt)
-    private val _shouldNavigateToProposalList = MutableLiveData<Boolean>()
-    val shouldNavigateToProposalList: LiveData<Boolean>
+    private val _shouldNavigateToProposalList = MutableLiveData<Task>()
+    val shouldNavigateToProposalList: LiveData<Task>
         get() = _shouldNavigateToProposalList
 
-    fun navToProposalList() {
-        _shouldNavigateToProposalList.value = true
-    }
+//    fun navToProposalList() {
+//        _shouldNavigateToProposalList.value = true
+//    }
 
     fun doneNavigatingToProposalList() {
         _shouldNavigateToProposalList.value = null
@@ -148,5 +162,11 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
             .format(systemTime).toString()
     }
 
+    fun clickNavigateToJobDetail(task: Task) {
+        _shouldNavigateToJobDetail.value = task
+    }
 
+    fun clickNavigateToProposalList(task: Task) {
+        _shouldNavigateToProposalList.value = task
+    }
 }

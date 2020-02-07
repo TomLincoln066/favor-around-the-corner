@@ -67,7 +67,11 @@
         android:id="@+id/proposalListFragment"
         android:name="com.tom.helper.proposallistfragment.ProposalListFragment"
         android:label="fragment_proposal_list"
-        tools:layout="@layout/fragment_proposal_list" />
+        tools:layout="@layout/fragment_proposal_list" >
+        <argument
+            android:name="task"
+            app:argType="com.tom.helper.source.Task" />
+    </fragment>
     <action
         android:id="@+id/action_global_proposalListFragment"
         app:destination="@id/proposalListFragment" />

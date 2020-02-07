@@ -39,7 +39,7 @@ class ProposalEditFragment : Fragment() {
         //observe when shouldNavigateToProposalListFragment change from false to true then proceed findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
         viewModel.shouldNavigateToProposalListFragment.observe(this, Observer {
             if(it){
-                findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
+                findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment(task))
             }
         })
 

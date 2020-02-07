@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
      */
     private val viewModel by viewModels<HomeViewModel> { getVmFactory() }
 
+
 //    private val viewModel by lazy {
 //        ViewModelProviders.of(this).get(HomeViewModel::class.java)
 //    }
@@ -54,16 +55,32 @@ class HomeFragment : Fragment() {
                 HomeRecyclerAdapter.OnClickListener {
 
                     //press buttonMissionDetail of item_request.xml, and it'll navigate to job details fragment
-                    findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+//                    findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
                 },
                 viewModel
             )
+
+        //try to handle when button_mission_detail in item_request.xml is pressed, will navigate to JobDetailFragment(see HomeFragment.kt)
+        viewModel.shouldNavigateToJobDetail.observe(this, Observer {
+            it?.let {
+
+                findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+
+                viewModel.doneNavigatingToJobDetail()
+
+            }
+        })
+
 
         //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeViewModel.kt)
         viewModel.shouldNavigateToProposalList.observe(this, Observer {
             it?.let {
 
-                findNavController().navigate(HomeFragmentDirections.actionGlobalProposalListFragment())
+                findNavController().navigate(
+                    HomeFragmentDirections.actionGlobalProposalListFragment(
+                        it
+                    )
+                )
 
                 viewModel.doneNavigatingToProposalList()
 
@@ -71,13 +88,11 @@ class HomeFragment : Fragment() {
         })
 
 
-
         //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.
 //        viewModel.tasks.observe(this, Observer {
 //            (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
 //
 //        })
-
 
 
 //        viewModel.prepareTasks()
@@ -90,9 +105,6 @@ class HomeFragment : Fragment() {
 //        return inflater.inflate(R.layout.fragment_home, container, false)
         return binding.root
     }
-
-
-
 
 
 }
