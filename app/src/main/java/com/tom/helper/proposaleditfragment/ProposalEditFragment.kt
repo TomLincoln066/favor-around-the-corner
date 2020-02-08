@@ -36,10 +36,14 @@ class ProposalEditFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+
+
         //observe when shouldNavigateToProposalListFragment change from false to true then proceed findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
         viewModel.shouldNavigateToProposalListFragment.observe(this, Observer {
             if(it){
                 findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment(task))
+
+
             }
         })
 

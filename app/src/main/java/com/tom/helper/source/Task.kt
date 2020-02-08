@@ -12,7 +12,7 @@ data class Task(
     var content: String = "",
     var user:User? = null,
     val taskCreator : String = "",
-    val status: Int = -1,
+    var status: Int = -1,
     val proposal: List<Proposal> = listOf()
 
 
