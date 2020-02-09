@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffeadb"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="32dp"
             android:text="@string/textView_post_request_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,10 +43,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="52dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
             android:hint="@string/editText_post_request_title"
-            android:text="@={viewModel.taskTitle}"
             android:inputType="textPersonName"
+            android:text="@={viewModel.taskTitle}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toEndOf="@+id/textView_post_request_title"
@@ -58,10 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:layout_marginEnd="52dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
-            android:text="@={viewModel.taskProvider}"
             android:hint="@string/editText_post_request_person"
             android:inputType="textPersonName"
+            android:text="@={viewModel.taskProvider}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toEndOf="@+id/textView_post_request_title"
@@ -71,11 +73,12 @@
             android:id="@+id/editText_post_request_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
-            android:text="@={viewModel.convertLongToString(viewModel.taskPrice)}"
             android:hint="@string/editText_post_request_price"
             android:inputType="number"
+            android:text="@={viewModel.convertLongToString(viewModel.taskPrice)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.261"
             app:layout_constraintStart_toEndOf="@+id/textView_post_request_price"
@@ -95,13 +98,14 @@
             android:id="@+id/editText_post_request_content"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="45dp"
             android:layout_marginEnd="52dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
             android:gravity="start|top"
-            android:text="@={viewModel.taskContent}"
             android:hint="@string/editText_post_request_content"
             android:inputType="textMultiLine"
+            android:text="@={viewModel.taskContent}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toEndOf="@+id/textView_post_request_content"
@@ -112,45 +116,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="50dp"
             android:text="@string/textView_post_request_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_post_request_price" />
 
         <ImageButton
             android:id="@+id/imageView_post_request_upload_picture2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
+            android:layout_width="218dp"
+            android:layout_height="91dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/image_upload_pictures" />
-
-        <ImageButton
-            android:id="@+id/imageView_post_request_upload_pictur1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="192dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
-            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/image_upload_pictures" />
-
-        <ImageButton
-            android:id="@+id/imageView_post_request_upload_picture3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="108dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textView_post_request_post_pictures"
-            app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/image_upload_pictures" />
 
         <TextView
@@ -158,23 +136,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:text="@string/textView_post_request_post_pictures"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_post_request_content" />
 
+
         <Button
             android:id="@+id/button_post_request_send"
+            android:layout_width="273dp"
+            android:layout_height="41dp"
+            android:layout_margin="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="232dp"
+            android:background="#FF7878"
             android:onClick="@{()->viewModel.submitTask()}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#f09c67"
             android:text="@string/button_post_request_send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_post_request_upload_picture3" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView_post_request_upload_picture2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

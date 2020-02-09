@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffeadb"
+        android:background="#ecf3f9"
         android:orientation="vertical">
 
         <TextView
@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:layout_marginEnd="56dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
             android:hint="@string/editText_post_request_person"
             android:inputType="textPersonName"
@@ -50,14 +51,15 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginTop="68dp"
+            android:background="@drawable/frame_background"
             android:ems="10"
             android:gravity="start|top"
-            android:text="@={viewModel.proposalContent}"
             android:hint="@string/editText_proposal_content"
             android:inputType="textMultiLine"
+            android:text="@={viewModel.proposalContent}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.67"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_proposal_edit_person" />
 
@@ -73,18 +75,18 @@
 
         <Button
             android:id="@+id/button_proposal_send"
-            android:onClick="@{()->viewModel.submitProposal()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="#f09c67"
+            android:onClick="@{()->viewModel.submitProposal()}"
             android:text="@string/button_proposal_send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content"
-            app:layout_constraintVertical_bias="0.283" />
+            app:layout_constraintVertical_bias="0.29" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

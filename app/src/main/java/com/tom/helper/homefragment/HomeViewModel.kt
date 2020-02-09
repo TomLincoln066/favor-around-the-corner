@@ -1,10 +1,9 @@
 package com.tom.helper.homefragment
-
+import android.util.Log
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Result
 import com.tom.helper.source.Task
@@ -40,10 +39,26 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         get() = _user
 
 
+    //for task of status 0 (posted)
     private val _tasks = MutableLiveData<List<Task>>()
 
     val tasks: LiveData<List<Task>>
         get() = _tasks
+
+    //for task of status 1 (on_going)
+    private val _tasks1 = MutableLiveData<List<Task>>()
+
+    val tasks1: LiveData<List<Task>>
+        get() = _tasks1
+
+    //for task of status 2 (finished)
+    private val _tasks2 = MutableLiveData<List<Task>>()
+
+    val tasks2: LiveData<List<Task>>
+        get() = _tasks2
+
+
+
 
 
     //To test Mock data display of item_request on fragment_home.xml
@@ -86,8 +101,9 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
+    //for task of status 0 (posted)
     fun getTasksResult() {
-
+        Log.d("getTasksResult","getTasksResult")
         coroutineScope.launch {
             val result = repository.getTasks()
 
@@ -108,6 +124,56 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
     }
+
+
+    //for task of status 1 (on_going)
+    fun getOnGoingTasksResult() {
+        Log.d("getOnGoingTasksResult","getOnGoingTasksResult")
+        coroutineScope.launch {
+            val result = repository.getOnGoingTasks()
+
+            when (result) {
+                is Result.Success -> {
+                    _tasks.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+    //for task of status 2 (Finished)
+    fun getFinishedTasksResult() {
+        Log.d("getFinishedTasksResult","getFinishedTasksResult")
+        coroutineScope.launch {
+            val result = repository.getFinishedTasks()
+
+            when (result) {
+                is Result.Success -> {
+                    _tasks.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request

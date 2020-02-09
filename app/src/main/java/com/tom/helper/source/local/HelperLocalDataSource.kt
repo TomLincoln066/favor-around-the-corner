@@ -34,6 +34,15 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override suspend fun getOnGoingTasks(): Result<List<Task>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun getFinishedTasks(): Result<List<Task>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 //    override suspend fun publish(article: Article): Result<Boolean> {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //    }

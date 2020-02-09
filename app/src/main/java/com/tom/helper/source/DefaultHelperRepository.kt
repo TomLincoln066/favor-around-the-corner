@@ -18,6 +18,13 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getProposals(task)
     }
 
+    override suspend fun getOnGoingTasks(): Result<List<Task>> {
+        return remoteDataSource.getTasks()
+    }
+
+    override suspend fun getFinishedTasks(): Result<List<Task>> {
+        return remoteDataSource.getTasks()
+    }
 
 
 //

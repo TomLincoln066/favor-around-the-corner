@@ -28,6 +28,7 @@ object HelperRemoteDataSource : HelperDataSource {
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//            .whereEqualTo("status",-1)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -80,6 +81,88 @@ object HelperRemoteDataSource : HelperDataSource {
 
     }
 
+
+//    db.collection("cities")
+//    .whereEqualTo("capital", true)
+//    .get()
+//    .addOnSuccessListener { documents ->
+//        for (document in documents) {
+//            Log.d(TAG, "${document.id} => ${document.data}")
+//        }
+//    }
+//    .addOnFailureListener { exception ->
+//        Log.w(TAG, "Error getting documents: ", exception)
+//    }
+
+
+    override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .whereEqualTo("status",0)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Task>()
+                    for (document in task.result!!) {
+//                        Logger.d(document.id + " => " + document.data)
+
+                        val task1 = document.toObject(Task::class.java)
+                        list.add(task1)
+                        Log.d("Will","getOnGoingTasks: get data form firebase ")
+                    }
+//                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+                        //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+
+    override suspend fun getFinishedTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .whereEqualTo("status",1)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Task>()
+                    for (document in task.result!!) {
+//                        Logger.d(document.id + " => " + document.data)
+
+                        val task1 = document.toObject(Task::class.java)
+                        list.add(task1)
+                        Log.d("Will","get data form firebase")
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+                        //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+
+
+
+
+
+
+
+
+}
+
+
 //    override suspend fun publish(article: Article): Result<Boolean> = suspendCoroutine { continuation ->
 //        val articles = FirebaseFirestore.getInstance().collection(PATH_ARTICLES)
 //        val document = articles.document()
@@ -131,5 +214,3 @@ object HelperRemoteDataSource : HelperDataSource {
 //        }
 //
 //    }
-
-}

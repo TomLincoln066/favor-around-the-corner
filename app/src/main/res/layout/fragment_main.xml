@@ -1,217 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.tom.helper.homefragment.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue_voyage">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view"
+
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:padding="6dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#fffde8"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.06">
+            app:tabIndicatorColor="@color/black_3f3a3a"
+            app:tabSelectedTextColor="@color/black_3f3a3a"
+            app:tabTextColor="@color/gray_888888">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_posted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/username_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Username"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/user_avatar"
-                    app:layout_constraintTop_toTopOf="@+id/user_avatar" />
+                android:text="@string/tab_text_task_posted" />
 
-                <TextView
-                    android:id="@+id/created_time_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Created Time"
-                    app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
-                    app:layout_constraintEnd_toEndOf="@+id/username_text"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/username_text"
-                    app:layout_constraintTop_toBottomOf="@+id/username_text" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_on_going"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-                <ImageView
-                    android:id="@+id/user_avatar"
-                    android:layout_width="59dp"
-                    android:layout_height="62dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/icons_36px_profile_normal" />
+                android:text="@string/tab_text_task_on_going" />
 
-                <ImageView
-                    android:id="@+id/main_image"
-                    android:layout_width="362dp"
-                    android:layout_height="201dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="1dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/created_time_text"
-                    />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_text_task_finished"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/event_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Title"
-                    app:layout_constraintBottom_toBottomOf="@+id/event_title_icon"
-                    app:layout_constraintStart_toEndOf="@+id/event_title_icon"
-                    app:layout_constraintTop_toTopOf="@+id/event_title_icon" />
+                android:text="@string/tab_text_task_finished" />
 
-                <TextView
-                    android:id="@+id/event_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Date"
-                    app:layout_constraintBottom_toBottomOf="@+id/event_date_icon"
-                    app:layout_constraintStart_toEndOf="@+id/event_date_icon"
-                    app:layout_constraintTop_toTopOf="@+id/event_date_icon"
-                    app:layout_constraintVertical_bias="1.0" />
+        </com.google.android.material.tabs.TabLayout>
 
-                <ImageView
-                    android:id="@+id/event_date_icon"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:tint="#272343"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/event_title_icon"
-                     />
 
-                <TextView
-                    android:id="@+id/event_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Description"
-                    app:layout_constraintBottom_toBottomOf="@+id/event_description_icon"
-                    app:layout_constraintStart_toEndOf="@+id/event_description_icon"
-                    app:layout_constraintTop_toTopOf="@+id/event_description_icon" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_request_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabs"
+            app:tasks="@{viewModel.tasks}"
+            tools:listitem="@layout/item_request" />
 
-                <ImageView
-                    android:id="@+id/event_description_icon"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:tint="#272343"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/event_date_icon"
-                     />
-
-                <ImageView
-                    android:id="@+id/event_title_icon"
-                    android:layout_width="21dp"
-                    android:layout_height="21dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:tint="#272343"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/main_image"
-                     />
-
-                <ImageView
-                    android:id="@+id/event_interest_icon"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginEnd="8dp"
-
-                    app:layout_constraintEnd_toStartOf="@+id/event_interest"
-                    app:layout_constraintTop_toTopOf="@+id/event_title_icon"
-                     />
-
-                <TextView
-                    android:id="@+id/event_interest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="Interest?"
-                    app:layout_constraintBottom_toBottomOf="@+id/event_interest_icon"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/event_interest_icon" />
-
-                <ImageView
-                    android:id="@+id/event_like_icon"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/event_description_icon"
-                     />
-
-                <TextView
-                    android:id="@+id/event_like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="64"
-                    app:layout_constraintBottom_toBottomOf="@+id/event_like_icon"
-                    app:layout_constraintStart_toEndOf="@+id/event_like_icon"
-                    app:layout_constraintTop_toTopOf="@+id/event_like_icon" />
-
-                <ImageView
-                    android:id="@+id/event_comment_icon"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginBottom="16dp"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/event_like"
-                    app:layout_constraintTop_toTopOf="@+id/event_like_icon"
-                     />
-
-                <TextView
-                    android:id="@+id/event_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-
-                    app:layout_constraintBottom_toBottomOf="@+id/event_comment_icon"
-                    app:layout_constraintStart_toEndOf="@+id/event_comment_icon"
-                    app:layout_constraintTop_toTopOf="@+id/event_comment_icon" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
