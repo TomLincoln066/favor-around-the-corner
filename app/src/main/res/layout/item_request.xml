@@ -78,6 +78,8 @@
                     android:layout_marginEnd="5dp"
                     android:background="#ffe4e1"
                     android:textColor="@color/black"
+                    android:clickable="@{task.status==0}"
+                    android:onClick="@{()->viewModel.clickFinishThisTask(task)}"
                     android:text="@string/button_item_request_close"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/button_mission_detail"
@@ -212,11 +214,3 @@
 </layout>
 
 
-    <!--    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"-->
-
-    <!--    android:text="@{task.subContent.get(0)}"-->
-    <!--    android:text="@{task.subContent.get(1)}"-->
-    <!--    android:text="@{task.subContent.get(2)}"-->
-    <!--    android:text="@{task.subContent.get(3)}"-->
-
-    <!--    android:onClick="@{()->viewModel.NavToProposalList()}"-->

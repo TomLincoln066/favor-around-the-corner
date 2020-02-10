@@ -28,7 +28,7 @@ object HelperRemoteDataSource : HelperDataSource {
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-//            .whereEqualTo("status",-1)
+            .whereEqualTo("status",-1)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -82,17 +82,7 @@ object HelperRemoteDataSource : HelperDataSource {
     }
 
 
-//    db.collection("cities")
-//    .whereEqualTo("capital", true)
-//    .get()
-//    .addOnSuccessListener { documents ->
-//        for (document in documents) {
-//            Log.d(TAG, "${document.id} => ${document.data}")
-//        }
-//    }
-//    .addOnFailureListener { exception ->
-//        Log.w(TAG, "Error getting documents: ", exception)
-//    }
+
 
     override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()

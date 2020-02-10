@@ -102,6 +102,18 @@ class HomeFragment : Fragment() {
         })
 
 
+        //
+        viewModel.shouldFinishThisTask.observe(this, Observer {
+            Log.d("Will","viewModel.shouldFinishThisTask.observe, it=${it}")
+            it?.let {
+
+
+            }
+        })
+
+
+
+
 
 
         //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.

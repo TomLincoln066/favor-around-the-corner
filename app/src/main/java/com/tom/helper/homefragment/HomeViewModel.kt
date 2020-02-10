@@ -1,9 +1,11 @@
 package com.tom.helper.homefragment
+
 import android.util.Log
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Result
 import com.tom.helper.source.Task
@@ -58,9 +60,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         get() = _tasks2
 
 
-
-
-
     //To test Mock data display of item_request on fragment_home.xml
     fun prepareTasks() {
         _tasks.value = listOf(
@@ -73,7 +72,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
     //try to handle when button_mission_detail in item_request.xml is pressed, will navigate to JobDetailFragment(see HomeFragment.kt)
     private val _shouldNavigateToJobDetail = MutableLiveData<Task>()
     val shouldNavigateToJobDetail: LiveData<Task>
@@ -83,8 +81,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     fun doneNavigatingToJobDetail() {
         _shouldNavigateToJobDetail.value = null
     }
-
-
 
 
     //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeFragment.kt)
@@ -103,7 +99,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     //for task of status 0 (posted)
     fun getTasksResult() {
-        Log.d("getTasksResult","getTasksResult")
+        Log.d("getTasksResult", "getTasksResult")
         coroutineScope.launch {
             val result = repository.getTasks()
 
@@ -128,7 +124,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     //for task of status 1 (on_going)
     fun getOnGoingTasksResult() {
-        Log.d("Will","getOnGoingTasksResult()")
+        Log.d("Will", "getOnGoingTasksResult()")
         coroutineScope.launch {
             val result = repository.getOnGoingTasks()
 
@@ -152,7 +148,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     //for task of status 2 (Finished)
     fun getFinishedTasksResult() {
-        Log.d("getFinishedTasksResult","getFinishedTasksResult")
+        Log.d("getFinishedTasksResult", "getFinishedTasksResult")
         coroutineScope.launch {
             val result = repository.getFinishedTasks()
 
@@ -173,7 +169,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
     }
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -235,4 +230,29 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     fun clickNavigateToProposalList(task: Task) {
         _shouldNavigateToProposalList.value = task
     }
+
+
+
+
+
+    //    try to handle when button_item_request_close in item_request.xml is pressed, will have this task status set from 0 to 1 (see HomeFragment.kt)
+    private val _shouldFinishThisTask = MutableLiveData<Task>()
+    val shouldFinishThisTask: LiveData<Task>
+        get() = _shouldFinishThisTask
+
+    //handle when button_item_request_close is clicked, and it change the status of this task from 0 to 1
+    fun clickFinishThisTask(task: Task) {
+
+
+        val status = FirebaseFirestore.getInstance()
+
+        val document = status.collection("tasks").document(task.id)
+
+        document.update("status",1)
+
+        //redo this function so that the page will refresh when button_item_request_close
+        getOnGoingTasksResult()
+    }
+
+
 }
