@@ -17,11 +17,16 @@ import kotlinx.android.synthetic.main.fragment_post_request.*
 import kotlinx.android.synthetic.main.item_request.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.firebase.storage.StorageReference
+
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class PostRequestFragment : Fragment() {
+
+
 
 
     //Stylish  method of creating ViewModel

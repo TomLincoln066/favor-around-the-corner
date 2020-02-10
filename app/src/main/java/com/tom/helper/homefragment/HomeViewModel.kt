@@ -39,19 +39,19 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         get() = _user
 
 
-    //for task of status 0 (posted)
+    //for task of status -1 (posted)
     private val _tasks = MutableLiveData<List<Task>>()
 
     val tasks: LiveData<List<Task>>
         get() = _tasks
 
-    //for task of status 1 (on_going)
+    //for task of status 0 (on_going)
     private val _tasks1 = MutableLiveData<List<Task>>()
 
     val tasks1: LiveData<List<Task>>
         get() = _tasks1
 
-    //for task of status 2 (finished)
+    //for task of status 1 (finished)
     private val _tasks2 = MutableLiveData<List<Task>>()
 
     val tasks2: LiveData<List<Task>>
@@ -128,13 +128,13 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     //for task of status 1 (on_going)
     fun getOnGoingTasksResult() {
-        Log.d("getOnGoingTasksResult","getOnGoingTasksResult")
+        Log.d("Will","getOnGoingTasksResult()")
         coroutineScope.launch {
             val result = repository.getOnGoingTasks()
 
             when (result) {
                 is Result.Success -> {
-                    _tasks.value = result.data
+                    _tasks1.value = result.data
                 }
 
                 is Result.Error -> {

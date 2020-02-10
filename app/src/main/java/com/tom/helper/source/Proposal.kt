@@ -14,3 +14,4 @@ data class Proposal(
     val userID:String = ""
 
 ) : Parcelable
+

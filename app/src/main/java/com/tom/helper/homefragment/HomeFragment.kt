@@ -92,16 +92,16 @@ class HomeFragment : Fragment() {
             }
         })
 
+        viewModel.tasks1.observe(this, Observer {
+            Log.d("Will","viewModel.tasks1.observe, it=${it}")
+            it?.let {
 
-        //    var displayClothSize = Transformations.map(selectedProduct){
-//        when (it.sizes.count()){
-//            0 -> ""
-//            1 -> it.sizes.first()
-//            else ->  "${it.sizes.first()} - ${it.sizes.last()}"
-//
-//        }
-//    }
-//
+                (binding.homeRequestRecycler.adapter as HomeRecyclerAdapter).submitList(it)
+
+            }
+        })
+
+
 
 
         //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.

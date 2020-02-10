@@ -94,30 +94,35 @@ object HelperRemoteDataSource : HelperDataSource {
 //        Log.w(TAG, "Error getting documents: ", exception)
 //    }
 
-
     override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .whereEqualTo("status",0)
+//            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val list = mutableListOf<Task>()
                     for (document in task.result!!) {
-//                        Logger.d(document.id + " => " + document.data)
+
 
                         val task1 = document.toObject(Task::class.java)
                         list.add(task1)
-                        Log.d("Will","getOnGoingTasks: get data form firebase ")
+
                     }
-//                    continuation.resume(Result.Success(list))
+                    continuation.resume(Result.Success(list))
+
                 } else {
                     task.exception?.let {
 
+                        Log.w("Will","task.exception=${it.message}")
                         //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
                     }
+                    Log.w("Will","under task.exception")
                     continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
                 }
             }
@@ -146,6 +151,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
                         //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
                     }
                     continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
                 }
