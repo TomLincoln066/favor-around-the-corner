@@ -75,6 +75,18 @@
     <action
         android:id="@+id/action_global_proposalListFragment"
         app:destination="@id/proposalListFragment" />
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="com.tom.helper.chatroom.ChatRoomFragment"
+        android:label="fragment_chat_room"
+        tools:layout="@layout/fragment_chat_room" >
+        <argument
+            android:name="message"
+            app:argType="com.tom.helper.source.Message" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_chatRoomFragment"
+        app:destination="@id/chatRoomFragment" />
 
 
 </navigation>

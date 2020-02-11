@@ -6,10 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Result
-import com.tom.helper.source.Task
-import com.tom.helper.source.User
+import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -22,17 +19,11 @@ import java.text.SimpleDateFormat
 // private val repository: HelperRepository
 class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
-//    private val _selelctedTask = MutableLiveData<Task>()
-//    val selectedTask: LiveData<Task>
-//        get() = _selelctedTask
-//
-//    fun selectTask(task: Task) {
-//        _selelctedTask.value = task
-//    }
-//
-//    fun doneNavigatingToTask() {
-//        _selelctedTask.value = null
-//    }
+
+    private val _message = MutableLiveData<Message>()
+
+    val message: LiveData<Message>
+        get() = _message
 
 
     private val _user = MutableLiveData<User>()
@@ -232,9 +223,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
-
-
     //    try to handle when button_item_request_close in item_request.xml is pressed, will have this task status set from 0 to 1 (see HomeFragment.kt)
     private val _shouldFinishThisTask = MutableLiveData<Task>()
     val shouldFinishThisTask: LiveData<Task>
@@ -248,11 +236,51 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
         val document = status.collection("tasks").document(task.id)
 
-        document.update("status",1)
+        document.update("status", 1)
 
         //redo this function so that the page will refresh when button_item_request_close
         getOnGoingTasksResult()
     }
+
+//    private val _shouldNavigateToJobDetail = MutableLiveData<Task>()
+//    val shouldNavigateToJobDetail: LiveData<Task>
+//        get() = _shouldNavigateToJobDetail
+//
+//   fun clickNavigateToJobDetail(task: Task) {
+//    _shouldNavigateToJobDetail.value = task
+//   }
+//
+//    fun doneNavigatingToJobDetail() {
+//        _shouldNavigateToJobDetail.value = null
+//    }
+
+//    .apply {
+////        value = Message()
+//    }
+
+
+    private val _shouldNavigateToChatRoomFragment = MutableLiveData<Message>()
+    val shouldNavigateToChatRoomFragment: LiveData<Message>
+        get() = _shouldNavigateToChatRoomFragment
+
+
+        fun clickNavToChatRoomFragment(message: Message?) {
+        Log.d("Will", "clickNavToChatRoomFragment(), message=$message")
+        message?.let {
+            _shouldNavigateToChatRoomFragment.value = message
+        }
+    }
+
+
+    fun doneNavigatingToChatRoom() {
+        _shouldNavigateToChatRoomFragment.value = null
+    }
+
+    
+
+
+
+
 
 
 }

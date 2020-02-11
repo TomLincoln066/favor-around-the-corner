@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.tasks1.observe(this, Observer {
-            Log.d("Will","viewModel.tasks1.observe, it=${it}")
+            Log.d("Will", "viewModel.tasks1.observe, it=${it}")
             it?.let {
 
                 (binding.homeRequestRecycler.adapter as HomeRecyclerAdapter).submitList(it)
@@ -104,9 +104,22 @@ class HomeFragment : Fragment() {
 
         //
         viewModel.shouldFinishThisTask.observe(this, Observer {
-            Log.d("Will","viewModel.shouldFinishThisTask.observe, it=${it}")
+            Log.d("Will", "viewModel.shouldFinishThisTask.observe, it=${it}")
             it?.let {
 
+
+            }
+        })
+
+
+        //handle when button_item_request_message in item_request.xml is pressed, will navigate to ChatRoomFragment(see HomeViewModel.kt)
+        viewModel.shouldNavigateToChatRoomFragment.observe(this, Observer {
+            it?.let {
+
+                findNavController().navigate(
+                    HomeFragmentDirections.actionGlobalChatRoomFragment(it)
+                )
+                viewModel.doneNavigatingToChatRoom()
 
             }
         })
@@ -127,7 +140,7 @@ class HomeFragment : Fragment() {
 
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                Log.d("onTabSelected","onTabSelected")
+                Log.d("onTabSelected", "onTabSelected")
                 when (tab!!.position) {
 
                     0 -> viewModel.getTasksResult()

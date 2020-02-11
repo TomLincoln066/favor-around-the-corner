@@ -10,15 +10,36 @@ import androidx.databinding.InverseMethod
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.storage.FirebaseStorage
+import com.tom.helper.GlideApp
 import com.tom.helper.databinding.FragmentJobDetailBinding
 import com.tom.helper.ext.getVmFactory
 import com.tom.helper.homefragment.HomeViewModel
 import com.tom.helper.source.Task
+import kotlinx.android.synthetic.main.fragment_job_detail.*
+import android.R.drawable
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.widget.ImageView
+import com.google.firebase.storage.StorageReference
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class JobDetailFragment : Fragment() {
+
+
+//    var imageView: ImageView? = null
+//
+//    // WORKING CODE!
+//    val storage = FirebaseStorage.getInstance()
+//    // Create a reference to a file from a Google Cloud Storage URI
+//    val gsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/project-help-db920.appspot.com/o/gift.jpg?alt=media&token=756aa4c2-1d6d-4b24-88fa-3c85a84dd083")
+//
+//    val GA = GlideApp.with(context!!).load(gsReference).into(imageView!!)
+
 
 
     private val viewModel by viewModels<JobDetailViewModel> { getVmFactory() }
@@ -34,6 +55,10 @@ class JobDetailFragment : Fragment() {
 
 
         val binding = FragmentJobDetailBinding.inflate(inflater, container, false)
+
+
+
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.task = task

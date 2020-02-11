@@ -120,6 +120,7 @@
                     android:layout_height="288dp"
                     android:layout_marginTop="100dp"
                     android:src="@drawable/alesso_profile"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
@@ -190,3 +191,4 @@
 </layout>
 
 
+    <!--                    android:src="@drawable/alesso_profile"-->

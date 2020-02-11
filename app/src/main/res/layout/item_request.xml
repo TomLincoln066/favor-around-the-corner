@@ -15,6 +15,12 @@
             name="task"
             type="com.tom.helper.source.Task" />
 
+        <variable
+            name="message"
+            type="com.tom.helper.source.Message" />
+
+
+
     </data>
 
 
@@ -27,12 +33,7 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:padding="6dp"
-
             app:cardCornerRadius="28dp"
             app:cardElevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -72,63 +73,62 @@
 
                 <Button
                     android:id="@+id/button_item_request_close"
-                    android:layout_width="60dp"
+                    android:layout_width="65dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="200dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="#ffe4e1"
-                    android:textColor="@color/black"
+                    android:layout_marginEnd="60dp"
+                    android:background="@drawable/bg_round_button_right"
                     android:clickable="@{task.status==0}"
                     android:onClick="@{()->viewModel.clickFinishThisTask(task)}"
                     android:text="@string/button_item_request_close"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_mission_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textView_task_creator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginBottom="68dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@{task.taskCreator}"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_create_time"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_creator_blank"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_item_request_price"
                     tools:text="Tom" />
 
                 <TextView
                     android:id="@+id/textView_task_creator_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="68dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/textView_task_creator_name"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_price_blank" />
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_create_time_blank"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_task_price_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="100dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/textView_task_price_blank"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
+                    app:layout_constraintBottom_toTopOf="@+id/textView_user_name_tag"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_task_create_time_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/textView_task_create_time_blank"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_proposals_word"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_creator_blank"
                     tools:text="發案時間 :" />
 
                 <TextView
@@ -136,59 +136,61 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@{viewModel.convertLongToDateString(task.createdTime)}"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_proposals_numbers"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_creator"
                     tools:text="1小時前" />
 
                 <TextView
                     android:id="@+id/textView_proposals_word"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="30dp"
                     android:text="@string/textView_proposals_word"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time_blank" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_proposals_numbers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
                     android:text="@string/textView_proposals_numbers"
-                    app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView_proposals_word" />
 
                 <Button
                     android:id="@+id/button_mission_detail"
-                    android:layout_width="60dp"
+                    android:layout_width="65dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="12dp"
                     android:layout_marginTop="200dp"
                     android:background="#ffe4e1"
-                    android:textColor="@color/black"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="60dp"
+                    android:layout_width="65dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="156dp"
                     android:layout_marginTop="200dp"
-                    android:layout_marginEnd="10dp"
                     android:background="#ffe4e1"
-                    android:textColor="@color/black"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
                     android:text="@string/button_mission_detail_proposal_total"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:layout_constraintVertical_bias="0.0" />
 
@@ -197,12 +199,59 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="100dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@{viewModel.convertLongToString(task.price)}"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_user_name"
+                    app:layout_constraintStart_toEndOf="@+id/textView_task_price_blank" />
+
+                <Button
+                    android:id="@+id/button_item_request_message"
+                    android:layout_width="65dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="200dp"
+                    android:background="@drawable/bg_round_button_left"
+
+                    android:text="@string/button_item_request_message"
+                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView_task_price_blank"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="256dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/chess_png" />
+
+                <TextView
+                    android:id="@+id/textView_user_name_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/textView_user_name_tag"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_creator_blank"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{task.user.name}"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_creator"
+                    app:layout_constraintStart_toEndOf="@+id/textView_user_name_tag" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -212,5 +261,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+
+<!--    android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(message)}"-->
 
 

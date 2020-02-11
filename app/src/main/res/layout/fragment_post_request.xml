@@ -148,14 +148,15 @@
             android:layout_height="41dp"
             android:layout_margin="50dp"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="232dp"
             android:background="#FF7878"
             android:onClick="@{()->viewModel.submitTask()}"
             android:text="@string/button_post_request_send"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_post_request_upload_picture2" />
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

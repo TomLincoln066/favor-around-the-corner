@@ -10,5 +10,12 @@ data class User(
     val email: String = "",
     val level: Int = -1,
     val earning: Long = -1
+
+
+
+
+
+
+
 ) : Parcelable
 
