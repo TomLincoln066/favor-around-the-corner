@@ -15,8 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
+import com.tom.helper.source.User
 
 
 class ProposalEditViewModel(private val repository: HelperRepository, private val task: Task) :
@@ -85,6 +84,7 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
         val userCurrent = user.uid
 
+        val userCurrent1 = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
 
         //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
         val status = FirebaseFirestore.getInstance()
@@ -112,8 +112,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             proposalContent.value!!,
             proposalProvider.value!!,
             proposalAccepted,
-            userCurrent
-
+            userCurrent,
+            userCurrent1
         )
 
 

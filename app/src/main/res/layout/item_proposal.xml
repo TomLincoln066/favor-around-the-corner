@@ -7,6 +7,9 @@
         <variable
             name="proposal"
             type="com.tom.helper.source.Proposal" />
+        <variable
+            name="task"
+            type="com.tom.helper.source.Task" />
 
     </data>
 
@@ -21,7 +24,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:padding="6dp"
-
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +68,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
             app:layout_constraintTop_toTopOf="@+id/image_item_proposal_picture"
-            tools:text="Jammmy" />
+            tools:text="Jammy" />
 
         <TextView
             android:id="@+id/text_proposal_content_tag"
@@ -74,7 +76,8 @@
             android:layout_height="22dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:text="@string/text_proposal_content_tag"
+            android:text="@{proposal.user.name}"
+
             app:layout_constraintStart_toStartOf="@+id/text_proposal_provider_name"
             app:layout_constraintTop_toBottomOf="@+id/text_proposal_provider_name" />
 
@@ -136,3 +139,6 @@
     </androidx.cardview.widget.CardView>
 
 </layout>
+
+
+<!--    android:text="@string/text_proposal_content_tag"-->

@@ -39,6 +39,8 @@
             android:background="@drawable/frame_background"
             android:ems="10"
             android:hint="@string/editText_post_request_person"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:inputType="textPersonName"
 
             android:text="@={viewModel.proposalProvider}"
@@ -52,8 +54,13 @@
             android:layout_height="100dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="68dp"
+
+
             android:background="@drawable/frame_background"
             android:ems="10"
+
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="start|top"
             android:hint="@string/editText_proposal_content"
             android:inputType="textMultiLine"
@@ -70,23 +77,23 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="76dp"
             android:text="@string/textView_proposal_request_content_tag"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_proposal_sender_name" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_proposal_sender_name"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/button_proposal_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="58dp"
             android:background="#f09c67"
             android:onClick="@{()->viewModel.submitProposal()}"
             android:text="@string/button_proposal_send"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content"
-            app:layout_constraintVertical_bias="0.29" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

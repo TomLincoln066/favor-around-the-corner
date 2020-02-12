@@ -11,7 +11,8 @@ data class Proposal(
     var content: String = "",
     val senderName: String = "",
     val accepted: Boolean = false,
-    val userID:String = ""
+    val userID:String = "",
+    val user: User? = null
 
 ) : Parcelable
 

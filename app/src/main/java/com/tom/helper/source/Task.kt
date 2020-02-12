@@ -18,8 +18,6 @@ data class Task(
 
 
 
-//    var subContent : List<String> = listOf()
-
 ) : Parcelable
 
 //@Parcelize
