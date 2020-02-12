@@ -1,24 +1,38 @@
 package com.tom.helper.postrequest
 
+import android.net.Uri
 import android.widget.Toast
 import java.util.concurrent.TimeUnit
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.tasks.Continuation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.tom.helper.HelperApplication
+import com.tom.helper.HelperApplication.Companion.context
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Task
 import com.tom.helper.source.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.newFixedThreadPoolContext
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PostRequestViewModel(private val repository: HelperRepository) : ViewModel() {
+
+
+    //  storage
+
+    private var filePath: Uri? = null
+    private var firebaseStore: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
 
 
     val taskTitle = MutableLiveData<String>()
@@ -26,6 +40,9 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     val taskPrice = MutableLiveData<Long>()
     val taskContent = MutableLiveData<String>()
     val taskStatus = -1
+
+
+    val taskPictureUri1 = MutableLiveData<Uri>()
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -59,7 +76,71 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     }
 
     //get editText's data and send out to firebase
+//    fun submitTask() {
+//
+//        _error.value = null
+//
+//        //check whether taskTitle.value is not valid
+//        if (taskContent.value == null || taskContent.value?.isEmpty() == true) {
+//            _error.value = "Task Content cannot be empty"
+//            return
+//        }
+//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
+//            _error.value = "Task Title cannot be empty"
+//            return
+//        }
+//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
+//            _error.value = "Task Title not complete"
+//            return
+//        }
+//
+//        val db = FirebaseFirestore.getInstance()
+//
+//        val task = FirebaseFirestore.getInstance().collection("tasks")
+//
+//        val user = FirebaseAuth.getInstance().currentUser
+////        val user = FirebaseAuth.getInstance().currentUser
+//
+//        if (user == null || user.displayName == null || user.email == null) {
+//            return
+//        }
+//        val userCurrent = User(user.uid,user.displayName!!,user.email!!,0,0L)
+////        val userCurrent = user.uid
+//
+//        val document = task.document()
+//
+//
+//
+//        val data = Task(
+//            document.id,
+//            taskPrice.value!!,
+//            System.currentTimeMillis(),
+//            taskTitle.value!!,
+//            taskContent.value!!,
+//            userCurrent,
+//            taskProvider.value!!,
+//            taskStatus,
+//            listOf(),
+//            taskPictureUri1.value.toString()
+//        )
+//
+////        document.set(data as Map<String, Any>)
+//        document.set(data)
+//            //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
+//            .addOnSuccessListener {
+//                shouldNavigateToHomeFragment.value = true
+//                Toast.makeText(HelperApplication.context, "Add Success", Toast.LENGTH_SHORT).show()
+//            }
+//
+//
+//
+//
+//
+//    }
+
+
     fun submitTask() {
+
 
         _error.value = null
 
@@ -81,53 +162,66 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         val task = FirebaseFirestore.getInstance().collection("tasks")
 
-        val user = FirebaseAuth.getInstance().currentUser!!
+        val user = FirebaseAuth.getInstance().currentUser
 //        val user = FirebaseAuth.getInstance().currentUser
 
-        val userCurrent = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
+        if (user == null || user.displayName == null || user.email == null) {
+            return
+        }
+        val userCurrent = User(user.uid, user.displayName!!, user.email!!, 0, 0L)
 //        val userCurrent = user.uid
 
         val document = task.document()
 
-//        val data = hashMapOf(
-//
-//            "taskCreator" to taskProvider.value!!,
-//            "price" to taskPrice.value!!,
-//            "content" to taskContent.value!!,
-//            "title" to taskTitle.value!!,
-//            "id" to document.id,
-////            "task_create_time" to convertLongToDateString(System.currentTimeMillis()),
-//            "createdTime" to System.currentTimeMillis(),
-//            "status" to taskStatus,
-//            "user" to userCurrent
-//
-////            "task_create_time" to convertLongToTimeAgo(System.currentTimeMillis())
-////            "task_create_time" to Calendar.getInstance().timeInMillis,
-//        )
+        storageReference = FirebaseStorage.getInstance().reference
 
-        val data = Task(
-            document.id,
-            taskPrice.value!!,
-            System.currentTimeMillis(),
-            taskTitle.value!!,
-            taskContent.value!!,
-            userCurrent,
-            taskProvider.value!!,
-            taskStatus,
-            listOf()
-        )
+        val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
+        val uploadTask = ref?.putFile(taskPictureUri1.value!!)
+
+        val urlTask =
+            uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, com.google.android.gms.tasks.Task<Uri>> { ImageTask ->
+                if (!ImageTask.isSuccessful) {
+                    ImageTask.exception?.let {
+                        throw it
+                    }
+                }
+                return@Continuation ref.downloadUrl
+            })?.addOnCompleteListener { CompleteTask ->
+                if (CompleteTask.isSuccessful) {
+                    val downloadUri = CompleteTask.result
+
+                    val data = Task(
+                        document.id,
+                        taskPrice.value!!,
+                        System.currentTimeMillis(),
+                        taskTitle.value!!,
+                        taskContent.value!!,
+                        userCurrent,
+                        taskProvider.value!!,
+                        taskStatus,
+                        listOf(),
+                        downloadUri.toString()
+                    )
+
+                    document.set(data)
+                        //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
+                        .addOnSuccessListener {
+                            shouldNavigateToHomeFragment.value = true
+                            Toast.makeText(
+                                HelperApplication.context,
+                                "Add Success",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                }
+            }?.addOnFailureListener {
+
+            }
+
 
 //        document.set(data as Map<String, Any>)
-        document.set(data)
-            //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
-            .addOnSuccessListener {
-                shouldNavigateToHomeFragment.value = true
-                Toast.makeText(HelperApplication.context, "Add Success", Toast.LENGTH_SHORT).show()
-            }
-//            .addOnFailureListener {
-//                shouldNavigateToHomeFragment.value = false
-//                Toast.makeText(HelperApplication.context, "You need to fill in all the blanks", Toast.LENGTH_SHORT).show()
-//            }
+
 
     }
 
