@@ -44,11 +44,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView_post_request_person"
+                    android:id="@+id/textView_post_request_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/textView_post_request_person"
+                    android:text="@string/textView_post_request_location"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
 
@@ -66,16 +66,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/editText_post_request_person"
+                    android:id="@+id/editText_post_request_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/frame_background"
                     android:ems="10"
-                    android:hint="@string/editText_post_request_person"
+                    android:hint="@string/editText_post_request_location"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.taskProvider}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_person"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_location"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editText_post_request_title" />
 
@@ -91,7 +91,7 @@
                     android:text="@={viewModel.convertLongToString(viewModel.taskPrice)}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_price"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_person" />
+                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_location" />
 
                 <TextView
                     android:id="@+id/textView_post_request_price"
@@ -100,7 +100,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/textView_post_request_price"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_person" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_location" />
 
                 <EditText
                     android:id="@+id/editText_post_request_content"
@@ -147,11 +147,10 @@
 
                 <Button
                     android:id="@+id/button_post_request_send"
-                    android:layout_width="273dp"
-                    android:layout_height="41dp"
-                    android:layout_margin="50dp"
-                    android:layout_marginTop="98dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/bg_round_button"
                     android:onClick="@{()->viewModel.submitTask()}"
                     android:text="@string/button_post_request_send"
@@ -166,7 +165,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
-                    android:text="Choose"
+                    android:background="@drawable/bg_round_button"
+                    android:text="@string/btn_choose_image"
                     app:layout_constraintEnd_toStartOf="@+id/image_preview"
                     app:layout_constraintHorizontal_bias="0.425"
                     app:layout_constraintStart_toEndOf="@+id/textView_post_request_post_pictures"

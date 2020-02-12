@@ -21,12 +21,12 @@
 
     <string name="button_item_request_close">結案</string>
 
-    <string name="textView_task_creator_name">發起人暱稱 :</string>
+    <string name="textView_task_location_blank">任務地點 :</string>
     <string name="textView_task_create_time_blank">發案時間 :</string>
     <string name="textView_task_create_time">1小時前</string>
     <string name="textView_proposals_word">提案人數 :</string>
     <string name="textView_proposals_numbers">5</string>
-    <string name="textView_task_price_blank">價錢:</string>
+    <string name="textView_task_price_blank">價錢 :</string>
     <string name="button_mission_detail_proposal_total">目前提案</string>
     <string name="button_mission_detail">任務細節</string>
 
@@ -38,8 +38,8 @@
     <string name="editText_post_request_title">我要吃午餐</string>
     <string name="editText_post_request_price">1500</string>
     <string name="editText_post_request_content">想要吃漢堡</string>
-    <string name="textView_post_request_person">發起人</string>
-    <string name="editText_post_request_person">Tom</string>
+    <string name="textView_post_request_location">地點 ></string>
+    <string name="editText_post_request_location">台北市基隆路</string>
     <string name="textView_user_name_tag">發起人名稱 :</string>
 
     <string name="textView_fragment_profile_name">Tom</string>
@@ -91,7 +91,7 @@
     <string name="editText_input_message">type message here...</string>
     <string name="button_send_message">送出訊息</string>
     <string name="button_item_request_message">聯絡案主</string>
-
+    <string name="btn_choose_image">選擇情境照</string>
 
 
 </resources>

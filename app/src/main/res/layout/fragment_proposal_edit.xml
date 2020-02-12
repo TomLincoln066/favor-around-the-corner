@@ -38,7 +38,7 @@
             android:layout_marginEnd="56dp"
             android:background="@drawable/frame_background"
             android:ems="10"
-            android:hint="@string/editText_post_request_person"
+
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:inputType="textPersonName"

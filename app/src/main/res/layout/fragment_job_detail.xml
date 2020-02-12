@@ -38,57 +38,55 @@
 
                 <TextView
                     android:id="@+id/text_job_detail_title"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.15"
+
                     android:lines="2"
 
                     android:text="@{task.title}"
-
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/text_job_detail_price"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="UI好難設計，徵求幫手。"/>
+                    tools:text="UI好難設計，徵求幫手。" />
 
                 <TextView
                     android:id="@+id/text_job_detail_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="20dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
+
                     android:letterSpacing="0.15"
+
                     android:lines="1"
-
                     android:text="@{viewModel.convertLongToString(task.price)}"
-
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/text_job_detail_title"
-                    app:layout_constraintTop_toTopOf="@+id/text_job_detail_title"
-                    tools:text="10000"/>
+                    app:layout_constraintHorizontal_bias="0.044"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content"
+                    tools:text="10000" />
 
                 <TextView
                     android:id="@+id/textView_job_detail_task_owner_tag"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="52dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
-                    android:text="@string/textView_post_request_person"
                     android:letterSpacing="0.15"
                     android:lines="1"
+                    android:text="@{task.user.name}"
                     android:textColor="@color/gray_888888"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -99,17 +97,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="90dp"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/frame_background"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lineSpacingExtra="12sp"
+                    android:text="@{task.content}"
                     android:textColor="@color/gray_646464"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag"
-                    android:text="@{task.content}"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title"
                     tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
 
                 <!-- color -->
@@ -120,7 +119,7 @@
                     android:layout_height="288dp"
                     android:layout_marginTop="100dp"
                     android:src="@drawable/alesso_profile"
-
+                    app:imageUrl="@{task.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
@@ -132,7 +131,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="100dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@color/gray_888888"
+                    android:background="@drawable/bg_round_button"
                     android:letterSpacing="0.15"
                     android:text="業主即時通訊"
                     android:textSize="16sp"
@@ -142,14 +141,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView_job_detail_picture_post_by_task_owner" />
 
                 <TextView
-                    android:id="@+id/textView_job_detail_task_owner_name"
-                    android:layout_width="100dp"
+                    android:id="@+id/textView_job_detail_task_location"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    app:layout_constraintBaseline_toBaselineOf="@id/textView_job_detail_task_owner_tag"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@{task.taskCreator}"
-                    app:layout_constraintStart_toEndOf="@+id/textView_job_detail_task_owner_tag"
-                    tools:layout_editor_absoluteY="52dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.051"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,7 +177,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@color/gray_888888"
+                android:background="@drawable/bg_round_button"
                 android:letterSpacing="0.15"
                 android:text="@string/button_job_detail_send_proposal"
                 android:textSize="16sp"
