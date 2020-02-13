@@ -12,7 +12,9 @@ data class Proposal(
     val senderName: String = "",
     val accepted: Boolean = false,
     val userID:String = "",
-    val user: User? = null
+    val user: User? = null,
+    val userIDTakeTheCase:User? = null,
+    val status : Int = -1
 
 ) : Parcelable
 

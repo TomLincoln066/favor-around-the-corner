@@ -24,6 +24,16 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
         get() = _proposals
 
 
+
+    fun clickToChangeProposalStatus(proposal: Proposal){
+        when(proposal.status ){
+            -1-> proposal.id
+        }
+
+    }
+
+
+
     //To test Mock data display of item_proposal on fragment_proposal_list.xml
     fun addProposal() {
         _proposals.value = listOf(
