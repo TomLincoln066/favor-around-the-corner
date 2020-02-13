@@ -42,11 +42,11 @@
 
         <ImageButton
             android:id="@+id/image_item_proposal_picture"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/common_google_signin_btn_icon_disabled"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
             android:scaleType="centerCrop"
-            android:onClick="@{() -> viewModel.clickToGetOneProposalStatus(proposal)}"
+            android:src="@drawable/accept_png"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_item_proposal_content"
@@ -97,28 +97,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/editText_proposal_content" />
 
-        <Button
-            android:id="@+id/button_item_proposal_reject"
+        <ImageButton
+            android:id="@+id/imageButton_proposal_reject"
             android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/red_d0021b"
-            android:text="拒絕"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:onClick="@{() -> viewModel.clickToGetOneProposalStatusUnAccepted(proposal)}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_item_proposal_accept"
-            app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content" />
-
-        <Button
-            android:id="@+id/button_item_proposal_accept"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="172dp"
-            android:background="@color/colorPrimary"
-            android:text="接受"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content" />
+            app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/reject_pn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

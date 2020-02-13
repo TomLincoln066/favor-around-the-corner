@@ -5,6 +5,8 @@ package com.tom.helper.source
 
 interface HelperRepository {
 
+    suspend fun checkUser(): Result<Boolean>
+
     suspend fun login(id: String): Result<User>
 
     suspend fun getTasks(): Result<List<Task>>
@@ -16,6 +18,8 @@ interface HelperRepository {
     suspend fun getProposals(task: Task): Result<List<Proposal>>
 
     suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean>
+
+    suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean>
 
 
 

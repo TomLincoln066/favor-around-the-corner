@@ -9,13 +9,17 @@ data class User(
     val name: String = "",
     val email: String = "",
     val level: Int = -1,
-    val earning: Long = -1
-
-
-
-
-
+    val earning: Long = -1,
+    val image: String? = ""
 
 
 ) : Parcelable
 
+
+//@Parcelize
+//data class User(
+//    var id: String = "",
+//    var name: String? = "",
+//    var email: String? = "",
+//    var image: String? =""
+//): Parcelable

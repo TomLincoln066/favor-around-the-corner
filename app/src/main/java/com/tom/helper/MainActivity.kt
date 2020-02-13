@@ -1,29 +1,28 @@
 package com.tom.helper
-
 import android.content.Intent
 import android.os.Bundle
-
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-
 import android.view.View
-
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-
 import androidx.navigation.findNavController
-
 import com.facebook.*
-
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.databinding.ActivityMainBinding
-
+import com.tom.helper.ext.getVmFactory
 import com.tom.helper.logindialog.FacebookLogInBottomSheet
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_facebook_log_in.*
 
 class MainActivity : AppCompatActivity() {
+
+
+    val viewModel by viewModels<MainActivityViewModel> { getVmFactory() }
+
 
     lateinit var binding: ActivityMainBinding
 
@@ -51,10 +50,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-//        FacebookSdk.sdkInitialize(getApplicationContext())
-//            AppEventsLogger.activateApp(this)
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val navController = findNavController(R.id.myNavHostFragment)
@@ -64,10 +59,29 @@ class MainActivity : AppCompatActivity() {
 //        bottomNavigation.setupWithNavController(navController)
 
 
+
+        //check whether user is logged in
+
+        val authListener: FirebaseAuth.AuthStateListener =
+            FirebaseAuth.AuthStateListener { auth: FirebaseAuth ->
+                val user: FirebaseUser? = auth.currentUser
+                if (user == null) {
+                    supportFragmentManager.let {
+                        FacebookLogInBottomSheet().show(it, "supportFragmentManager")
+                    }
+                    Log.d("signInWithCredential", "signInWithCredential:no")
+                } else {
+                    viewModel.checkUserResult()
+                }
+            }
+        FirebaseAuth.getInstance().addAuthStateListener(authListener)
+
+
+
         //let FacebookLogInBottomSheetDialog show up when open app
-        supportFragmentManager.let {
-            FacebookLogInBottomSheet().show(it, "supportFragmentManager")
-        }
+//        supportFragmentManager.let {
+//            FacebookLogInBottomSheet().show(it, "supportFragmentManager")
+//        }
 
 
         // [START initialize_auth]
@@ -82,14 +96,9 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.fragment_profile -> {
 
-//                    if (!UserManager.isLoggedIn()){
-//                        fragment = FacebookLogInBottomSheet.newInstance()
-//                        fragment.show(supportFragmentManager, "facebook_login")
-//                        false
-//                    } else {
-                    supportFragmentManager.let {
-                        FacebookLogInBottomSheet().show(it, "supportFragmentManager")
-                    }
+//                    supportFragmentManager.let {
+//                        FacebookLogInBottomSheet().show(it, "supportFragmentManager")
+//                    }
                     navController.navigate(R.id.action_global_profileFragment)
                     true
                 }

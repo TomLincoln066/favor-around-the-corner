@@ -25,18 +25,11 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
         get() = _proposals
 
 
-    private val _proposalOne = MutableLiveData<Proposal>()
-
-    val proposalOne: LiveData<Proposal>
-
-    get() = _proposalOne
-
-
-
-    fun clickToGetOneProposalStatus(proposal: Proposal) {
+    //once the button accept in item_proposal.xml is pressed, it'll change the proposal status(-1 -> 0) and get all proposals again. see HelperRemoteDataSource.kt for editOneProposal function.
+    fun clickToGetOneProposalStatusAccepted(proposal: Proposal) {
 
         coroutineScope.launch {
-            val result = repository.editOneProposal(task,proposal)
+            val result = repository.editOneProposal(task, proposal)
 
             when (result) {
                 is Result.Success -> {
@@ -61,6 +54,32 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
 //        }
 
     }
+
+    //once the button unAccept in item_proposal.xml is pressed, it'll change the proposal status(0 -> -1) and get all proposals again. see HelperRemoteDataSource.kt for editOneProposalToUnaccepted function.
+    fun clickToGetOneProposalStatusUnAccepted(proposal: Proposal) {
+
+        coroutineScope.launch {
+            val result = repository.editOneProposalToUnaccepted(task, proposal)
+
+            when (result) {
+                is Result.Success -> {
+                    getProposalsResult()
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+        }
+
+
 
 
     //To test Mock data display of item_proposal on fragment_proposal_list.xml

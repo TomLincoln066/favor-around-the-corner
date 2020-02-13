@@ -1,6 +1,7 @@
 package com.tom.helper.source.remote
 
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.tom.helper.HelperApplication
@@ -18,6 +19,48 @@ object HelperRemoteDataSource : HelperDataSource {
     private const val KEY_CREATED_TIME = "createdTime"
 
     private const val PATH_PROPOSALS = "proposal"
+
+    private const val PATH_Users = "users"
+
+    override suspend fun checkUser(): Result<Boolean> = suspendCoroutine { continuation ->
+        val users = FirebaseFirestore.getInstance().collection(PATH_Users)
+        val userCurrent = FirebaseAuth.getInstance().currentUser
+        val document = users.document(userCurrent!!.uid)
+        val user = User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L)
+
+
+        document
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    if (task.result!!.data == null) {
+                        document
+                            .set(user).addOnSuccessListener {
+                                Log.d("checkUser", "Success setting new user => $user")
+                            }
+                            .addOnFailureListener {
+                                Log.w("checkUser", "Error setting new user.", it)
+                            }
+                    }
+
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+                        Log.d("checkUser", "Error")
+                        Log.w(
+                            "",
+                            "[${this::class.simpleName}] Error getting documents. ${it.message}"
+                        )
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+
 
 
     override suspend fun login(id: String): Result<User> {
@@ -170,6 +213,36 @@ object HelperRemoteDataSource : HelperDataSource {
                 }
 
         }
+
+
+    override suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
+                .document(proposal.id)
+                .update("status", -1)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resume(Result.Success(true))
+
+                    } else {
+                        task.exception?.let {
+
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+
+        }
+
+
+
+
+
+
+
 
 
 

@@ -37,10 +37,11 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
     }
 
     //to handle dialog push up to match full screen
-    private fun recalculateSize(){
+    private fun recalculateSize() {
         (dialog as? BottomSheetDialog)?.let {
-            val bottomSheet = it.delegate.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            bottomSheet?.let{view ->
+            val bottomSheet =
+                it.delegate.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            bottomSheet?.let { view ->
                 view.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
             }
         }
@@ -60,7 +61,6 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
     }
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -71,7 +71,7 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
         binding.facebookLogInDialog = this
         binding.lifecycleOwner = this
         binding.closeLoginWindow.setOnClickListener {
-            (it as? Button)?.let{ button ->
+            (it as? Button)?.let { button ->
                 funOnClick(button)
             }
         }
@@ -143,7 +143,7 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
 //        if (view.id == binding.ButtonFacebookLogIn.id) {
 //            LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
 //        } else {
-            dismiss()
+        dismiss()
 //        }
     }
 

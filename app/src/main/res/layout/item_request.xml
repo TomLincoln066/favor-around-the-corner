@@ -187,6 +187,7 @@
                     android:layout_marginTop="200dp"
                     android:background="#ffe4e1"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
+                    android:clickable="@{task.status!= 1}"
                     android:text="@string/button_mission_detail_proposal_total"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"

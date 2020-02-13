@@ -30,6 +30,14 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.editOneProposal(task,proposal)
     }
 
+    override suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean>{
+        return remoteDataSource.editOneProposalToUnaccepted(task,proposal)
+    }
+
+    override suspend fun checkUser(): Result<Boolean> {
+        return remoteDataSource.checkUser()
+    }
+
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

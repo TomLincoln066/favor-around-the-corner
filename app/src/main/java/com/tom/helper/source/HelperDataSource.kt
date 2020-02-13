@@ -17,6 +17,9 @@ interface HelperDataSource {
 
     suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean>
 
+    suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean>
+
+    suspend fun checkUser(): Result<Boolean>
 
 
 //    suspend fun publish(article: Article): Result<Boolean>
