@@ -11,6 +11,10 @@
             name="task"
             type="com.tom.helper.source.Task" />
 
+        <variable
+            name="viewModel"
+            type="com.tom.helper.proposallistfragment.ProposalListViewModel" />
+
     </data>
 
 
@@ -32,7 +36,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_payment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@{proposal.status ==0 ? @color/colorPrimary: @color/white}">
 
 
         <ImageButton
@@ -41,6 +46,7 @@
             android:layout_height="80dp"
             android:src="@drawable/common_google_signin_btn_icon_disabled"
             android:scaleType="centerCrop"
+            android:onClick="@{() -> viewModel.clickToGetOneProposalStatus(proposal)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_item_proposal_content"

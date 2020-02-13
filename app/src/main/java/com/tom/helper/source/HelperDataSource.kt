@@ -15,6 +15,10 @@ interface HelperDataSource {
 
     suspend fun getFinishedTasks(): Result<List<Task>>
 
+    suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean>
+
+
+
 //    suspend fun publish(article: Article): Result<Boolean>
 //
 //    suspend fun delete(article: Article): Result<Boolean>

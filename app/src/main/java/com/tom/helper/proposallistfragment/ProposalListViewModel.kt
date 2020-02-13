@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 // The [ViewModel] that is attached to the [ProposalListFragment].
 
 // private val repository: HelperRepository
-class ProposalListViewModel(private val repository: HelperRepository, private val task: Task) : ViewModel() {
+class ProposalListViewModel(private val repository: HelperRepository, private val task: Task) :
+    ViewModel() {
 
 
     private val _proposals = MutableLiveData<List<Proposal>>()
@@ -24,23 +25,53 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
         get() = _proposals
 
 
+    private val _proposalOne = MutableLiveData<Proposal>()
 
-    fun clickToChangeProposalStatus(proposal: Proposal){
-        when(proposal.status ){
-            -1-> proposal.id
+    val proposalOne: LiveData<Proposal>
+
+    get() = _proposalOne
+
+
+
+    fun clickToGetOneProposalStatus(proposal: Proposal) {
+
+        coroutineScope.launch {
+            val result = repository.editOneProposal(task,proposal)
+
+            when (result) {
+                is Result.Success -> {
+                    getProposalsResult()
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
         }
 
-    }
 
+//        when(proposal.status ){
+//            -1-> proposal.id
+//
+//        }
+
+    }
 
 
     //To test Mock data display of item_proposal on fragment_proposal_list.xml
     fun addProposal() {
         _proposals.value = listOf(
             Proposal(
-                "123", 20000L, "I got your back"),
+                "123", 20000L, "I got your back"
+            ),
             Proposal(
-                "456", 10000000L),
+                "456", 10000000L
+            ),
             Proposal(),
             Proposal(),
             Proposal()
@@ -72,7 +103,6 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
         }
 
     }
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request

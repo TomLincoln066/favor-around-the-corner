@@ -42,7 +42,7 @@ class ProposalListFragment : Fragment() {
             ProposalListRecyclerAdapter(ProposalListRecyclerAdapter.OnClickListener {
                 //            Logger.d("click, it=$it")
                 //            viewModel.delete(it)
-            })
+            },viewModel)
 
 
 //        viewModel.addProposal()

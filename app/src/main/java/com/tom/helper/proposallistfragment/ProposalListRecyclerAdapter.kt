@@ -9,7 +9,7 @@ import com.tom.helper.databinding.ItemProposalBinding
 import com.tom.helper.source.Proposal
 
 
-class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ) :
+class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ,val viewModel: ProposalListViewModel ) :
     ListAdapter<Proposal, RecyclerView.ViewHolder>(DiffCallback) {
     /**
      * Custom listener that handles clicks on [RecyclerView] items.  Passes the [Article]
@@ -23,9 +23,10 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener )
     class ProposalViewHolder(private var binding: ItemProposalBinding):
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(proposal: Proposal, onClickListener: OnClickListener) {
+        fun bind(proposal: Proposal, onClickListener: OnClickListener, viewModel: ProposalListViewModel) {
 
             binding.proposal = proposal
+            binding.viewModel =viewModel
 
 
             binding.root.setOnClickListener { onClickListener.onClick(proposal) }
@@ -60,7 +61,7 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener )
 
         when (holder) {
             is ProposalViewHolder -> {
-                holder.bind((getItem(position) as Proposal), onClickListener)
+                holder.bind((getItem(position) as Proposal), onClickListener,viewModel)
             }
         }
     }

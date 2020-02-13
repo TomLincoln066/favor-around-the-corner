@@ -28,7 +28,7 @@ object HelperRemoteDataSource : HelperDataSource {
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-            .whereEqualTo("status",-1)
+            .whereEqualTo("status", -1)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -38,13 +38,13 @@ object HelperRemoteDataSource : HelperDataSource {
 
                         val task1 = document.toObject(Task::class.java)
                         list.add(task1)
-                        Log.d("Will","get data form firebase")
+                        Log.d("Will", "get data form firebase")
                     }
                     continuation.resume(Result.Success(list))
                 } else {
                     task.exception?.let {
 
-//                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                     }
                     continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
@@ -52,43 +52,44 @@ object HelperRemoteDataSource : HelperDataSource {
             }
     }
 
-    override suspend fun getProposals(task: Task): Result<List<Proposal>> = suspendCoroutine {continuation ->
-        FirebaseFirestore.getInstance()
-            .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
+    override suspend fun getProposals(task: Task): Result<List<Proposal>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
 //            .collection(PATH_PROPOSALS)
-            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val list = mutableListOf<Proposal>()
-                    for (document in task.result!!) {
+                .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//                .whereEqualTo("status", 0)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Proposal>()
+                        for (document in task.result!!) {
 //                        Logger.d(document.id + " => " + document.data)
 
-                        val proposal = document.toObject(Proposal::class.java)
-                        list.add(proposal)
-                        Log.d("Will","get proposals form firebase")
-                    }
-                    continuation.resume(Result.Success(list))
-                } else {
-                    task.exception?.let {
+                            val proposal = document.toObject(Proposal::class.java)
+                            list.add(proposal)
+                            Log.d("Will", "get proposals form firebase")
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        task.exception?.let {
 
-//                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                        continuation.resume(Result.Error(it))
+                            //                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
                     }
-                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
                 }
-            }
 
-    }
-
-
+        }
 
 
     override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-            .whereEqualTo("status",0)
+            .whereEqualTo("status", 0)
 //            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
 
             .get()
@@ -107,12 +108,12 @@ object HelperRemoteDataSource : HelperDataSource {
                 } else {
                     task.exception?.let {
 
-                        Log.w("Will","task.exception=${it.message}")
+                        Log.w("Will", "task.exception=${it.message}")
                         //                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
                         continuation.resume(Result.Error(it))
                         return@addOnCompleteListener
                     }
-                    Log.w("Will","under task.exception")
+                    Log.w("Will", "under task.exception")
                     continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
                 }
             }
@@ -123,7 +124,7 @@ object HelperRemoteDataSource : HelperDataSource {
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-            .whereEqualTo("status",1)
+            .whereEqualTo("status", 1)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -133,7 +134,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
                         val task1 = document.toObject(Task::class.java)
                         list.add(task1)
-                        Log.d("Will","get data form firebase")
+                        Log.d("Will", "get data form firebase")
                     }
                     continuation.resume(Result.Success(list))
                 } else {
@@ -148,13 +149,27 @@ object HelperRemoteDataSource : HelperDataSource {
             }
     }
 
+    override suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
+                .document(proposal.id)
+                .update("status", 0)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resume(Result.Success(true))
 
+                    } else {
+                        task.exception?.let {
 
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
 
-
-
-
-
+        }
 
 
 
