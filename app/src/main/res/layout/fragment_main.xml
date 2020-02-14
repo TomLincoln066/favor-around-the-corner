@@ -1,367 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_background_layout"
+        android:id="@+id/layout_store"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/constraint_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/cream"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        <ImageView-->
+<!--            android:id="@+id/image_update"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/placeholder"-->
+
 <!--            app:layout_constraintEnd_toEndOf="parent"-->
 <!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/button_close"-->
-<!--                android:layout_width="24dp"-->
-<!--                android:layout_height="24dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:background="@drawable/close"-->
-<!--                android:backgroundTint="@color/honey"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--        <ImageView-->
+<!--            android:id="@+id/button_image_update"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:src="@drawable/photo"-->
+<!--            android:tint="#D9FFFFFF"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/image_update"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/text_title"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="48dp"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:text="@string/task_name"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
+<!--        <ImageView-->
+<!--            android:id="@+id/image_store_post_icon"-->
+<!--            android:layout_width="18dp"-->
+<!--            android:layout_height="18dp"-->
+<!--            android:src="@drawable/store_icon"-->
+<!--            android:tint="@color/myColorPrimaryDark"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/text_store"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/text_store" />-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/text_store"-->
+<!--            style="@style/post_text_title"-->
+<!--            android:text="@string/post_store"-->
+<!--            app:layout_constraintStart_toEndOf="@id/image_store_post_icon"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/image_update" />-->
+
+
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner_store"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:entries="@{viewModel.displayAllStore}"-->
+<!--            android:paddingStart="12dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingEnd="12dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:prompt="@string/spinner_store"-->
+<!--            android:spinnerMode="dialog"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/text_store"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/text_store"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/text_store" />-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/layout_item"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/text_store"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_drink_post_icon"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:src="@drawable/drink_icon"-->
+<!--                android:tint="@color/myColorPrimaryDark"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_drink"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/edit_title"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:background="@color/white"-->
-<!--                android:ems="10"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:hint="@string/hint_task"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:maxLength="15"-->
-<!--                android:paddingStart="8dp"-->
-<!--                android:paddingEnd="8dp"-->
-<!--                android:singleLine="true"-->
-<!--                android:text="@={viewModel.title}"-->
-<!--                android:textSize="14sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_title"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/button_close"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/text_title"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_title" />-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_drink" />-->
 
 <!--            <TextView-->
-<!--                android:id="@+id/text_category"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:text="@string/task_category"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/text_title"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/text_title" />-->
+<!--                android:id="@+id/text_drink"-->
+<!--                style="@style/post_text_title"-->
+<!--                android:text="@string/post_drink"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/image_drink_post_icon"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
 <!--            <Spinner-->
-<!--                android:id="@+id/spinner_task_categories"-->
+<!--                android:id="@+id/spinner_drink"-->
 <!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:prompt="@string/task_category"-->
-<!--                android:selectedItemPosition="@={viewModel.selectedTaskCategoryPosition}"-->
-<!--                android:spinnerMode="dropdown"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_category"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/edit_title"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/edit_title"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_category" />-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:entries="@{viewModel.displayStoreDrink}"-->
+<!--                android:paddingStart="12dp"-->
+<!--                android:paddingTop="16dp"-->
+<!--                android:paddingEnd="12dp"-->
+<!--                android:paddingBottom="16dp"-->
+<!--                android:prompt="@string/spinner_store"-->
+<!--                android:spinnerMode="dialog"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_drink"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/text_drink"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_drink" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_ice_post_icon"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:src="@drawable/ice_cube"-->
+<!--                android:tint="@color/myColorPrimaryDark"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_ice"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_ice" />-->
 
 <!--            <TextView-->
-<!--                android:id="@+id/module_task"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:text="@string/set_module"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/text_title"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/text_category" />-->
+<!--                android:id="@+id/text_ice"-->
+<!--                style="@style/post_text_title"-->
+<!--                android:text="@string/post_ice"-->
+<!--                app:layout_constraintStart_toEndOf="@id/image_ice_post_icon"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/text_drink" />-->
 
 <!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/recycler_module"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="0dp"-->
+<!--                android:id="@+id/recycler_ice"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginStart="6dp"-->
 <!--                android:orientation="horizontal"-->
 <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/module_task"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/edit_title"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/edit_title"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/module_task"-->
-<!--                app:tags="@{viewModel.moduleNameList}" />-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_ice"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/text_ice"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_ice" />-->
 
-<!--            <EditText-->
-<!--                android:id="@+id/edit_module"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_marginBottom="4dp"-->
-<!--                android:background="@color/white"-->
-<!--                android:ems="10"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:hint="加入論壇"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:maxLength="7"-->
-<!--                android:paddingStart="4dp"-->
-<!--                android:paddingEnd="4dp"-->
-<!--                android:singleLine="true"-->
-<!--                android:text="@={viewModel.newModule}"-->
-<!--                android:textSize="12sp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/recycler_module"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/recycler_module" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/button_task_add"-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:background="@drawable/plus"-->
-<!--                android:backgroundTint="@color/honey"-->
-<!--                android:onClick="@{() -> viewModel.addModule()}"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/edit_module"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/edit_module"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/edit_module" />-->
+<!--            <ImageView-->
+<!--                android:id="@+id/image_sugar_post_icon"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:src="@drawable/sugar"-->
+<!--                android:tint="@color/myColorPrimaryDark"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_sugar"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_sugar" />-->
 
 <!--            <TextView-->
-<!--                android:id="@+id/text_end_date"-->
+<!--                android:id="@+id/text_sugar"-->
+<!--                style="@style/post_text_title"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:text="@string/task_end"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/text_title"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/module_task" />-->
+<!--                android:text="@string/post_sugar"-->
+<!--                app:layout_constraintStart_toEndOf="@id/image_ice_post_icon"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/text_ice" />-->
 
-<!--            <DatePicker-->
-<!--                android:id="@+id/end_date"-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recycler_sugar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginStart="6dp"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_sugar"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/text_sugar"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_sugar" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/image_comment_post_icon"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:src="@drawable/comment_icon"-->
+<!--                android:tint="@color/myColorPrimaryDark"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/text_comment"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_comment" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text_comment"-->
+<!--                style="@style/post_text_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/post_comment"-->
+<!--                app:layout_constraintStart_toEndOf="@id/image_comment_post_icon"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/text_sugar" />-->
+
+<!--            <RatingBar-->
+<!--                android:id="@+id/rating_bar_comment"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="6dp"-->
+<!--                android:progressTint="#FFD700"-->
+<!--                android:rating="1"-->
+<!--                android:scaleX=".5"-->
+<!--                android:scaleY=".5"-->
+<!--                android:stepSize="1"-->
+<!--                android:transformPivotX="0dp"-->
+<!--                android:transformPivotY="0dp"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/text_comment"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/text_comment" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/response_comment_edit_text"-->
 <!--                android:layout_width="0dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:calendarViewShown="false"-->
-<!--                android:datePickerMode="spinner"-->
-<!--                android:fadeScrollbars="true"-->
-<!--                android:gravity="center"-->
-<!--                android:theme="@style/AppTheme.NumberPicker"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_end_date"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/spinner_task_categories"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/edit_title"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_end_date" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/text_count"-->
-<!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:text="@string/task_count"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/text_title"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/text_end_date" />-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:background="@drawable/frame_background"-->
+<!--                android:gravity="top"-->
+<!--                android:hint="@string/post_enter_comment"-->
+<!--                android:text="@={viewModel.editComment}"-->
+<!--                android:lines="5"-->
+<!--                android:padding="6dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/text_comment"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/text_comment" />-->
 
-<!--            <EditText-->
-<!--                android:id="@+id/edit_task_amount_editor"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:background="@color/white"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:gravity="center"-->
-<!--                android:inputType="number"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                android:maxLines="1"-->
-<!--                android:paddingStart="16dp"-->
-<!--                android:paddingEnd="16dp"-->
-<!--                android:text="@={viewModel.convertIntToString(viewModel.amount)}"-->
-<!--                android:textColor="@color/black_3f3a3a"-->
-<!--                android:textSize="16sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_count"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/edit_title"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_count" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/button_time_increase"-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:background="@drawable/plus"-->
-<!--                android:backgroundTint="@color/honey"-->
-<!--                android:onClick="@{() -> viewModel.increaseAmount()}"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_count"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/button_add2cart_decrease"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_count" />-->
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/button_add2cart_decrease"-->
-<!--                android:layout_width="20dp"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:background="@drawable/minus"-->
-<!--                android:backgroundTint="@{viewModel.amount > 1 ? @color/honey : @color/gray_999999}"-->
-<!--                android:onClick="@{() -> viewModel.decreaseAmount()}"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/text_count"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/edit_task_amount_editor"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/text_count" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/constraintLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:background="#ffffff"-->
+<!--            android:elevation="15dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent">-->
 
 <!--            <Button-->
-<!--                android:id="@+id/button_create"-->
-<!--                style="@style/Base.Widget.AppCompat.Button.Borderless"-->
+<!--                android:id="@+id/cart_button"-->
 <!--                android:layout_width="0dp"-->
-<!--                android:layout_height="32dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="32dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                android:background="@drawable/round_button"-->
-<!--                android:enabled="@{(viewModel.title==null||viewModel.moduleNameList.size()==0)?false:true}"-->
-<!--                android:fontFamily="@font/noto_sans"-->
-<!--                android:letterSpacing="0.15"-->
-<!--                tools:text="@string/create_task"-->
-<!--                android:text="@{(viewModel.title==null||viewModel.moduleNameList.size()==0)?@string/something_miss:@string/create_task}"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
+<!--                android:layout_height="0dp"-->
+<!--                style="@style/Button_post_comment"-->
+<!--                android:background="@drawable/background_post_button"-->
 <!--                app:layout_constraintBottom_toBottomOf="parent"-->
 <!--                app:layout_constraintEnd_toEndOf="parent"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/text_count" />-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:text="送出評論"-->
+<!--                android:onClick="@{() -> viewModel.postCommentResult()}"-->
+<!--                android:enabled="@{viewModel.editComment.trim() == null || viewModel.commentStar==0 || viewModel.selectedIce==null || viewModel.selectedSugar==null ? false:true}"-->
+<!--                android:letterSpacing="1.2"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textSize="16dp" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 </layout>
 
 
-
 <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-<!--    android:padding="30dp"-->
-<!--    android:orientation="vertical"-->
-<!--    >-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/image_preview"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/icons_24px_drawer"-->
-<!--        />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_choose_image"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Choose image"-->
-<!--        />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_upload_image"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Upload image"-->
-<!--        />-->
-
-<!--</LinearLayout>-->
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-
 <!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--    xmlns:tools="http://schemas.android.com/tools">-->
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.tom.helper.homefragment.HomeViewModel" />-->
-<!--    </data>-->
 
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraint_background_layout"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
+<!--        android:layout_height="match_parent">-->
 
 
-
-
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/tabs"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="#fffde8"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:tabIndicatorColor="@color/black_3f3a3a"-->
-<!--            app:tabSelectedTextColor="@color/black_3f3a3a"-->
-<!--            app:tabTextColor="@color/gray_888888">-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/tab_text_task_posted"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:text="@string/tab_text_task_posted" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/tab_text_task_on_going"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:text="@string/tab_text_task_on_going" />-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/tab_text_task_finished"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:text="@string/tab_text_task_finished" />-->
-
-<!--        </com.google.android.material.tabs.TabLayout>-->
-
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/home_request_recycler"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tabs"-->
-<!--            app:tasks="@{viewModel.tasks}"-->
-<!--            tools:listitem="@layout/item_request" />-->
-
-
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <!--</layout>-->
+

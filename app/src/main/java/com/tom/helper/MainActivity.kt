@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             EnumCheck.RANKINGLIST -> {//rankinglist
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "工具榜"
+                binding.textViewTitleChangeable.text = "管理案件"
             }
             EnumCheck.PROFILE -> {//profile
                 binding.title.visibility = View.INVISIBLE

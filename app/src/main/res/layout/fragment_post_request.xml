@@ -31,7 +31,7 @@
                 android:id="@+id/constraint_inner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="100dp"
+                android:paddingTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:background="@color/white">
 
@@ -39,6 +39,7 @@
                     android:id="@+id/textView_post_request_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="@string/textView_post_request_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -47,66 +48,67 @@
                     android:id="@+id/textView_post_request_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/textView_post_request_location"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_title" />
 
                 <EditText
                     android:id="@+id/editText_post_request_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
                     android:background="@drawable/frame_background"
                     android:ems="10"
                     android:hint="@string/editText_post_request_title"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.taskTitle}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_title"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_title" />
 
                 <EditText
                     android:id="@+id/editText_post_request_location"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="1dp"
                     android:background="@drawable/frame_background"
                     android:ems="10"
                     android:hint="@string/editText_post_request_location"
                     android:inputType="textPersonName"
                     android:text="@={viewModel.taskProvider}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_location"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_title" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_location" />
 
                 <EditText
                     android:id="@+id/editText_post_request_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/frame_background"
                     android:ems="10"
+                    android:textColor="@color/gray_888888"
                     android:hint="@string/editText_post_request_price"
                     android:inputType="number"
                     android:text="@={viewModel.convertLongToString(viewModel.taskPrice)}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_post_request_price"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_location" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_price" />
 
                 <TextView
                     android:id="@+id/textView_post_request_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/textView_post_request_price"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_location" />
+                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_location" />
 
                 <EditText
                     android:id="@+id/editText_post_request_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="1dp"
                     android:background="@drawable/frame_background"
                     android:ems="10"
                     android:gravity="start|top"
@@ -114,36 +116,35 @@
                     android:inputType="textMultiLine"
                     android:text="@={viewModel.taskContent}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_price" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_content" />
 
                 <TextView
                     android:id="@+id/textView_post_request_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/textView_post_request_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_price" />
+                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_price" />
 
                 <ImageView
                     android:id="@+id/image_preview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_post_request_post_pictures"
-                    app:srcCompat="@drawable/image_upload_pictures" />
+                    app:srcCompat="@drawable/image_placeholder" />
+
 
                 <TextView
                     android:id="@+id/textView_post_request_post_pictures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="90dp"
                     android:text="@string/textView_post_request_post_pictures"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_post_request_content" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/editText_post_request_content" />
 
                 <Button
                     android:id="@+id/button_post_request_send"
