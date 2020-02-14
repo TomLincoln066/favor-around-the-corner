@@ -14,10 +14,8 @@ data class Task(
     val taskCreator : String = "",
     var status: Int = -1,
     val proposal: List<Proposal> = listOf(),
-    val image:String = ""
-
-
-
+    val image:String = "",
+    val userId: String = ""
 ) : Parcelable
 
 //@Parcelize

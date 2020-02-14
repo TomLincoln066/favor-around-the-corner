@@ -1,4 +1,5 @@
 package com.tom.helper
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -59,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 //        bottomNavigation.setupWithNavController(navController)
 
 
-
         //check whether user is logged in
 
         val authListener: FirebaseAuth.AuthStateListener =
@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         FirebaseAuth.getInstance().addAuthStateListener(authListener)
-
 
 
         //let FacebookLogInBottomSheetDialog show up when open app
@@ -118,6 +117,13 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.rankingListFragment)
                     true
                 }
+
+                R.id.fragment_my_proposals -> {
+                    navController.navigate(R.id.action_global_myProposalsFragment)
+                    true
+                }
+
+
                 else -> {
                     false
                 }
@@ -133,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     //handle changing the title while selecting different fragments
     enum class EnumCheck {
-        HOME, POSTREQUEST, RANKINGLIST, PROFILE
+        HOME, POSTREQUEST, RANKINGLIST, PROFILE, MYPROPOSALS
     }
 
     fun setLogo(forCheck: EnumCheck) {
@@ -151,13 +157,20 @@ class MainActivity : AppCompatActivity() {
             EnumCheck.RANKINGLIST -> {//rankinglist
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "管理案件"
+                binding.textViewTitleChangeable.text = "我的案件"
             }
+            EnumCheck.MYPROPOSALS -> {//myproposals
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "我的提案"
+            }
+
             EnumCheck.PROFILE -> {//profile
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
                 binding.textViewTitleChangeable.text = "個人頁面"
             }
+
 
         }
     }

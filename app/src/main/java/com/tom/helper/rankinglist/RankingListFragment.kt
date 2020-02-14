@@ -21,7 +21,7 @@ import com.tom.helper.ext.getVmFactory
 class RankingListFragment : Fragment() {
 
 
-//    private val viewModel by viewModels<RankingListViewModel>{getVmFactory()}
+    private val viewModel by viewModels<RankingListViewModel>{getVmFactory()}
 
 
     override fun onCreateView(
@@ -31,24 +31,25 @@ class RankingListFragment : Fragment() {
 
         val binding =FragmentRankingListBinding.inflate(inflater,container,false)
         binding.lifecycleOwner = this
-//        binding.viewModel = viewModel
+        binding.viewModel = viewModel
 
-//        binding.rankingListRecycler.layoutManager = LinearLayoutManager(context)
-//        binding.rankingListRecycler.addItemDecoration(
-//            DividerItemDecoration(
-//                context,
-//                LinearLayoutManager.VERTICAL
-//            )
-//        )
-//
-//        binding.rankingListRecycler.adapter =
-//            RankingRecyclerAdapter(RankingRecyclerAdapter.OnClickListener {
-//                //            Logger.d("click, it=$it")
-//                //            viewModel.delete(it)
-//            })
+        binding.manageMyTasksRecycler.layoutManager = LinearLayoutManager(context)
+        binding.manageMyTasksRecycler.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayoutManager.VERTICAL
+            )
+        )
+
+        binding.manageMyTasksRecycler.adapter =
+            RankingRecyclerAdapter(RankingRecyclerAdapter.OnClickListener {
+                //            Logger.d("click, it=$it")
+                //            viewModel.delete(it)
+            },viewModel)
 
 
-//        viewModel.addRankUser()
+//        viewModel.prepareTaskTest()
+        viewModel.getTasksOfMineResult()
 
 
         //handle changing the title while selecting RankingListFragment

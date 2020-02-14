@@ -21,6 +21,8 @@ interface HelperDataSource {
 
     suspend fun checkUser(): Result<Boolean>
 
+    suspend fun getTasksOfMine(): Result<List<Task>>
+
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

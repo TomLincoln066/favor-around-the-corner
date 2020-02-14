@@ -21,10 +21,11 @@ import kotlinx.coroutines.launch
 class RankingListViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
-    private val _ranks = MutableLiveData<List<Rank>>()
+//    private val _ranks = MutableLiveData<List<Rank>>()
+//
+//    val ranks: LiveData<List<Rank>>
+//        get() = _ranks
 
-    val ranks: LiveData<List<Rank>>
-        get() = _ranks
 
 
     //To test Mock data display of item_ranking_list on fragment_ranking_list.xml
@@ -91,31 +92,26 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 
 
 
-    //for task of status -1 (posted)
+    //for all task of mine
     private val _tasks = MutableLiveData<List<Task>>()
 
     val tasks: LiveData<List<Task>>
         get() = _tasks
 
-    //for task of status 0 (on_going)
-    private val _tasks1 = MutableLiveData<List<Task>>()
 
-    val tasks1: LiveData<List<Task>>
-        get() = _tasks1
-
-    //for task of status 1 (finished)
-    private val _tasks2 = MutableLiveData<List<Task>>()
-
-    val tasks2: LiveData<List<Task>>
-        get() = _tasks2
+    //mock data
+    fun prepareTaskTest(){
+        _tasks.value = listOf(Task("123"))
+    }
 
 
 
-    //for task of status 0 (posted)
-    fun getTasksResult() {
-        Log.d("getTasksResult", "getTasksResult")
+
+//    for all tasks of mine
+    fun getTasksOfMineResult() {
+//        Log.d("getTasksOfMineResult", "${getTasksOfMineResult()}")
         coroutineScope.launch {
-            val result = repository.getTasks()
+            val result = repository.getTasksOfMine()
 
             when (result) {
                 is Result.Success -> {
@@ -136,52 +132,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-    //for task of status 1 (on_going)
-    fun getOnGoingTasksResult() {
-        Log.d("Will", "getOnGoingTasksResult()")
-        coroutineScope.launch {
-            val result = repository.getOnGoingTasks()
 
-            when (result) {
-                is Result.Success -> {
-                    _tasks1.value = result.data
-                }
-
-                is Result.Error -> {
-                    result.exception
-                }
-
-                is Result.Fail -> {
-                    _error.value = result.error
-                }
-            }
-
-        }
-
-    }
-
-    //for task of status 2 (Finished)
-    fun getFinishedTasksResult() {
-        Log.d("getFinishedTasksResult", "getFinishedTasksResult")
-        coroutineScope.launch {
-            val result = repository.getFinishedTasks()
-
-            when (result) {
-                is Result.Success -> {
-                    _tasks.value = result.data
-                }
-
-                is Result.Error -> {
-                    result.exception
-                }
-
-                is Result.Fail -> {
-                    _error.value = result.error
-                }
-            }
-
-        }
-
-    }
 
 }

@@ -26,6 +26,9 @@
     <string name="textView_task_create_time">1小時前</string>
     <string name="textView_proposals_word">提案人數 :</string>
     <string name="textView_proposals_numbers">5</string>
+
+    <string name="textView_status">案件狀態 :</string>
+    <string name="textView_status_numbers">-1 ~ 0</string>
     <string name="textView_task_price_blank">價錢 :</string>
     <string name="button_mission_detail_proposal_total">目前提案</string>
     <string name="button_mission_detail">任務細節</string>
@@ -93,6 +96,7 @@
     <string name="button_item_request_message">聯絡案主</string>
     <string name="btn_choose_image">選擇情境照</string>
     <string name="textView_no_data_yet">目前沒有資料</string>
+    <string name="fragment_my_proposals">我的提案</string>
 
 
 </resources>

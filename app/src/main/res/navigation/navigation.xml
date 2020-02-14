@@ -87,6 +87,14 @@
     <action
         android:id="@+id/action_global_chatRoomFragment"
         app:destination="@id/chatRoomFragment" />
+    <fragment
+        android:id="@+id/myProposalsFragment"
+        android:name="com.tom.helper.myproposal.MyProposalsFragment"
+        android:label="fragment_my_proposals"
+        tools:layout="@layout/fragment_my_proposals" />
+    <action
+        android:id="@+id/action_global_myProposalsFragment"
+        app:destination="@id/myProposalsFragment" />
 
 
 </navigation>

@@ -15,8 +15,20 @@
         android:id="@+id/fragment_ranking_list"
         android:icon="@drawable/bottom_ranking_selector"
         android:title="@string/title_ranking_list" />
+
+    <item
+        android:id="@+id/fragment_my_proposals"
+        android:icon="@drawable/bottom_ranking_selector"
+        android:title="@string/fragment_my_proposals" />
+
+
     <item
         android:id="@+id/fragment_profile"
         android:icon="@drawable/bottom_profile_selector"
         android:title="@string/title_profile" />
+
+
+
+
+
 </menu>

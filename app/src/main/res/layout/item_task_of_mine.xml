@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tom.helper.rankinglist.RankingListViewModel" />
+
+
+        <variable
+            name="task"
+            type="com.tom.helper.source.Task" />
+
+        <variable
+            name="message"
+            type="com.tom.helper.source.Message" />
+
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ecf3f9">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            app:cardCornerRadius="28dp"
+            android:layout_margin="8dp"
+            android:background="@color/blue_voyage"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp">
+
+
+                <TextView
+                    android:id="@+id/textView_request_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="@{task.title}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="30sp"
+                    android:textStyle="italic"
+                    android:typeface="serif"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="My computer crashes, sos........................"
+                    tools:textSize="18sp" />
+
+
+                <Button
+                    android:id="@+id/button_item_request_close"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginEnd="60dp"
+                    android:background="@drawable/bg_round_button_right"
+                    android:clickable="@{task.status==0}"
+
+                    android:text="@string/button_item_request_close"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView_task_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{task.taskCreator}"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_create_time"
+                    app:layout_constraintStart_toEndOf="@+id/textView_task_location_blank"
+                    tools:text="台北市信義區基隆路一段180號5F" />
+
+                <TextView
+                    android:id="@+id/textView_task_location_blank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/textView_task_location_blank"
+                    android:textColor="@color/black_3f3a3a"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_create_time_blank"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_task_price_blank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/textView_task_price_blank"
+                    android:textColor="@color/black_3f3a3a"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_user_name_tag"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_task_create_time_blank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/textView_task_create_time_blank"
+                    android:textColor="@color/black_3f3a3a"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_status"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="發案時間 :" />
+
+                <TextView
+                    android:id="@+id/textView_task_create_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+
+                    android:textColor="@color/red_d0021b"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_status_numbers"
+                    app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
+                    tools:text="1小時前" />
+
+                <TextView
+                    android:id="@+id/textView_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="@string/textView_status"
+                    android:textColor="@color/black_3f3a3a"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_status_numbers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView_status" />
+
+                <Button
+                    android:id="@+id/button_mission_detail"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="200dp"
+                    android:background="#ffe4e1"
+
+                    android:text="@string/button_mission_detail"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/button_mission_detail_proposal_total"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="200dp"
+                    android:background="#ffe4e1"
+                    android:clickable="@{task.status!= 1}"
+
+                    android:text="@string/button_mission_detail_proposal_total"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView_item_request_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="10dp"
+
+                    app:layout_constraintBottom_toTopOf="@+id/textView_user_name"
+                    app:layout_constraintStart_toEndOf="@+id/textView_task_price_blank" />
+
+                <Button
+                    android:id="@+id/button_item_request_message"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="200dp"
+                    android:background="@drawable/bg_round_button_left"
+
+                    android:text="@string/button_item_request_message"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView_user_name_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/textView_user_name_tag"
+                    android:textColor="@color/black_3f3a3a"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_location_blank"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{task.user.name}"
+                    app:layout_constraintBottom_toTopOf="@+id/textView_task_location"
+                    app:layout_constraintStart_toEndOf="@+id/textView_user_name_tag" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

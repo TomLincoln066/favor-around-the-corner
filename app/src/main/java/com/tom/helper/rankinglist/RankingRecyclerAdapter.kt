@@ -1,44 +1,63 @@
 package com.tom.helper.rankinglist
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tom.helper.databinding.ItemRankingListBinding
+import com.tom.helper.databinding.ItemTaskOfMineBinding
 import com.tom.helper.source.Rank
+import com.tom.helper.source.Task
 
-class RankingRecyclerAdapter(private val onClickListener: OnClickListener ) :
-    ListAdapter<Rank, RecyclerView.ViewHolder>(DiffCallback) {
+class RankingRecyclerAdapter(
+    private val onClickListener: OnClickListener,
+    val viewModel: RankingListViewModel
+) :
+    ListAdapter<Task, RecyclerView.ViewHolder>(DiffCallback) {
     /**
      * Custom listener that handles clicks on [RecyclerView] items.  Passes the [Article]
      * associated with the current item to the [onClick] function.
      * @param clickListener lambda that will be called with the current [Article]
      */
-    class OnClickListener(val clickListener: (rank : Rank) -> Unit) {
-        fun onClick(rank: Rank) = clickListener(rank)
+    class OnClickListener(val clickListener: (task: Task) -> Unit) {
+        fun onClick(task: Task) = clickListener(task)
+
     }
 
-    class RankViewHolder(private var binding: ItemRankingListBinding):
+    class TaskViewHolder(private var binding: ItemTaskOfMineBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(rank: Rank, onClickListener: OnClickListener) {
+        fun bind(task: Task, onClickListener: OnClickListener, viewModel: RankingListViewModel) {
 
-            binding.rank = rank
 
-            //handle earning's Long to String , see item_ranking_list.xml <data> name="earning" type="String"  & android:text="@{earning}"
-            binding.earning = rank.earning.toString()
+            //give HomeRecyclerAdapter HomeViewModel so item_request.xml would show price.
+            binding.viewModel = viewModel
 
-            binding.root.setOnClickListener { onClickListener.onClick(rank) }
+            binding.task = task
+            //press buttonMissionDetail and do what HomeFragment about to do, pls check HomeFragment.kt for the code following.
+            /**
+             *        binding.homeRequestRecycler.adapter = HomeRecyclerAdapter(HomeRecyclerAdapter.OnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+            })
+             */
+
+            binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
+
+
             binding.executePendingBindings()
+
+
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<Rank>() {
-        override fun areItemsTheSame(oldItem: Rank, newItem: Rank): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<Task>() {
+        override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem === newItem
         }
-        override fun areContentsTheSame(oldItem: Rank, newItem: Rank): Boolean {
+
+        override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id
         }
 
@@ -47,9 +66,11 @@ class RankingRecyclerAdapter(private val onClickListener: OnClickListener ) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            ITEM_VIEW_TYPE_TASK -> RankViewHolder(
-                ItemRankingListBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+            ITEM_VIEW_TYPE_TASK -> TaskViewHolder(
+                ItemTaskOfMineBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
@@ -59,9 +80,11 @@ class RankingRecyclerAdapter(private val onClickListener: OnClickListener ) :
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
+        Log.i("RankingRecyclerAdapter","TASK $position = ${getItem(position)}" )
+
         when (holder) {
-            is RankViewHolder -> {
-                holder.bind((getItem(position) as Rank), onClickListener)
+            is TaskViewHolder -> {
+                holder.bind((getItem(position)), onClickListener, viewModel)
             }
         }
     }

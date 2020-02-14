@@ -38,6 +38,10 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.checkUser()
     }
 
+    override suspend fun getTasksOfMine(): Result<List<Task>> {
+        return remoteDataSource.getTasksOfMine()
+    }
+
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

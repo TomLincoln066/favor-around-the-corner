@@ -26,8 +26,25 @@ fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Task>?) {
 }
 
 //fragment_ranking_list in use
-@BindingAdapter("addRankUser")
-fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Rank>?) {
+//@BindingAdapter("addRankUser")
+//fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Rank>?) {
+//    homeItems?.let {
+//        recyclerView.adapter?.apply {
+//            when (this) {
+//                is RankingRecyclerAdapter -> submitList(it)
+//                else -> {
+//                    Log.i("SOMETHNG", "")
+//                }
+//            }
+//        }
+//    }
+//}
+
+
+
+//fragment_ranking_list in use
+@BindingAdapter("addTasksOfMine")
+fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Task>?) {
     homeItems?.let {
         recyclerView.adapter?.apply {
             when (this) {
@@ -39,6 +56,7 @@ fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Rank>?) {
         }
     }
 }
+
 
 
 //fragment_proposal_list in use

@@ -21,6 +21,8 @@ interface HelperRepository {
 
     suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean>
 
+    suspend fun getTasksOfMine(): Result<List<Task>>
+
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

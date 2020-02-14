@@ -22,6 +22,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
     private const val PATH_Users = "users"
 
+
     override suspend fun checkUser(): Result<Boolean> = suspendCoroutine { continuation ->
         val users = FirebaseFirestore.getInstance().collection(PATH_Users)
         val userCurrent = FirebaseAuth.getInstance().currentUser
@@ -237,6 +238,38 @@ object HelperRemoteDataSource : HelperDataSource {
 
         }
 
+
+    override suspend fun getTasksOfMine(): Result<List<Task>> = suspendCoroutine { continuation ->
+
+        val userCurrent = FirebaseAuth.getInstance().currentUser
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .whereEqualTo("userId",userCurrent?.uid )
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Task>()
+                    for (document in task.result!!) {
+
+
+                        val task1 = document.toObject(Task::class.java)
+                        list.add(task1)
+                        Log.d("Will", "get data form firebase")
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
 
 
 
