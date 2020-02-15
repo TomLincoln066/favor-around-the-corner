@@ -95,6 +95,18 @@
     <action
         android:id="@+id/action_global_myProposalsFragment"
         app:destination="@id/myProposalsFragment" />
+    <fragment
+        android:id="@+id/proProgressFragment"
+        android:name="com.tom.helper.taskprogressdialog.ProProgressFragment"
+        android:label="fragment_pro_progress"
+        tools:layout="@layout/fragment_pro_progress" >
+        <argument
+            android:name="proposal"
+            app:argType="com.tom.helper.source.Proposal" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_proProgressFragment"
+        app:destination="@id/proProgressFragment" />
 
 
 </navigation>

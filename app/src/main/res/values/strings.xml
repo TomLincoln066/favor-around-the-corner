@@ -98,5 +98,7 @@
     <string name="textView_no_data_yet">目前沒有資料</string>
     <string name="fragment_my_proposals">我的提案</string>
 
+    <string name="button_to_task_progress_sheet">任務進度</string>
+
 
 </resources>

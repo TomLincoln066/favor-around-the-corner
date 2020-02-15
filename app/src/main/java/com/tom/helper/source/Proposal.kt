@@ -14,7 +14,9 @@ data class Proposal(
     val userID:String = "",
     val user: User? = null,
     val userIDTakeTheCase:User? = null,
-    val status : Int = -1
+    val status : Int = -1,
+    val taskID: String = ""
+
 
 ) : Parcelable
 

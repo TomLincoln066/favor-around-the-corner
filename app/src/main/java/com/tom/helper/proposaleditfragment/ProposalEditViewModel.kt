@@ -82,6 +82,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
         val user = FirebaseAuth.getInstance().currentUser!!
 
+        val taskId = task.id
+
         val userCurrent = user.uid
 
         val userCurrent1 = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
@@ -92,6 +94,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         val document1 = status.collection("tasks").document(task.id)
 
         document1.update("status",0)
+
+
 
 
 //        val data = hashMapOf(
@@ -113,7 +117,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             proposalProvider.value!!,
             proposalAccepted,
             userCurrent,
-            userCurrent1
+            userCurrent1,
+            taskID = taskId
         )
 
 
