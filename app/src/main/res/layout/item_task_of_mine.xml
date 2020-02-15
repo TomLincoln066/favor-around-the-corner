@@ -80,6 +80,8 @@
                     android:background="@drawable/bg_round_button_right"
                     android:clickable="@{task.status==0}"
 
+                    android:onClick="@{()->viewModel.clickFinishThisTask(task)}"
+
                     android:text="@string/button_item_request_close"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -138,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-
+                    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"
                     android:textColor="@color/red_d0021b"
                     app:layout_constraintBottom_toTopOf="@+id/textView_status_numbers"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
@@ -203,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="10dp"
-
+                    android:text="@{viewModel.convertLongToString(task.price)}"
                     app:layout_constraintBottom_toTopOf="@+id/textView_user_name"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_price_blank" />
 

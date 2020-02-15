@@ -2,6 +2,7 @@ package com.tom.helper.rankinglist
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,20 @@ class RankingListFragment : Fragment() {
                 //            Logger.d("click, it=$it")
                 //            viewModel.delete(it)
             },viewModel)
+
+
+
+        viewModel.shouldFinishThisTask.observe(this, Observer {
+            Log.d("Will", "RankingListFragment.viewModel.shouldFinishThisTask.observe, it=${it}")
+            it?.let {
+
+
+            }
+        })
+
+
+
+
 
 
 //        viewModel.prepareTaskTest()

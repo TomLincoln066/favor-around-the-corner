@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Rank
 import com.tom.helper.source.Result
@@ -14,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 
 // The [ViewModel] that is attached to the [RankingListFragment].
 
@@ -68,8 +70,27 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 
 
     // handle taskPrice input type convert problem( Long to String and String to Long)
+    @InverseMethod("convertLongToString")
+    fun convertStringToLong(value: String): Long {
+        return try {
+            value.toLong().let {
+                when (it) {
+                    0L -> 0
+                    else -> it
+                }
+            }
+        } catch (e: NumberFormatException) {
+            1
+        }
+    }
+
+    fun convertLongToString(value: Long): String {
+        return value.toString()
+    }
 
 
+
+    // handle status input type convert problem( Int to String and String to Int)
     @InverseMethod("convertIntToString")
     fun convertStringToInt(value: String): Int {
         return try {
@@ -145,6 +166,41 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     fun doneNavigatingToProposalList() {
         _shouldNavigateToProposalList.value = null
     }
+
+
+
+    //handle converting date to string
+    fun convertLongToDateString(systemTime: Long): String {
+        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+            .format(systemTime).toString()
+    }
+
+
+
+
+
+
+
+
+    //    try to handle when button_item_request_close in item_request.xml is pressed, will have this task status set from 0 to 1 (see HomeFragment.kt)
+    private val _shouldFinishThisTask = MutableLiveData<Task>()
+    val shouldFinishThisTask: LiveData<Task>
+        get() = _shouldFinishThisTask
+
+    //handle when button_item_request_close is clicked, and it change the status of this task from 0 to 1
+    fun clickFinishThisTask(task: Task) {
+
+
+        val status = FirebaseFirestore.getInstance()
+
+        val document = status.collection("tasks").document(task.id)
+
+        document.update("status", 1)
+
+        getTasksOfMineResult()
+
+    }
+
 
 
 
