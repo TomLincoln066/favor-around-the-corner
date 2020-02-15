@@ -23,6 +23,8 @@ interface HelperRepository {
 
     suspend fun getTasksOfMine(): Result<List<Task>>
 
+    suspend fun getProposalsOfMine(task: Task): Result<List<Proposal>>
+
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

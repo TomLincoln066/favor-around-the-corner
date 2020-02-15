@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tom.helper.MainActivity
@@ -50,6 +52,33 @@ class RankingListFragment : Fragment() {
 
 //        viewModel.prepareTaskTest()
         viewModel.getTasksOfMineResult()
+
+
+
+
+        //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeViewModel.kt)
+        viewModel.shouldNavigateToProposalList.observe(this, Observer {
+            it?.let {
+
+                findNavController().navigate(
+                    RankingListFragmentDirections.actionGlobalProposalListFragment(
+                        it
+                    )
+                )
+
+                viewModel.doneNavigatingToProposalList()
+
+            }
+        })
+
+
+
+
+
+
+
+
+
 
 
         //handle changing the title while selecting RankingListFragment

@@ -124,6 +124,41 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
     }
 
 
+    fun getProposalsOfMineResult() {
+
+        coroutineScope.launch {
+            val result = repository.getProposalsOfMine(task)
+
+            when (result) {
+                is Result.Success -> {
+                    _proposals.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
 

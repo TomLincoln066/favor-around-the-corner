@@ -273,7 +273,37 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
 
+    override suspend fun getProposalsOfMine(task: Task): Result<List<Proposal>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document().collection(PATH_PROPOSALS)
 
+                .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//                .whereEqualTo("status", 0)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Proposal>()
+                        for (document in task.result!!) {
+//                        Logger.d(document.id + " => " + document.data)
+
+                            val proposal = document.toObject(Proposal::class.java)
+                            list.add(proposal)
+                            Log.d("Will", "get proposals form firebase")
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        task.exception?.let {
+
+                            //                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+
+        }
 
 
 

@@ -70,12 +70,12 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     // handle taskPrice input type convert problem( Long to String and String to Long)
 
 
-    @InverseMethod("convertLongToString")
-    fun convertStringToLong(value: String): Long {
+    @InverseMethod("convertIntToString")
+    fun convertStringToInt(value: String): Int {
         return try {
-            value.toLong().let {
+            value.toInt().let {
                 when (it) {
-                    0L -> 0
+                    0 -> 0
                     else -> it
                 }
             }
@@ -84,7 +84,7 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
         }
     }
 
-    fun convertLongToString(value: Long): String {
+    fun convertIntToString(value: Int): String {
         return value.toString()
     }
 
@@ -130,6 +130,22 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
         }
 
     }
+
+
+    //try to handle when button_mission_detail_proposal_total in item_task_of_mine.xml is pressed, will navigate to ProposalListFragment(see RankingListFragment.kt)
+    private val _shouldNavigateToProposalList = MutableLiveData<Task>()
+    val shouldNavigateToProposalList: LiveData<Task>
+        get() = _shouldNavigateToProposalList
+
+
+    fun clickNavigateToProposalList(task: Task) {
+        _shouldNavigateToProposalList.value = task
+    }
+
+    fun doneNavigatingToProposalList() {
+        _shouldNavigateToProposalList.value = null
+    }
+
 
 
 
