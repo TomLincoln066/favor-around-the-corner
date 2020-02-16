@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/ranking_selected" />
-    <item android:drawable="@drawable/ranking_normal" />
+    <item android:state_checked="true" android:drawable="@drawable/outline_work_outline_black_24" />
+    <item android:drawable="@drawable/outline_work_outline_black_24" />
 
 </selector>

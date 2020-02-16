@@ -35,6 +35,7 @@
 
     <!-- Blue Series -->
     <color name="blue_facebook">#3b5998</color>
+    <color name="linked_blue_light">#00A0DC</color>
 
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/gray_999999</color>
@@ -50,6 +51,8 @@
     <color name="yellow_medium">#F9E79F </color>
     <color name="yellow_hard">#D4AC0D</color>
 
+<!-- Pink Series   -->
+    <color name="pink_light">#ffe4e1</color>
 
 
 

@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/blue_facebook</item>
+        <item name="colorPrimaryDark">@color/linked_blue_light</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

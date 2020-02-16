@@ -5,7 +5,7 @@
 
 
     <string name="title_post_request">新增任務</string>
-    <string name="title_ranking_list">排行榜</string>
+    <string name="title_ranking_list">我的任務</string>
     <string name="title_profile">個人</string>
     <string name="navigation_home">navigation_home</string>
 
@@ -99,6 +99,7 @@
     <string name="fragment_my_proposals">我的提案</string>
 
     <string name="button_to_task_progress_sheet">任務進度</string>
+    <string name="fragment_home">所有任務</string>
 
 
 </resources>

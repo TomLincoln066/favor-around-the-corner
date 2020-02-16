@@ -21,14 +21,14 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffe4e1"
+            android:background="@color/linked_blue_light"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorColor="@color/black_3f3a3a"
             app:tabSelectedTextColor="@color/black_3f3a3a"
-            app:tabTextColor="@color/gray_888888">
+            app:tabTextColor="@color/black_3f3a3a">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_text_task_posted"

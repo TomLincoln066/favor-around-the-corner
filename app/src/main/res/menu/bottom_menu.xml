@@ -5,7 +5,7 @@
     <item
         android:id="@+id/fragment_home"
         android:icon="@drawable/bottom_home_selector"
-        android:title="@string/navigation_home" />
+        android:title="@string/fragment_home" />
     <item
         android:id="@+id/fragment_post_request"
         android:icon="@drawable/bottom_add_request_selector"

@@ -62,7 +62,7 @@
                     android:text="@{task.title}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="30sp"
-                    android:textStyle="italic"
+
                     android:typeface="serif"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@{task.taskCreator}"
+                    android:textColor="@color/black_3f3a3a"
                     app:layout_constraintBottom_toTopOf="@+id/textView_task_create_time"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_location_blank"
                     tools:text="台北市信義區基隆路一段180號5F" />
@@ -141,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@{viewModel.convertLongToDateString(task.createdTime)}"
-                    android:textColor="@color/red_d0021b"
+                    android:textColor="@color/black_3f3a3a"
                     app:layout_constraintBottom_toTopOf="@+id/textView_status_numbers"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_create_time_blank"
                     tools:text="1小時前" />
@@ -171,7 +172,7 @@
                     android:layout_width="65dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="200dp"
-                    android:background="#ffe4e1"
+                    android:background="@color/linked_blue_light"
 
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/black"
@@ -187,7 +188,7 @@
                     android:layout_width="65dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="200dp"
-                    android:background="#ffe4e1"
+                    android:background="@color/linked_blue_light"
                     android:clickable="@{task.status!= 1}"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
                     android:text="@string/button_mission_detail_proposal_total"
