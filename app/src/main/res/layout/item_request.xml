@@ -80,7 +80,7 @@
 
 
                     android:text="@string/button_item_request_close"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -91,10 +91,10 @@
                     android:id="@+id/textView_task_location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:maxLines="4"
                     android:singleLine="false"
                     android:text="@{task.taskCreator}"
-                    android:layout_marginStart="10dp"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -133,7 +133,7 @@
                     android:background="@color/linked_blue_light"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -147,7 +147,7 @@
                     android:clickable="@{task.status== 0}"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
                     android:text="@string/button_mission_detail_proposal_total"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -173,7 +173,7 @@
                     android:layout_marginTop="30dp"
                     android:background="@drawable/bg_round_button_left"
                     android:text="@string/button_item_request_message"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -220,62 +220,60 @@
     <!--    android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(message)}"-->
 
 
-<!--<TextView-->
-<!--android:id="@+id/textView_proposals_numbers"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_marginStart="10dp"-->
-<!--android:text="@string/textView_proposals_numbers"-->
-<!--app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"-->
-<!--app:layout_constraintTop_toTopOf="@+id/textView_proposals_word" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView_proposals_numbers"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:text="@string/textView_proposals_numbers"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/textView_proposals_word" />-->
 
 
-
-<!--<TextView-->
-<!--android:id="@+id/textView_proposals_word"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_marginTop="20dp"-->
-<!--android:text="@string/textView_proposals_word"-->
-<!--android:textColor="@color/black_3f3a3a"-->
-<!--app:layout_constraintStart_toStartOf="@+id/textView_task_create_time_blank"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time_blank" />-->
-
+    <!--<TextView-->
+    <!--android:id="@+id/textView_proposals_word"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:text="@string/textView_proposals_word"-->
+    <!--android:textColor="@color/black_3f3a3a"-->
+    <!--app:layout_constraintStart_toStartOf="@+id/textView_task_create_time_blank"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time_blank" />-->
 
 
-<!--<TextView-->
-<!--android:id="@+id/textView_user_name_tag"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@string/textView_user_name_tag"-->
-<!--android:textColor="@color/black_3f3a3a"-->
-<!--tools:layout_editor_absoluteX="137dp"-->
-<!--tools:layout_editor_absoluteY="71dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView_user_name_tag"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/textView_user_name_tag"-->
+    <!--android:textColor="@color/black_3f3a3a"-->
+    <!--tools:layout_editor_absoluteX="137dp"-->
+    <!--tools:layout_editor_absoluteY="71dp" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/textView_user_name"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@{task.user.name}"-->
-<!--tools:layout_editor_absoluteX="230dp"-->
-<!--tools:layout_editor_absoluteY="71dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView_user_name"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@{task.user.name}"-->
+    <!--tools:layout_editor_absoluteX="230dp"-->
+    <!--tools:layout_editor_absoluteY="71dp" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/textView_task_create_time_blank"-->
-<!--android:layout_width="0dp"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@string/textView_task_create_time_blank"-->
-<!--android:textColor="@color/black_3f3a3a"-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView_task_create_time_blank"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/textView_task_create_time_blank"-->
+    <!--android:textColor="@color/black_3f3a3a"-->
 
-<!--tools:layout_editor_absoluteX="132dp"-->
-<!--tools:layout_editor_absoluteY="208dp"-->
-<!--tools:text="發案時間 :" />-->
+    <!--tools:layout_editor_absoluteX="132dp"-->
+    <!--tools:layout_editor_absoluteY="208dp"-->
+    <!--tools:text="發案時間 :" />-->
 
-<!--<TextView-->
-<!--android:id="@+id/textView_task_location_blank"-->
-<!--android:layout_width="0dp"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@string/textView_task_location_blank"-->
-<!--android:textColor="@color/black_3f3a3a"-->
-<!--tools:layout_editor_absoluteX="10dp"-->
-<!--tools:layout_editor_absoluteY="227dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView_task_location_blank"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/textView_task_location_blank"-->
+    <!--android:textColor="@color/black_3f3a3a"-->
+    <!--tools:layout_editor_absoluteX="10dp"-->
+    <!--tools:layout_editor_absoluteY="227dp" />-->

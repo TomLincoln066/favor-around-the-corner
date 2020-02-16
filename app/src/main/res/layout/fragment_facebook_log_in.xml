@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:background="@color/black"
+        android:background="@color/white"
         android:padding="10dp">
 
 
@@ -43,7 +43,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black_3f3a3a"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

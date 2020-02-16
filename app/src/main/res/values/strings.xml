@@ -46,7 +46,7 @@
     <string name="textView_user_name_tag">發起人名稱 :</string>
 
     <string name="textView_fragment_profile_name">Tom</string>
-    <string name="fragment_textView_fb_log_in">請透過Facebook登入使用更多功能。</string>
+    <string name="fragment_textView_fb_log_in">請透過Facebook登入使用更多功能</string>
     <string name="Button_facebook_log_in">Facebook 登入</string>
 
 

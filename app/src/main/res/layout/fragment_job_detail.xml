@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:padding="10dp"
         tools:context=".detail.DetailFragment">
 
         <ScrollView
@@ -44,85 +45,148 @@
                     android:layout_marginEnd="16dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.15"
-
                     android:lines="2"
-
                     android:text="@{task.title}"
                     android:textColor="@color/black_3f3a3a"
-                    android:textSize="18sp"
+                    android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="UI好難設計，徵求幫手。" />
+                    tools:text="短期高薪工讀生" />
 
                 <TextView
                     android:id="@+id/text_job_detail_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
-
                     android:letterSpacing="0.15"
-
                     android:lines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@{viewModel.convertLongToString(task.price)}"
                     android:textColor="@color/black_3f3a3a"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.044"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toEndOf="@+id/job_detail_imageView_icon_price"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_location"
                     tools:text="10000" />
+
+                <ImageView
+                    android:id="@+id/job_detail_imageView_icon_price"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/outline_monetization_on_black_36"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_job_detail_price"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toTopOf="@+id/text_job_detail_price" />
+
+                <!-- color -->
+
 
                 <TextView
                     android:id="@+id/textView_job_detail_task_owner_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="50dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@{task.user.name}"
-                    android:textColor="@color/gray_888888"
-                    android:textSize="14sp"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/job_detail_imageView_icon_task_owner"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_price"
+                    tools:text="Will Lo" />
+
+                <ImageView
+                    android:id="@+id/job_detail_imageView_icon_task_owner"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/outline_perm_identity_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_job_detail_task_owner_tag"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title" />
+                    app:layout_constraintTop_toTopOf="@+id/textView_job_detail_task_owner_tag" />
+
+
+                <TextView
+                    android:id="@+id/textView_job_detail_task_content_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="0.15"
+                    android:lines="1"
+                    app:layout_constraintVertical_bias="1"
+                    android:text="任務內容 :"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_job_detail_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag" />
+
 
                 <TextView
                     android:id="@+id/text_job_detail_content"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="90dp"
+                    android:layout_marginTop="60dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/frame_background"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lineSpacingExtra="12sp"
                     android:text="@{task.content}"
-                    android:textColor="@color/gray_646464"
+                    android:textColor="@color/black_3f3a3a"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag"
                     tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
-
-                <!-- color -->
 
                 <ImageView
                     android:id="@+id/imageView_job_detail_picture_post_by_task_owner"
-                    android:layout_width="395dp"
+                    android:layout_width="match_parent"
                     android:layout_height="288dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="100dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@drawable/alesso_profile"
                     app:imageUrl="@{task.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
+
+
+                <TextView
+                    android:id="@+id/textView_job_detail_task_picture_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="0.15"
+                    android:lines="1"
+                    android:text="說明圖片 :"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView_job_detail_picture_post_by_task_owner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content"
+                    app:layout_constraintVertical_bias="1" />
 
                 <Button
                     android:id="@+id/button_job_detail_live_chat"
@@ -133,7 +197,8 @@
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/bg_round_button"
                     android:letterSpacing="0.15"
-                    android:text="業主即時通訊"
+                    android:textColor="@color/white"
+                    android:text="線上詢問"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,12 +209,25 @@
                     android:id="@+id/textView_job_detail_task_location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@{task.taskCreator}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/job_detail_imageView_icon_location"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.051"
+                    app:layout_constraintStart_toEndOf="@+id/job_detail_imageView_icon_location"
+                    app:layout_constraintTop_toTopOf="@+id/job_detail_imageView_icon_location"
+                    tools:text="台北市基隆路一段180號5樓" />
+
+                <ImageView
+                    android:id="@+id/job_detail_imageView_icon_location"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/outline_location_on_black_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_title" />
 
@@ -178,6 +256,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_round_button"
+                android:textColor="@color/white"
                 android:letterSpacing="0.15"
                 android:text="@string/button_job_detail_send_proposal"
                 android:textSize="16sp"
@@ -193,4 +272,14 @@
 </layout>
 
 
-    <!--                    android:src="@drawable/alesso_profile"-->
+    <!--<ImageView-->
+    <!--android:id="@+id/job_detail_imageView_icon_task_picture_display"-->
+    <!--android:layout_width="25dp"-->
+    <!--android:layout_height="25dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--android:layout_marginBottom="1dp"-->
+    <!--android:src="@drawable/image_upload_pictures"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/imageView_job_detail_picture_post_by_task_owner"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.0"-->
+    <!--app:layout_constraintStart_toStartOf="parent" />-->
