@@ -15,6 +15,9 @@
             name="viewModel"
             type="com.tom.helper.proposallistfragment.ProposalListViewModel" />
 
+
+        <import type="android.view.View" />
+
     </data>
 
 
@@ -37,88 +40,109 @@
         android:id="@+id/layout_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{proposal.status ==0 ? @color/colorPrimary: @color/white}">
+        android:padding="8dp"
+        >
 
 
-        <ImageButton
-            android:id="@+id/image_item_proposal_picture"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
-            android:scaleType="centerCrop"
-            android:src="@drawable/accept_png"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/imageView_icon_proposal_checked"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/icon_checked"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text_item_proposal_content"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text_proposal_provider_name"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/noto_sans"
-            android:letterSpacing="0.15"
-            android:maxLines="2"
-            android:text="@{proposal.senderName}"
-            android:textColor="@color/black_3f3a3a"
-            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/text_proposal_person"
-            app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content"
-            tools:text="Jammy" />
+            android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.INVISIBLE }"
+            />
+
+        <Button
+            android:id="@+id/image_item_proposal_picture"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
+            android:text="接受提案"
+            android:background="@drawable/button_style"
+            android:textColor="@color/linked_blue_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_proposal_person"
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
-            android:layout_marginTop="4dp"
-
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:scaleType="centerCrop"
             android:text="@{proposal.user.name}"
-            app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_icon_proposal_owner"
+            app:layout_constraintStart_toEndOf="@+id/imageView_icon_proposal_owner"
+            app:layout_constraintTop_toTopOf="@+id/imageView_icon_proposal_owner"
+            tools:text="Will Lo" />
+
+        <ImageView
+            android:id="@+id/imageView_icon_proposal_owner"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/outline_perm_identity_black_24"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_item_proposal_content"
-            android:layout_width="225dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans"
-            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:letterSpacing="0.15"
             android:text="@{proposal.content}"
             android:textColor="@color/black_3f3a3a"
-            android:textSize="15sp"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.086"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_item_proposal_picture"
+            app:layout_constraintStart_toEndOf="@id/imageView_proposal_icon_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_proposal_person"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="@string/editText_proposal_content" />
 
-        <ImageButton
+
+        <ImageView
+            android:id="@+id/imageView_proposal_icon_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/baseline_low_priority_black_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_item_proposal_content" />
+
+
+        <Button
             android:id="@+id/imageButton_proposal_reject"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_style"
             android:onClick="@{() -> viewModel.clickToGetOneProposalStatusUnAccepted(proposal)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/reject_pn" />
+            android:text="取消接受"
+            android:textColor="@color/linked_blue_light"
+            app:layout_constraintStart_toStartOf="@+id/image_item_proposal_picture"
+            app:layout_constraintTop_toBottomOf="@+id/image_item_proposal_picture" />
 
         <Button
             android:id="@+id/button_to_task_progress_sheet"
             android:layout_width="80dp"
             android:layout_height="35dp"
-            android:text="@string/button_to_task_progress_sheet"
+            android:layout_marginTop="10dp"
             android:onClick="@{() -> viewModel.clickNavigateToProProgressFragment(proposal)}"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton_proposal_reject"
-            app:layout_constraintStart_toStartOf="@+id/image_item_proposal_picture"
-            app:layout_constraintTop_toBottomOf="@+id/image_item_proposal_picture" />
+            android:background="@drawable/button_style"
+            android:textColor="@color/linked_blue_light"
+            android:text="@string/button_to_task_progress_sheet"
+            app:layout_constraintStart_toStartOf="@+id/imageButton_proposal_reject"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton_proposal_reject" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -128,3 +152,21 @@
 
 
 <!--    android:text="@string/text_proposal_content_tag"-->
+
+
+<!--<TextView-->
+<!--android:id="@+id/text_proposal_provider_name"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="20dp"-->
+<!--android:layout_marginBottom="10dp"-->
+<!--android:ellipsize="end"-->
+<!--android:fontFamily="@font/noto_sans"-->
+<!--android:letterSpacing="0.15"-->
+<!--android:maxLines="2"-->
+<!--android:text="@{proposal.senderName}"-->
+<!--android:textColor="@color/white"-->
+<!--android:textSize="15sp"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="@+id/text_proposal_person"-->
+<!--app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content"-->
+<!--tools:text="Jammy" />-->

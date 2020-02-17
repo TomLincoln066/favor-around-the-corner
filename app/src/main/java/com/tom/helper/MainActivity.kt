@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("signInWithCredential", "signInWithCredential:no")
                 } else {
                     viewModel.checkUserResult()
+
                 }
             }
         FirebaseAuth.getInstance().addAuthStateListener(authListener)

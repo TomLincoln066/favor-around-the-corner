@@ -18,35 +18,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:background="@color/white"
         android:padding="10dp">
 
 
         <ImageView
             android:id="@+id/login_logo"
-            android:layout_width="316dp"
-            android:layout_height="312dp"
-            android:layout_marginTop="116dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/lamp_sketch" />
+            app:layout_constraintTop_toBottomOf="@+id/close_login_window"
+            app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/fragment_textView_fb_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
             android:textAlignment="center"
-            android:textColor="@color/black_3f3a3a"
+            android:textColor="@color/gray_cccccc"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_logo" />
 
@@ -55,9 +56,9 @@
             android:id="@+id/Button_facebook_log_in"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="60dp"
             android:background="#3b5998"
             android:letterSpacing="0.15"
             android:text="@string/Button_facebook_log_in"
@@ -67,7 +68,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_textView_fb_log_in"
-            app:layout_constraintVertical_bias="0.061" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/close_login_window"

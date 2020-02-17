@@ -13,88 +13,289 @@
 
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_out"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ecf3f9"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView_proposal_sender_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="88dp"
-            android:text="@string/textView_proposal_sender_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText_proposal_edit_person"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            android:layout_marginEnd="56dp"
-            android:background="@drawable/frame_background"
-            android:ems="10"
-
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:inputType="textPersonName"
-
-            android:text="@={viewModel.proposalProvider}"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText_proposal_content"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="68dp"
+        android:orientation="vertical"
+        android:padding="8dp">
 
 
-            android:background="@drawable/frame_background"
-            android:ems="10"
-
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="start|top"
-            android:hint="@string/editText_proposal_content"
-            android:inputType="textMultiLine"
-            android:text="@={viewModel.proposalContent}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.67"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_edit_person" />
-
-        <TextView
-            android:id="@+id/textView_proposal_request_content_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="76dp"
-            android:text="@string/textView_proposal_request_content_tag"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_proposal_sender_name"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/button_proposal_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
-            android:background="#f09c67"
-            android:onClick="@{()->viewModel.submitProposal()}"
-            android:text="@string/button_proposal_send"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content" />
+            app:layout_constraintTop_toTopOf="@id/constraint_out">
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ecf3f9"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView_proposal_sender_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/textView_proposal_sender_name"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_price" />
+
+                <EditText
+                    android:id="@+id/editText_proposal_edit_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="textPersonName"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@={viewModel.proposalProvider}"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_proposal_sender_name" />
+
+                <EditText
+                    android:id="@+id/editText_proposal_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="@string/editText_proposal_content"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@={viewModel.proposalContent}"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_proposal_request_content_tag" />
+
+                <TextView
+                    android:id="@+id/textView_proposal_request_content_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="8dp"
+                    android:text="@string/textView_proposal_request_content_tag"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_why_me"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView_icon_why_me"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/baseline_how_to_reg_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_request_content_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_proposal_request_content_tag" />
+
+
+                <EditText
+                    android:id="@+id/editText_proposal_content_detail_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="1 .先設計layout"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_proposal_content_item_tag1" />
+
+                <TextView
+                    android:id="@+id/textView_proposal_content_item_tag1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/textView_proposal_content_item_tag1"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_how_to_do_it"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content"
+                    tools:layout_editor_absoluteX="36dp" />
+
+
+                <ImageView
+                    android:id="@+id/imageView_icon_how_to_do_it"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/baseline_low_priority_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_content_item_tag1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_proposal_content_item_tag1" />
+
+
+                <EditText
+                    android:id="@+id/editText_proposal_content_detail_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="2 .加上viewModel 和Firebase接起來"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item1" />
+
+
+                <EditText
+                    android:id="@+id/editText_proposal_content_detail_item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="3 .跑實際資料，debug，error handling。"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item2" />
+
+
+                <EditText
+                    android:id="@+id/editText_proposal_content_detail_item4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="4 .完工。"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14dp"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item3" />
+
+
+                <TextView
+                    android:id="@+id/textView_proposal_price_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_price"
+                    android:text="開價 >"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item4"
+                    tools:layout_editor_absoluteX="48dp" />
+
+
+                <ImageView
+                    android:id="@+id/imageView_icon_price"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/outline_monetization_on_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_price_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_proposal_price_tag" />
+
+
+
+
+
+
+                <EditText
+                    android:id="@+id/editText_proposal_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:hint="20000"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_proposal_price_tag" />
+
+
+                <Button
+                    android:id="@+id/button_proposal_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_round_button"
+                    android:onClick="@{()->viewModel.submitProposal()}"
+                    android:text="@string/button_proposal_send"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editText_proposal_edit_person" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
