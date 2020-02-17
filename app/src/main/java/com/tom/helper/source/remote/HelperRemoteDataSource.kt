@@ -27,7 +27,11 @@ object HelperRemoteDataSource : HelperDataSource {
         val users = FirebaseFirestore.getInstance().collection(PATH_Users)
         val userCurrent = FirebaseAuth.getInstance().currentUser
         val document = users.document(userCurrent!!.uid)
-        val user = User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L)
+
+        val photoUrl = userCurrent.photoUrl.toString()
+
+        val user = User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
+
 
 
         document

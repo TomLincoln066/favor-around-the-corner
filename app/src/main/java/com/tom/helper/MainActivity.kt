@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
             EnumCheck.PROFILE -> {//profile
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "個人頁面"
+                binding.textViewTitleChangeable.text = "個人"
             }
 
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Task
+import com.tom.helper.source.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,6 +16,13 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 
 class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
+
+
+    private  val _profile = MutableLiveData<User>()
+
+    val profile: LiveData<User>
+        get()=_profile
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request

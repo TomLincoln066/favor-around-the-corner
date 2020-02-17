@@ -125,6 +125,8 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Will", "signInWithCredential:success")
                     val user = auth.currentUser
+                    //when user logged in, dismiss this dialog fragment.
+                    this.dismiss()
 
                 } else {
                     // If sign in fails, display a message to the user.

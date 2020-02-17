@@ -205,7 +205,7 @@
                     android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="@+id/textView_task_price_blank"
                     app:layout_constraintTop_toBottomOf="@+id/textView_task_price_blank"
-                    app:srcCompat="@drawable/outline_location_on_black_18dp" />
+                    app:srcCompat="@drawable/outline_location_on_black_24" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
