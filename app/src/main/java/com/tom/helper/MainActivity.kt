@@ -119,10 +119,10 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.fragment_my_proposals -> {
-                    navController.navigate(R.id.action_global_myProposalsFragment)
-                    true
-                }
+//                R.id.fragment_my_proposals -> {
+//                    navController.navigate(R.id.action_global_myProposalsFragment)
+//                    true
+//                }
 
 
                 else -> {
