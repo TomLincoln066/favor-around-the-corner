@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.tom.helper.homefragment.HomeRecyclerAdapter
+import com.tom.helper.profile.ProfileRecyclerAdapter
 import com.tom.helper.proposallistfragment.ProposalListRecyclerAdapter
 import com.tom.helper.rankinglist.RankingRecyclerAdapter
 import com.tom.helper.source.Proposal
@@ -56,6 +57,24 @@ fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Task>?) {
         }
     }
 }
+
+
+//fragment_profile in use
+@BindingAdapter("addTasksOfMineForProfile")
+fun bindProfileFragment(recyclerView: RecyclerView, homeItems: List<Task>?) {
+    homeItems?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is ProfileRecyclerAdapter -> submitList(it)
+                else -> {
+                    Log.i("SOMETHNG", "")
+                }
+            }
+        }
+    }
+}
+
+
 
 
 

@@ -6,6 +6,7 @@ import com.tom.helper.MainActivityViewModel
 import com.tom.helper.homefragment.HomeViewModel
 import com.tom.helper.jobdetailfragment.JobDetailViewModel
 import com.tom.helper.postrequest.PostRequestViewModel
+import com.tom.helper.profile.ProfileViewModel
 import com.tom.helper.proposaleditfragment.ProposalEditViewModel
 import com.tom.helper.proposallistfragment.ProposalListViewModel
 import com.tom.helper.rankinglist.RankingListViewModel
@@ -45,6 +46,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(MainActivityViewModel::class.java) ->
                     MainActivityViewModel(repository)
+
+                isAssignableFrom(ProfileViewModel::class.java) ->
+                    ProfileViewModel(repository)
 
 
                 else ->

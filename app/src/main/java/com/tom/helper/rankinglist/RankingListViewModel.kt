@@ -130,7 +130,7 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 
 //    for all tasks of mine
     fun getTasksOfMineResult() {
-//        Log.d("getTasksOfMineResult", "${getTasksOfMineResult()}")
+
         coroutineScope.launch {
             val result = repository.getTasksOfMine()
 
