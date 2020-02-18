@@ -48,7 +48,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_inner1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -56,117 +56,47 @@
 
                     <ImageView
                         android:id="@+id/profile_image"
-                        android:layout_width="129dp"
-                        android:layout_height="129dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+                        android:scaleType="centerCrop"
+                        app:imageUrlRound="@{viewModel.profile.image}"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:imageUrl="@{user.image}"
                         app:srcCompat="@drawable/icons_36px_profile_normal" />
+
 
                     <TextView
                         android:id="@+id/profile_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{user.name}"
+                        android:layout_marginTop="30dp"
+                        android:text="@{viewModel.profile.name}"
                         android:textColor="@color/black"
                         android:textSize="30sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.46"
-                        app:layout_constraintStart_toEndOf="@+id/profile_image"
-                        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
+                        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                        app:layout_constraintStart_toStartOf="@+id/profile_image"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+                        tools:text="Will Lo" />
+
+
 
                     <TextView
-                        android:id="@+id/posts_count"
+                        android:id="@+id/profile_user_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:text="@{viewModel.profile.email}"
                         android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/line2"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/line2" />
-
-                    <TextView
-                        android:id="@+id/posts_count_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Posts"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="@+id/line2"
-                        app:layout_constraintEnd_toEndOf="@+id/posts_count"
-                        app:layout_constraintStart_toStartOf="@+id/posts_count" />
-
-                    <TextView
-                        android:id="@+id/proposals_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="12"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/line3"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/line2"
-                        app:layout_constraintTop_toTopOf="@+id/line3" />
-
-                    <TextView
-                        android:id="@+id/proposal_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Proposals"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="@+id/line3"
-                        app:layout_constraintEnd_toEndOf="@+id/proposals_count"
-                        app:layout_constraintStart_toStartOf="@+id/proposals_count" />
-
-                    <TextView
-                        android:id="@+id/finished_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="23"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/line3"
-                        app:layout_constraintTop_toTopOf="@+id/line3" />
-
-                    <TextView
-                        android:id="@+id/finished_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Finished"
-                        android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="@+id/line3"
-                        app:layout_constraintEnd_toEndOf="@+id/finished_count"
-                        app:layout_constraintStart_toStartOf="@+id/finished_count" />
-
-                    <View
-                        android:id="@+id/line2"
-                        android:layout_width="1dp"
-                        android:layout_height="50dp"
-                        android:background="@color/black"
-                        app:layout_constraintBottom_toBottomOf="@+id/proposal_text"
-                        app:layout_constraintEnd_toStartOf="@+id/proposals_count"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/posts_count"
-                        app:layout_constraintTop_toTopOf="@+id/proposals_count" />
-
-                    <View
-                        android:id="@+id/line3"
-                        android:layout_width="1dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/black"
-                        app:layout_constraintEnd_toStartOf="@+id/finished_count"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/proposals_count"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/profile_username"
+                        app:layout_constraintStart_toStartOf="@+id/profile_username"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_username"
+                        tools:text="hunter@gmail.com" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -240,6 +170,18 @@
 
 
 
-
+<!--<androidx.recyclerview.widget.RecyclerView-->
+<!--android:id="@+id/profile_my_tasks_recycler"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="0dp"-->
+<!--android:layout_marginStart="8dp"-->
+<!--android:layout_marginTop="10dp"-->
+<!--android:layout_marginEnd="8dp"-->
+<!--android:visibility="@{viewModel.shouldExpandThisRecycler == true ? View.VISIBLE :View.GONE }"-->
+<!--app:addTasksOfMineForProfile="@{viewModel.tasks}"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toBottomOf="@id/imageView_clicked_to_open_my_tasks"-->
+<!--tools:listitem="@layout/item_task_of_my_for_profile_page" />-->
 
 

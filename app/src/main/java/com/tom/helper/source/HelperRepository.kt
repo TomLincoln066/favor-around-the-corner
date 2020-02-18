@@ -25,6 +25,8 @@ interface HelperRepository {
 
     suspend fun getProposalsOfMine(task: Task): Result<List<Proposal>>
 
+    suspend fun getUserCurrent():  Result<User>
+
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

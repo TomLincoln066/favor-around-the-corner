@@ -37,12 +37,12 @@ class ProfileFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.profileMyTasksRecycler.layoutManager = LinearLayoutManager(context)
-        binding.profileMyTasksRecycler.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                LinearLayoutManager.VERTICAL
-            )
-        )
+//        binding.profileMyTasksRecycler.addItemDecoration(
+//            DividerItemDecoration(
+//                context,
+//                LinearLayoutManager.VERTICAL
+//            )
+//        )
 
         binding.profileMyTasksRecycler.adapter =
             ProfileRecyclerAdapter(ProfileRecyclerAdapter.OnClickListener {
@@ -69,6 +69,7 @@ class ProfileFragment : Fragment() {
 
 //        viewModel.prepareTaskTest()
         viewModel.getTasksOfMineResult()
+        viewModel.getCurrentUserData()
 
 
 

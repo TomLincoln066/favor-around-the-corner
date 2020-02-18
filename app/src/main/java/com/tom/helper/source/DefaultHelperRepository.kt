@@ -46,6 +46,10 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getProposalsOfMine(task)
     }
 
+    override suspend fun getUserCurrent(): Result<User> {
+        return remoteDataSource.getUserCurrent()
+    }
+
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

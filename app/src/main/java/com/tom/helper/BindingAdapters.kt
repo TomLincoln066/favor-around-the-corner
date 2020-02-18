@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.tom.helper.homefragment.HomeRecyclerAdapter
 import com.tom.helper.profile.ProfileRecyclerAdapter
@@ -107,6 +108,25 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
                 RequestOptions()
                     .placeholder(R.drawable.chess_png)
                     .error(R.drawable.chess_png))
+            .into(imgView)
+    }
+}
+
+
+/**
+ * Uses the Glide library to load an image by URL into an [ImageView],transform(RoundedCorners(300)) for facebook profile image.
+ */
+@BindingAdapter("imageUrlRound")
+fun bindRoundImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = it.toUri().buildUpon().build()
+        GlideApp.with(imgView.context)
+            .load(imgUri)
+            .transform(RoundedCorners(300))
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.icons_36px_profile_normal)
+                    .error(R.drawable.icons_36px_profile_normal))
             .into(imgView)
     }
 }

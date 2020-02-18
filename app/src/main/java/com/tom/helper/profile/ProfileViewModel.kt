@@ -184,6 +184,37 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
 
+
+    //    for all tasks of mine
+    fun getCurrentUserData() {
+
+        coroutineScope.launch {
+            val result = repository.getUserCurrent()
+
+            when (result) {
+                is com.tom.helper.source.Result.Success -> {
+                    _profile.value = result.data
+                }
+
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
 }
 
 

@@ -66,6 +66,40 @@ object HelperRemoteDataSource : HelperDataSource {
     }
 
 
+    override suspend fun getUserCurrent(): Result<User> = suspendCoroutine { continuation ->
+        val users = FirebaseFirestore.getInstance().collection(PATH_Users)
+        val userCurrent = FirebaseAuth.getInstance().currentUser
+
+        val photoUrl = userCurrent?.photoUrl.toString()
+
+        val user = User(userCurrent!!.uid,userCurrent.displayName!!,userCurrent.email!!,0,0L,photoUrl)
+
+        users
+            .document(userCurrent.uid)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+//                    continuation.resume(Result.Success(list))
+//                    user.image = task.result?.data!!["image"].toString()
+                    continuation.resume(Result.Success(user))
+                } else {
+                    task.exception?.let {
+
+                        Log.w(
+                            "",
+                            "[${this::class.simpleName}] Error getting documents. ${it.message}"
+                        )
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+
+    }
+
+
+
 
 
     override suspend fun login(id: String): Result<User> {

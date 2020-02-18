@@ -48,12 +48,12 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.homeRequestRecycler.layoutManager = LinearLayoutManager(context)
-        binding.homeRequestRecycler.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                LinearLayoutManager.VERTICAL
-            )
-        )
+//        binding.homeRequestRecycler.addItemDecoration(
+//            DividerItemDecoration(
+//                context,
+//                LinearLayoutManager.VERTICAL
+//            )
+//        )
 
         binding.homeRequestRecycler.adapter =
             HomeRecyclerAdapter(
