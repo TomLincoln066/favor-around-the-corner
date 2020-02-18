@@ -98,6 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/textView_proposal_request_content_tag"
                     android:textColor="@color/black_3f3a3a"
@@ -141,13 +142,13 @@
                     android:id="@+id/textView_proposal_content_item_tag1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/textView_proposal_content_item_tag1"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
                     app:layout_constraintStart_toEndOf="@+id/imageView_icon_how_to_do_it"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content"
-                    tools:layout_editor_absoluteX="36dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content" />
 
 
                 <ImageView
@@ -231,13 +232,13 @@
                     android:id="@+id/textView_proposal_price_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_price"
                     android:text="開價 >"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item4"
-                    tools:layout_editor_absoluteX="48dp" />
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_price"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_content_detail_item4" />
 
 
                 <ImageView

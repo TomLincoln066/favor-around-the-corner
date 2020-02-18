@@ -108,6 +108,13 @@
     <action
         android:id="@+id/action_global_proProgressFragment"
         app:destination="@id/proProgressFragment" />
+    <fragment
+        android:id="@+id/proposalProgressEditFragment"
+        android:name="com.tom.helper.proprogresseditfragment.ProposalProgressEditFragment"
+        android:label="ProposalProgressEditFragment" />
+    <action
+        android:id="@+id/action_global_proposalProgressEditFragment"
+        app:destination="@id/proposalProgressEditFragment" />
 
 
 </navigation>
