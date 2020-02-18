@@ -19,6 +19,7 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
     ViewModel() {
 
 
+
     private val _proposals = MutableLiveData<List<Proposal>>()
 
     val proposals: LiveData<List<Proposal>>

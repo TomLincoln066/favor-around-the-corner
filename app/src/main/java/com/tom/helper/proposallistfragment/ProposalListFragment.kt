@@ -34,12 +34,12 @@ class ProposalListFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.proposalListRecycler.layoutManager = LinearLayoutManager(context)
-        binding.proposalListRecycler.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                LinearLayoutManager.VERTICAL
-            )
-        )
+//        binding.proposalListRecycler.addItemDecoration(
+//            DividerItemDecoration(
+//                context,
+//                LinearLayoutManager.VERTICAL
+//            )
+//        )
 
         binding.proposalListRecycler.adapter =
             ProposalListRecyclerAdapter(ProposalListRecyclerAdapter.OnClickListener {
