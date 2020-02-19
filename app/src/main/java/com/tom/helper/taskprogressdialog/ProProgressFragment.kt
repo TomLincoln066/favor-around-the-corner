@@ -23,9 +23,9 @@ import com.tom.helper.source.Task
  */
 class ProProgressFragment : Fragment() {
 
-//    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)}
+    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)}
 
-    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory() }
+//    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory() }
 
 //    getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)
 

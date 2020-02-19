@@ -54,6 +54,10 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getProposalProgressItem(proposal)
     }
 
+    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> {
+        return remoteDataSource.editOneProposalProgressItemToFinished(proposal,proposalProgressContent)
+    }
+
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

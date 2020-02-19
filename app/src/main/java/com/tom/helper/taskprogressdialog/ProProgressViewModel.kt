@@ -13,15 +13,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ProProgressViewModel(private val repository: HelperRepository) : ViewModel() {
+class ProProgressViewModel(private val repository: HelperRepository, private val proposal: Proposal) : ViewModel() {
 
 
     private val _proposalProgressContents = MutableLiveData<List<ProposalProgressContent>>()
 
     val proposalProgressContents: LiveData<List<ProposalProgressContent>>
         get() = _proposalProgressContents
-
-
 
 
     //for mock progress item
@@ -45,6 +43,11 @@ class ProProgressViewModel(private val repository: HelperRepository) : ViewModel
     val proposals: LiveData<List<Proposal>>
         get() = _proposals
 
+
+    //save the proposal into proposalLive in the first place
+    val proposalLive = MutableLiveData<Proposal>().apply {
+        value = proposal
+    }
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
@@ -117,6 +120,32 @@ class ProProgressViewModel(private val repository: HelperRepository) : ViewModel
         }
 
     }
+
+
+    fun clickToEditOneProposalProgressItemStatusFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent){
+
+        coroutineScope.launch {
+            val result = repository.editOneProposalProgressItemToFinished(proposal,proposalProgressContent)
+
+            when (result) {
+                is Result.Success -> {
+                    getProposalProgressItem(proposal)
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+
+    }
+
 
 
 }

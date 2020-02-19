@@ -6,6 +6,7 @@ import com.tom.helper.proprogresseditfragment.ProposalProgressEditViewModel
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.Task
+import com.tom.helper.taskprogressdialog.ProProgressViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ProposalProgressEditViewModelFactory(
@@ -20,6 +21,12 @@ class ProposalProgressEditViewModelFactory(
         if (modelClass.isAssignableFrom(ProposalProgressEditViewModel::class.java)) {
             return ProposalProgressEditViewModel(helperRepository,proposal ) as T
         }
+
+
+        if (modelClass.isAssignableFrom(ProProgressViewModel::class.java)) {
+            return ProProgressViewModel(helperRepository,proposal ) as T
+        }
+
 
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

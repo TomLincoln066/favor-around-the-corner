@@ -32,6 +32,7 @@ class ProProgressRecyclerAdapter(
             binding.viewModel = viewModel
 
             binding.proposalProgressContent = proposalProgressContent
+
             //press buttonMissionDetail and do what HomeFragment about to do, pls check HomeFragment.kt for the code following.
             /**
              *        binding.homeRequestRecycler.adapter = HomeRecyclerAdapter(HomeRecyclerAdapter.OnClickListener {

@@ -17,6 +17,8 @@
             name="proposal"
             type="com.tom.helper.source.Proposal" />
 
+        <import type="android.view.View" />
+
 
     </data>
 
@@ -27,16 +29,36 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+
+        <TextView
+            android:id="@+id/textView_person_sign_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{proposalProgressContent.user.name}"
+            android:textColor="@color/red_d0021b"
+            android:textSize="20dp"
+            android:visibility="@{proposalProgressContent.status==0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Will Lo" />
+
         <Button
             android:id="@+id/button_item_proposal_progress_complete"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:background="@drawable/button_style"
-            android:text="完成"
+            android:text="完成簽名"
+            android:visibility="@{proposalProgressContent.status==-1 ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(viewModel.proposalLive,proposalProgressContent)}"
             android:textColor="@color/linked_blue_light"
             app:layout_constraintBottom_toBottomOf="@+id/text_item_proposal_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress" />
+
+
+
 
         <TextView
             android:id="@+id/text_item_proposal_progress"
@@ -74,3 +96,6 @@
 
 
 </layout>
+
+
+<!--    android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(proposal,proposalProgressContent)}"-->

@@ -43,6 +43,7 @@ class ProposalListFragment : Fragment() {
 
         binding.proposalListRecycler.adapter =
             ProposalListRecyclerAdapter(ProposalListRecyclerAdapter.OnClickListener {
+                viewModel.clickNavigateToProProgressFragment(it)
                 //            Logger.d("click, it=$it")
                 //            viewModel.delete(it)
             },viewModel)

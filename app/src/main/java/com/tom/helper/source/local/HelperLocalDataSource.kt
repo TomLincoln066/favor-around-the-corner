@@ -66,6 +66,10 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 //    override suspend fun publish(article: Article): Result<Boolean> {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

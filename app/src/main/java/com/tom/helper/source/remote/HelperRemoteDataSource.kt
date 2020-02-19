@@ -386,6 +386,33 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
 
+    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS)
+                .document(proposal.id).collection(PATH_PROPOSALS_PROGRESSITEMS).document(proposalProgressContent.id)
+                .update("status", 0)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resume(Result.Success(true))
+
+                    } else {
+                        task.exception?.let {
+
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+
+        }
+
+
+
+
+
+
 
 
 

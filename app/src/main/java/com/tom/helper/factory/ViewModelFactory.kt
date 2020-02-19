@@ -53,8 +53,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)
 
-                isAssignableFrom(ProProgressViewModel::class.java) ->
-                    ProProgressViewModel(repository)
+//                isAssignableFrom(ProProgressViewModel::class.java) ->
+//                    ProProgressViewModel(repository)
 
 
 //                isAssignableFrom(ProposalProgressEditViewModel::class.java) ->

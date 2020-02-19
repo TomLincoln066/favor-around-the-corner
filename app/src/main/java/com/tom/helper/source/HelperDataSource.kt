@@ -29,6 +29,8 @@ interface HelperDataSource {
 
     suspend fun getProposalProgressItem(proposal: Proposal):Result<List<ProposalProgressContent>>
 
+    suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean>
+
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

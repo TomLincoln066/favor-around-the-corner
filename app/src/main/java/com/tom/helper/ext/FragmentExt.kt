@@ -27,10 +27,10 @@ fun Fragment.getVmFactory(proposal: Proposal): ProposalProgressEditViewModelFact
 }
 
 
-fun Fragment.getVmFactory(proposalProgressContent: ProposalProgressContent): ProProgressViewModelFactory {
-    val repository = (requireContext().applicationContext as HelperApplication).repository
-    return ProProgressViewModelFactory(repository,proposalProgressContent)
-}
+//fun Fragment.getVmFactory(proposal: Proposal): ProProgressViewModelFactory {
+//    val repository = (requireContext().applicationContext as HelperApplication).repository
+//    return ProProgressViewModelFactory(repository,proposal)
+//}
 
 
 
