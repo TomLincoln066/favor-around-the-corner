@@ -34,30 +34,31 @@
             android:id="@+id/textView_person_sign_off"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="10dp"
             android:text="@{proposalProgressContent.user.name}"
             android:textColor="@color/red_d0021b"
             android:textSize="20dp"
             android:visibility="@{proposalProgressContent.status==0 ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_item_proposal_progress"
+            app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress"
             tools:text="Will Lo" />
 
         <Button
             android:id="@+id/button_item_proposal_progress_complete"
             android:layout_width="80dp"
             android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/button_style"
-            android:text="完成簽名"
-            android:visibility="@{proposalProgressContent.status==-1 ? View.VISIBLE : View.GONE}"
             android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(viewModel.proposalLive,proposalProgressContent)}"
+            android:text="完成簽名"
             android:textColor="@color/linked_blue_light"
-            app:layout_constraintBottom_toBottomOf="@+id/text_item_proposal_progress"
+            android:visibility="@{proposalProgressContent.status==-1 ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintStart_toEndOf="@id/text_item_proposal_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress" />
-
-
 
 
         <TextView
@@ -65,16 +66,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="25dp"
             android:letterSpacing="0.15"
 
             android:text="@{proposalProgressContent.content}"
 
             android:textColor="@color/black_3f3a3a"
             android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_item_proposal_progress_complete"
             app:layout_constraintStart_toEndOf="@id/imageView_proposal_icon_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -87,9 +86,35 @@
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/baseline_low_priority_black_24"
-            app:layout_constraintBottom_toBottomOf="@+id/text_item_proposal_progress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress" />
+
+        <ImageView
+            android:id="@+id/imageView_proposal_icon_picture"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/outline_add_photo_alternate_black_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView_progress_picture" />
+
+
+        <ImageView
+            android:id="@+id/imageView_progress_picture"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            app:imageUrl="@{proposalProgressContent.image}"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_item_proposal_progress"
+            app:layout_constraintStart_toEndOf="@+id/imageView_proposal_icon_picture"
+            app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_progress"
+            app:srcCompat="@drawable/placeholder_image" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

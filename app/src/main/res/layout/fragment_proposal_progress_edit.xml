@@ -66,7 +66,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageView_preview"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_marginTop="10dp"
@@ -76,21 +76,21 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton_choose_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_search"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_preview"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView_preview" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/imageButton_open_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_search"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
-                    app:layout_constraintTop_toTopOf="@+id/imageButton" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_preview"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton_choose_image"
+                    app:layout_constraintTop_toTopOf="@+id/imageButton_choose_image" />
 
 
                 <Button
@@ -109,7 +109,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView_preview" />
 
                 <TextView
                     android:id="@+id/textView"

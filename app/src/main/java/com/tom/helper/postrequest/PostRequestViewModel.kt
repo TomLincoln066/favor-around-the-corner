@@ -153,10 +153,10 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
             _error.value = "Task Title cannot be empty"
             return
         }
-        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
-            _error.value = "Task Title not complete"
-            return
-        }
+//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
+//            _error.value = "Task Title not complete"
+//            return
+//        }
 
         val db = FirebaseFirestore.getInstance()
 

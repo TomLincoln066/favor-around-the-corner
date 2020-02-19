@@ -11,6 +11,9 @@
             type="com.tom.helper.taskprogressdialog.ProProgressViewModel" />
 
 
+        <variable
+            name="proposalProgressContent"
+            type="com.tom.helper.source.ProposalProgressContent" />
 
 
     </data>
@@ -83,7 +86,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="247dp"
                     android:layout_marginTop="50dp"
+
                     android:src="@android:drawable/ic_menu_myplaces"
+
+                    app:imageUrl="@{proposalProgressContent.image}"
+
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.538"
                     app:layout_constraintStart_toStartOf="parent"
@@ -91,15 +99,15 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/progress_item_recyclerView"
-                    android:padding="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="30dp"
+                    android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
                     app:proProgressItems="@{viewModel.proposalProgressContents}"
-                    tools:listitem="@layout/item_proposal_progress"/>
+                    tools:listitem="@layout/item_proposal_progress" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
