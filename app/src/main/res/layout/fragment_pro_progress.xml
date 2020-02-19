@@ -6,6 +6,12 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.tom.helper.taskprogressdialog.ProProgressViewModel" />
+
+
+
 
     </data>
 
@@ -81,10 +87,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.538"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                    app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/progress_item_recyclerView"
                     android:padding="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="360dp"
@@ -92,6 +98,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    app:proProgressItems="@{viewModel.proposalProgressContents}"
                     tools:listitem="@layout/item_proposal_progress"/>
 
 

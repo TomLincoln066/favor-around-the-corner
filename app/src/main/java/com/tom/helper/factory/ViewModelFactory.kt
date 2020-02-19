@@ -11,6 +11,7 @@ import com.tom.helper.proposaleditfragment.ProposalEditViewModel
 import com.tom.helper.proposallistfragment.ProposalListViewModel
 import com.tom.helper.rankinglist.RankingListViewModel
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.taskprogressdialog.ProProgressViewModel
 
 //* Factory for all ViewModels.
 //*/
@@ -49,6 +50,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)
+
+                isAssignableFrom(ProProgressViewModel::class.java) ->
+                    ProProgressViewModel(repository)
 
 
                 else ->

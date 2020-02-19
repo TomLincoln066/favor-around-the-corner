@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
+import com.tom.helper.source.ProposalProgressContent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -13,34 +14,34 @@ import kotlinx.coroutines.Job
 class ProProgressViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
+    private val _proposalProgressContents = MutableLiveData<List<ProposalProgressContent>>()
+
+    val proposalProgressContents: LiveData<List<ProposalProgressContent>>
+        get() = _proposalProgressContents
+
+
+
+
+    //for mock progress item
+    fun prepareMockProgress() {
+
+        _proposalProgressContents.value = listOf(
+            ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
+            ,
+            ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
+            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
+            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
+            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
+
+        )
+
+    }
+
+
     private val _proposals = MutableLiveData<List<Proposal>>()
 
     val proposals: LiveData<List<Proposal>>
         get() = _proposals
-
-
-//    fun getTasksResult() {
-//
-//        coroutineScope.launch {
-//            val result = repository.getTasks()
-//
-//            when (result) {
-//                is Result.Success -> {
-//                    _tasks.value = result.data
-//                }
-//
-//                is Result.Error -> {
-//                    result.exception
-//                }
-//
-//                is Result.Fail -> {
-//                    _error.value = result.error
-//                }
-//            }
-//
-//        }
-//
-//    }
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -87,8 +88,6 @@ class ProProgressViewModel(private val repository: HelperRepository) : ViewModel
     fun convertLongToString(value: Long): String {
         return value.toString()
     }
-
-
 
 
 }

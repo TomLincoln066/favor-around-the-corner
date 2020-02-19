@@ -12,8 +12,10 @@ import com.tom.helper.profile.ProfileRecyclerAdapter
 import com.tom.helper.proposallistfragment.ProposalListRecyclerAdapter
 import com.tom.helper.rankinglist.RankingRecyclerAdapter
 import com.tom.helper.source.Proposal
+import com.tom.helper.source.ProposalProgressContent
 import com.tom.helper.source.Rank
 import com.tom.helper.source.Task
+import com.tom.helper.taskprogressdialog.ProProgressRecyclerAdapter
 
 //fragment_home.xml in use
 @BindingAdapter("tasks")
@@ -128,5 +130,18 @@ fun bindRoundImage(imgView: ImageView, imgUrl: String?) {
                     .placeholder(R.drawable.icons_36px_profile_normal)
                     .error(R.drawable.icons_36px_profile_normal))
             .into(imgView)
+    }
+}
+
+
+
+@BindingAdapter("proProgressItems")
+fun bindProProgressRecyclerView(recyclerView: RecyclerView, homeItems: List<ProposalProgressContent>?) {
+    homeItems?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is ProProgressRecyclerAdapter -> submitList(it)
+            }
+        }
     }
 }
