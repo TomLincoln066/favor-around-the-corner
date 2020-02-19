@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.ProposalProgressContent
+import com.tom.helper.source.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class ProProgressViewModel(private val repository: HelperRepository) : ViewModel() {
 
@@ -87,6 +89,33 @@ class ProProgressViewModel(private val repository: HelperRepository) : ViewModel
 
     fun convertLongToString(value: Long): String {
         return value.toString()
+    }
+
+
+
+
+
+    fun getProposalProgressItem(proposal: Proposal) {
+
+        coroutineScope.launch {
+            val result = repository.getProposalProgressItem(proposal)
+
+            when (result) {
+                is Result.Success -> {
+                    _proposalProgressContents.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
     }
 
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProProgressBinding
 import com.tom.helper.ext.getVmFactory
+
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.ProposalProgressContent
 import com.tom.helper.source.Task
@@ -22,10 +23,11 @@ import com.tom.helper.source.Task
  */
 class ProProgressFragment : Fragment() {
 
-//    private val viewModel by viewModels<ProposalEditViewModel> { getVmFactory(ProposalEditFragmentArgs.fromBundle(arguments!!).task) }
+//    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)}
 
     private val viewModel by viewModels<ProProgressViewModel> { getVmFactory() }
 
+//    getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)
 
     private lateinit var proposalProgressContent: ProposalProgressContent
 
@@ -58,11 +60,19 @@ class ProProgressFragment : Fragment() {
             findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(proposal))
 
         }
+
+        binding.buttonNavBackProposalList.setOnClickListener {
+
+            findNavController().navigateUp()
+
+        }
+
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_pro_progress, container, false)
 
 
 //                viewModel.prepareMockProgress()
+        viewModel.getProposalProgressItem(proposal)
 
 
         return binding.root

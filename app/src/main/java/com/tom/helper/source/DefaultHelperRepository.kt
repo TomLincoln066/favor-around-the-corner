@@ -50,6 +50,10 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getUserCurrent()
     }
 
+    override suspend fun getProposalProgressItem(proposal: Proposal): Result<List<ProposalProgressContent>> {
+        return remoteDataSource.getProposalProgressItem(proposal)
+    }
+
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

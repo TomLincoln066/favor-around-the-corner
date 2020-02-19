@@ -27,6 +27,8 @@ interface HelperRepository {
 
     suspend fun getUserCurrent():  Result<User>
 
+    suspend fun getProposalProgressItem(proposal: Proposal):Result<List<ProposalProgressContent>>
+
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

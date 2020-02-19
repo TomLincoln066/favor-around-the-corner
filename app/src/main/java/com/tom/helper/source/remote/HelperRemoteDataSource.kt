@@ -22,6 +22,8 @@ object HelperRemoteDataSource : HelperDataSource {
 
     private const val PATH_Users = "users"
 
+    private const val PATH_PROPOSALS_PROGRESSITEMS = "progressItems"
+
 
     override suspend fun checkUser(): Result<Boolean> = suspendCoroutine { continuation ->
         val users = FirebaseFirestore.getInstance().collection(PATH_Users)
@@ -342,6 +344,48 @@ object HelperRemoteDataSource : HelperDataSource {
                 }
 
         }
+
+
+
+
+    override suspend fun getProposalProgressItem(proposal: Proposal): Result<List<ProposalProgressContent>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS).document(proposal.id).collection(
+                    PATH_PROPOSALS_PROGRESSITEMS)
+
+                .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
+
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<ProposalProgressContent>()
+                        for (document in task.result!!) {
+//                        Logger.d(document.id + " => " + document.data)
+
+                            val proposalProgressContent = document.toObject(ProposalProgressContent::class.java)
+                            list.add(proposalProgressContent)
+                            Log.d("Will", "get proposals form firebase")
+                        }
+
+                        continuation.resume(Result.Success(list))
+
+
+                    } else {
+                        task.exception?.let {
+
+                            //                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+
+        }
+
+
+
 
 
 

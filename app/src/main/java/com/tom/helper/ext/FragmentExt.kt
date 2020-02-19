@@ -2,12 +2,10 @@ package com.tom.helper.ext
 
 import androidx.fragment.app.Fragment
 import com.tom.helper.HelperApplication
+import com.tom.helper.factory.*
 
-import com.tom.helper.factory.ProposalListViewModelFactory
-import com.tom.helper.factory.ProposalProgressEditViewModelFactory
-import com.tom.helper.factory.TaskViewModelFactory
-import com.tom.helper.factory.ViewModelFactory
 import com.tom.helper.source.Proposal
+import com.tom.helper.source.ProposalProgressContent
 import com.tom.helper.source.Task
 
 //* Extension functions for Fragment.
@@ -27,6 +25,15 @@ fun Fragment.getVmFactory(proposal: Proposal): ProposalProgressEditViewModelFact
     val repository = (requireContext().applicationContext as HelperApplication).repository
     return ProposalProgressEditViewModelFactory(repository,proposal)
 }
+
+
+fun Fragment.getVmFactory(proposalProgressContent: ProposalProgressContent): ProProgressViewModelFactory {
+    val repository = (requireContext().applicationContext as HelperApplication).repository
+    return ProProgressViewModelFactory(repository,proposalProgressContent)
+}
+
+
+
 
 
 //fun Fragment.getVmFactory(task: Task): TaskViewModelFactory {

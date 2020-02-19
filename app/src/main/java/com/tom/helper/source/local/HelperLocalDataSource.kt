@@ -1,11 +1,7 @@
 package com.tom.helper.source.local
 
 import android.content.Context
-import com.tom.helper.source.HelperDataSource
-import com.tom.helper.source.Proposal
-import com.tom.helper.source.Result
-import com.tom.helper.source.Task
-import com.tom.helper.source.User
+import com.tom.helper.source.*
 
 class HelperLocalDataSource(val context: Context) : HelperDataSource {
 
@@ -63,6 +59,10 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
     }
 
     override suspend fun getUserCurrent(): Result<User> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun getProposalProgressItem(proposal: Proposal): Result<List<ProposalProgressContent>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
