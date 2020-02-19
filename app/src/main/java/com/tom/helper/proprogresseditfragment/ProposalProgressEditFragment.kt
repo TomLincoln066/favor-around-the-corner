@@ -6,11 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProposalEditBinding
 import com.tom.helper.databinding.FragmentProposalProgressEditBinding
+import com.tom.helper.ext.getVmFactory
 import com.tom.helper.source.Proposal
+import com.tom.helper.source.ProposalProgressContent
 
 /**
  * A simple [Fragment] subclass.
@@ -18,8 +23,12 @@ import com.tom.helper.source.Proposal
 class ProposalProgressEditFragment : Fragment() {
 
 
-//    private val viewModel by viewModels<JobDetailViewModel> { getVmFactory() }
+    private val viewModel by viewModels<ProposalProgressEditViewModel> { getVmFactory(ProposalProgressEditFragmentArgs.fromBundle(arguments!!).proposal) }
 
+//    getVmFactory(ProposalProgressEditFragmentArgs.fromBundle(arguments!!).task)
+//    private val viewModel by viewModels<ProposalProgressEditViewModel> { getVmFactory() }
+
+    private lateinit var proposalProgressContent: ProposalProgressContent
     private lateinit var proposal: Proposal
 
     override fun onCreateView(
@@ -28,14 +37,21 @@ class ProposalProgressEditFragment : Fragment() {
     ): View? {
 
 
-//        proposal = requireArguments().get("proposal") as Proposal
+        proposal = requireArguments().get("proposal") as Proposal
 
         val binding = FragmentProposalProgressEditBinding.inflate(inflater,container,false)
 
-
         binding.lifecycleOwner = this
-//        binding.viewModel = viewModel
+        binding.viewModel = viewModel
 //        binding.proposal = proposal
+
+
+        viewModel.shouldNavigateBackToProposalProgressDisplayFragment.observe(this, Observer {
+            if (it) {
+                findNavController().navigate(ProposalProgressEditFragmentDirections.actionGlobalProProgressFragment(proposal))
+            }
+//            (activity as MainActivity).navigationView.selectedItemId = R.id.fragment_home
+        })
 
 
 

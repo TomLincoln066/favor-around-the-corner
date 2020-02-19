@@ -15,6 +15,7 @@ import com.tom.helper.databinding.FragmentProProgressBinding
 import com.tom.helper.ext.getVmFactory
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.ProposalProgressContent
+import com.tom.helper.source.Task
 
 /**
  * A simple [Fragment] subclass.
@@ -54,7 +55,7 @@ class ProProgressFragment : Fragment() {
 
         binding.buttonEditProgressItem.setOnClickListener {
 
-            findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment())
+            findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(proposal))
 
         }
         // Inflate the layout for this fragment

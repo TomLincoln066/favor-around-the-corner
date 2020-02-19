@@ -111,7 +111,11 @@
     <fragment
         android:id="@+id/proposalProgressEditFragment"
         android:name="com.tom.helper.proprogresseditfragment.ProposalProgressEditFragment"
-        android:label="ProposalProgressEditFragment" />
+        android:label="ProposalProgressEditFragment" >
+        <argument
+            android:name="proposal"
+            app:argType="com.tom.helper.source.Proposal" />
+    </fragment>
     <action
         android:id="@+id/action_global_proposalProgressEditFragment"
         app:destination="@id/proposalProgressEditFragment" />
