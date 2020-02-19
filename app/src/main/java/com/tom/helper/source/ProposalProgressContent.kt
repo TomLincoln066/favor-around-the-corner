@@ -15,6 +15,7 @@ data class ProposalProgressContent(
     val user: User? = null,
     val userIDMakeTheItem: User? = null,
     val userIDTakeTheCase: User? = null,
-    val proposalID: String = ""
+    val proposalID: String = "",
+    val image:String = ""
 
 ) : Parcelable

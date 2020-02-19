@@ -34,14 +34,15 @@
                     android:id="@+id/editText_proposal_progress_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:inputType="textMultiLine"
-                    android:gravity="start|top"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:layout_marginTop="10dp"
                     android:ems="10"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -61,10 +62,11 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
+                    android:layout_marginTop="10dp"
                     android:src="@android:drawable/ic_menu_myplaces"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_progress_item" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
@@ -98,8 +100,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="更新進度圖片"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_proposal_progress_item" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

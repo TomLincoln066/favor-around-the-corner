@@ -29,13 +29,6 @@
                 android:orientation="vertical">
 
 
-
-
-
-
-
-
-
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
@@ -47,24 +40,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="完成勾選"
-                    android:textColor="@color/black"
-                    android:textSize="25dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
 
                 <Button
                     android:id="@+id/button_edit_progress_item"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginBottom="50dp"
                     android:background="@drawable/bg_round_button"
                     android:text="編輯進度事項"
@@ -73,11 +54,27 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/button_nav_back_proposal_list" />
+
+
+                <Button
+                    android:id="@+id/button_nav_back_proposal_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/bg_round_button"
+                    android:text="回提案列表"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/button_edit_progress_item"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageView" />
+
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="369dp"
+                    android:layout_width="match_parent"
                     android:layout_height="247dp"
                     android:layout_marginTop="50dp"
                     android:src="@android:drawable/ic_menu_myplaces"
@@ -88,12 +85,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="393dp"
-                    android:layout_height="361dp"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
                     android:layout_marginTop="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    tools:listitem="@layout/item_proposal_progress"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
