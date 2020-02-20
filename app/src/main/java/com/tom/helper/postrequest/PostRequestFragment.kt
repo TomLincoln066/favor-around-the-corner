@@ -1,20 +1,34 @@
 package com.tom.helper.postrequest
 
 
+import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.Continuation
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -26,14 +40,27 @@ import kotlinx.android.synthetic.main.item_request.*
 import java.util.*
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.google.protobuf.compiler.PluginProtos
+import com.tom.helper.HelperApplication
 import com.tom.helper.source.Task
+import kotlinx.android.synthetic.main.fragment_pro_progress.*
 import java.io.IOException
+import java.text.SimpleDateFormat
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class PostRequestFragment : Fragment() {
+
+
+    //  photo
+
+    private val MY_PERMISSIONS_CAMERA =20
+    private val TAKE_PHOTO_REQUEST =30
+
+
+    lateinit var currentPhotoPath: String
 
 
     //  storage
@@ -76,6 +103,10 @@ class PostRequestFragment : Fragment() {
 
         binding.btnChooseImage.setOnClickListener {
             launchGallery()
+        }
+
+        binding.btnCamera.setOnClickListener {
+            loadCamera()
         }
 //        binding.btnUploadImage.setOnClickListener {
 //            uploadImage()
@@ -136,6 +167,48 @@ class PostRequestFragment : Fragment() {
 //
 //    }
 
+    //photo
+
+
+    private fun loadCamera() {
+        val loadCameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (ContextCompat.checkSelfPermission(
+                HelperApplication.instance,
+                Manifest.permission.CAMERA
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    (activity as MainActivity) ,
+                    Manifest.permission.CAMERA
+                )
+            ) {
+                AlertDialog.Builder(context!!)
+                    .setMessage("需要開啟相機權限")
+                    .setPositiveButton("前往設定") { _, _ ->
+                        requestPermissions(
+                            arrayOf(
+                                Manifest.permission.CAMERA
+                            ),
+                            MY_PERMISSIONS_CAMERA
+                        )
+                    }
+                    .setNegativeButton("NO") { _, _ -> }
+                    .show()
+            } else {
+                requestPermissions(
+                    arrayOf(
+                        Manifest.permission.CAMERA
+                    ),
+                    MY_PERMISSIONS_CAMERA
+                )
+            }
+        } else {
+            startActivityForResult(loadCameraIntent, TAKE_PHOTO_REQUEST)
+        }
+    }
+
+
 
     //storage choose and upload pictures
 
@@ -168,6 +241,50 @@ class PostRequestFragment : Fragment() {
             }
         }
 
+
+
+        //photo
+
+        if (requestCode == TAKE_PHOTO_REQUEST && resultCode == Activity.RESULT_OK) {
+            Log.d("Photo", "requestCode == TAKE_PHOTO_REQUEST")
+            val pic: Bitmap = data!!.extras?.get("data") as Bitmap
+            val uri = Uri.parse(
+                MediaStore.Images.Media.insertImage(
+                    context!!.contentResolver,
+                    pic,
+                    null,
+                    null
+                )
+            )
+//            val newBitmap = uri.getBitmap(100, 100)
+//            val newUri = Uri.parse(
+//                MediaStore.Images.Media.insertImage(
+//                    context!!.contentResolver,
+//                    newBitmap,
+//                    "${System.currentTimeMillis()}",
+//                    null
+//                )
+//            )
+//            val uri = Uri.fromFile(newSdcardTempFile)
+//            binding.imageUpdate.setImageBitmap(pic)
+            viewModel.taskPictureUri1.value = uri
+            Glide.with(this).load(uri)
+                .apply(RequestOptions().centerCrop())
+                .into(image_preview)
+        }
+
+
+
+
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
 
@@ -216,6 +333,18 @@ class PostRequestFragment : Fragment() {
 //            Toast.makeText(context, "Please Upload an Image", Toast.LENGTH_SHORT).show()
 //        }
 //    }
+
+
+    //photo
+
+
+
+
+
+
+
+
+
 
 
 }
