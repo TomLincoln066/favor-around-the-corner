@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.HelperRepository
+import com.tom.helper.source.Proposal
 import com.tom.helper.source.Task
 import com.tom.helper.source.User
 import kotlinx.coroutines.CoroutineScope
@@ -18,11 +19,10 @@ import java.text.SimpleDateFormat
 class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
-    private  val _profile = MutableLiveData<User>()
+    private val _profile = MutableLiveData<User>()
 
     val profile: LiveData<User>
-        get()=_profile
-
+        get() = _profile
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -162,10 +162,30 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
 
         document.update("status", 1)
 
+
+        //from function getTasksOfMineResult()
+        coroutineScope.launch {
+            val result = repository.getProposalsOfStatusEqualToZero(task)
+
+            when (result) {
+                is com.tom.helper.source.Result.Success -> {
+//                    _tasks.value = result.data
+                }
+
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
         getTasksOfMineResult()
 
     }
-
 
 
     // to handle whether the recycler expand or not, see fragment_profile.xml
@@ -174,15 +194,13 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-    fun clickExpandThisRecycler(){
+    fun clickExpandThisRecycler() {
         //if shouldExpandThisRecycler is true, function sets it false, Vice Versa.
-        shouldExpandThisRecycler.value?.let{
+        shouldExpandThisRecycler.value?.let {
             shouldExpandThisRecycler.value = !it
         }
 
     }
-
-
 
 
     //    for all tasks of mine
@@ -208,11 +226,6 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
     }
-
-
-
-
-
 
 
 }

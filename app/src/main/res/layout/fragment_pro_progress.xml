@@ -70,7 +70,7 @@
                     android:id="@+id/button_nav_back_proposal_list"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="100dp"
                     android:background="@drawable/bg_round_button"
                     android:text="回提案列表"
                     android:textColor="@color/white"
@@ -78,24 +78,9 @@
                     app:layout_constraintBottom_toTopOf="@+id/button_edit_progress_item"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@id/progress_item_recyclerView" />
 
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="247dp"
-                    android:layout_marginTop="50dp"
-
-                    android:src="@android:drawable/ic_menu_myplaces"
-
-                    app:imageUrl="@{proposalProgressContent.image}"
-
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.538"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/progress_item_recyclerView"
@@ -118,3 +103,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
+
+
+
+<!--<ImageView-->
+<!--android:id="@+id/imageView"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="247dp"-->
+<!--android:layout_marginTop="50dp"-->
+
+<!--android:src="@android:drawable/ic_menu_myplaces"-->
+
+<!--app:imageUrl="@{proposalProgressContent.image}"-->
+
+
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintHorizontal_bias="0.538"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />-->

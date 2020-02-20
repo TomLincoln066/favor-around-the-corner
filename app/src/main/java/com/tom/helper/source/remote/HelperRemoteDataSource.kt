@@ -20,19 +20,20 @@ object HelperRemoteDataSource : HelperDataSource {
 
     private const val PATH_PROPOSALS = "proposal"
 
-    private const val PATH_Users = "users"
+    private const val PATH_USERS = "users"
 
     private const val PATH_PROPOSALS_PROGRESSITEMS = "progressItems"
 
 
     override suspend fun checkUser(): Result<Boolean> = suspendCoroutine { continuation ->
-        val users = FirebaseFirestore.getInstance().collection(PATH_Users)
+        val users = FirebaseFirestore.getInstance().collection(PATH_USERS)
         val userCurrent = FirebaseAuth.getInstance().currentUser
         val document = users.document(userCurrent!!.uid)
 
         val photoUrl = userCurrent.photoUrl.toString()
 
-        val user = User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
+        val user =
+            User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
 
 
 
@@ -69,18 +70,17 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
     override suspend fun getUserCurrent(): Result<User> = suspendCoroutine { continuation ->
-        val users = FirebaseFirestore.getInstance().collection(PATH_Users)
+        val users = FirebaseFirestore.getInstance().collection(PATH_USERS)
         val userCurrent = FirebaseAuth.getInstance().currentUser
-
         val photoUrl = userCurrent?.photoUrl.toString()
 
-        val user = User(userCurrent!!.uid,userCurrent.displayName!!,userCurrent.email!!,0,0L,photoUrl)
 
         users
-            .document(userCurrent.uid)
+            .document(userCurrent!!.uid)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val user = task.result?.toObject(User::class.java)!!
 //                    continuation.resume(Result.Success(list))
 //                    user.image = task.result?.data!!["image"].toString()
                     continuation.resume(Result.Success(user))
@@ -99,9 +99,6 @@ object HelperRemoteDataSource : HelperDataSource {
             }
 
     }
-
-
-
 
 
     override suspend fun login(id: String): Result<User> {
@@ -256,7 +253,10 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
-    override suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean> =
+    override suspend fun editOneProposalToUnaccepted(
+        task: Task,
+        proposal: Proposal
+    ): Result<Boolean> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
                 .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
@@ -286,7 +286,7 @@ object HelperRemoteDataSource : HelperDataSource {
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-            .whereEqualTo("userId",userCurrent?.uid )
+            .whereEqualTo("userId", userCurrent?.uid)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -312,11 +312,11 @@ object HelperRemoteDataSource : HelperDataSource {
     }
 
 
-
     override suspend fun getProposalsOfMine(task: Task): Result<List<Proposal>> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
                 .collection(PATH_TASKS).document().collection(PATH_PROPOSALS)
+
 
                 .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
 //                .whereEqualTo("status", 0)
@@ -346,13 +346,13 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
-
-
     override suspend fun getProposalProgressItem(proposal: Proposal): Result<List<ProposalProgressContent>> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
-                .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS).document(proposal.id).collection(
-                    PATH_PROPOSALS_PROGRESSITEMS)
+                .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS)
+                .document(proposal.id).collection(
+                    PATH_PROPOSALS_PROGRESSITEMS
+                )
 
                 .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
 
@@ -363,7 +363,8 @@ object HelperRemoteDataSource : HelperDataSource {
                         for (document in task.result!!) {
 //                        Logger.d(document.id + " => " + document.data)
 
-                            val proposalProgressContent = document.toObject(ProposalProgressContent::class.java)
+                            val proposalProgressContent =
+                                document.toObject(ProposalProgressContent::class.java)
                             list.add(proposalProgressContent)
                             Log.d("Will", "get proposals form firebase")
                         }
@@ -385,12 +386,15 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
-
-    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> =
+    override suspend fun editOneProposalProgressItemToFinished(
+        proposal: Proposal,
+        proposalProgressContent: ProposalProgressContent
+    ): Result<Boolean> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
                 .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS)
-                .document(proposal.id).collection(PATH_PROPOSALS_PROGRESSITEMS).document(proposalProgressContent.id)
+                .document(proposal.id).collection(PATH_PROPOSALS_PROGRESSITEMS)
+                .document(proposalProgressContent.id)
                 .update("status", 0)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -409,14 +413,62 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
+    // When Task owner finish the task, this function will get the earning of the user who post the accepted proposal, and add the task's price to the earning.
+    override suspend fun getProposalsOfStatusEqualToZero(task: Task): Result<List<Proposal>> =
+        suspendCoroutine { continuation ->
+
+            Log.d("getProposalsOfStatus", "Success")
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(task.id).collection(PATH_PROPOSALS)
+                .whereEqualTo("status", 0)
 
 
+                .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+//                .whereEqualTo("status", 0)
+                .get()
+                .addOnCompleteListener { taskA ->
+                    if (taskA.isSuccessful) {
+                        val list = mutableListOf<Proposal>()
+                        for (document in taskA.result!!) {
+//                        Logger.d(document.id + " => " + document.data)
+
+                            val proposal = document.toObject(Proposal::class.java)
+                            Log.d("addOnCompleteListener", "Success")
+
+                            FirebaseFirestore.getInstance()
+                                .collection(PATH_USERS).document(proposal.userID).get()
+                                .addOnSuccessListener {
+
+                                    val newEarning =
+                                        it.data!!["earning"].toString().toLong() + task.price
+                                    Log.d("newEarning", "Success")
+
+                                    FirebaseFirestore.getInstance()
+                                        .collection(PATH_USERS).document(proposal.userID)
+                                        .update("earning", newEarning).addOnSuccessListener {
+                                            Log.d("addValue", "Success")
+                                        }
 
 
+                                }
 
 
+                            list.add(proposal)
+                            Log.d("Will", "get proposals form firebase")
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        taskA.exception?.let {
 
+                            //                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
 
+        }
 
 
 }

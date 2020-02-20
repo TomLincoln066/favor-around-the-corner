@@ -63,10 +63,6 @@ class ProfileFragment : Fragment() {
 
 
 
-
-
-
-
 //        viewModel.prepareTaskTest()
         viewModel.getTasksOfMineResult()
         viewModel.getCurrentUserData()
@@ -92,7 +88,7 @@ class ProfileFragment : Fragment() {
 
 
         //handle changing the title while selecting RankingListFragment
-        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROFILE)
+//        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROFILE)
 
 
 

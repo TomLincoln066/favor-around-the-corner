@@ -25,34 +25,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/drawer"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/icons_24px_drawer"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintStart_toStartOf="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
 
 
         <ImageView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
             android:src="@drawable/wish"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/drawer"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/drawer" />
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"/>
 
         <TextView
             android:id="@+id/textView_title_changeable"
@@ -99,5 +84,17 @@
 
 </layout>
 
-
+<!--<ImageView-->
+<!--android:id="@+id/drawer"-->
+<!--android:layout_width="24dp"-->
+<!--android:layout_height="24dp"-->
+<!--android:layout_centerInParent="true"-->
+<!--android:layout_gravity="center"-->
+<!--android:layout_marginStart="16dp"-->
+<!--android:layout_marginTop="16dp"-->
+<!--android:layout_marginBottom="16dp"-->
+<!--android:src="@drawable/icons_24px_drawer"-->
+<!--app:layout_constraintBottom_toBottomOf="@+id/toolbar"-->
+<!--app:layout_constraintStart_toStartOf="@+id/toolbar"-->
+<!--app:layout_constraintTop_toTopOf="@+id/toolbar" />-->
 
