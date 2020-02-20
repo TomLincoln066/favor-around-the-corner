@@ -99,7 +99,7 @@
                     android:layout_height="40dp"
                     android:layout_marginBottom="50dp"
                     android:background="@drawable/bg_round_button"
-                    android:text="確任新增"
+                    android:text="確認新增"
 
 
                     android:onClick="@{()->viewModel.submitProposalProgressItemContent()}"
