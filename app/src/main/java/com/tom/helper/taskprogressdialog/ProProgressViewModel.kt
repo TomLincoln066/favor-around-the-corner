@@ -4,6 +4,7 @@ import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Proposal
 import com.tom.helper.source.ProposalProgressContent
@@ -48,6 +49,14 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     val proposalLive = MutableLiveData<Proposal>().apply {
         value = proposal
     }
+
+
+    // status: The internal MutableLiveData that stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
@@ -103,8 +112,14 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
         coroutineScope.launch {
             val result = repository.getProposalProgressItem(proposal)
 
+            _status.value = LoadApiStatus.LOADING
+
             when (result) {
                 is Result.Success -> {
+
+
+                    _status.value = LoadApiStatus.DONE
+
                     _proposalProgressContents.value = result.data
                 }
 

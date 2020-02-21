@@ -81,7 +81,6 @@
                     app:layout_constraintTop_toBottomOf="@id/progress_item_recyclerView" />
 
 
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/progress_item_recyclerView"
                     android:layout_width="match_parent"
@@ -94,6 +93,17 @@
                     app:proProgressItems="@{viewModel.proposalProgressContents}"
                     tools:listitem="@layout/item_proposal_progress" />
 
+                <ProgressBar
+                    android:theme="@style/MessageDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setupApiStatus="@{viewModel.status}" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -105,19 +115,18 @@
 </layout>
 
 
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="247dp"-->
+    <!--android:layout_marginTop="50dp"-->
 
-<!--<ImageView-->
-<!--android:id="@+id/imageView"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="247dp"-->
-<!--android:layout_marginTop="50dp"-->
+    <!--android:src="@android:drawable/ic_menu_myplaces"-->
 
-<!--android:src="@android:drawable/ic_menu_myplaces"-->
-
-<!--app:imageUrl="@{proposalProgressContent.image}"-->
+    <!--app:imageUrl="@{proposalProgressContent.image}"-->
 
 
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.538"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.538"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />-->

@@ -15,6 +15,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.tom.helper.HelperApplication
 import com.tom.helper.HelperApplication.Companion.context
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Task
 import com.tom.helper.source.User
@@ -43,6 +44,19 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
 
     val taskPictureUri1 = MutableLiveData<Uri>()
+
+
+
+
+    // status: The internal MutableLiveData that stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
+
+
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -144,6 +158,8 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         _error.value = null
 
+        _status.value = LoadApiStatus.LOADING
+
         //check whether taskTitle.value is not valid
         if (taskContent.value == null || taskContent.value?.isEmpty() == true) {
             _error.value = "Task Content cannot be empty"
@@ -221,7 +237,6 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
             }
 
 
-//        document.set(data as Map<String, Any>)
 
 
     }

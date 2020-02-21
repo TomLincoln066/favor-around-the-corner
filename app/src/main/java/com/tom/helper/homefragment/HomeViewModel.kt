@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,6 +52,13 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         get() = _tasks2
 
 
+    // status: The internal MutableLiveData that stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
+
     //To test Mock data display of item_request on fragment_home.xml
     fun prepareTasks() {
         _tasks.value = listOf(
@@ -91,11 +99,18 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     //for task of status 0 (posted)
     fun getTasksResult() {
         Log.d("getTasksResult", "getTasksResult")
+
+
         coroutineScope.launch {
+
             val result = repository.getTasks()
+
+            _status.value = LoadApiStatus.LOADING
 
             when (result) {
                 is Result.Success -> {
+
+                    _status.value = LoadApiStatus.DONE
                     _tasks.value = result.data
                 }
 
@@ -118,9 +133,10 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         Log.d("Will", "getOnGoingTasksResult()")
         coroutineScope.launch {
             val result = repository.getOnGoingTasks()
-
+            _status.value = LoadApiStatus.LOADING
             when (result) {
                 is Result.Success -> {
+                    _status.value = LoadApiStatus.DONE
                     _tasks1.value = result.data
                 }
 
@@ -142,9 +158,10 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         Log.d("getFinishedTasksResult", "getFinishedTasksResult")
         coroutineScope.launch {
             val result = repository.getFinishedTasks()
-
+            _status.value = LoadApiStatus.LOADING
             when (result) {
                 is Result.Success -> {
+                    _status.value = LoadApiStatus.DONE
                     _tasks.value = result.data
                 }
 
@@ -264,7 +281,7 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         get() = _shouldNavigateToChatRoomFragment
 
 
-        fun clickNavToChatRoomFragment(message: Message?) {
+    fun clickNavToChatRoomFragment(message: Message?) {
         Log.d("Will", "clickNavToChatRoomFragment(), message=$message")
         message?.let {
             _shouldNavigateToChatRoomFragment.value = message
@@ -275,12 +292,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     fun doneNavigatingToChatRoom() {
         _shouldNavigateToChatRoomFragment.value = null
     }
-
-    
-
-
-
-
 
 
 }

@@ -2,11 +2,13 @@ package com.tom.helper.taskprogressdialog
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -69,6 +71,17 @@ class ProProgressFragment : Fragment() {
 
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_pro_progress, container, false)
+
+
+//        viewModel.status.observe(this, Observer {
+//                Log.d("viewModel.status","${it}")
+//
+//        })
+
+
+
+
+
 
 
 //                viewModel.prepareMockProgress()

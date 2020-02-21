@@ -1,7 +1,10 @@
 package com.tom.helper
 
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -142,6 +145,40 @@ fun bindProProgressRecyclerView(recyclerView: RecyclerView, homeItems: List<Prop
             when (this) {
                 is ProProgressRecyclerAdapter -> submitList(it)
             }
+        }
+    }
+}
+
+
+
+
+
+
+
+/**
+ * According to [LoadApiStatus] to decide the visibility of [ProgressBar]
+ */
+@BindingAdapter("setupApiStatus")
+fun bindApiStatus(view: ProgressBar, status: LoadApiStatus?) {
+    Log.d("bindApiStatus.status","${status}")
+    when (status) {
+        LoadApiStatus.LOADING -> view.visibility = View.VISIBLE
+        LoadApiStatus.DONE, LoadApiStatus.ERROR -> view.visibility = View.GONE
+    }
+}
+
+/**
+ * According to [message] to decide the visibility of [ProgressBar]
+ */
+@BindingAdapter("setupApiErrorMessage")
+fun bindApiErrorMessage(view: TextView, message: String?) {
+    when (message) {
+        null, "" -> {
+            view.visibility = View.GONE
+        }
+        else -> {
+            view.text = message
+            view.visibility = View.VISIBLE
         }
     }
 }
