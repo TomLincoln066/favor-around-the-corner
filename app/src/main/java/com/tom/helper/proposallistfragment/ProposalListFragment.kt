@@ -2,6 +2,7 @@ package com.tom.helper.proposallistfragment
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -56,6 +57,7 @@ class ProposalListFragment : Fragment() {
 
         //try to handle when button_to_task_progress_sheet in item_proposal.xml is pressed, will navigate to ProProgressViewModel(see ProposalListViewModel.kt)
         viewModel.shouldNavigateToProProgressFragment.observe(this, Observer {
+            Log.d("shouldNavigateToProProgressFragment","${it}")
             it?.let {
 
                 findNavController().navigate(

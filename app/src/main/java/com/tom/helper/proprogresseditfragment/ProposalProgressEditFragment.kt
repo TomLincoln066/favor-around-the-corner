@@ -68,8 +68,11 @@ class ProposalProgressEditFragment : Fragment() {
 
 
         viewModel.shouldNavigateBackToProposalProgressDisplayFragment.observe(this, Observer {
-            if (it) {
-                findNavController().navigate(ProposalProgressEditFragmentDirections.actionGlobalProProgressFragment(proposal))
+            it?.let {
+                if (it) {
+//                    findNavController().navigate(ProposalProgressEditFragmentDirections.actionGlobalProProgressFragment(proposal))
+                    findNavController().navigateUp()
+                }
             }
 //            (activity as MainActivity).navigationView.selectedItemId = R.id.fragment_home
         })

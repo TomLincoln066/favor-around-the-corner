@@ -61,6 +61,7 @@ class ProProgressFragment : Fragment() {
 
             findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(proposal))
 
+
         }
 
         binding.buttonNavBackProposalList.setOnClickListener {

@@ -204,6 +204,8 @@ class PostRequestFragment : Fragment() {
                 )
             }
         } else {
+
+
             startActivityForResult(loadCameraIntent, TAKE_PHOTO_REQUEST)
         }
     }
@@ -256,15 +258,15 @@ class PostRequestFragment : Fragment() {
                     null
                 )
             )
-//            val newBitmap = uri.getBitmap(100, 100)
-//            val newUri = Uri.parse(
-//                MediaStore.Images.Media.insertImage(
-//                    context!!.contentResolver,
-//                    newBitmap,
-//                    "${System.currentTimeMillis()}",
-//                    null
-//                )
-//            )
+            val newBitmap = uri.getBitmap(100, 100)
+            val newUri = Uri.parse(
+                MediaStore.Images.Media.insertImage(
+                    context!!.contentResolver,
+                    newBitmap,
+                    "${System.currentTimeMillis()}",
+                    null
+                )
+            )
 //            val uri = Uri.fromFile(newSdcardTempFile)
 //            binding.imageUpdate.setImageBitmap(pic)
             viewModel.taskPictureUri1.value = uri
@@ -337,78 +339,93 @@ class PostRequestFragment : Fragment() {
 
     //photo
 
-//    fun Uri.getBitmap(width: Int, height: Int): Bitmap? {
-//        var rotatedDegree = 0
-//        var stream = HelperApplication.context.contentResolver.openInputStream(this)
-//        /** GET IMAGE ORIENTATION */
-//        if(stream != null) {
-//            val exif = ExifInterface(stream)
-//            rotatedDegree = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL).fromExifInterfaceOrientationToDegree()
-//            stream.close()
-//        }
-//        /** GET IMAGE SIZE */
-//        stream = HelperApplication.context.contentResolver.openInputStream(this)
-//        val options = BitmapFactory.Options()
-//        options.inJustDecodeBounds = true
-//        BitmapFactory.decodeStream(stream, null,options)
-//        try {
-//            stream?.close()
-//        } catch (e: NullPointerException) {
-//            e.printStackTrace()
-//            return null
-//        }
-//        // The resulting width and height of the bitmap
-//        if(options.outWidth == -1 || options.outHeight == -1) return null
-//        var bitmapWidth = options.outWidth.toFloat()
-//        var bitmapHeight = options.outHeight.toFloat()
-//        if (rotatedDegree == 90) {
-//            // Side way -> options.outWidth is actually HEIGHT
-//            //          -> options.outHeight is actually WIDTH
-//            bitmapWidth = options.outHeight.toFloat()
-//            bitmapHeight = options.outWidth.toFloat()
-//        }
-//        var scale = 1
-//        while(true) {
-//            if(bitmapWidth / 2 < width || bitmapHeight / 2 < height)
-//                break;
-//            bitmapWidth /= 2
-//            bitmapHeight /= 2
-//            scale *= 2
-//        }
-//        val finalOptions = BitmapFactory.Options()
-//        finalOptions.inSampleSize = scale
-//        stream = HelperApplication.context.contentResolver.openInputStream(this)
-//        val bitmap = BitmapFactory.decodeStream(stream, null, finalOptions)
-//        try {
-//            stream?.close()
-//        } catch (e: NullPointerException) {
-//            e.printStackTrace()
-//            return null
-//        }
-//        val matrix = Matrix()
-//        if (rotatedDegree != 0) {
-//            matrix.preRotate(rotatedDegree.toFloat())
-//        }
-//        var bmpWidth = 0
-//        try {
-//            if (bitmap == null) {
-//                return null
-//            }
-//            bmpWidth = bitmap.width
-//        } catch (e: Exception) {
-//            return null
-//        }
-//        var adjustedBitmap = bitmap
-//        if (bmpWidth > 0) {
-//            adjustedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-//        }
-//        return adjustedBitmap
-//    }
+
+    fun Uri.getBitmap(width: Int, height: Int): Bitmap? {
+        var rotatedDegree = 0
+        var stream = HelperApplication.context.contentResolver.openInputStream(this)
+        /** GET IMAGE ORIENTATION */
+        if(stream != null) {
+            val exif = ExifInterface(stream)
+            rotatedDegree = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL).fromExifInterfaceOrientationToDegree()
+            stream.close()
+        }
+        /** GET IMAGE SIZE */
+        stream = HelperApplication.context.contentResolver.openInputStream(this)
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        BitmapFactory.decodeStream(stream, null,options)
+        try {
+            stream?.close()
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+            return null
+        }
+        // The resulting width and height of the bitmap
+        if(options.outWidth == -1 || options.outHeight == -1) return null
+        var bitmapWidth = options.outWidth.toFloat()
+        var bitmapHeight = options.outHeight.toFloat()
+        if (rotatedDegree == 90) {
+            // Side way -> options.outWidth is actually HEIGHT
+            //          -> options.outHeight is actually WIDTH
+            bitmapWidth = options.outHeight.toFloat()
+            bitmapHeight = options.outWidth.toFloat()
+        }
+        var scale = 1
+        while(true) {
+            if(bitmapWidth / 2 < width || bitmapHeight / 2 < height)
+                break;
+            bitmapWidth /= 2
+            bitmapHeight /= 2
+            scale *= 2
+        }
+        val finalOptions = BitmapFactory.Options()
+        finalOptions.inSampleSize = scale
+        stream = HelperApplication.context.contentResolver.openInputStream(this)
+        val bitmap = BitmapFactory.decodeStream(stream, null, finalOptions)
+        try {
+            stream?.close()
+        } catch (e: NullPointerException) {
+            e.printStackTrace()
+            return null
+        }
+        val matrix = Matrix()
+        if (rotatedDegree != 0) {
+            matrix.preRotate(rotatedDegree.toFloat())
+        }
+        var bmpWidth = 0
+        try {
+            if (bitmap == null) {
+                return null
+            }
+            bmpWidth = bitmap.width
+        } catch (e: Exception) {
+            return null
+        }
+        var adjustedBitmap = bitmap
+        if (bmpWidth > 0) {
+            adjustedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+        }
+        return adjustedBitmap
+    }
+
+
+    fun Int.fromExifInterfaceOrientationToDegree(): Int {
+        return when(this) {
+            ExifInterface.ORIENTATION_ROTATE_90 -> 90
+            ExifInterface.ORIENTATION_ROTATE_180 -> 180
+            ExifInterface.ORIENTATION_ROTATE_270 -> 270
+            else -> 0
+        }
+    }
 
 
 
-
-
+//    val storageRef = HelperApplication.container.fireStorage.reference
+//    val byteArrayOutput = ByteArrayOutputStream()
+//    Logger.i("imageBitmap.byteCount=${imageBitmap.byteCount}")
+//    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutput)
+//    val bytes = byteArrayOutput.toByteArray()
+//    val uploadTask = storageRef.child(bookID + "/cover.jpg").putBytes(bytes)
 
 
 
