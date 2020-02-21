@@ -154,13 +154,17 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
 
     //handle when button_item_request_close is clicked, and it change the status of this task from 0 to 1
     fun clickFinishThisTask(task: Task) {
-
+        Log.d("clickFinishThisTask()","clickFinishThisTask")
 
         val status = FirebaseFirestore.getInstance()
 
         val document = status.collection("tasks").document(task.id)
 
-        document.update("status", 1)
+        document.update("status", 1).addOnSuccessListener {
+
+            getCurrentUserData()
+            Log.d("clickFinishThisTask()","getCurrentUserData")
+        }
 
 
         //from function getTasksOfMineResult()
@@ -184,6 +188,8 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
         getTasksOfMineResult()
+        Log.d("clickFinishThisTask()","getTasksOfMineResult")
+
 
     }
 
