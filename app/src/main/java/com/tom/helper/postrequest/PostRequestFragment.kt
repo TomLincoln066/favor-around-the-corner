@@ -44,6 +44,7 @@ import com.google.protobuf.compiler.PluginProtos
 import com.tom.helper.HelperApplication
 import com.tom.helper.source.Task
 import kotlinx.android.synthetic.main.fragment_pro_progress.*
+import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 
@@ -52,6 +53,11 @@ import java.text.SimpleDateFormat
  * A simple [Fragment] subclass.
  */
 class PostRequestFragment : Fragment() {
+
+
+
+    // photo_v2
+    private val REQUEST_TAKE_PHOTO = 1
 
 
     //  photo
@@ -106,8 +112,10 @@ class PostRequestFragment : Fragment() {
         }
 
         binding.btnCamera.setOnClickListener {
-            loadCamera()
+//            loadCamera()
+            dispatchTakePictureIntent()
         }
+
 //        binding.btnUploadImage.setOnClickListener {
 //            uploadImage()
 //        }
@@ -167,9 +175,55 @@ class PostRequestFragment : Fragment() {
 //
 //    }
 
+    //photo_v2
+
+    private var photoURI: Uri? = null
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            // Ensure that there's a camera activity to handle the intent
+            takePictureIntent.resolveActivity(context!!.packageManager)?.also {
+                // Create the File where the photo should go
+                val photoFile: File? = try {
+                    createImageFile()
+                } catch (ex: IOException) {
+                    null
+                }
+                // Continue only if the File was successfully created
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
+                        context!!,
+                        "com.example.android.fileprovider",
+                        it
+                    )
+                    this.photoURI = photoURI
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                    startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
+                }
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun createImageFile(): File {
+        // Create an image file name
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", /* prefix */
+            ".jpg", /* suffix */
+            storageDir /* directory */
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentPhotoPath = absolutePath
+        }
+    }
+
+
+
+
+
+
     //photo
-
-
     private fun loadCamera() {
         val loadCameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (ContextCompat.checkSelfPermission(
@@ -232,6 +286,16 @@ class PostRequestFragment : Fragment() {
 
             filePath = data.data
 
+
+
+            //photo_v2
+
+
+//
+//            val bitmap = filePath?.getBitmap(binding.imageUpdate.width, binding.imageUpdate.height)
+//            binding.imageUpdate.setImageBitmap(bitmap)
+//            viewModel.imageBitmap.value = bitmap
+
             try {
                 Glide.with(this).load(filePath).into(image_preview)
 
@@ -242,6 +306,21 @@ class PostRequestFragment : Fragment() {
                 e.printStackTrace()
             }
         }
+
+
+
+        //photo_v2
+//        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+//            if (data == null) {
+//                return
+//            }
+//            val bitmap = photoURI?.getBitmap(binding.imageUpdate.width, binding.imageUpdate.height)
+//            binding.imageUpdate.setImageBitmap(bitmap)
+//            viewModel.imageBitmap.value = bitmap
+//        }
+
+
+
 
 
 
@@ -287,6 +366,23 @@ class PostRequestFragment : Fragment() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            MY_PERMISSIONS_CAMERA -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    for (permissionsItem in permissions) {
+                        Log.d("WillCamera", "permissions allow : $permissions")
+                    }
+                    loadCamera()
+                } else {
+                    for (permissionsItem in permissions) {
+                        Log.d("WillCamera", "permissions reject : $permissionsItem")
+                    }
+                }
+                return
+            }
+        }
+
     }
 
 

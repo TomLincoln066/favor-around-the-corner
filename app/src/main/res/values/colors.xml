@@ -29,6 +29,7 @@
 
     <!-- Red Series -->
     <color name="red_d0021b">#d0021b</color>
+    <color name="logo_red_light">#89042B</color>
 
     <!-- Orange Series -->
     <color name="orange_8b572a">#8b572a</color>
@@ -36,6 +37,7 @@
     <!-- Blue Series -->
     <color name="blue_facebook">#3b5998</color>
     <color name="linked_blue_light">#00A0DC</color>
+    <color name="logo_blue_light">#99C2EC</color>
 
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/gray_999999</color>
