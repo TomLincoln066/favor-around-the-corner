@@ -230,7 +230,7 @@
                     android:id="@+id/image_preview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:scaleType="centerCrop"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

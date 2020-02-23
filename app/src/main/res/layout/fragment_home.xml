@@ -25,8 +25,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/black_3f3a3a"
-            app:tabSelectedTextColor="@color/black_3f3a3a"
+            app:tabIndicatorColor="@color/logo_blue_light"
+            app:tabSelectedTextColor="@color/logo_blue_light"
             app:tabTextColor="@color/white">
 
             <com.google.android.material.tabs.TabItem

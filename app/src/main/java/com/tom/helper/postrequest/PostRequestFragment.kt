@@ -112,8 +112,8 @@ class PostRequestFragment : Fragment() {
         }
 
         binding.btnCamera.setOnClickListener {
-//            loadCamera()
-            dispatchTakePictureIntent()
+            loadCamera()
+//            dispatchTakePictureIntent()
         }
 
 //        binding.btnUploadImage.setOnClickListener {

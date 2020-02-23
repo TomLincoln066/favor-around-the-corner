@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.facebook.AccessToken
@@ -22,6 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.MainActivity
 import com.tom.helper.databinding.FragmentFacebookLogInBinding
 import kotlinx.android.synthetic.main.fragment_facebook_log_in.*
@@ -30,6 +33,8 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
 
 
     lateinit var binding: FragmentFacebookLogInBinding
+
+
 
     override fun onStart() {
         super.onStart()
@@ -87,6 +92,8 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
+
         val callbackManager = (activity as MainActivity).callbackManager
         Button_facebook_log_in.setPermissions("email", "public_profile")
         Button_facebook_log_in.registerCallback(callbackManager, object :
@@ -94,7 +101,7 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
             override fun onSuccess(loginResult: LoginResult) {
                 Log.d("Will", "facebook:onSuccess:$loginResult")
                 handleFacebookAccessToken(loginResult.accessToken)
-//                Log.d("Auth","${auth.currentUser}")
+
             }
 
             override fun onCancel() {
