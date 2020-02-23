@@ -14,6 +14,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.tom.helper.HelperApplication
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,6 +39,15 @@ class ProposalProgressEditViewModel(
     private var filePath: Uri? = null
     private var firebaseStore: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
+
+
+
+    // status: The internal MutableLiveData that stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -75,6 +85,8 @@ class ProposalProgressEditViewModel(
     fun submitProposalProgressItemContent() {
 
         _error.value = null
+
+        _status.value = LoadApiStatus.LOADING
 
         //check whether proposalProgressItemContent.value is not valid
         if (proposalProgressItemContent.value == null || proposalProgressItemContent.value?.isEmpty() == true) {
