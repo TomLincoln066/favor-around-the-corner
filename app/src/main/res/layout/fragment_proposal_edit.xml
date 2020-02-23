@@ -45,12 +45,25 @@
                     android:id="@+id/textView_proposal_sender_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/textView_proposal_sender_name"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView_icon_nick_name"
                     app:layout_constraintTop_toBottomOf="@+id/editText_proposal_price" />
+
+
+                <ImageView
+                    android:id="@+id/imageView_icon_nick_name"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/outline_perm_identity_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_sender_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_proposal_sender_name" />
+
 
                 <EditText
                     android:id="@+id/editText_proposal_edit_person"
@@ -249,10 +262,6 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_price_tag"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView_proposal_price_tag" />
-
-
-
-
 
 
                 <EditText

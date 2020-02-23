@@ -30,25 +30,24 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="8dp">
 
 
                 <EditText
                     android:id="@+id/editText_proposal_progress_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="50dp"
                     android:ems="10"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="start|top"
+                    android:hint="已將手機送至指定Apple Store"
                     android:inputType="textMultiLine"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-
                     android:text="@={viewModel.proposalProgressItemContent}"
-
                     android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -58,36 +57,49 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
                     android:text="新增進度事項"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_new_item"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView_icon_new_item"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/outline_playlist_add_black_24"
+                    app:layout_constraintBottom_toBottomOf="@id/textView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView5"
+                    app:layout_constraintTop_toTopOf="@id/textView5" />
+
 
                 <ImageView
                     android:id="@+id/imageView_preview"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:layout_marginTop="50dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <ImageButton
                     android:id="@+id/imageButton_choose_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_search"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/outline_search_black_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView_preview"
                     app:layout_constraintEnd_toEndOf="@+id/imageView_preview" />
 
                 <ImageButton
                     android:id="@+id/imageButton_open_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_search"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/outline_camera_alt_black_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView_preview"
                     app:layout_constraintEnd_toStartOf="@+id/imageButton_choose_image"
                     app:layout_constraintTop_toTopOf="@+id/imageButton_choose_image" />
@@ -97,13 +109,11 @@
                     android:id="@+id/button_send_out_my_progress_item"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginBottom="50dp"
                     android:background="@drawable/bg_round_button"
-                    android:text="確認新增"
-
-
                     android:onClick="@{()->viewModel.submitProposalProgressItemContent()}"
-
+                    android:text="確認新增"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -115,12 +125,23 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="50dp"
                     android:text="更新進度圖片"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView_icon_update_picture"
                     app:layout_constraintTop_toBottomOf="@+id/editText_proposal_progress_item" />
+
+                <ImageView
+                    android:id="@+id/imageView_icon_update_picture"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/outline_add_photo_alternate_black_24"
+                    app:layout_constraintBottom_toBottomOf="@id/textView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView"
+                    app:layout_constraintTop_toTopOf="@id/textView" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
