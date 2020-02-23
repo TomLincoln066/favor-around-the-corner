@@ -43,19 +43,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="進度事項"
                     android:textColor="@color/black"
                     android:textSize="25dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView_icon_progress_item_list"
                     app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/imageView_icon_progress_item_list"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/outline_playlist_add_black_24"
+                    app:layout_constraintBottom_toBottomOf="@id/textView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView5"
+                    app:layout_constraintTop_toTopOf="@id/textView5" />
 
 
                 <Button
                     android:id="@+id/button_edit_progress_item"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/bg_round_button"
                     android:text="編輯進度事項"
                     android:textColor="@color/white"
@@ -78,7 +89,20 @@
                     app:layout_constraintBottom_toTopOf="@+id/button_edit_progress_item"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress_item_recyclerView" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_add_some_progress_items" />
+
+                <TextView
+                    android:id="@+id/textView_add_some_progress_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:text="隨時新增進度事項，讓案主掌握進度喔。"
+
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -91,12 +115,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
                     app:proProgressItems="@{viewModel.proposalProgressContents}"
-                    tools:listitem="@layout/item_proposal_progress" />
+                     />
 
                 <ProgressBar
-                    android:theme="@style/MessageDialog"
+                    android:id="@+id/progressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/MessageDialog"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
