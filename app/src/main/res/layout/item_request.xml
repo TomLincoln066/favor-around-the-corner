@@ -48,7 +48,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                >
 
 
                 <TextView
@@ -72,20 +72,15 @@
 
                 <Button
                     android:id="@+id/button_item_request_close"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="60dp"
                     android:background="@drawable/bg_round_button_right"
+
                     android:clickable="@{task.status==0}"
-
-
                     android:text="@string/button_item_request_close"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail" />
-
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/textView_task_location"
@@ -128,30 +123,26 @@
 
                 <Button
                     android:id="@+id/button_mission_detail"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:background="@color/linked_blue_light"
+                    android:background="@color/logo_blue_light"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:background="@color/linked_blue_light"
+                    android:background="@color/logo_blue_light"
                     android:clickable="@{task.status== 0}"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
                     android:text="@string/button_mission_detail_proposal_total"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail" />
 
                 <TextView
                     android:id="@+id/textView_item_request_price"
@@ -167,19 +158,16 @@
 
                 <Button
                     android:id="@+id/button_item_request_message"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="60dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/bg_round_button_left"
                     android:text="@string/button_item_request_message"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_location" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_task_location"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/imageView2"

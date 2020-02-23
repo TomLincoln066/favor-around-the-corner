@@ -48,7 +48,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp">
+                >
 
 
                 <TextView
@@ -70,10 +70,9 @@
 
                 <Button
                     android:id="@+id/button_item_request_close"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="200dp"
-                    android:layout_marginEnd="60dp"
                     android:background="@drawable/bg_round_button_right"
                     android:clickable="@{task.status==0}"
 
@@ -83,8 +82,6 @@
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:layout_constraintVertical_bias="0.0" />
 
@@ -104,8 +101,8 @@
                     android:id="@+id/textView_task_location_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/outline_location_on_black_24"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView_status" />
@@ -169,26 +166,25 @@
 
                 <Button
                     android:id="@+id/button_mission_detail"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="200dp"
-                    android:background="@color/linked_blue_light"
+                    android:background="@color/logo_blue_light"
 
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="200dp"
-                    android:background="@color/linked_blue_light"
+                    android:background="@color/logo_blue_light"
                     android:clickable="@{task.status!= 1}"
 
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
@@ -196,8 +192,6 @@
                     android:text="@string/button_mission_detail_proposal_total"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_item_request_message"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:layout_constraintVertical_bias="0.0" />
@@ -218,18 +212,14 @@
 
                 <Button
                     android:id="@+id/button_item_request_message"
-                    android:layout_width="65dp"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="60dp"
                     android:layout_marginTop="200dp"
                     android:background="@drawable/bg_round_button_left"
 
                     android:text="@string/button_item_request_message"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:layout_constraintVertical_bias="0.0" />
@@ -261,15 +251,13 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="50dp"
-                    android:layout_marginBottom="50dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="50dp"
                     app:imageUrl="@{task.image}"
                     app:layout_constraintBottom_toTopOf="@+id/button_mission_detail_proposal_total"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
                     app:srcCompat="@drawable/chess_png" />
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

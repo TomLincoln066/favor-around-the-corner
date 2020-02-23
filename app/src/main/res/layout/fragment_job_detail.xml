@@ -120,20 +120,28 @@
                     android:id="@+id/textView_job_detail_task_content_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginStart="1dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lines="1"
-                    app:layout_constraintVertical_bias="1"
                     android:text="任務內容 :"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/text_job_detail_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/job_detail_imageView_icon_task_content"
                     app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag" />
+
+                <ImageView
+                    android:id="@+id/job_detail_imageView_icon_task_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/outline_description_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_job_detail_task_content_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView_job_detail_task_content_tag" />
+
 
 
                 <TextView
@@ -141,8 +149,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="60dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="8dp"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
                     android:lineSpacingExtra="12sp"
@@ -152,28 +161,29 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_owner_tag"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_content_tag"
                     tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
 
                 <ImageView
                     android:id="@+id/imageView_job_detail_picture_post_by_task_owner"
                     android:layout_width="match_parent"
-                    android:layout_height="288dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="100dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/alesso_profile"
                     app:imageUrl="@{task.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_picture_tag" />
 
 
                 <TextView
                     android:id="@+id/textView_job_detail_task_picture_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="50dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/noto_sans"
                     android:letterSpacing="0.15"
@@ -181,12 +191,22 @@
                     android:text="說明圖片 :"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView_job_detail_picture_post_by_task_owner"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@+id/job_detail_imageView_icon_task_image"
+                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
+
+
+
+                <ImageView
+                    android:id="@+id/job_detail_imageView_icon_task_image"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/image_upload_pictures"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_job_detail_task_picture_tag"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content"
-                    app:layout_constraintVertical_bias="1" />
+                    app:layout_constraintTop_toTopOf="@+id/textView_job_detail_task_picture_tag" />
+
+
 
                 <Button
                     android:id="@+id/button_job_detail_live_chat"
