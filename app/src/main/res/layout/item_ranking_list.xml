@@ -12,6 +12,10 @@
             type="com.tom.helper.source.Rank" />
 
         <variable
+            name="user"
+            type="com.tom.helper.source.User" />
+
+        <variable
             name="viewModel"
             type="com.tom.helper.rankinglist.RankingListViewModel" />
 

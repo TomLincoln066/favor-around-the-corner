@@ -33,14 +33,14 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/close_login_window"
-            app:srcCompat="@drawable/logo_gelp_v1" />
+            app:srcCompat="@drawable/logo_kraffier" />
 
         <TextView
             android:id="@+id/fragment_textView_fb_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
             android:textAlignment="center"
