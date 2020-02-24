@@ -16,6 +16,7 @@ import kotlin.coroutines.suspendCoroutine
 object HelperRemoteDataSource : HelperDataSource {
 
     private const val PATH_TASKS = "tasks"
+
     private const val KEY_CREATED_TIME = "createdTime"
 
     private const val PATH_PROPOSALS = "proposal"
@@ -23,6 +24,8 @@ object HelperRemoteDataSource : HelperDataSource {
     private const val PATH_USERS = "users"
 
     private const val PATH_PROPOSALS_PROGRESSITEMS = "progressItems"
+
+    private const val PATH_USER_EARNING = "earning"
 
 
     override suspend fun checkUser(): Result<Boolean> = suspendCoroutine { continuation ->
@@ -469,6 +472,40 @@ object HelperRemoteDataSource : HelperDataSource {
                 }
 
         }
+
+
+    override suspend fun getUsers(): Result<List<User>> = suspendCoroutine { continuation ->
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_USERS)
+            .orderBy(PATH_USER_EARNING, Query.Direction.DESCENDING)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<User>()
+                    for (document in task.result!!) {
+
+
+                        val task1 = document.toObject(User::class.java)
+
+                        list.add(task1)
+
+                        Log.d("Will", "get ${task1} form firebase")
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+
+
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                }
+            }
+    }
+
+
 
 
 }

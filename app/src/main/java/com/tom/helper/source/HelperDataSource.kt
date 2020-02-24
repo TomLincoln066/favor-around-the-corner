@@ -33,6 +33,7 @@ interface HelperDataSource {
 
     suspend fun getProposalsOfStatusEqualToZero(task: Task): Result<List<Proposal>>
 
+    suspend fun getUsers(): Result<List<User>>
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

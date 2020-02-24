@@ -45,6 +45,37 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 //
 //    }
 
+    //    for all tasks of mine
+    fun getUsersList() {
+
+        coroutineScope.launch {
+            val result = repository.getUsers()
+
+            when (result) {
+                is Result.Success -> {
+                    _profiles.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()

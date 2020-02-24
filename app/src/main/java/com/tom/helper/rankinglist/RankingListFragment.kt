@@ -37,12 +37,7 @@ class RankingListFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.manageMyTasksRecycler.layoutManager = LinearLayoutManager(context)
-//        binding.manageMyTasksRecycler.addItemDecoration(
-//            DividerItemDecoration(
-//                context,
-//                LinearLayoutManager.VERTICAL
-//            )
-//        )
+
 
         binding.manageMyTasksRecycler.adapter =
             RankingRecyclerAdapter(RankingRecyclerAdapter.OnClickListener {
@@ -63,10 +58,10 @@ class RankingListFragment : Fragment() {
 
 
 
-
-
 //        viewModel.prepareTaskTest()
-        viewModel.getTasksOfMineResult()
+//        viewModel.getTasksOfMineResult()
+
+        viewModel.getUsersList()
 
 
 

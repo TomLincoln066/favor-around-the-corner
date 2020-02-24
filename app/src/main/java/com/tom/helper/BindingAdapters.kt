@@ -14,10 +14,7 @@ import com.tom.helper.homefragment.HomeRecyclerAdapter
 import com.tom.helper.profile.ProfileRecyclerAdapter
 import com.tom.helper.proposallistfragment.ProposalListRecyclerAdapter
 import com.tom.helper.rankinglist.RankingRecyclerAdapter
-import com.tom.helper.source.Proposal
-import com.tom.helper.source.ProposalProgressContent
-import com.tom.helper.source.Rank
-import com.tom.helper.source.Task
+import com.tom.helper.source.*
 import com.tom.helper.taskprogressdialog.ProProgressRecyclerAdapter
 
 //fragment_home.xml in use
@@ -50,14 +47,14 @@ fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Task>?) {
 
 
 //fragment_ranking_list in use
-@BindingAdapter("addTasksOfMine")
-fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Task>?) {
+@BindingAdapter("addUsers")
+fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<User>?) {
     homeItems?.let {
         recyclerView.adapter?.apply {
             when (this) {
                 is RankingRecyclerAdapter -> submitList(it)
                 else -> {
-                    Log.i("SOMETHNG", "")
+                    Log.i("SOMETHING", "")
                 }
             }
         }
