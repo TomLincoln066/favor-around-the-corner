@@ -94,6 +94,12 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
     val tasks: LiveData<List<Task>>
         get() = _tasks
 
+    //for number of tasks of mine
+    private val _tasksNumber = MutableLiveData<List<Task>>()
+
+    val tasksNumber: LiveData<List<Task>>
+        get() = _tasksNumber
+
 
     //mock data
     fun prepareTaskTest() {
@@ -110,6 +116,7 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
             when (result) {
                 is com.tom.helper.source.Result.Success -> {
                     _tasks.value = result.data
+                    _tasksNumber.value = result.data
                 }
 
                 is com.tom.helper.source.Result.Error -> {
