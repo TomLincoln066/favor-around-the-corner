@@ -43,7 +43,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="start|top"
-                    android:hint="已將手機送至指定Apple Store"
+                    android:hint="Ex:已將手機送至指定Apple Store"
                     android:inputType="textMultiLine"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
