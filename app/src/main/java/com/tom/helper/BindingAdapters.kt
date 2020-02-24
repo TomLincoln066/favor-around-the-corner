@@ -111,8 +111,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(
                 RequestOptions()
-                    .placeholder(R.drawable.chess_png)
-                    .error(R.drawable.chess_png))
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.placeholder_image))
             .into(imgView)
     }
 }

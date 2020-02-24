@@ -71,19 +71,18 @@
                 <Button
                     android:id="@+id/button_item_request_close"
                     android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="200dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/bg_round_button_right"
                     android:clickable="@{task.status==0}"
 
                     android:onClick="@{()->viewModel.clickFinishThisTask(task)}"
-
                     android:text="@string/button_item_request_close"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_task_location"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/textView_task_location"
@@ -167,34 +166,29 @@
                 <Button
                     android:id="@+id/button_mission_detail"
                     android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="200dp"
-                    android:background="@color/logo_blue_light"
-
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_button_rectangle"
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
-                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="200dp"
-                    android:background="@color/logo_blue_light"
+                    android:layout_width="95dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_button_rectangle"
                     android:clickable="@{task.status!= 1}"
 
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
-
                     android:text="@string/button_mission_detail_proposal_total"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
+
+                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message" />
 
                 <TextView
                     android:id="@+id/textView_item_request_price"
@@ -213,16 +207,13 @@
                 <Button
                     android:id="@+id/button_item_request_message"
                     android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="200dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/bg_round_button_left"
-
                     android:text="@string/button_item_request_message"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_request_item_title"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView_user_name_tag"

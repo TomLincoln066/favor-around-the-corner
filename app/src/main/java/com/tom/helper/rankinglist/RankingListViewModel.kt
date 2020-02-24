@@ -7,10 +7,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Rank
-import com.tom.helper.source.Result
-import com.tom.helper.source.Task
+import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -22,12 +19,16 @@ import java.text.SimpleDateFormat
 // private val repository: HelperRepository
 class RankingListViewModel(private val repository: HelperRepository) : ViewModel() {
 
+    private val _profiles = MutableLiveData<List<User>>()
+
+    val profiles: LiveData<List<User>>
+        get() = _profiles
+
 
 //    private val _ranks = MutableLiveData<List<Rank>>()
 //
 //    val ranks: LiveData<List<Rank>>
 //        get() = _ranks
-
 
 
     //To test Mock data display of item_ranking_list on fragment_ranking_list.xml
@@ -43,7 +44,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 //
 //
 //    }
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -89,7 +89,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-
     // handle status input type convert problem( Int to String and String to Int)
     @InverseMethod("convertIntToString")
     fun convertStringToInt(value: String): Int {
@@ -110,9 +109,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-
-
-
     //for all task of mine
     private val _tasks = MutableLiveData<List<Task>>()
 
@@ -121,14 +117,12 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
 
 
     //mock data
-    fun prepareTaskTest(){
+    fun prepareTaskTest() {
         _tasks.value = listOf(Task("123"))
     }
 
 
-
-
-//    for all tasks of mine
+    //    for all tasks of mine
     fun getTasksOfMineResult() {
 
         coroutineScope.launch {
@@ -168,18 +162,11 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-
     //handle converting date to string
     fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
             .format(systemTime).toString()
     }
-
-
-
-
-
-
 
 
     //    try to handle when button_item_request_close in item_request.xml is pressed, will have this task status set from 0 to 1 (see HomeFragment.kt)
@@ -200,10 +187,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
         getTasksOfMineResult()
 
     }
-
-
-
-
 
 
 }
