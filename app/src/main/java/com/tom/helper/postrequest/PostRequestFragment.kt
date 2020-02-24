@@ -23,6 +23,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 
@@ -42,6 +43,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.protobuf.compiler.PluginProtos
 import com.tom.helper.HelperApplication
+import com.tom.helper.R
 import com.tom.helper.source.Task
 import kotlinx.android.synthetic.main.fragment_pro_progress.*
 import java.io.File
@@ -54,10 +56,11 @@ import java.text.SimpleDateFormat
  */
 class PostRequestFragment : Fragment() {
 
-
+    lateinit var binding : FragmentPostRequestBinding
 
     // photo_v2
     private val REQUEST_TAKE_PHOTO = 1
+
 
 
     //  photo
@@ -91,7 +94,8 @@ class PostRequestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentPostRequestBinding.inflate(inflater, container, false)
+//        val binding = FragmentPostRequestBinding.inflate(inflater, container, false)
+         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_post_request ,container, false)
 
 
         //handle changing the title while selecting PostRequestFragment
@@ -112,8 +116,8 @@ class PostRequestFragment : Fragment() {
         }
 
         binding.btnCamera.setOnClickListener {
-            loadCamera()
-//            dispatchTakePictureIntent()
+//            loadCamera()
+            dispatchTakePictureIntent()
         }
 
 //        binding.btnUploadImage.setOnClickListener {
@@ -291,10 +295,12 @@ class PostRequestFragment : Fragment() {
             //photo_v2
 
 
-//
-//            val bitmap = filePath?.getBitmap(binding.imageUpdate.width, binding.imageUpdate.height)
-//            binding.imageUpdate.setImageBitmap(bitmap)
-//            viewModel.imageBitmap.value = bitmap
+
+            val bitmap = filePath?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
+            binding.imagePreview.setImageBitmap(bitmap)
+            viewModel.imageBitmap.value = bitmap
+
+
 
             try {
                 Glide.with(this).load(filePath).into(image_preview)
@@ -310,14 +316,16 @@ class PostRequestFragment : Fragment() {
 
 
         //photo_v2
-//        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
-//            if (data == null) {
-//                return
-//            }
-//            val bitmap = photoURI?.getBitmap(binding.imageUpdate.width, binding.imageUpdate.height)
-//            binding.imageUpdate.setImageBitmap(bitmap)
-//            viewModel.imageBitmap.value = bitmap
-//        }
+
+
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                return
+            }
+            val bitmap = photoURI?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
+            binding.imagePreview.setImageBitmap(bitmap)
+            viewModel.imageBitmap.value = bitmap
+        }
 
 
 

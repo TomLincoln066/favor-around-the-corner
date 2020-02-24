@@ -1,5 +1,6 @@
 package com.tom.helper.postrequest
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.widget.Toast
 import java.util.concurrent.TimeUnit
@@ -23,11 +24,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.newFixedThreadPoolContext
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PostRequestViewModel(private val repository: HelperRepository) : ViewModel() {
 
+
+
+    // photo_v2
+    var imageBitmap = MutableLiveData<Bitmap>()
 
     //  storage
 
@@ -191,8 +197,23 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
         storageReference = FirebaseStorage.getInstance().reference
 
-        val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
-        val uploadTask = ref?.putFile(taskPictureUri1.value!!)
+        val ref = storageReference!!.child("uploads/" + UUID.randomUUID().toString())
+
+//        val uploadTask = ref?.putFile(taskPictureUri1.value!!)
+
+
+
+        //photo_v2
+
+        val byteArrayOutput = ByteArrayOutputStream()
+        imageBitmap.value?.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutput)
+        val bytes = byteArrayOutput.toByteArray()
+//        val riversRef = storageReference.child("uploads/" + UUID.randomUUID().toString())
+        val uploadTask = ref?.putBytes(bytes)
+
+
+
+
 
         val urlTask =
             uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, com.google.android.gms.tasks.Task<Uri>> { ImageTask ->
