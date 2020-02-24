@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@{viewModel.convertLongToDateString(task.createdTime)}"
+                    android:text="@{viewModel.toDisplayTimePass(task.createdTime)}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView_item_request_price"
