@@ -19,6 +19,7 @@
             name="message"
             type="com.tom.helper.source.Message" />
 
+        <import type="android.view.View" />
 
     </data>
 
@@ -32,7 +33,7 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_margin="4dp"
             android:background="@color/blue_voyage"
             android:padding="6dp"
             app:cardCornerRadius="28dp"
@@ -86,16 +87,16 @@
 
                 <TextView
                     android:id="@+id/textView_task_location"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
+                    android:maxLines="3"
                     android:text="@{task.taskCreator}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15sp"
 
-
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_task_location_blank"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView_task_location_blank"
                     app:layout_constraintTop_toTopOf="@+id/textView_task_location_blank"
                     tools:text="台北市信義區基隆路一段180號5F" />
@@ -104,8 +105,8 @@
                     android:id="@+id/textView_task_location_blank"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/outline_location_on_black_24"
                     app:layout_constraintStart_toEndOf="@+id/view_separate_line"
                     app:layout_constraintTop_toBottomOf="@+id/imageView_status" />
@@ -124,8 +125,8 @@
                     android:id="@+id/imageView_task_create_time_blank"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/baseline_access_time_black_24"
                     app:layout_constraintStart_toEndOf="@+id/view_separate_line"
                     app:layout_constraintTop_toBottomOf="@+id/imageView_task_price_blank" />
@@ -152,8 +153,8 @@
                     android:id="@+id/imageView_status"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/outline_notifications_black_24"
 
                     app:layout_constraintStart_toEndOf="@+id/view_separate_line"
@@ -164,18 +165,17 @@
                     android:id="@+id/imageView_picture"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:imageUrl="@{task.image}"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/chess_png"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/view_separate_line"
-                    app:layout_constraintTop_toBottomOf="@id/textView_request_item_title"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{task.image}"
                     app:layout_constraintBottom_toTopOf="@id/button_mission_detail_proposal_total"
-                     />
+                    app:layout_constraintEnd_toStartOf="@id/view_separate_line"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_request_item_title"
+                    app:srcCompat="@drawable/chess_png" />
 
                 <TextView
                     android:id="@+id/textView_status_numbers"
@@ -184,6 +184,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:text="@{viewModel.convertIntToString(task.status)}"
+                    android:visibility="gone"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView_status"
@@ -239,14 +240,52 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/black_3f3a3a"
-                    app:layout_constraintTop_toBottomOf="@id/textView_request_item_title"
                     app:layout_constraintBottom_toTopOf="@+id/button_mission_detail_proposal_total"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_request_item_title" />
 
+                <TextView
+                    android:id="@+id/textView_task_status_posting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="案件刊登中"
+                    android:visibility="@{task.status== -1? View.VISIBLE : View.GONE }"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_status"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_status"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_status" />
 
+                <TextView
+                    android:id="@+id/textView_task_status_on_going"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="案件進行中"
+                    android:visibility="@{task.status== 0? View.VISIBLE : View.GONE }"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_status"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_status"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_status" />
 
+                <TextView
+                    android:id="@+id/textView_task_status_finished"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{task.status== 1? View.VISIBLE : View.GONE }"
+                    android:text="案件已結案"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_status"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_status"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_status" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -281,8 +320,6 @@
     <!--app:layout_constraintStart_toEndOf="@+id/imageView_user_name_tag"-->
     <!--app:layout_constraintTop_toTopOf="@+id/imageView_user_name_tag"-->
     <!--tools:text="Will Lo" />-->
-
-
 
 
     <!--<Button-->

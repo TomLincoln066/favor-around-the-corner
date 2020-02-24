@@ -171,6 +171,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/alesso_profile"
                     app:imageUrl="@{task.image}"
                     app:layout_constraintEnd_toEndOf="parent"
