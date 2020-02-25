@@ -22,7 +22,8 @@
         android:id="@+id/constraint_upper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_margin="10dp"
+        android:padding="0dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -42,8 +43,8 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="進度事項"
                     android:textColor="@color/black"
                     android:textSize="25dp"
@@ -67,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_round_button"
                     android:text="編輯進度事項"
                     android:textColor="@color/white"
@@ -114,8 +116,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
-                    app:proProgressItems="@{viewModel.proposalProgressContents}"
-                     />
+                    app:proProgressItems="@{viewModel.proposalProgressContents}" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
