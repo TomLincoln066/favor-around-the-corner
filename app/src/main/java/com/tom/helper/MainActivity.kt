@@ -151,7 +151,8 @@ class MainActivity : AppCompatActivity() {
 //                binding.textViewTitleChangeable.visibility = View.GONE
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "所有案件"
+                binding.textViewTitleChangeable.text = "Kraffier"
+
 
 
             }

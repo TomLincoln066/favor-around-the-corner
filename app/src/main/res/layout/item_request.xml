@@ -134,7 +134,9 @@
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
@@ -147,7 +149,9 @@
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/button_item_request_message" />
 
                 <TextView
                     android:id="@+id/textView_item_request_price"
