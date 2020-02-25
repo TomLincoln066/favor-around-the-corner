@@ -147,11 +147,11 @@ class MainActivity : AppCompatActivity() {
 
         when (forCheck) {
             EnumCheck.HOME -> {//when selected home
-//                binding.title.visibility = View.VISIBLE
-//                binding.textViewTitleChangeable.visibility = View.GONE
-                binding.title.visibility = View.INVISIBLE
-                binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "Kraffier"
+                binding.title.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.visibility = View.GONE
+//                binding.title.visibility = View.INVISIBLE
+//                binding.textViewTitleChangeable.visibility = View.VISIBLE
+//                binding.textViewTitleChangeable.text = "Kraffier"
 
 
 
