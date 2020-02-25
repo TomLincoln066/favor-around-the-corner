@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import com.google.firebase.storage.StorageReference
+import com.tom.helper.MainActivity
 
 
 /**
@@ -74,6 +75,8 @@ class JobDetailFragment : Fragment() {
 
 
         viewModel.getTasksResult()
+
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.JOBDETAILS)
 
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_job_detail, container, false)

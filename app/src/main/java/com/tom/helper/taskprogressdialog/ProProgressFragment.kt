@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tom.helper.MainActivity
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProProgressBinding
@@ -88,6 +89,7 @@ class ProProgressFragment : Fragment() {
 //                viewModel.prepareMockProgress()
         viewModel.getProposalProgressItem(proposal)
 
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALPROGRESSLIST)
 
         return binding.root
 

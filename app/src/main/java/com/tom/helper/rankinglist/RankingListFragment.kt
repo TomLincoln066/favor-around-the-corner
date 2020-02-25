@@ -92,7 +92,7 @@ class RankingListFragment : Fragment() {
 
 
         //handle changing the title while selecting RankingListFragment
-//        (activity as MainActivity).setLogo(MainActivity.EnumCheck.RANKINGLIST)
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.RANKINGLIST)
 
 
 

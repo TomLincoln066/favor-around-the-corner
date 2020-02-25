@@ -140,25 +140,30 @@ class MainActivity : AppCompatActivity() {
 
     //handle changing the title while selecting different fragments
     enum class EnumCheck {
-        HOME, POSTREQUEST, RANKINGLIST, PROFILE, MYPROPOSALS
+        HOME, POSTREQUEST, RANKINGLIST, PROFILE, MYPROPOSALS, JOBDETAILS, PROPOSALEDIT, PROPOSALLIST, PROPOSALPROGRESSEDIT, PROPOSALPROGRESSLIST
     }
 
     fun setLogo(forCheck: EnumCheck) {
 
         when (forCheck) {
             EnumCheck.HOME -> {//when selected home
-                binding.title.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.visibility = View.GONE
+//                binding.title.visibility = View.VISIBLE
+//                binding.textViewTitleChangeable.visibility = View.GONE
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "所有案件"
+
+
             }
             EnumCheck.POSTREQUEST -> {//postrequest
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "新增任務"
+                binding.textViewTitleChangeable.text = "新增案件"
             }
             EnumCheck.RANKINGLIST -> {//rankinglist
                 binding.title.visibility = View.INVISIBLE
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
-                binding.textViewTitleChangeable.text = "我的任務"
+                binding.textViewTitleChangeable.text = "排行榜"
             }
             EnumCheck.MYPROPOSALS -> {//myproposals
                 binding.title.visibility = View.INVISIBLE
@@ -171,6 +176,38 @@ class MainActivity : AppCompatActivity() {
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
                 binding.textViewTitleChangeable.text = "個人"
             }
+
+            EnumCheck.JOBDETAILS -> {//JOBDETAILS
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "案件細節"
+            }
+
+            EnumCheck.PROPOSALEDIT -> {//PROPOSALEDIT
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "發出提案"
+            }
+
+            EnumCheck.PROPOSALLIST -> {//PROPOSALLIST
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "提案列表"
+            }
+
+            EnumCheck.PROPOSALPROGRESSEDIT -> {//PROPOSALPROGRESSEDIT
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "進度編輯"
+            }
+
+            EnumCheck.PROPOSALPROGRESSLIST -> {//PROPOSALPROGRESSLIST
+                binding.title.visibility = View.INVISIBLE
+                binding.textViewTitleChangeable.visibility = View.VISIBLE
+                binding.textViewTitleChangeable.text = "進度事項"
+            }
+
+
 
 
         }

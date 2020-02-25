@@ -47,8 +47,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
 
                 <TextView
@@ -58,6 +57,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
                     android:text="@{task.title}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
@@ -77,8 +77,8 @@
 
                     android:clickable="@{task.status==0}"
                     android:text="@string/button_item_request_close"
-                    android:textSize="12dp"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -87,6 +87,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:ellipsize="end"
                     android:maxLines="4"
                     android:singleLine="false"
                     android:text="@{task.taskCreator}"
@@ -167,8 +168,8 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_round_button_left"
                     android:text="@string/button_item_request_message"
-                    android:textSize="12dp"
                     android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_task_location"

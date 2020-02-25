@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tom.helper.MainActivity
 import com.tom.helper.databinding.FragmentProposalListBinding
 import com.tom.helper.ext.getVmFactory
 import com.tom.helper.rankinglist.RankingListFragmentDirections
@@ -87,7 +88,7 @@ class ProposalListFragment : Fragment() {
         viewModel.getProposalsResult()
 
 
-
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALLIST)
 
 
         // Inflate the layout for this fragment

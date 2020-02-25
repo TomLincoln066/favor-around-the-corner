@@ -88,7 +88,7 @@ class ProfileFragment : Fragment() {
 
 
         //handle changing the title while selecting RankingListFragment
-//        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROFILE)
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROFILE)
 
 
 

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.tom.helper.MainActivity
 
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProposalEditBinding
@@ -88,7 +89,7 @@ class ProposalProgressEditFragment : Fragment() {
             launchGallery()
         }
 
-
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALPROGRESSEDIT)
 
 
         // Inflate the layout for this fragment

@@ -99,7 +99,7 @@ class PostRequestFragment : Fragment() {
 
 
         //handle changing the title while selecting PostRequestFragment
-//        (activity as MainActivity).setLogo(MainActivity.EnumCheck.POSTREQUEST)
+        (activity as MainActivity).setLogo(MainActivity.EnumCheck.POSTREQUEST)
 
 
         binding.lifecycleOwner = this
