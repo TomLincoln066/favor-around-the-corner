@@ -74,8 +74,8 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_round_button_right"
-                    android:clickable="@{task.status==0}"
 
+                    android:clickable="@{task.status==0}"
                     android:onClick="@{()->viewModel.clickFinishThisTask(task)}"
                     android:text="@string/button_item_request_close"
                     android:textColor="@color/white"

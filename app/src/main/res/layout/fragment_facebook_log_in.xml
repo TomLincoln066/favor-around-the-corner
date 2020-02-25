@@ -43,6 +43,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
+            android:visibility="invisible"
             android:textAlignment="center"
             android:textColor="@color/gray_cccccc"
             android:textSize="18sp"
@@ -57,7 +58,6 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="60dp"
             android:background="#3b5998"
             android:letterSpacing="0.15"
@@ -67,8 +67,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_textView_fb_log_in"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/login_logo"
+            app:layout_constraintVertical_bias="0" />
 
         <Button
             android:id="@+id/close_login_window"
@@ -79,6 +79,7 @@
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/icons_24px_close"
             android:onClick="@{facebookLogInDialog::funOnClick}"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
