@@ -30,9 +30,9 @@
 
         <ImageView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:src="@drawable/logo_no_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_words_kraffier"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
