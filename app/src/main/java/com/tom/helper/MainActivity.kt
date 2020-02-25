@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.crashlytics.android.Crashlytics
 import com.facebook.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -133,6 +136,20 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+
+//        val crashButton = Button(this)
+//        crashButton.text = "Crash!"
+//        crashButton.setOnClickListener {
+//            Crashlytics.getInstance().crash() // Force a crash
+//        }
+//
+//        addContentView(crashButton, ViewGroup.LayoutParams(
+//            ViewGroup.LayoutParams.MATCH_PARENT,
+//            ViewGroup.LayoutParams.WRAP_CONTENT))
+//
+
+
 
 
     }
