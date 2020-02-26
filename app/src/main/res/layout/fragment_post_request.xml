@@ -228,12 +228,13 @@
                     android:id="@+id/image_preview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/gray_cccccc"
                     android:scaleType="centerCrop"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_post_request_post_pictures"
-                    app:srcCompat="@drawable/placeholder_image" />
+                    app:srcCompat="@drawable/image_placeholder_gray_background" />
 
 
                 <TextView
@@ -276,21 +277,16 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_choose_image" />
-
-                <Button
-                    android:id="@+id/btn_choose_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_round_button"
-                    android:textColor="@color/white"
-                    android:text="@string/btn_choose_image"
-                    android:textSize="20dp"
-                    app:layout_constraintEnd_toStartOf="@+id/image_preview"
-                    app:layout_constraintHorizontal_bias="0.425"
-                    app:layout_constraintStart_toEndOf="@+id/textView_post_request_post_pictures"
                     app:layout_constraintTop_toBottomOf="@+id/image_preview" />
+
+                <ImageButton
+                    android:id="@+id/btn_choose_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/outline_add_photo_alternate_black_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_preview"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_camera"  />
 
 
                 <ImageButton
