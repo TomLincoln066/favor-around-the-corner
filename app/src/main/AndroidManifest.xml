@@ -53,7 +53,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+            android:authorities="com.tom.helper.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -68,3 +68,5 @@
     </application>
 
 </manifest>
+
+<!--    android:authorities="${applicationId}.fileprovider"-->

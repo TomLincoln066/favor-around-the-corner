@@ -196,7 +196,8 @@ class PostRequestFragment : Fragment() {
                 photoFile?.also {
                     val photoURI: Uri = FileProvider.getUriForFile(
                         context!!,
-                        "com.example.android.fileprovider",
+                        "com.tom.helper.fileprovider",
+//                        "${applicationId}.fileprovider",
                         it
                     )
                     this.photoURI = photoURI
