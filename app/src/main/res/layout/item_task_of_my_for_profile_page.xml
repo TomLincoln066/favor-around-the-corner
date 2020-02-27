@@ -71,7 +71,7 @@
 
                 <Button
                     android:id="@+id/button_item_request_close"
-                    android:layout_width="120dp"
+                    android:layout_width="202dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_round_button_right"
@@ -193,21 +193,21 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView_status"
                     tools:text="-1" />
 
-                <Button
-                    android:id="@+id/button_mission_detail"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/bg_button_rectangle"
-                    android:text="@string/button_mission_detail"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
-                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total" />
+<!--                <Button-->
+<!--                    android:id="@+id/button_mission_detail"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:background="@drawable/bg_button_rectangle"-->
+<!--                    android:text="@string/button_mission_detail"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total" />-->
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="120dp"
+                    android:layout_width="202dp"
                     android:layout_height="30dp"
                     android:background="@drawable/bg_round_button_left"
                     android:clickable="@{task.status!= 1}"
@@ -217,6 +217,7 @@
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView

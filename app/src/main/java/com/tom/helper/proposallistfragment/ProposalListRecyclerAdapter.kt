@@ -1,5 +1,6 @@
 package com.tom.helper.proposallistfragment
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -27,6 +28,13 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ,
 
             binding.proposal = proposal
             binding.viewModel =viewModel
+
+            Log.i("BINDING", "PROPOSAL id=${proposal.user?.id}")
+            Log.i("BINDING", "VIEWMODEL id=${viewModel.profile.value?.id}")
+
+            val userCurrentBoolean = proposal.user?.id == viewModel.profile.value?.id
+            binding.userCurrentBoolean = userCurrentBoolean
+
 
 
             binding.root.setOnClickListener { onClickListener.onClick(proposal) }

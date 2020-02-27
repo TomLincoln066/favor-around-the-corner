@@ -92,7 +92,7 @@
                     android:id="@+id/imageButton_choose_image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/outline_search_black_24"
+                    android:src="@drawable/outline_add_photo_alternate_black_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView_preview"
                     app:layout_constraintEnd_toEndOf="@+id/imageView_preview" />
 

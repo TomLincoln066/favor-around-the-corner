@@ -41,7 +41,7 @@ class ProfileRecyclerAdapter(
             })
              */
 
-            binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
+//            binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
 
 
             binding.executePendingBindings()

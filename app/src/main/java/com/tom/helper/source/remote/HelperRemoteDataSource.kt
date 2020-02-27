@@ -109,9 +109,14 @@ object HelperRemoteDataSource : HelperDataSource {
     }
 
     override suspend fun getTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
+
+        val userCurrent = FirebaseAuth.getInstance().currentUser
+
+
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+
             .whereEqualTo("status", -1)
             .get()
             .addOnCompleteListener { task ->
@@ -170,10 +175,16 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
     override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
+
+        val userCurrent = FirebaseAuth.getInstance().currentUser
+
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .whereEqualTo("status", 0)
+
+//            .whereEqualTo("userId", userCurrent?.uid)
+
 //            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
 
             .get()

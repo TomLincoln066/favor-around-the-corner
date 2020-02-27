@@ -42,6 +42,11 @@ class ProposalListFragment : Fragment() {
 //                LinearLayoutManager.VERTICAL
 //            )
 //        )
+//        viewModel.profile.observe(this, Observer {
+//            it?.let {
+//                Log.i("PROFILE", "id=${it.id}")
+//            }
+//        })
 
         binding.proposalListRecycler.adapter =
             ProposalListRecyclerAdapter(ProposalListRecyclerAdapter.OnClickListener {
@@ -86,6 +91,8 @@ class ProposalListFragment : Fragment() {
 
 //        viewModel.addProposal()
         viewModel.getProposalsResult()
+
+        viewModel.getCurrentUserData()
 
 
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALLIST)

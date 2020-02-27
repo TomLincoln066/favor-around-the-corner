@@ -3,10 +3,7 @@ package com.tom.helper.proposallistfragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Proposal
-import com.tom.helper.source.Result
-import com.tom.helper.source.Task
+import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,6 +14,45 @@ import kotlinx.coroutines.launch
 // private val repository: HelperRepository
 class ProposalListViewModel(private val repository: HelperRepository, private val task: Task) :
     ViewModel() {
+
+
+    private val _profile = MutableLiveData<User>()
+
+    val profile: LiveData<User>
+        get() = _profile
+
+
+    //    for all tasks of mine
+    fun getCurrentUserData() {
+
+        coroutineScope.launch {
+            val result = repository.getUserCurrent()
+
+            when (result) {
+                is com.tom.helper.source.Result.Success -> {
+                    _profile.value = result.data
+                }
+
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
 
 
 
