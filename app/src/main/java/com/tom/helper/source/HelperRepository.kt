@@ -35,6 +35,8 @@ interface HelperRepository {
 
     suspend fun getUsers(): Result<List<User>>
 
+    suspend fun getTasksWithMyProposal():Result<List<Proposal>>
+
 
 
 

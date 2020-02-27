@@ -179,6 +179,65 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
+
+    //for task of status 0 (on_going)
+    private val _tasksWithMyProposal = MutableLiveData<List<Proposal>>()
+
+    val tasksWithMyProposal: LiveData<List<Proposal>>
+        get() = _tasksWithMyProposal
+
+
+
+    //for task of status 1 (on_going task which user send proposals and got accepted)
+    fun getOnGoingTasksOfMineResult() {
+        Log.d("Will", "getOnGoingTasksOfMineResult()")
+        coroutineScope.launch {
+            val result = repository.getTasksWithMyProposal()
+            _status.value = LoadApiStatus.LOADING
+            when (result) {
+                is Result.Success -> {
+                    _status.value = LoadApiStatus.DONE
+                    _tasksWithMyProposal.value = result.data
+                }
+
+                is Result.Error -> {
+                    result.exception
+                }
+
+                is Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
 
