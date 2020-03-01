@@ -36,8 +36,8 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ,
             binding.userCurrentBoolean = userCurrentBoolean
 
 
+//            binding.root.setOnClickListener { onClickListener.onClick(proposal) }
 
-            binding.root.setOnClickListener { onClickListener.onClick(proposal) }
             binding.executePendingBindings()
         }
     }

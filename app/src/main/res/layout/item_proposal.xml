@@ -59,9 +59,10 @@
                 android:id="@+id/imageView_icon_proposal_checked"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+
                 android:src="@drawable/icon_checked"
                 android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.INVISIBLE }"
-                app:layout_constraintBottom_toTopOf="@+id/imageButton_proposal_reject"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,9 +70,10 @@
             <Button
                 android:id="@+id/image_item_proposal_picture"
                 android:layout_width="80dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="50dp"
                 android:background="@drawable/button_style"
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
                 android:text="接受提案"
@@ -79,8 +81,7 @@
                 android:visibility="@{userCurrentBoolean == true ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
 
             <TextView
                 android:id="@+id/text_proposal_person"
@@ -132,6 +133,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/baseline_low_priority_black_24"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_item_proposal_content" />
 
@@ -139,37 +141,37 @@
             <Button
                 android:id="@+id/imageButton_proposal_reject"
                 android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="50dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/button_style"
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusUnAccepted(proposal)}"
-                android:visibility="@{userCurrentBoolean == true ? View.GONE : View.VISIBLE}"
                 android:text="取消接受"
                 android:textColor="@color/linked_blue_light"
+                android:visibility="@{userCurrentBoolean == true ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_to_task_progress_sheet"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintVertical_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
-                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
 
             <Button
                 android:id="@+id/button_to_task_progress_sheet"
                 android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/button_style"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@{proposal.status == 0 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == 0 }"
-
                 android:onClick="@{() -> viewModel.clickNavigateToProProgressFragment(proposal)}"
+                android:textAlignment="center"
                 android:text="@string/button_to_task_progress_sheet"
-                android:textColor="@color/linked_blue_light"
+                android:textColor="@{proposal.status == 0 ?  @color/linked_blue_light : @color/gray_999999}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintVertical_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/imageButton_proposal_reject"
-                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,3 +226,5 @@
 
 
 <!--    android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.GONE }"-->
+
+<!--    android:background="@{proposal.status == 0 ? @drawable/button_style : @drawable/button_style_gray}"-->

@@ -69,19 +69,6 @@
                     tools:textSize="18sp" />
 
 
-                <Button
-                    android:id="@+id/button_item_request_close"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/bg_round_button_right"
-
-                    android:clickable="@{task.status==0}"
-                    android:text="@string/button_item_request_close"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
                 <TextView
                     android:id="@+id/textView_task_location"
                     android:layout_width="0dp"
@@ -126,21 +113,22 @@
 
                 <Button
                     android:id="@+id/button_mission_detail"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/bg_button_rectangle"
+
+                    android:background="@drawable/bg_round_button_right"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_item_request_close"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_mission_detail_proposal_total" />
 
                 <Button
                     android:id="@+id/button_mission_detail_proposal_total"
-                    android:layout_width="95dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:background="@drawable/bg_button_rectangle"
                     android:clickable="@{task.status== 0}"
@@ -149,6 +137,7 @@
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_item_request_message" />
@@ -167,7 +156,7 @@
 
                 <Button
                     android:id="@+id/button_item_request_message"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_round_button_left"
@@ -175,6 +164,8 @@
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_task_location"
                     app:layout_constraintVertical_bias="0.0" />
@@ -213,60 +204,15 @@
     <!--    android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(message)}"-->
 
 
-    <!--<TextView-->
-    <!--android:id="@+id/textView_proposals_numbers"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginStart="10dp"-->
-    <!--android:text="@string/textView_proposals_numbers"-->
-    <!--app:layout_constraintStart_toEndOf="@+id/textView_proposals_word"-->
-    <!--app:layout_constraintTop_toTopOf="@+id/textView_proposals_word" />-->
+<!--<Button-->
+<!--android:id="@+id/button_item_request_close"-->
+<!--android:layout_width="100dp"-->
+<!--android:layout_height="30dp"-->
+<!--android:background="@drawable/bg_round_button_right"-->
 
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView_proposals_word"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:text="@string/textView_proposals_word"-->
-    <!--android:textColor="@color/black_3f3a3a"-->
-    <!--app:layout_constraintStart_toStartOf="@+id/textView_task_create_time_blank"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/textView_task_create_time_blank" />-->
-
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView_user_name_tag"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/textView_user_name_tag"-->
-    <!--android:textColor="@color/black_3f3a3a"-->
-    <!--tools:layout_editor_absoluteX="137dp"-->
-    <!--tools:layout_editor_absoluteY="71dp" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView_user_name"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@{task.user.name}"-->
-    <!--tools:layout_editor_absoluteX="230dp"-->
-    <!--tools:layout_editor_absoluteY="71dp" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView_task_create_time_blank"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/textView_task_create_time_blank"-->
-    <!--android:textColor="@color/black_3f3a3a"-->
-
-    <!--tools:layout_editor_absoluteX="132dp"-->
-    <!--tools:layout_editor_absoluteY="208dp"-->
-    <!--tools:text="發案時間 :" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView_task_location_blank"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/textView_task_location_blank"-->
-    <!--android:textColor="@color/black_3f3a3a"-->
-    <!--tools:layout_editor_absoluteX="10dp"-->
-    <!--tools:layout_editor_absoluteY="227dp" />-->
+<!--android:clickable="@{task.status==0}"-->
+<!--android:text="@string/button_item_request_close"-->
+<!--android:textColor="@color/white"-->
+<!--android:textSize="12dp"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent" />-->
