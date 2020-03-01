@@ -142,21 +142,21 @@
                     app:layout_constraintTop_toTopOf="@+id/textView_job_detail_task_content_tag" />
 
 
-
                 <TextView
                     android:id="@+id/text_job_detail_content"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:lineSpacingExtra="12sp"
                     android:text="@{task.content}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView_job_detail_task_content_tag"
                     app:layout_constraintTop_toBottomOf="@+id/textView_job_detail_task_content_tag"
                     tools:text="我的期末個人APP專案，需要一個人協助設計APP主題配色，提供相關icon素材，時間緊迫，完成任務有優渥回報!!!" />
 
@@ -198,7 +198,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/image_upload_pictures"
+                    android:src="@drawable/outline_image_black_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView_job_detail_task_picture_tag"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView_job_detail_task_picture_tag" />
