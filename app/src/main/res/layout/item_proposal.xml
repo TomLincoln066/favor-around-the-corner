@@ -61,7 +61,7 @@
                 android:layout_height="100dp"
                 android:src="@drawable/icon_checked"
                 android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.INVISIBLE }"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton_proposal_reject"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -159,6 +159,7 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/button_style"
+                android:clickable="@{proposal.status == 0 }"
 
                 android:onClick="@{() -> viewModel.clickNavigateToProProgressFragment(proposal)}"
                 android:text="@string/button_to_task_progress_sheet"

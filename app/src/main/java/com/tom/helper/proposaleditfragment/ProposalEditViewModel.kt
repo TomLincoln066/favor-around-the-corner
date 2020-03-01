@@ -53,8 +53,19 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     //try to handle when button_proposal_send is clicked in fragment_proposal_edit.xml is pressed, will navigate to Proposal List Fragment
     val shouldNavigateToProposalListFragment = MutableLiveData<Boolean>()
 
+
+    //testing
+    val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
+
+
+
     init {
-        shouldNavigateToProposalListFragment.value = false
+
+//        shouldNavigateToProposalListFragment.value = false
+
+        shouldNavigateToHomeFragment.value = false
+
+
     }
 
 
@@ -128,7 +139,13 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
                 Log.i("EXCEPTIONX", "exc = ${it.message}")
             }.addOnSuccessListener {
                 //after sending proposal successfully, set shouldNavigateToProposalListFragment.value = true
-                shouldNavigateToProposalListFragment.value = true
+//                shouldNavigateToProposalListFragment.value = true
+
+
+                shouldNavigateToHomeFragment.value = true
+
+
+
                 Toast.makeText(
                     HelperApplication.context,
                     "Add Proposal Success",
