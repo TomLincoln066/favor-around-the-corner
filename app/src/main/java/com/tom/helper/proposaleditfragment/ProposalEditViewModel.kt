@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.User
 
 
@@ -25,6 +26,15 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     val proposalProvider = MutableLiveData<String>()
     val proposalContent = MutableLiveData<String>()
     val proposalAccepted = false
+
+
+    // status: The internal MutableLiveData that stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
+
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -72,7 +82,14 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     //get editText's data and send out to FireBase
     fun submitProposal() {
 
+        // to prevent situation when user clicks send request button too many times when Loading.
+        if (_status.value == LoadApiStatus.LOADING){
+            return
+        }
+
         _error.value = null
+
+        _status.value = LoadApiStatus.LOADING
 
         //check whether taskTitle.value is not valid
         if (proposalContent.value == null || proposalContent.value?.isEmpty() == true) {

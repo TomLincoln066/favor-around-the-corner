@@ -62,9 +62,6 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 
 
 
-
-
-
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
 
@@ -162,6 +159,11 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     fun submitTask() {
 
 
+        // to prevent situation when user clicks send request button too many times when Loading.
+        if (_status.value == LoadApiStatus.LOADING){
+            return
+        }
+
         _error.value = null
 
         _status.value = LoadApiStatus.LOADING
@@ -179,6 +181,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
 //            _error.value = "Task Title not complete"
 //            return
 //        }
+
 
         val db = FirebaseFirestore.getInstance()
 
