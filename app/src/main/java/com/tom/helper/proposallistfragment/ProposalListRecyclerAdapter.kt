@@ -32,7 +32,7 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ,
             Log.i("BINDING", "PROPOSAL id=${proposal.user?.id}")
             Log.i("BINDING", "VIEWMODEL id=${viewModel.profile.value?.id}")
 
-            val userCurrentBoolean = proposal.user?.id == viewModel.profile.value?.id
+            val userCurrentBoolean = (proposal.user?.id == viewModel.profile.value?.id) || (proposal.taskOnwerID != viewModel.profile.value?.id)
             binding.userCurrentBoolean = userCurrentBoolean
 
 

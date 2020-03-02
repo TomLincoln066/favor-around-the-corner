@@ -16,6 +16,13 @@
             type="com.tom.helper.source.ProposalProgressContent" />
 
 
+        <import type="android.view.View" />
+
+        <variable
+            name="userCurrentBoolean"
+            type="Boolean" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,6 +53,9 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_round_button"
+
+                    android:clickable="@{viewModel.ableToNavToProgress == true ? true : false}"
+
                     android:text="編輯進度事項"
                     android:textColor="@color/white"
                     android:textSize="20dp"

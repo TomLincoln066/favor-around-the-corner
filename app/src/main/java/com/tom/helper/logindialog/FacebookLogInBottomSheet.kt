@@ -17,6 +17,7 @@ import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.login.LoginBehavior
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -24,6 +25,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.tom.helper.HelperApplication
 import com.tom.helper.LoadApiStatus
 import com.tom.helper.MainActivity
 import com.tom.helper.databinding.FragmentFacebookLogInBinding
@@ -96,6 +98,9 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
 
         val callbackManager = (activity as MainActivity).callbackManager
         Button_facebook_log_in.setPermissions("email", "public_profile")
+
+        Button_facebook_log_in.loginBehavior = LoginBehavior.WEB_ONLY
+
         Button_facebook_log_in.registerCallback(callbackManager, object :
             FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
@@ -132,6 +137,7 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Will", "signInWithCredential:success")
                     val user = auth.currentUser
+
                     //when user logged in, dismiss this dialog fragment.
                     this.dismiss()
 

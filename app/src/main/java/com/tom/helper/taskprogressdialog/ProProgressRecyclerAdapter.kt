@@ -43,6 +43,12 @@ class ProProgressRecyclerAdapter(
             binding.buttonItemProposalProgressComplete.setOnClickListener { onClickListener.onClick(proposalProgressContent) }
 
 
+            val userCurrentBoolean = proposalProgressContent.user?.id == viewModel.profile.value?.id
+
+//            binding.userCurrentBoolean = userCurrentBoolean
+
+
+
             binding.executePendingBindings()
 
 

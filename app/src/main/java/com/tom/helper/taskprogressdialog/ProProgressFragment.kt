@@ -91,6 +91,10 @@ class ProProgressFragment : Fragment() {
 
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALPROGRESSLIST)
 
+
+        viewModel.getCurrentUserData()
+
+
         return binding.root
 
 

@@ -112,6 +112,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
         val taskId = task.id
 
+        val taskOnwerId = task.userId
+
         val userCurrent = user.uid
 
         val userCurrent1 = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
@@ -146,7 +148,8 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             proposalAccepted,
             userCurrent,
             userCurrent1,
-            taskID = taskId
+            taskID = taskId,
+            taskOnwerID = taskOnwerId
         )
 
 

@@ -84,7 +84,7 @@
     <string name="textView_proposal_sender_name">你的暱稱 ></string>
     <string name="textView_proposal_request_content_tag">為甚麼要選我 ></string>
     <string name="button_proposal_send">送出</string>
-    <string name="editText_proposal_content">你同事口中最強的電玩神手就是我啦!遇到甚麼麻煩交給我保證沒問題。</string>
+    <string name="editText_proposal_content">EX : 我有多年XXX的經驗, 以下連結是我過往的作品 www.YOURWEBPAGE.com, 這是我的聯絡方式 TEL : 09xx-xxx-185</string>
 
     <!-- Proposals list fragment and item -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -38,8 +38,6 @@ object HelperRemoteDataSource : HelperDataSource {
         val user =
             User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
 
-
-
         document
             .get()
             .addOnCompleteListener { task ->
@@ -73,10 +71,20 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
     override suspend fun getUserCurrent(): Result<User> = suspendCoroutine { continuation ->
+
+
+
+        if (HelperApplication.user.id.isNotEmpty()) {
+            continuation.resume(Result.Success(HelperApplication.user))
+            return@suspendCoroutine
+        }
+
+
+
+
         val users = FirebaseFirestore.getInstance().collection(PATH_USERS)
         val userCurrent = FirebaseAuth.getInstance().currentUser
         val photoUrl = userCurrent?.photoUrl.toString()
-
 
         users
             .document(userCurrent!!.uid)

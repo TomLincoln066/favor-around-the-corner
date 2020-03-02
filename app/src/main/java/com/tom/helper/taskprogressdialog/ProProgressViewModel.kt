@@ -1,14 +1,13 @@
 package com.tom.helper.taskprogressdialog
 
+import android.util.Log
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tom.helper.LoadApiStatus
-import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Proposal
-import com.tom.helper.source.ProposalProgressContent
-import com.tom.helper.source.Result
+import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,6 +20,8 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
 
     val proposalProgressContents: LiveData<List<ProposalProgressContent>>
         get() = _proposalProgressContents
+
+
 
 
     //for mock progress item
@@ -48,6 +49,7 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     //save the proposal into proposalLive in the first place
     val proposalLive = MutableLiveData<Proposal>().apply {
         value = proposal
+        Log.d("UserId","${proposal.userID}")
     }
 
 
@@ -160,6 +162,55 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
 
 
     }
+
+
+
+    private val _profile = MutableLiveData<User>()
+
+    val profile: LiveData<User>
+        get() = _profile
+
+
+
+    //    for all tasks of mine
+    fun getCurrentUserData() {
+
+        coroutineScope.launch {
+            val result = repository.getUserCurrent()
+
+            when (result) {
+                is com.tom.helper.source.Result.Success -> {
+                    _profile.value = result.data
+                    Log.d("UserId-","${result.data.id}")
+                }
+
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
+
+
+    //MediatorLiveData track liveData....
+    val ableToNavToProgress = MediatorLiveData<Boolean>().apply {
+        addSource(_profile) {
+            value = (it.id == proposalLive.value?.userID)
+        }
+        addSource(proposalLive) {
+            value = (_profile.value?.id == it.userID)
+        }
+    }
+
+
+
+
 
 
 
