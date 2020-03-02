@@ -61,18 +61,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/alesso_profile" />
 
-            <Button
-                android:id="@+id/button_ranking_item_invite"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_round_button"
-                android:text="@string/button_ranking_item_invite"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.782" />
+
 
             <TextView
                 android:id="@+id/textView_ranking_item_name"
@@ -93,7 +82,7 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="@{user.email}"
                 android:textSize="15dp"
                 android:textColor="@color/black_3f3a3a"
@@ -119,7 +108,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/icon_gold_coin"
                 app:layout_constraintStart_toEndOf="@id/imageView_ranking_list_item_picture"
                 app:layout_constraintTop_toBottomOf="@id/textView_ranking_user_email" />
@@ -132,3 +121,17 @@
 </layout>
 
     <!--    android:text="@={viewModel.convertLongToString(rank.earning)}"-->
+
+
+<!--<Button-->
+<!--android:id="@+id/button_ranking_item_invite"-->
+<!--android:layout_width="70dp"-->
+<!--android:layout_height="35dp"-->
+<!--android:layout_marginEnd="16dp"-->
+<!--android:background="@drawable/bg_round_button"-->
+<!--android:text="@string/button_ranking_item_invite"-->
+<!--android:textColor="@color/white"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent"-->
+<!--app:layout_constraintVertical_bias="0.782" />-->

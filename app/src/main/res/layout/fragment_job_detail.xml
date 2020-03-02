@@ -215,6 +215,7 @@
                     android:background="@drawable/bg_round_button"
                     android:letterSpacing="0.15"
                     android:text="線上詢問"
+                    android:onClick="@{()->viewModel.comingSoon()}"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"

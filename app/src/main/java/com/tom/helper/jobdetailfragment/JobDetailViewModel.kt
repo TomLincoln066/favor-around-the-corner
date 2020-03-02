@@ -1,9 +1,11 @@
 package com.tom.helper.jobdetailfragment
 
+import android.widget.Toast
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.tom.helper.HelperApplication
 import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Result
 import com.tom.helper.source.Task
@@ -92,6 +94,13 @@ class JobDetailViewModel(private val repository: HelperRepository) : ViewModel()
     }
 
 
+    fun comingSoon() {
+        Toast.makeText(
+            HelperApplication.context,
+            "coming soon",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
 
 
 }

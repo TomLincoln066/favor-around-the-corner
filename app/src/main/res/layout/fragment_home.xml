@@ -5,9 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.tom.helper.homefragment.HomeViewModel" />
+
+        <import type="android.view.View" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,14 +59,17 @@
 
 
         <TextView
-            android:id="@+id/textView_no_data_yet"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/textView_no_data_yet"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView_no_data_yet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/textView_no_data_yet"
+        android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_request_recycler"
@@ -75,22 +83,28 @@
             tools:listitem="@layout/item_request" />
 
         <ProgressBar
-            android:theme="@style/MessageDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:theme="@style/MessageDialog"
             android:visibility="gone"
-            app:setupApiStatus="@{viewModel.status}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setupApiStatus="@{viewModel.status}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
 
-
+<!--<TextView-->
+<!--android:id="@+id/textView_no_data_yet"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:gravity="center"-->
+<!--android:text="@string/textView_no_data_yet"-->
+<!--android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent" />-->

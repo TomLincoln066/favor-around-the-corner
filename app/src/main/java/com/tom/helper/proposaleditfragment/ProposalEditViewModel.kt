@@ -165,7 +165,7 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
                 Toast.makeText(
                     HelperApplication.context,
-                    "Add Proposal Success",
+                    "新增提案成功",
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.i("SUCCESS", "SU")

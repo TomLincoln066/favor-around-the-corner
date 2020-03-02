@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.tom.helper.rankinglist.RankingListViewModel" />
+
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +27,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/textView_no_data_yet"
+            android:visibility ="@{viewModel.profiles.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,24 +37,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
+            app:addUsers="@{viewModel.profiles}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:addUsers="@{viewModel.profiles}"
-            tools:listitem="@layout/item_ranking_list"
-            />
+            tools:listitem="@layout/item_ranking_list" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
 
-<!--    app:addTasksOfMine="@{viewModel.tasks}"-->
-
-
-
-
+    <!--    app:addTasksOfMine="@{viewModel.tasks}"-->
 
 
     <!--<TextView-->

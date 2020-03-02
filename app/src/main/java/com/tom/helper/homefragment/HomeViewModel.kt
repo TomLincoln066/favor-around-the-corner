@@ -1,11 +1,13 @@
 package com.tom.helper.homefragment
 
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tom.helper.HelperApplication
 import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
@@ -179,13 +181,11 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
     //for task of status 0 (on_going)
     private val _tasksWithMyProposal = MutableLiveData<List<Proposal>>()
 
     val tasksWithMyProposal: LiveData<List<Proposal>>
         get() = _tasksWithMyProposal
-
 
 
     //for task of status 1 (on_going task which user send proposals and got accepted)
@@ -212,30 +212,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -355,22 +331,31 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     fun Long.toDisplayTimePass(): String {
         val now = System.currentTimeMillis()
-        val diff = (now - this)/1000
+        val diff = (now - this) / 1000
         val years = diff / (60 * 60 * 24 * 30 * 12)
-        val  months = diff / (60 * 60 * 24 * 30)
+        val months = diff / (60 * 60 * 24 * 30)
         val days = diff / (60 * 60 * 24)
 //    val hours = (diff - days * (60 * 60 * 24)) / (60 * 60)
         val hours = diff / (60 * 60)
 //    val minutes = (diff - days * (60 * 60 * 24) - hours * (60 * 60)) / 60
         val minutes = diff / (60)
         return when {
-            years >=1 -> "${years}年前"
+            years >= 1 -> "${years}年前"
             months >= 1 -> "${months}個月前"
             days >= 1 -> "${days}天前"
             hours >= 1 -> "${hours}小時前"
             minutes >= 1 -> "${minutes}分鐘前"
             else -> "剛剛"
         }
+    }
+
+
+    fun comingSoon() {
+        Toast.makeText(
+            HelperApplication.context,
+            "coming soon",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
 

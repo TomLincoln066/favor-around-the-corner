@@ -5,11 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.tom.helper.proposallistfragment.ProposalListViewModel" />
-    </data>
 
+        <import type="android.view.View" />
+
+
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,12 +27,23 @@
             android:id="@+id/proposal_list_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:addProposal="@{viewModel.proposals}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:addProposal="@{viewModel.proposals}"
             tools:listitem="@layout/item_proposal" />
+
+        <TextView
+            android:id="@+id/textView_no_data_yet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/textView_no_data_yet"
+            android:visibility="@{viewModel.proposals.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

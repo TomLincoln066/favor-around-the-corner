@@ -148,7 +148,7 @@ class ProposalProgressEditViewModel(
                             shouldNavigateBackToProposalProgressDisplayFragment.value = true
                             Toast.makeText(
                                 HelperApplication.context,
-                                "Add Progress Item Success",
+                                "新增進度項目成功",
                                 Toast.LENGTH_SHORT
                             ).show()
                             Log.i("SUCCESS", "SU")

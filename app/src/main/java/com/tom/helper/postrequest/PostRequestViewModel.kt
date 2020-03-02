@@ -250,7 +250,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
                             shouldNavigateToHomeFragment.value = true
                             Toast.makeText(
                                 HelperApplication.context,
-                                "Add Success",
+                                "新增任務成功",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
