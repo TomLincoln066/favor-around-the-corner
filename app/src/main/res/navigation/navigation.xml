@@ -82,8 +82,8 @@
         android:label="fragment_chat_room"
         tools:layout="@layout/fragment_chat_room" >
         <argument
-            android:name="message"
-            app:argType="com.tom.helper.source.Message" />
+            android:name="task"
+            app:argType="com.tom.helper.source.Task" />
     </fragment>
     <action
         android:id="@+id/action_global_chatRoomFragment"

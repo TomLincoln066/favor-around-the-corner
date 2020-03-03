@@ -3,6 +3,7 @@ package com.tom.helper.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tom.helper.MainActivityViewModel
+import com.tom.helper.chatroom.ChatRoomViewModel
 import com.tom.helper.homefragment.HomeViewModel
 import com.tom.helper.jobdetailfragment.JobDetailViewModel
 import com.tom.helper.postrequest.PostRequestViewModel
@@ -52,6 +53,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)
+
+//                isAssignableFrom(ChatRoomViewModel::class.java) ->
+//                    ChatRoomViewModel(repository)
 
 //                isAssignableFrom(ProProgressViewModel::class.java) ->
 //                    ProProgressViewModel(repository)

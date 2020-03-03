@@ -91,9 +91,9 @@
     <string name="text_proposal_content_tag">內容</string>
 
     <!-- ChatRoom-->
-    <string name="editText_input_message">type message here...</string>
+    <string name="editText_input_message">...</string>
     <string name="button_send_message">送出訊息</string>
-    <string name="button_item_request_message">聯絡案主</string>
+    <string name="button_item_request_message">線上詢問</string>
     <string name="btn_choose_image">選擇情境照</string>
     <string name="textView_no_data_yet">目前沒有資料</string>
     <string name="fragment_my_proposals">我的提案</string>

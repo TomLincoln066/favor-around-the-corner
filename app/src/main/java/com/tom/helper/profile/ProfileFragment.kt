@@ -87,6 +87,22 @@ class ProfileFragment : Fragment() {
 
 
 
+        viewModel.shouldNavigateToChatRoomFragment.observe(this, Observer {
+            it?.let {
+
+                findNavController().navigate(
+                    ProfileFragmentDirections.actionGlobalChatRoomFragment(it)
+                )
+                viewModel.doneNavigatingToChatRoom()
+
+            }
+        })
+
+
+
+
+
+
         //handle changing the title while selecting RankingListFragment
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROFILE)
 

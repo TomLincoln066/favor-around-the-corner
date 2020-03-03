@@ -6,10 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.tom.helper.source.HelperRepository
-import com.tom.helper.source.Proposal
-import com.tom.helper.source.Task
-import com.tom.helper.source.User
+import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -261,6 +258,31 @@ class ProfileViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
+
+
+
+    private val _message = MutableLiveData<Message>()
+
+    val message: LiveData<Message>
+        get() = _message
+
+
+    private val _shouldNavigateToChatRoomFragment = MutableLiveData<Task>()
+    val shouldNavigateToChatRoomFragment: LiveData<Task>
+        get() = _shouldNavigateToChatRoomFragment
+
+
+    fun clickNavToChatRoomFragment(task: Task?) {
+        Log.d("Will", "clickNavToChatRoomFragment(), message=$message")
+        message?.let {
+            _shouldNavigateToChatRoomFragment.value = task
+        }
+    }
+
+
+    fun doneNavigatingToChatRoom() {
+        _shouldNavigateToChatRoomFragment.value = null
+    }
 
 
 

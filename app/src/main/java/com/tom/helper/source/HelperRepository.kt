@@ -37,6 +37,10 @@ interface HelperRepository {
 
     suspend fun getTasksWithMyProposal():Result<List<Proposal>>
 
+    suspend fun getMessagesFromDB(task: Task): Result<List<Message>>
+
+    suspend fun sendMessagesToDB(task: Task): Result<List<Message>>
+
 
 
 

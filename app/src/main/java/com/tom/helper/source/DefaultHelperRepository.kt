@@ -71,6 +71,13 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getTasksWithMyProposal()
     }
 
+    override suspend fun getMessagesFromDB(task: Task): Result<List<Message>> {
+        return remoteDataSource.getMessagesFromDB(task)
+    }
+
+    override suspend fun sendMessagesToDB(task: Task): Result<List<Message>> {
+        return remoteDataSource.sendMessagesToDB(task)
+    }
 
 //
 //    override suspend fun publish(article: Article): Result<Boolean> {

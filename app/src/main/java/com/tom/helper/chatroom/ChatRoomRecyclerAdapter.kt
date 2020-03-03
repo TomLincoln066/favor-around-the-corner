@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tom.helper.databinding.ItemMessageBinding
 import com.tom.helper.source.Message
 
-class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener ) :
+class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener , val viewModel: ChatRoomViewModel) :
     ListAdapter<Message, RecyclerView.ViewHolder>(DiffCallback) {
 
     class OnClickListener(val clickListener: (message: Message) -> Unit) {
@@ -18,7 +18,9 @@ class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener ) :
     class MessageViewHolder(private var binding: ItemMessageBinding):
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(message: Message, onClickListener: OnClickListener) {
+        fun bind(message: Message, onClickListener: OnClickListener, viewModel: ChatRoomViewModel) {
+
+//            binding.viewModel = viewModel
 
             binding.message = message
 
@@ -54,7 +56,7 @@ class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener ) :
 
         when (holder) {
             is MessageViewHolder -> {
-                holder.bind((getItem(position) as Message), onClickListener)
+                holder.bind((getItem(position) as Message), onClickListener, viewModel)
             }
         }
     }

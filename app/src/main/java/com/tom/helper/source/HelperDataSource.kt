@@ -38,6 +38,12 @@ interface HelperDataSource {
 
     suspend fun getTasksWithMyProposal():Result<List<Proposal>>
 
+
+    suspend fun getMessagesFromDB(task: Task): Result<List<Message>>
+
+    suspend fun sendMessagesToDB(task: Task): Result<List<Message>>
+
+
 //    suspend fun publish(article: Article): Result<Boolean>
 //
 //    suspend fun delete(article: Article): Result<Boolean>

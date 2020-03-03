@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.tom.helper.chatroom.ChatRoomRecyclerAdapter
 import com.tom.helper.homefragment.HomeRecyclerAdapter
 import com.tom.helper.profile.ProfileRecyclerAdapter
 import com.tom.helper.proposallistfragment.ProposalListRecyclerAdapter
@@ -29,20 +30,19 @@ fun bindRecyclerView(recyclerView: RecyclerView, homeItems: List<Task>?) {
     }
 }
 
-//fragment_ranking_list in use
-//@BindingAdapter("addRankUser")
-//fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<Rank>?) {
-//    homeItems?.let {
-//        recyclerView.adapter?.apply {
-//            when (this) {
-//                is RankingRecyclerAdapter -> submitList(it)
-//                else -> {
-//                    Log.i("SOMETHNG", "")
-//                }
-//            }
-//        }
-//    }
-//}
+
+//fragment_home.xml in use
+@BindingAdapter("messages")
+fun bindRecyclerViewMessage(recyclerView: RecyclerView, homeItems: List<Message>?) {
+    homeItems?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is ChatRoomRecyclerAdapter -> submitList(it)
+            }
+        }
+    }
+}
+
 
 
 

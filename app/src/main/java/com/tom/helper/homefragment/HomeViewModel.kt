@@ -311,15 +311,15 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 //    }
 
 
-    private val _shouldNavigateToChatRoomFragment = MutableLiveData<Message>()
-    val shouldNavigateToChatRoomFragment: LiveData<Message>
+    private val _shouldNavigateToChatRoomFragment = MutableLiveData<Task>()
+    val shouldNavigateToChatRoomFragment: LiveData<Task>
         get() = _shouldNavigateToChatRoomFragment
 
 
-    fun clickNavToChatRoomFragment(message: Message?) {
+    fun clickNavToChatRoomFragment(task: Task?) {
         Log.d("Will", "clickNavToChatRoomFragment(), message=$message")
         message?.let {
-            _shouldNavigateToChatRoomFragment.value = message
+            _shouldNavigateToChatRoomFragment.value = task
         }
     }
 

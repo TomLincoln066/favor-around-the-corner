@@ -9,7 +9,11 @@ data class Message(
     var createdTime: Long = -1,
     var title: String = "",
     var content: String = "",
-    var user:User? = null,
-    val image:String = ""
+    var userSender:User? = null,
+    var userSenderId:String = "",
+    var userReceiver:User? = null,
+    var userReceiverId:String = "",
+    val image:String = "",
+    val taskId:String = ""
 
 ) : Parcelable
