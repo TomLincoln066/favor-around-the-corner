@@ -58,6 +58,7 @@ class ProProgressFragment : Fragment() {
             )
 
 
+        //  this is replaced by val ableToNavToProgress in ProProgressViewModel.kt
         binding.buttonEditProgressItem.setOnClickListener {
 
             findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(proposal))
