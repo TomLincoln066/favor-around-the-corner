@@ -215,8 +215,6 @@ object HelperRemoteDataSource : HelperDataSource {
             .whereArrayContainsAny("participantsID", listOf(userCurrent))
 
 
-
-
 //            .whereArrayContainsAny("participantsID", listOf("Wayne", "IU"))
 
 //            .whereEqualTo("userId", userCurrent?.uid)
@@ -231,7 +229,6 @@ object HelperRemoteDataSource : HelperDataSource {
                     val tasks = task.result!!.toObjects(Task::class.java)
 
 //                    val tasksOfInterest = tasks.filter { it.userId == userCurrent?.uid }
-
 
 
 //                    for (document in task.result!!) {
@@ -498,7 +495,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
                 .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
-//                .whereEqualTo("status", 0)
+
                 .get()
                 .addOnCompleteListener { taskA ->
                     if (taskA.isSuccessful) {
@@ -669,7 +666,16 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
             val data = Message(
-            document.id,System.currentTimeMillis(),"", messageContent.value!!,null,userCurrent,null,taskOnwerId,"")
+                document.id,
+                System.currentTimeMillis(),
+                "",
+                messageContent.value!!,
+                null,
+                userCurrent,
+                null,
+                taskOnwerId,
+                ""
+            )
 
 
             document.set(data)
@@ -688,8 +694,7 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
-
-    override suspend fun addTaskProposalOwnerID(task: Task,userID:String): Result<Boolean> =
+    override suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance().collection(PATH_TASKS).document(task.id)
 
@@ -707,8 +712,6 @@ object HelperRemoteDataSource : HelperDataSource {
                     }
                 }
         }
-
-
 
 
 }

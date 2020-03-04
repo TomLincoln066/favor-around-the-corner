@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
@@ -13,15 +14,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ProProgressViewModel(private val repository: HelperRepository, private val proposal: Proposal) : ViewModel() {
+class ProProgressViewModel(
+    private val repository: HelperRepository,
+    private val proposal: Proposal
+) : ViewModel() {
 
 
     private val _proposalProgressContents = MutableLiveData<List<ProposalProgressContent>>()
 
     val proposalProgressContents: LiveData<List<ProposalProgressContent>>
         get() = _proposalProgressContents
-
-
 
 
     //for mock progress item
@@ -49,7 +51,7 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     //save the proposal into proposalLive in the first place
     val proposalLive = MutableLiveData<Proposal>().apply {
         value = proposal
-        Log.d("UserId","${proposal.userID}")
+        Log.d("UserId", "${proposal.userID}")
     }
 
 
@@ -106,9 +108,6 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     }
 
 
-
-
-
     fun getProposalProgressItem(proposal: Proposal) {
 
         coroutineScope.launch {
@@ -139,10 +138,14 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     }
 
 
-    fun clickToEditOneProposalProgressItemStatusFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent){
+    fun clickToEditOneProposalProgressItemStatusFinished(
+        proposal: Proposal,
+        proposalProgressContent: ProposalProgressContent
+    ) {
 
         coroutineScope.launch {
-            val result = repository.editOneProposalProgressItemToFinished(proposal,proposalProgressContent)
+            val result =
+                repository.editOneProposalProgressItemToFinished(proposal, proposalProgressContent)
 
             when (result) {
                 is Result.Success -> {
@@ -164,12 +167,10 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     }
 
 
-
     private val _profile = MutableLiveData<User>()
 
     val profile: LiveData<User>
         get() = _profile
-
 
 
     //    for all tasks of mine
@@ -181,7 +182,7 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
             when (result) {
                 is com.tom.helper.source.Result.Success -> {
                     _profile.value = result.data
-                    Log.d("UserId-","${result.data.id}")
+                    Log.d("UserId-", "${result.data.id}")
                 }
 
                 is com.tom.helper.source.Result.Error -> {
@@ -220,9 +221,40 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     }
 
 
+    //handle when button_finish_this_task is clicked, and it change the status of this task from 0 to 1
+    fun clickFinishThisTask(proposal: Proposal) {
+        Log.d("clickFinishThisTask().ProProgressViewModel", "clickFinishThisTask")
+
+        val status = FirebaseFirestore.getInstance()
+
+        val document = status.collection("tasks").document(proposal.taskID)
+
+        document.update("status", 1).addOnSuccessListener {
+
+        }
+
+//        coroutineScope.launch {
+//            val result = repository.getProposalsOfStatusEqualToZero(task)
+//
+//
+//            when (result) {
+//                is com.tom.helper.source.Result.Success -> {
+//
+//                }
+//
+//                is com.tom.helper.source.Result.Error -> {
+//                    result.exception
+//                }
+//
+//                is com.tom.helper.source.Result.Fail -> {
+//                    _error.value = result.error
+//                }
+//            }
+//
+//        }
 
 
-
+    }
 
 
 }

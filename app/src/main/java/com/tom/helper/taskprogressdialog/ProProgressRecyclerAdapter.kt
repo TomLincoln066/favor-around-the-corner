@@ -25,7 +25,9 @@ class ProProgressRecyclerAdapter(
     class ProposalProgressViewHolder(private var binding: ItemProposalProgressBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(proposalProgressContent:ProposalProgressContent, onClickListener: OnClickListener, viewModel: ProProgressViewModel) {
+        fun bind(proposalProgressContent:ProposalProgressContent,
+                 onClickListener: OnClickListener,
+                 viewModel: ProProgressViewModel) {
 
 
             //give HomeRecyclerAdapter HomeViewModel so item_request.xml would show price.
