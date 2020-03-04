@@ -7,16 +7,20 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
 
     override suspend fun login(id: String): com.tom.helper.source.Result<User> {
         return when (id) {
-            "waynechen323" -> com.tom.helper.source.Result.Success((User(
-                id,
-                "AKA小安老師",
-                "wayne@school.appworks.tw"
-            )))
-            "dlwlrma" -> com.tom.helper.source.Result.Success((User(
-                id,
-                "IU",
-                "dlwlrma@school.appworks.tw"
-            )))
+            "waynechen323" -> com.tom.helper.source.Result.Success(
+                (User(
+                    id,
+                    "AKA小安老師",
+                    "wayne@school.appworks.tw"
+                ))
+            )
+            "dlwlrma" -> com.tom.helper.source.Result.Success(
+                (User(
+                    id,
+                    "IU",
+                    "dlwlrma@school.appworks.tw"
+                ))
+            )
             //TODO add your profile here
             else -> com.tom.helper.source.Result.Fail("You have to add $id info in local data source")
         }
@@ -42,7 +46,10 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean> {
+    override suspend fun editOneProposalToUnaccepted(
+        task: Task,
+        proposal: Proposal
+    ): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -66,7 +73,10 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> {
+    override suspend fun editOneProposalProgressItemToFinished(
+        proposal: Proposal,
+        proposalProgressContent: ProposalProgressContent
+    ): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -88,6 +98,10 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
 
 
     override suspend fun sendMessagesToDB(task: Task): Result<List<Message>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

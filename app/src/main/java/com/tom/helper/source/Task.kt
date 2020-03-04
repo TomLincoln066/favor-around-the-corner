@@ -15,7 +15,9 @@ data class Task(
     var status: Int = -1,
     val proposal: List<Proposal> = listOf(),
     val image:String = "",
-    val userId: String = ""
+    val userId: String = "",
+    val participantsID : List<String> = listOf()
+
 ) : Parcelable
 
 //@Parcelize

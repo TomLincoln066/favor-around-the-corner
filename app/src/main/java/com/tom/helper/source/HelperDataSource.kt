@@ -43,6 +43,8 @@ interface HelperDataSource {
 
     suspend fun sendMessagesToDB(task: Task): Result<List<Message>>
 
+    suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean>
+
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

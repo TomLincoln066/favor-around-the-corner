@@ -17,6 +17,7 @@ import kotlinx.coroutines.Job
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.User
+import kotlinx.coroutines.launch
 
 
 class ProposalEditViewModel(private val repository: HelperRepository, private val task: Task) :
@@ -33,8 +34,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
     val status: LiveData<LoadApiStatus>
         get() = _status
-
-
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request
@@ -68,7 +67,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
 
 
-
     init {
 
 //        shouldNavigateToProposalListFragment.value = false
@@ -83,7 +81,7 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     fun submitProposal() {
 
         // to prevent situation when user clicks send request button too many times when Loading.
-        if (_status.value == LoadApiStatus.LOADING){
+        if (_status.value == LoadApiStatus.LOADING) {
             return
         }
 
@@ -105,42 +103,34 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 //        val proposal = FirebaseFirestore.getInstance().collection("proposal")  have proposal input in the task collection
         val proposal = FirebaseFirestore.getInstance().collection("tasks")
 
-        //handle inputting proposal into specific task
-        val document = proposal.document(task.id).collection("proposal").document()
-
         val user = FirebaseAuth.getInstance().currentUser!!
+        val userCurrent = user.uid
+
+        //handle inputting proposal into specific task
+        val document = proposal.document(task.id).collection("proposal").document(userCurrent)
+
+
 
         val taskId = task.id
 
         val taskOnwerId = task.userId
 
-        val userCurrent = user.uid
 
-        val userCurrent1 = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
+
+        val userCurrent1 = User(user!!.uid, user.displayName!!, user.email!!, 0, 0L)
 
         //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
         val status = FirebaseFirestore.getInstance()
 
         val document1 = status.collection("tasks").document(task.id)
 
-        document1.update("status",0)
+        document1.update("status", 0)
 
-
-
-
-//        val data = hashMapOf(
-//
-//            "senderName" to proposalProvider.value!!,
-//            "content" to proposalContent.value!!,
-//            "id" to document.id,
-//            "createdTime" to System.currentTimeMillis(),
-//            "accepted" to proposalAccepted,
-//            "user" to userCurrent
-//
-//        )
 
         val data = Proposal(
+
             document.id,
+
             System.currentTimeMillis(),
             proposalProvider.value!!,
             proposalContent.value!!,
@@ -153,18 +143,17 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         )
 
 
-//        document.set(data as Map<String, Any>)
+
+
         document.set(data)
             .addOnFailureListener {
                 Log.i("EXCEPTIONX", "exc = ${it.message}")
             }.addOnSuccessListener {
-                //after sending proposal successfully, set shouldNavigateToProposalListFragment.value = true
-//                shouldNavigateToProposalListFragment.value = true
 
 
                 shouldNavigateToHomeFragment.value = true
 
-
+                addTaskProposalOwnerID()
 
                 Toast.makeText(
                     HelperApplication.context,
@@ -178,18 +167,27 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
 
 
-//    fun setTaskstatus(){
-//
-//        val status = FirebaseFirestore.getInstance()
-//
-//        val document = status.collection("tasks").document(task.id)
-//
-//        document.update("status",0)
-//
-//    }
+    fun addTaskProposalOwnerID(userID:String = HelperApplication.user.id) {
 
+        coroutineScope.launch {
 
+            when (val result = repository.addTaskProposalOwnerID(task,userID)) {
+                is com.tom.helper.source.Result.Success -> {
+//                    _proposals.value = result.data
+                }
 
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+    }
 
 
 

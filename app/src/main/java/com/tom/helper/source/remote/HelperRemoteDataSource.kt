@@ -12,6 +12,7 @@ import com.tom.helper.source.*
 import com.tom.helper.util.Logger
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
+import com.google.firebase.firestore.FieldValue
 
 // Implementation of the Helper source that from firebase.
 
@@ -93,8 +94,10 @@ object HelperRemoteDataSource : HelperDataSource {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = task.result?.toObject(User::class.java)!!
-//                    continuation.resume(Result.Success(list))
-//                    user.image = task.result?.data!!["image"].toString()
+
+
+                    HelperApplication.user = user
+
                     continuation.resume(Result.Success(user))
                 } else {
                     task.exception?.let {
@@ -137,7 +140,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
                     val tasks = task.result!!.toObjects(Task::class.java)
 
-                    val tasksOfInterest = tasks.filter { it.userId != userCurrent?.uid }
+//                    val tasksOfInterest = tasks.filter { it.userId == userCurrent?.uid }
 
 //                    for (document in task.result!!) {
 ////                        Logger.d(document.id + " => " + document.data)
@@ -146,7 +149,8 @@ object HelperRemoteDataSource : HelperDataSource {
 //                        newList.add(task1)
 //                        Log.d("Will", "get data form firebase")
 //                    }
-                    continuation.resume(Result.Success(tasksOfInterest))
+//                    continuation.resume(Result.Success(tasksOfInterest))
+                    continuation.resume(Result.Success(tasks))
                 } else {
                     task.exception?.let {
 
@@ -211,7 +215,8 @@ object HelperRemoteDataSource : HelperDataSource {
 
                     val tasks = task.result!!.toObjects(Task::class.java)
 
-                    val tasksOfInterest = tasks.filter { it.userId != userCurrent?.uid }
+//                    val tasksOfInterest = tasks.filter { it.userId == userCurrent?.uid }
+
 
 
 //                    for (document in task.result!!) {
@@ -225,7 +230,8 @@ object HelperRemoteDataSource : HelperDataSource {
 //
 //
 //                    }
-                    continuation.resume(Result.Success(tasksOfInterest))
+//                    continuation.resume(Result.Success(tasksOfInterest))
+                    continuation.resume(Result.Success(tasks))
 
                 } else {
                     task.exception?.let {
@@ -258,7 +264,7 @@ object HelperRemoteDataSource : HelperDataSource {
 
                     val tasks = task.result!!.toObjects(Task::class.java)
 
-                    val tasksOfInterest = tasks.filter { it.userId != userCurrent?.uid }
+//                    val tasksOfInterest = tasks.filter { it.userId == userCurrent?.uid }
 
 //                    for (document in task.result!!) {
 ////                        Logger.d(document.id + " => " + document.data)
@@ -268,7 +274,9 @@ object HelperRemoteDataSource : HelperDataSource {
 //                        Log.d("Will", "get data form firebase")
 //                    }
 
-                    continuation.resume(Result.Success(tasksOfInterest))
+//                    continuation.resume(Result.Success(tasksOfInterest))
+                    continuation.resume(Result.Success(tasks))
+
                 } else {
                     task.exception?.let {
 
@@ -663,6 +671,29 @@ object HelperRemoteDataSource : HelperDataSource {
                 }
 
         }
+
+
+
+    override suspend fun addTaskProposalOwnerID(task: Task,userID:String): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance().collection(PATH_TASKS).document(task.id)
+
+                .update("participantsID", FieldValue.arrayUnion(userID))
+                .addOnCompleteListener { addId ->
+                    if (addId.isSuccessful) {
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        addId.exception?.let {
+
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+        }
+
+
 
 
 }

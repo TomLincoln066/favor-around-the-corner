@@ -241,7 +241,8 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
                         taskStatus,
                         listOf(),
                         downloadUri.toString(),
-                        user.uid
+                        user.uid,
+                        listOf(user.uid)
                     )
 
                     document.set(data)

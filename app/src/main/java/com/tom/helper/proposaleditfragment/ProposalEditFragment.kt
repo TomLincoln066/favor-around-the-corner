@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.tom.helper.MainActivity
 import com.tom.helper.databinding.FragmentProposalEditBinding
 import com.tom.helper.ext.getVmFactory
+import com.tom.helper.source.Proposal
 import com.tom.helper.source.Task
 
 /**
