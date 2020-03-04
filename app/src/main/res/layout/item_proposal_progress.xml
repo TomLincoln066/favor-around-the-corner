@@ -35,30 +35,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{proposalProgressContent.user.name}"
+            android:text="已完成"
             android:textColor="@color/red_d0021b"
             android:textSize="15dp"
             android:visibility="@{proposalProgressContent.status==0 ? View.VISIBLE : View.GONE}"
-
             app:layout_constraintBottom_toBottomOf="@+id/button_item_proposal_progress_complete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_item_proposal_progress"
             app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress"
-            tools:text="Will Lo" />
+            tools:text="已完成" />
 
         <Button
             android:id="@+id/button_item_proposal_progress_complete"
             android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/button_style"
+            android:background="@{proposalProgressContent.status==-1 ? @drawable/button_style : @drawable/button_style_gray}"
+            android:clickable="@{proposalProgressContent.status==-1}"
             android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(viewModel.proposalLive,proposalProgressContent)}"
-            android:text="完成簽名"
-            android:textColor="@color/linked_blue_light"
-            android:visibility="@{proposalProgressContent.status==-1 ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintStart_toEndOf="@id/text_item_proposal_progress"
+            android:text="確認完成"
+            android:textColor="@{proposalProgressContent.status==-1 ?  @color/linked_blue_light : @color/gray_999999}"
+            android:visibility="@{viewModel.ableToNavToProgress == true ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_item_proposal_progress"
             app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress" />
 
 
@@ -69,10 +69,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:ellipsize="end"
             android:text="@{proposalProgressContent.content}"
             android:textColor="@color/black_3f3a3a"
             android:textSize="16dp"
-            android:ellipsize="end"
             app:layout_constraintEnd_toStartOf="@+id/button_item_proposal_progress_complete"
             app:layout_constraintStart_toEndOf="@id/imageView_proposal_icon_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -122,4 +122,37 @@
 </layout>
 
 
-<!--    android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(proposal,proposalProgressContent)}"-->
+    <!--    android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(proposal,proposalProgressContent)}"-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView_person_sign_off"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:text="@{proposalProgressContent.user.name}"-->
+    <!--android:textColor="@color/red_d0021b"-->
+    <!--android:textSize="15dp"-->
+    <!--android:visibility="@{proposalProgressContent.status==0 ? View.VISIBLE : View.GONE}"-->
+    <!--app:layout_constraintBottom_toBottomOf="@+id/button_item_proposal_progress_complete"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/text_item_proposal_progress"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress"-->
+    <!--tools:text="Will Lo" />-->
+
+
+    <!--<Button-->
+    <!--android:id="@+id/button_item_proposal_progress_complete"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="35dp"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:layout_marginEnd="10dp"-->
+    <!--android:background="@drawable/button_style"-->
+
+
+    <!--android:onClick="@{() -> viewModel.clickToEditOneProposalProgressItemStatusFinished(viewModel.proposalLive,proposalProgressContent)}"-->
+    <!--android:text="確認完成"-->
+    <!--android:textColor="@color/linked_blue_light"-->
+    <!--android:visibility="@{proposalProgressContent.status==-1 ? View.VISIBLE : View.INVISIBLE}"-->
+    <!--app:layout_constraintStart_toEndOf="@id/text_item_proposal_progress"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="@+id/text_item_proposal_progress" />-->

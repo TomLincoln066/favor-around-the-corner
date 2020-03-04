@@ -209,6 +209,17 @@ class ProProgressViewModel(private val repository: HelperRepository, private val
     }
 
 
+    //MediatorLiveData track liveData....
+    val ableToCheckProgressItem = MediatorLiveData<Boolean>().apply {
+        addSource(_profile) {
+            value = (it.id == proposalLive.value?.userID)
+        }
+        addSource(proposalLive) {
+            value = (_profile.value?.id == it.userID)
+        }
+    }
+
+
 
 
 

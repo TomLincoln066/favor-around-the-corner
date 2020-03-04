@@ -84,6 +84,10 @@ class ProposalProgressEditViewModel(
     //get editText's data and send out to FireBase
     fun submitProposalProgressItemContent() {
 
+        if (_status.value == LoadApiStatus.LOADING) {
+            return
+        }
+
         _error.value = null
 
         _status.value = LoadApiStatus.LOADING

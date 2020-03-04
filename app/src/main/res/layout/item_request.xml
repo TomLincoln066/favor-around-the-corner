@@ -23,7 +23,7 @@
             name="message"
             type="com.tom.helper.source.Message" />
 
-        <import type="com.tom.helper.HelperApplication"/>
+        <import type="com.tom.helper.HelperApplication" />
 
 
     </data>
@@ -121,8 +121,9 @@
                     android:id="@+id/button_mission_detail"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:enabled="@{isTaskOwner == false}"
                     android:background="@drawable/bg_round_button_right"
+                    android:clickable="@{task.status!= 1}"
+                    android:enabled="@{isTaskOwner == false}"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
@@ -208,18 +209,3 @@
 </layout>
 
 
-    <!--    android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(message)}"-->
-
-
-<!--<Button-->
-<!--android:id="@+id/button_item_request_close"-->
-<!--android:layout_width="100dp"-->
-<!--android:layout_height="30dp"-->
-<!--android:background="@drawable/bg_round_button_right"-->
-
-<!--android:clickable="@{task.status==0}"-->
-<!--android:text="@string/button_item_request_close"-->
-<!--android:textColor="@color/white"-->
-<!--android:textSize="12dp"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintEnd_toEndOf="parent" />-->
