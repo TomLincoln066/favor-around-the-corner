@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.tom.helper.HelperApplication
 import com.tom.helper.databinding.ItemRequestBinding
+import com.tom.helper.source.HelperRepository
 import com.tom.helper.source.Task
 
 //* This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -45,6 +47,8 @@ class HomeRecyclerAdapter(
             findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
             })
              */
+
+            binding.isTaskOwner = task.userId == HelperApplication.user.id
 
             binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
 

@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +22,8 @@ import java.text.SimpleDateFormat
 
 // private val repository: HelperRepository
 class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
+
+
 
 
     private val _message = MutableLiveData<Message>()

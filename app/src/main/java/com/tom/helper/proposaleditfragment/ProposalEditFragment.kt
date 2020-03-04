@@ -43,32 +43,32 @@ class ProposalEditFragment : Fragment() {
 
 
         //observe when shouldNavigateToProposalListFragment change from false to true then proceed findNavController().navigate(ProposalEditFragmentDirections.actionGlobalProposalListFragment())
-//        viewModel.shouldNavigateToProposalListFragment.observe(this, Observer {
-//            if (it) {
-//                findNavController().navigate(
-//                    ProposalEditFragmentDirections.actionGlobalProposalListFragment(
-//                        task
-//                    )
-//                )
-//
-//
-//            }
-//        })
+        viewModel.shouldNavigateToProposalListFragment.observe(this, Observer {
+            if (it) {
+                findNavController().navigate(
+                    ProposalEditFragmentDirections.actionGlobalProposalListFragment(
+                        task
+                    )
+                )
+
+
+            }
+        })
 
 
 
         //testing
-        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
-            if(it){
-
-                findNavController().navigate(
-                    ProposalEditFragmentDirections.actionGlobalHomeFragment()
-                )
-
-            }
-
-
-        })
+//        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
+//            if(it){
+//
+//                findNavController().navigate(
+//                    ProposalEditFragmentDirections.actionGlobalHomeFragment()
+//                )
+//
+//            }
+//
+//
+//        })
 
 
 

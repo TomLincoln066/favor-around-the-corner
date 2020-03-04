@@ -64,14 +64,14 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
 
     //testing
-    val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
+//    val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
 
 
     init {
 
-//        shouldNavigateToProposalListFragment.value = false
+        shouldNavigateToProposalListFragment.value = false
 
-        shouldNavigateToHomeFragment.value = false
+//        shouldNavigateToHomeFragment.value = false
 
 
     }
@@ -151,7 +151,9 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             }.addOnSuccessListener {
 
 
-                shouldNavigateToHomeFragment.value = true
+//                shouldNavigateToHomeFragment.value = true
+
+                shouldNavigateToProposalListFragment.value = true
 
                 addTaskProposalOwnerID()
 

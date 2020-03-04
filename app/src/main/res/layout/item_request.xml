@@ -10,6 +10,10 @@
             name="viewModel"
             type="com.tom.helper.homefragment.HomeViewModel" />
 
+        <variable
+            name="isTaskOwner"
+            type="Boolean" />
+
 
         <variable
             name="task"
@@ -18,6 +22,8 @@
         <variable
             name="message"
             type="com.tom.helper.source.Message" />
+
+        <import type="com.tom.helper.HelperApplication"/>
 
 
     </data>
@@ -115,7 +121,7 @@
                     android:id="@+id/button_mission_detail"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-
+                    android:enabled="@{isTaskOwner == false}"
                     android:background="@drawable/bg_round_button_right"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"

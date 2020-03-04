@@ -43,6 +43,8 @@ object HelperRemoteDataSource : HelperDataSource {
         val user =
             User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
 
+        HelperApplication.user = user
+
         document
             .get()
             .addOnCompleteListener { task ->
@@ -197,12 +199,25 @@ object HelperRemoteDataSource : HelperDataSource {
 
     override suspend fun getOnGoingTasks(): Result<List<Task>> = suspendCoroutine { continuation ->
 
-        val userCurrent = FirebaseAuth.getInstance().currentUser
+        val userCurrent = FirebaseAuth.getInstance().currentUser?.uid
+
+//        Log.d("will","HelperRemoteDataSource.getOnGoingTasks")
+//        Log.d("will","HelperApplication.user.id=${HelperApplication.user.id}")
 
         FirebaseFirestore.getInstance()
             .collection(PATH_TASKS)
             .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
             .whereEqualTo("status", 0)
+
+//            .whereArrayContainsAny("participantsID", listOf(userCurrent.toString()))
+
+//            .whereArrayContainsAny("participantsID", listOf(HelperApplication.user.id))
+            .whereArrayContainsAny("participantsID", listOf(userCurrent))
+
+
+
+
+//            .whereArrayContainsAny("participantsID", listOf("Wayne", "IU"))
 
 //            .whereEqualTo("userId", userCurrent?.uid)
 

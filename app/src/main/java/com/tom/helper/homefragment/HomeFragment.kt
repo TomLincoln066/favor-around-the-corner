@@ -145,7 +145,6 @@ class HomeFragment : Fragment() {
 
                     0 -> viewModel.getTasksResult()
                     1 -> viewModel.getOnGoingTasksResult()
-//                    1 -> viewModel.getOnGoingTasksOfMineResult()
                     2 -> viewModel.getFinishedTasksResult()
                 }
             }
