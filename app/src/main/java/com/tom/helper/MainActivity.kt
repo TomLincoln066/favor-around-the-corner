@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     viewModel.checkUserResult()
 
+                    viewModel.getCurrentUserData()
+
                 }
             }
         FirebaseAuth.getInstance().addAuthStateListener(authListener)

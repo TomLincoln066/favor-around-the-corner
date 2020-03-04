@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.tom.helper.HelperApplication
 import com.tom.helper.databinding.ItemProposalBinding
 import com.tom.helper.source.Proposal
 
@@ -31,8 +32,10 @@ class ProposalListRecyclerAdapter(private val onClickListener: OnClickListener ,
 
             Log.i("BINDING", "PROPOSAL id=${proposal.user?.id}")
             Log.i("BINDING", "VIEWMODEL id=${viewModel.profile.value?.id}")
+            Log.i("BINDING", "HelperApplication.user.id=${HelperApplication.user.id}")
 
-            val userCurrentBoolean = (proposal.user?.id == viewModel.profile.value?.id) || (proposal.taskOnwerID != viewModel.profile.value?.id)
+//            val userCurrentBoolean = (proposal.user?.id == viewModel.profile.value?.id) || (proposal.taskOnwerID != viewModel.profile.value?.id)
+            val userCurrentBoolean = (proposal.user?.id == HelperApplication.user.id) || (proposal.taskOnwerID != HelperApplication.user.id)
             binding.userCurrentBoolean = userCurrentBoolean
 
 

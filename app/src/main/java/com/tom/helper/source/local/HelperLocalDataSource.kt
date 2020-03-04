@@ -1,6 +1,7 @@
 package com.tom.helper.source.local
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import com.tom.helper.source.*
 
 class HelperLocalDataSource(val context: Context) : HelperDataSource {
@@ -102,6 +103,11 @@ class HelperLocalDataSource(val context: Context) : HelperDataSource {
     }
 
     override suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+    override fun getProposalsLive(task: Task): LiveData<List<Proposal>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

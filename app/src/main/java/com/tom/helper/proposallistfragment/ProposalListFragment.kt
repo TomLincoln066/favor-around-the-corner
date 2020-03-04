@@ -23,7 +23,11 @@ import com.tom.helper.rankinglist.RankingListFragmentDirections
 class ProposalListFragment : Fragment() {
 
 
-    private val viewModel by viewModels<ProposalListViewModel>{getVmFactory(ProposalListFragmentArgs.fromBundle(arguments!!).task)}
+    private val viewModel by viewModels<ProposalListViewModel> {
+        getVmFactory(
+            ProposalListFragmentArgs.fromBundle(arguments!!).task
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,39 +35,26 @@ class ProposalListFragment : Fragment() {
     ): View? {
 
 
-        val binding =FragmentProposalListBinding.inflate(inflater,container,false)
+        val binding = FragmentProposalListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         binding.proposalListRecycler.layoutManager = LinearLayoutManager(context)
-//        binding.proposalListRecycler.addItemDecoration(
-//            DividerItemDecoration(
-//                context,
-//                LinearLayoutManager.VERTICAL
-//            )
-//        )
-//        viewModel.profile.observe(this, Observer {
-//            it?.let {
-//                Log.i("PROFILE", "id=${it.id}")
-//            }
-//        })
 
-        binding.proposalListRecycler.adapter =
+
+        val proposalListRecyclerAdapter =
             ProposalListRecyclerAdapter(ProposalListRecyclerAdapter.OnClickListener {
                 viewModel.clickNavigateToProProgressFragment(it)
-                //            Logger.d("click, it=$it")
-                //            viewModel.delete(it)
-            },viewModel)
 
 
+            }, viewModel)
 
-
-
+        binding.proposalListRecycler.adapter = proposalListRecyclerAdapter
 
 
         //try to handle when button_to_task_progress_sheet in item_proposal.xml is pressed, will navigate to ProProgressViewModel(see ProposalListViewModel.kt)
         viewModel.shouldNavigateToProProgressFragment.observe(this, Observer {
-            Log.d("shouldNavigateToProProgressFragment","${it}")
+            Log.d("shouldNavigateToProProgressFragment", "${it}")
             it?.let {
 
                 findNavController().navigate(
@@ -78,19 +69,18 @@ class ProposalListFragment : Fragment() {
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
 //        viewModel.addProposal()
-        viewModel.getProposalsResult()
+
+
+//        viewModel.getProposalsResult()
+
+
+        //Snapshot proposal lists observer for fragment ProposalLists
+        viewModel.getProposalsLiveSnapShot()
+        viewModel.proposals.observe(this, Observer {
+            proposalListRecyclerAdapter.submitList(it)
+        })
+
 
         viewModel.getCurrentUserData()
 

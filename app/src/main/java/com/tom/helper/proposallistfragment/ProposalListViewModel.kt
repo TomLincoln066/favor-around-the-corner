@@ -47,16 +47,7 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
     }
 
 
-
-
-
-
-
-
-
-
-
-    private val _proposals = MutableLiveData<List<Proposal>>()
+    private var _proposals = MutableLiveData<List<Proposal>>()
 
     val proposals: LiveData<List<Proposal>>
         get() = _proposals
@@ -140,6 +131,7 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
     fun getProposalsResult() {
 
         coroutineScope.launch {
+//            val result = repository.getProposals(task)
             val result = repository.getProposals(task)
 
             when (result) {
@@ -159,6 +151,23 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
         }
 
     }
+
+
+
+    //snapshot proposal
+
+    fun getProposalsLiveSnapShot(){
+
+        _proposals = repository.getProposalsLive(task) as MutableLiveData<List<Proposal>>
+
+    }
+
+
+
+
+
+
+
 
 
     fun getProposalsOfMineResult() {

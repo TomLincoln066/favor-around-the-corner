@@ -1,5 +1,7 @@
 package com.tom.helper.source
 
+import androidx.lifecycle.LiveData
+
 
 //Interface to the Helper layers.
 
@@ -16,6 +18,8 @@ interface HelperRepository {
     suspend fun getFinishedTasks(): Result<List<Task>>
 
     suspend fun getProposals(task: Task): Result<List<Proposal>>
+
+    fun getProposalsLive(task: Task):LiveData<List<Proposal>>
 
     suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean>
 

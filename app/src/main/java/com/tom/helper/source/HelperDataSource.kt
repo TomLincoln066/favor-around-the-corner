@@ -1,5 +1,7 @@
 package com.tom.helper.source
 
+import androidx.lifecycle.LiveData
+
 
 // Main entry point for accessing Publisher sources.
 
@@ -44,6 +46,12 @@ interface HelperDataSource {
     suspend fun sendMessagesToDB(task: Task): Result<List<Message>>
 
     suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean>
+
+
+
+    fun getProposalsLive(task: Task): LiveData<List<Proposal>>
+
+
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

@@ -1,5 +1,7 @@
 package com.tom.helper.source
 
+import androidx.lifecycle.LiveData
+
 // Concrete implementation to load Publisher sources.
 
 class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
@@ -83,12 +85,12 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.addTaskProposalOwnerID(task,userID)
     }
 
-//
-//    override suspend fun publish(article: Article): Result<Boolean> {
-//        return remoteDataSource.publish(article)
-//    }
-//
-//    override suspend fun delete(article: Article): Result<Boolean> {
-//        return remoteDataSource.delete(article)
-//    }
+
+    override fun getProposalsLive(task: Task): LiveData<List<Proposal>> {
+        return remoteDataSource.getProposalsLive(task)
+    }
+
+
+
+
 }

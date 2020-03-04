@@ -2,6 +2,7 @@ package com.tom.helper.source.remote
 
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,13 +44,10 @@ object HelperRemoteDataSource : HelperDataSource {
         val user =
             User(userCurrent.uid, userCurrent.displayName!!, userCurrent.email!!, 0, 0L, photoUrl)
 
-        HelperApplication.user = user
-
         document
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-
                     if (task.result!!.data == null) {
                         document
                             .set(user).addOnSuccessListener {
@@ -78,13 +76,6 @@ object HelperRemoteDataSource : HelperDataSource {
 
 
     override suspend fun getUserCurrent(): Result<User> = suspendCoroutine { continuation ->
-
-
-        if (HelperApplication.user.id.isNotEmpty()) {
-            continuation.resume(Result.Success(HelperApplication.user))
-            return@suspendCoroutine
-        }
-
 
         val users = FirebaseFirestore.getInstance().collection(PATH_USERS)
         val userCurrent = FirebaseAuth.getInstance().currentUser
@@ -712,6 +703,36 @@ object HelperRemoteDataSource : HelperDataSource {
                     }
                 }
         }
+
+
+    //snapshot proposal list
+    override fun getProposalsLive(task: Task): LiveData<List<Proposal>> {
+        val liveData = MutableLiveData<List<Proposal>>()
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS)
+            .document(task.id)
+            .collection(PATH_PROPOSALS)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+            .addSnapshotListener { snapshot, exception ->
+                exception?.let {
+                }
+
+                    val list = mutableListOf<Proposal>()
+                    for (document in snapshot!!) {
+
+                        val proposal = document.toObject(Proposal::class.java)
+                        list.add(proposal)
+                        Log.d("Will", "getProposalsLive")
+                    }
+
+                liveData.value = list
+            }
+        return liveData
+    }
+
+
+
+
 
 
 }
