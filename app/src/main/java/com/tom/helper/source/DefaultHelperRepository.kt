@@ -95,4 +95,8 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getProposalProgressItemLive(proposal)
     }
 
+
+    override suspend fun getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal: Proposal): Result<List<Proposal>> {
+        return remoteDataSource.getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal)
+    }
 }

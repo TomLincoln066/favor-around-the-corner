@@ -104,6 +104,21 @@ class ProProgressFragment : Fragment() {
 
 
 
+
+        viewModel.shouldNavigateToProfilePage.observe(this, Observer {
+            if (it) {
+                findNavController().navigate(ProProgressFragmentDirections.actionGlobalProfileFragment())
+            }
+
+        })
+
+
+
+
+
+
+
+
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALPROGRESSLIST)
 
 

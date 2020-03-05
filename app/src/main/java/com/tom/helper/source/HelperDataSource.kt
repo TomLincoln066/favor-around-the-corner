@@ -55,6 +55,9 @@ interface HelperDataSource {
     fun getProposalProgressItemLive(proposal: Proposal):LiveData<List<ProposalProgressContent>>
 
 
+    suspend fun getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal: Proposal): Result<List<Proposal>>
+
+
 //    suspend fun publish(article: Article): Result<Boolean>
 //
 //    suspend fun delete(article: Article): Result<Boolean>

@@ -759,5 +759,59 @@ object HelperRemoteDataSource : HelperDataSource {
     }
 
 
+    override suspend fun getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal: Proposal): Result<List<Proposal>> =
+        suspendCoroutine { continuation ->
+
+            Log.d("getProposalsOfStatusEqualToZeroAndAddValueToWinner", "Success")
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TASKS).document(proposal.taskID).collection(PATH_PROPOSALS)
+                .whereEqualTo("status", 0)
+                .orderBy(KEY_CREATED_TIME, Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener { taskA ->
+                    if (taskA.isSuccessful) {
+                        val list = mutableListOf<Proposal>()
+                        for (document in taskA.result!!) {
+
+                            val proposal = document.toObject(Proposal::class.java)
+
+                            Log.d("addOnCompleteListener", "Success")
+
+                            FirebaseFirestore.getInstance()
+                                .collection(PATH_USERS).document(proposal.userID).get()
+                                .addOnSuccessListener {
+
+                                    val newEarning =
+                                        it.data!!["earning"].toString().toLong() + proposal.taskPrice
+                                    Log.d("newEarning", "Success")
+
+                                    FirebaseFirestore.getInstance()
+                                        .collection(PATH_USERS).document(proposal.userID)
+                                        .update("earning", newEarning).addOnSuccessListener {
+                                            Log.d("addValue", "Success")
+                                        }
+
+
+                                }
+
+
+                            list.add(proposal)
+                            Log.d("Will", "get proposals form firebase")
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        taskA.exception?.let {
+
+                            //                      Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(HelperApplication.instance.getString(R.string.you_know_nothing)))
+                    }
+                }
+
+        }
+
+
 }
 

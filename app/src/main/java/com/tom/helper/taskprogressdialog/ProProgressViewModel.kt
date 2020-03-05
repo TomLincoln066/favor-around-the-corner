@@ -44,6 +44,9 @@ class ProProgressViewModel(
     }
 
 
+
+
+
     private val _proposals = MutableLiveData<List<Proposal>>()
 
     val proposals: LiveData<List<Proposal>>
@@ -265,21 +268,54 @@ class ProProgressViewModel(
 
         document.update("status", 1).addOnSuccessListener {
 
+            shouldNavigateToProfilePage.value = true
 
 
         }
 
 
-    }
+        coroutineScope.launch {
+            val result = repository.getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal)
 
+        _status.value = LoadApiStatus.LOADING
+
+            when (result) {
+                is com.tom.helper.source.Result.Success -> {
+
+                      _status.value = LoadApiStatus.DONE
+
+                }
+
+                is com.tom.helper.source.Result.Error -> {
+                    result.exception
+                }
+
+                is com.tom.helper.source.Result.Fail -> {
+                    _error.value = result.error
+                }
+            }
+
+        }
+
+
+
+    }
 
 
     //snapshot proposalItemList
 
-    fun getProposalItemsLiveSnapShot(){
+    fun getProposalItemsLiveSnapShot() {
 
-        _proposalProgressContents = repository.getProposalProgressItemLive(proposal) as MutableLiveData<List<ProposalProgressContent>>
+        _proposalProgressContents =
+            repository.getProposalProgressItemLive(proposal) as MutableLiveData<List<ProposalProgressContent>>
 
+    }
+
+
+    val shouldNavigateToProfilePage = MutableLiveData<Boolean>()
+
+    init {
+        shouldNavigateToProfilePage.value = false
     }
 
 
