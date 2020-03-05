@@ -717,13 +717,13 @@ object HelperRemoteDataSource : HelperDataSource {
                 exception?.let {
                 }
 
-                    val list = mutableListOf<Proposal>()
-                    for (document in snapshot!!) {
+                val list = mutableListOf<Proposal>()
+                for (document in snapshot!!) {
 
-                        val proposal = document.toObject(Proposal::class.java)
-                        list.add(proposal)
-                        Log.d("Will", "getProposalsLive")
-                    }
+                    val proposal = document.toObject(Proposal::class.java)
+                    list.add(proposal)
+                    Log.d("Will", "getProposalsLive")
+                }
 
                 liveData.value = list
             }
@@ -746,7 +746,8 @@ object HelperRemoteDataSource : HelperDataSource {
                 val list = mutableListOf<ProposalProgressContent>()
                 for (document in snapshot!!) {
 
-                    val proposalProgressContent = document.toObject(ProposalProgressContent::class.java)
+                    val proposalProgressContent =
+                        document.toObject(ProposalProgressContent::class.java)
                     list.add(proposalProgressContent)
                     Log.d("Will", "getProposalProgressItemLive")
                 }
@@ -756,10 +757,6 @@ object HelperRemoteDataSource : HelperDataSource {
         return liveData
 
     }
-
-
-
-
 
 
 }
