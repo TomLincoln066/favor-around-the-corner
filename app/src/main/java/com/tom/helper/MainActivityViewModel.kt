@@ -90,6 +90,9 @@ class MainActivityViewModel(private val repository: HelperRepository) : ViewMode
                 is com.tom.helper.source.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
+
+                    getCurrentUserData()
+
                     result.data
                 }
                 is com.tom.helper.source.Result.Fail -> {

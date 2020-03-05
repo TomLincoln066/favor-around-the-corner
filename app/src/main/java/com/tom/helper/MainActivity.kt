@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     viewModel.checkUserResult()
 
-                    viewModel.getCurrentUserData()
+//                    viewModel.getCurrentUserData()
 
                 }
             }

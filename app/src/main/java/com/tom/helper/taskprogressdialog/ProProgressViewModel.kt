@@ -7,8 +7,10 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.tom.helper.HelperApplication
 import com.tom.helper.LoadApiStatus
 import com.tom.helper.source.*
+import com.tom.helper.util.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -47,11 +49,49 @@ class ProProgressViewModel(
     val proposals: LiveData<List<Proposal>>
         get() = _proposals
 
+    private val _profile = MutableLiveData<User>()
+
+    val profile: LiveData<User>
+        get() = _profile
 
     //save the proposal into proposalLive in the first place
     val proposalLive = MutableLiveData<Proposal>().apply {
         value = proposal
-        Log.d("UserId", "${proposal.userID}")
+        Log.d("UserId", "proposalLive = ${proposal.userID}")
+//        Log.d("UserId", "${}")
+
+    }
+
+    //save the proposal into proposalLive in the first place
+    val proposalLive_taskOwnerID = MutableLiveData<Proposal>().apply {
+        value = proposal
+        Log.d("UserId", "proposalLive_taskOwnerID  = ${proposal.taskOnwerID}")
+//        Log.d("UserId", "${}")
+
+    }
+    // viewModel.profile.id == viewModel.proposalLive_taskOwnerID.taskOnwerID
+    val mediator = MediatorLiveData<Boolean>().apply {
+        addSource(proposalLive_taskOwnerID) {
+            val taskOwnerID = proposalLive_taskOwnerID.value?.taskOnwerID
+
+            val profileID = profile.value?.id
+
+
+            Logger.d("UserID_PT=${taskOwnerID}, PROFILE_ID=${profileID}")
+
+            value = taskOwnerID == profileID
+        }
+        addSource(profile) {
+            val taskOwnerID = proposalLive_taskOwnerID.value?.taskOnwerID
+
+            val profileID = profile.value?.id
+
+
+            Logger.d("UserID_PT=${taskOwnerID}, PROFILE_ID=${profileID}")
+
+            value = taskOwnerID == profileID
+
+        }
     }
 
 
@@ -167,10 +207,15 @@ class ProProgressViewModel(
     }
 
 
-    private val _profile = MutableLiveData<User>()
+    //currentUser Id
 
-    val profile: LiveData<User>
-        get() = _profile
+    val currentUserID = HelperApplication.user.id
+
+
+
+
+
+
 
 
     //    for all tasks of mine
@@ -182,7 +227,7 @@ class ProProgressViewModel(
             when (result) {
                 is com.tom.helper.source.Result.Success -> {
                     _profile.value = result.data
-                    Log.d("UserId-", "${result.data.id}")
+                    Log.d("UserId-", "profile = ${result.data.id}")
                 }
 
                 is com.tom.helper.source.Result.Error -> {

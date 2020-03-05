@@ -89,7 +89,7 @@
                     android:textColor="@color/white"
                     android:textSize="20dp"
 
-                    android:visibility="@{viewModel.ableToNavToProgress == false ? View.VISIBLE : View.INVISIBLE}"
+                    android:visibility="@{viewModel.mediator ? View.VISIBLE : View.INVISIBLE}"
                     android:onClick="@{()->viewModel.clickFinishThisTask(viewModel.proposalLive)}"
 
                     app:layout_constraintBottom_toBottomOf="parent"

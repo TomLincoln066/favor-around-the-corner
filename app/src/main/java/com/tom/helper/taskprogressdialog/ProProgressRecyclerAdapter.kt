@@ -47,7 +47,7 @@ class ProProgressRecyclerAdapter(
 
             val userCurrentBoolean = proposalProgressContent.user?.id == viewModel.profile.value?.id
 
-//            binding.userCurrentBoolean = userCurrentBoolean
+
 
 
 
