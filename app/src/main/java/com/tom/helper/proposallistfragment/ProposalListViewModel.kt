@@ -3,6 +3,7 @@ package com.tom.helper.proposallistfragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,10 +13,8 @@ import kotlinx.coroutines.launch
 // The [ViewModel] that is attached to the [ProposalListFragment].
 
 // private val repository: HelperRepository
-class ProposalListViewModel(private val repository: HelperRepository, private val task: Task) :
+class ProposalListViewModel(private val repository: HelperRepository, val task: Task) :
     ViewModel() {
-
-
     private val _profile = MutableLiveData<User>()
 
     val profile: LiveData<User>
@@ -62,6 +61,18 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
             when (result) {
                 is Result.Success -> {
                     getProposalsResult()
+
+
+                    //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
+
+                    val status = FirebaseFirestore.getInstance()
+
+                    val document1 = status.collection("tasks").document(task.id)
+
+                    document1.update("status", 0)
+
+
+
                 }
 
                 is Result.Error -> {
@@ -110,22 +121,7 @@ class ProposalListViewModel(private val repository: HelperRepository, private va
 
 
 
-    //To test Mock data display of item_proposal on fragment_proposal_list.xml
-    fun addProposal() {
-        _proposals.value = listOf(
-            Proposal(
-                "123", 20000L, "I got your back"
-            ),
-            Proposal(
-                "456", 10000000L
-            ),
-            Proposal(),
-            Proposal(),
-            Proposal()
-        )
 
-
-    }
 
 
     fun getProposalsResult() {

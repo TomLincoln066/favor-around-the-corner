@@ -119,12 +119,13 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
         val userCurrent1 = User(user!!.uid, user.displayName!!, user.email!!, 0, 0L)
 
-        //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
-        val status = FirebaseFirestore.getInstance()
+//        //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
 
-        val document1 = status.collection("tasks").document(task.id)
-
-        document1.update("status", 0)
+//        val status = FirebaseFirestore.getInstance()
+//
+//        val document1 = status.collection("tasks").document(task.id)
+//
+//        document1.update("status", 0)
 
 
         val data = Proposal(

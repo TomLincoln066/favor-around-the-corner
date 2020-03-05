@@ -95,7 +95,7 @@
     <string name="button_send_message">送出訊息</string>
     <string name="button_item_request_message">線上詢問</string>
     <string name="btn_choose_image">選擇情境照</string>
-    <string name="textView_no_data_yet">目前沒有資料</string>
+    <string name="textView_no_data_yet">目前沒有提案</string>
     <string name="fragment_my_proposals">我的提案</string>
 
     <string name="button_to_task_progress_sheet">任務進度</string>
