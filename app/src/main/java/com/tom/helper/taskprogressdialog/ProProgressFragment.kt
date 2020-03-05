@@ -49,13 +49,24 @@ class ProProgressFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.progressItemRecyclerView.layoutManager = LinearLayoutManager(context)
-        binding.progressItemRecyclerView.adapter =
-            ProProgressRecyclerAdapter(
-                ProProgressRecyclerAdapter.OnClickListener {
 
-                },
-                viewModel
-            )
+
+
+        val proProgressRecyclerAdapter =
+            ProProgressRecyclerAdapter(ProProgressRecyclerAdapter.OnClickListener {
+
+            }, viewModel)
+
+        binding.progressItemRecyclerView.adapter = proProgressRecyclerAdapter
+
+
+//        binding.progressItemRecyclerView.adapter =
+//            ProProgressRecyclerAdapter(
+//                ProProgressRecyclerAdapter.OnClickListener {
+//
+//                },
+//                viewModel
+//            )
 
 
         //  this is replaced by val ableToNavToProgress in ProProgressViewModel.kt
@@ -72,23 +83,26 @@ class ProProgressFragment : Fragment() {
 
         }
 
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_pro_progress, container, false)
-
-
-//        viewModel.status.observe(this, Observer {
-//                Log.d("viewModel.status","${it}")
-//
-//        })
-
-
-
-
-
 
 
 //                viewModel.prepareMockProgress()
-        viewModel.getProposalProgressItem(proposal)
+
+
+
+
+//        viewModel.getProposalProgressItem(proposal)
+
+
+        //snapshot proProgressItem list
+
+        viewModel.getProposalItemsLiveSnapShot()
+        viewModel.proposalProgressContents.observe(this, Observer {
+            proProgressRecyclerAdapter.submitList(it)
+        })
+
+
+
+
 
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.PROPOSALPROGRESSLIST)
 

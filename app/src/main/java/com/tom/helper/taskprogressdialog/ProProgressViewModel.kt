@@ -22,7 +22,7 @@ class ProProgressViewModel(
 ) : ViewModel() {
 
 
-    private val _proposalProgressContents = MutableLiveData<List<ProposalProgressContent>>()
+    private var _proposalProgressContents = MutableLiveData<List<ProposalProgressContent>>()
 
     val proposalProgressContents: LiveData<List<ProposalProgressContent>>
         get() = _proposalProgressContents
@@ -207,17 +207,6 @@ class ProProgressViewModel(
     }
 
 
-    //currentUser Id
-
-    val currentUserID = HelperApplication.user.id
-
-
-
-
-
-
-
-
     //    for all tasks of mine
     fun getCurrentUserData() {
 
@@ -278,28 +267,23 @@ class ProProgressViewModel(
 
         }
 
-//        coroutineScope.launch {
-//            val result = repository.getProposalsOfStatusEqualToZero(task)
-//
-//
-//            when (result) {
-//                is com.tom.helper.source.Result.Success -> {
-//
-//                }
-//
-//                is com.tom.helper.source.Result.Error -> {
-//                    result.exception
-//                }
-//
-//                is com.tom.helper.source.Result.Fail -> {
-//                    _error.value = result.error
-//                }
-//            }
-//
-//        }
-
 
     }
+
+
+
+    //snapshot proposalItemList
+
+    fun getProposalItemsLiveSnapShot(){
+
+        _proposalProgressContents = repository.getProposalProgressItemLive(proposal) as MutableLiveData<List<ProposalProgressContent>>
+
+    }
+
+
+
+
+
 
 
 }

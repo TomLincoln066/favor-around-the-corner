@@ -47,7 +47,7 @@ interface HelperRepository {
 
     suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean>
 
-
+    fun getProposalProgressItemLive(proposal: Proposal):LiveData<List<ProposalProgressContent>>
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

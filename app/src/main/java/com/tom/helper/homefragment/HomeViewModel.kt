@@ -297,21 +297,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         getOnGoingTasksResult()
     }
 
-//    private val _shouldNavigateToJobDetail = MutableLiveData<Task>()
-//    val shouldNavigateToJobDetail: LiveData<Task>
-//        get() = _shouldNavigateToJobDetail
-//
-//   fun clickNavigateToJobDetail(task: Task) {
-//    _shouldNavigateToJobDetail.value = task
-//   }
-//
-//    fun doneNavigatingToJobDetail() {
-//        _shouldNavigateToJobDetail.value = null
-//    }
-
-//    .apply {
-////        value = Message()
-//    }
 
 
     private val _shouldNavigateToChatRoomFragment = MutableLiveData<Task>()
@@ -359,6 +344,27 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
             "coming soon",
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+
+
+    // handle status input type convert problem( Int to String and String to Int)
+    @InverseMethod("convertIntToString")
+    fun convertStringToInt(value: String): Int {
+        return try {
+            value.toInt().let {
+                when (it) {
+                    0 -> 0
+                    else -> it
+                }
+            }
+        } catch (e: NumberFormatException) {
+            1
+        }
+    }
+
+    fun convertIntToString(value: Int): String {
+        return value.toString()
     }
 
 

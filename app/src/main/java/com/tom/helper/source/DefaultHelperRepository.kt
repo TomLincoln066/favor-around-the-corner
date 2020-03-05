@@ -91,6 +91,8 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
     }
 
 
-
+    override fun getProposalProgressItemLive(proposal: Proposal): LiveData<List<ProposalProgressContent>> {
+        return remoteDataSource.getProposalProgressItemLive(proposal)
+    }
 
 }

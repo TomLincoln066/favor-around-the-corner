@@ -730,6 +730,33 @@ object HelperRemoteDataSource : HelperDataSource {
         return liveData
     }
 
+    override fun getProposalProgressItemLive(proposal: Proposal): LiveData<List<ProposalProgressContent>> {
+        val liveData = MutableLiveData<List<ProposalProgressContent>>()
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS)
+            .document(proposal.taskID)
+            .collection(PATH_PROPOSALS)
+            .document(proposal.id)
+            .collection(PATH_PROPOSALS_PROGRESSITEMS)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
+            .addSnapshotListener { snapshot, exception ->
+                exception?.let {
+                }
+
+                val list = mutableListOf<ProposalProgressContent>()
+                for (document in snapshot!!) {
+
+                    val proposalProgressContent = document.toObject(ProposalProgressContent::class.java)
+                    list.add(proposalProgressContent)
+                    Log.d("Will", "getProposalProgressItemLive")
+                }
+
+                liveData.value = list
+            }
+        return liveData
+
+    }
+
 
 
 

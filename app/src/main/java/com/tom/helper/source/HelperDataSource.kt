@@ -52,6 +52,7 @@ interface HelperDataSource {
     fun getProposalsLive(task: Task): LiveData<List<Proposal>>
 
 
+    fun getProposalProgressItemLive(proposal: Proposal):LiveData<List<ProposalProgressContent>>
 
 
 //    suspend fun publish(article: Article): Result<Boolean>

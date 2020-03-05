@@ -121,7 +121,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:proProgressItems="@{viewModel.proposalProgressContents}" />
+                     />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -146,18 +146,15 @@
 </layout>
 
 
-    <!--<ImageView-->
-    <!--android:id="@+id/imageView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="247dp"-->
-    <!--android:layout_marginTop="50dp"-->
 
-    <!--android:src="@android:drawable/ic_menu_myplaces"-->
+<!--<androidx.recyclerview.widget.RecyclerView-->
+<!--android:id="@+id/progress_item_recyclerView"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="0dp"-->
+<!--android:layout_marginTop="30dp"-->
+<!--android:padding="8dp"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent"-->
+<!--app:proProgressItems="@{viewModel.proposalProgressContents}" />-->
 
-    <!--app:imageUrl="@{proposalProgressContent.image}"-->
-
-
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.538"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/progress_item_recyclerView" />-->
