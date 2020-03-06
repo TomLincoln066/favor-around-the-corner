@@ -136,6 +136,22 @@
                     app:setupApiStatus="@{viewModel.status}" />
 
 
+                <ImageView
+                    android:id="@+id/imageView_task_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/complete_icon"
+                    android:visibility="@{viewModel.shouldCompletedImageShow == true ? View.VISIBLE : View.INVISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

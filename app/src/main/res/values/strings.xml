@@ -19,7 +19,7 @@
     <string name="tab_text_task_on_going">進行中案件</string>
     <string name="tab_text_task_finished">已完成案件</string>
 
-    <string name="button_item_request_close">確認付錢</string>
+    <string name="button_item_request_close">確認結案</string>
 
     <string name="textView_task_location_blank">任務地點 :</string>
     <string name="textView_task_create_time_blank">發案時間 :</string>

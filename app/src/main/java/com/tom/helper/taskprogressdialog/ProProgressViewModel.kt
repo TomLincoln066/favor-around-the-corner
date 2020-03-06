@@ -267,8 +267,10 @@ class ProProgressViewModel(
         val document = status.collection("tasks").document(proposal.taskID)
 
         document.update("status", 1).addOnSuccessListener {
+            CoroutineScope(Dispatchers.Main).launch {
 
-            shouldNavigateToProfilePage.value = true
+                shouldNavigateToProfilePage.value = true
+            }
 
 
         }
@@ -313,6 +315,8 @@ class ProProgressViewModel(
 
 
     val shouldNavigateToProfilePage = MutableLiveData<Boolean>()
+    val shouldCompletedImageShow = MutableLiveData<Boolean>()
+
 
     init {
         shouldNavigateToProfilePage.value = false

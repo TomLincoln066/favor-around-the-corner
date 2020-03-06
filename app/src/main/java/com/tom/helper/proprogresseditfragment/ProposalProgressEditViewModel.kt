@@ -1,5 +1,6 @@
 package com.tom.helper.proprogresseditfragment
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
@@ -19,6 +20,7 @@ import com.tom.helper.source.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 
@@ -31,6 +33,10 @@ class ProposalProgressEditViewModel(
 
     val proposalProgressItemContent = MutableLiveData<String>()
     val proposalProgressItemContentAccepted = false
+
+
+    // photo_v2
+    var imageBitmap = MutableLiveData<Bitmap>()
 
 
     //upload image
@@ -101,7 +107,20 @@ class ProposalProgressEditViewModel(
         //upload image
         storageReference = FirebaseStorage.getInstance().reference
         val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
-        val uploadTask = ref?.putFile(taskPictureUri1.value!!)
+
+
+//        val uploadTask = ref?.putFile(taskPictureUri1.value!!)
+
+        val byteArrayOutput = ByteArrayOutputStream()
+        imageBitmap.value?.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutput)
+        val bytes = byteArrayOutput.toByteArray()
+
+        val uploadTask = ref?.putBytes(bytes)
+
+
+
+
+
 
 
         val proposalProgressItem =

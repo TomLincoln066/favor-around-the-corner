@@ -177,10 +177,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
             _error.value = "Task Title cannot be empty"
             return
         }
-//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
-//            _error.value = "Task Title not complete"
-//            return
-//        }
+
 
 
         val db = FirebaseFirestore.getInstance()
@@ -188,13 +185,13 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
         val task = FirebaseFirestore.getInstance().collection("tasks")
 
         val user = FirebaseAuth.getInstance().currentUser
-//        val user = FirebaseAuth.getInstance().currentUser
+
 
         if (user == null || user.displayName == null || user.email == null) {
             return
         }
         val userCurrent = User(user.uid, user.displayName!!, user.email!!, 0, 0L)
-//        val userCurrent = user.uid
+
 
         val document = task.document()
 
