@@ -44,9 +44,7 @@
             android:inputType="textPersonName"
             android:maxLines="5"
             android:padding="15dp"
-
             android:text="@={viewModel.messageContent}"
-
             app:layout_constraintBottom_toTopOf="@+id/button_send_message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -59,9 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/bg_round_button"
+            android:onClick="@{()->viewModel.submitMessage()}"
             android:text="@string/button_send_message"
             android:textColor="@color/white"
-            android:onClick="@{()->viewModel.submitMessage()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

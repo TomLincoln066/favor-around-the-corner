@@ -41,8 +41,8 @@
                     android:id="@+id/text_job_detail_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:ellipsize="end"
                     android:letterSpacing="0.15"
@@ -80,10 +80,7 @@
                     android:src="@drawable/outline_monetization_on_black_36"
                     app:layout_constraintBottom_toBottomOf="@+id/text_job_detail_price"
                     app:layout_constraintStart_toStartOf="parent"
-
                     app:layout_constraintTop_toTopOf="@+id/text_job_detail_price" />
-
-                <!-- color -->
 
 
                 <TextView
@@ -92,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:ellipsize="end"
-
                     android:lines="1"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
@@ -118,14 +114,13 @@
                     android:id="@+id/textView_job_detail_task_content_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="1dp"
+                    android:layout_marginTop="20dp"
+                    android:ellipsize="end"
+                    android:lines="1"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:ellipsize="end"
-
-                    android:lines="1"
-                    android:text="任務內容 "
+                    android:text="@string/textView_job_detail_task_content_tag"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@id/job_detail_imageView_icon_task_content"
@@ -148,9 +143,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="12sp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:lineSpacingExtra="12sp"
                     android:text="@{task.content}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16dp"
@@ -164,8 +159,8 @@
                     android:id="@+id/imageView_job_detail_picture_post_by_task_owner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/alesso_profile"
@@ -181,16 +176,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="20dp"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:text="說明圖片 "
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/textView_job_detail_task_picture_tag"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/job_detail_imageView_icon_task_image"
                     app:layout_constraintTop_toBottomOf="@+id/text_job_detail_content" />
-
 
 
                 <ImageView
@@ -214,8 +208,8 @@
                     android:layout_marginBottom="2dp"
                     android:background="@drawable/bg_round_button"
                     android:letterSpacing="0.15"
-                    android:text="線上詢問"
                     android:onClick="@{()->viewModel.comingSoon()}"
+                    android:text="@string/button_job_detail_live_chat"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -290,14 +284,3 @@
 </layout>
 
 
-    <!--<ImageView-->
-    <!--android:id="@+id/job_detail_imageView_icon_task_picture_display"-->
-    <!--android:layout_width="25dp"-->
-    <!--android:layout_height="25dp"-->
-    <!--android:layout_marginStart="16dp"-->
-    <!--android:layout_marginBottom="1dp"-->
-    <!--android:src="@drawable/image_upload_pictures"-->
-    <!--app:layout_constraintBottom_toTopOf="@+id/imageView_job_detail_picture_post_by_task_owner"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.0"-->
-    <!--app:layout_constraintStart_toStartOf="parent" />-->

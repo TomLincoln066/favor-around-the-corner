@@ -26,7 +26,6 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -38,37 +37,33 @@
                 android:id="@+id/tab_text_task_posted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="@string/tab_text_task_posted" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_text_task_on_going"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="@string/tab_text_task_on_going" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_text_task_finished"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="@string/tab_text_task_finished" />
 
         </com.google.android.material.tabs.TabLayout>
 
 
         <TextView
-        android:id="@+id/textView_no_data_yet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/textView_no_data_yet"
-        android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+            android:id="@+id/textView_no_data_yet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/textView_no_data_yet"
+            android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -98,13 +93,3 @@
 
 </layout>
 
-<!--<TextView-->
-<!--android:id="@+id/textView_no_data_yet"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="match_parent"-->
-<!--android:gravity="center"-->
-<!--android:text="@string/textView_no_data_yet"-->
-<!--android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toTopOf="parent" />-->

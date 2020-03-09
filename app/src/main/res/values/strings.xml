@@ -102,6 +102,16 @@
     <string name="fragment_home">所有任務</string>
 
     <string name="textView_proposal_content_item_tag1"><![CDATA[我要怎麼做到 >]]></string>
+    <string name="textView_job_detail_task_content_tag">任務內容 </string>
+    <string name="textView_job_detail_task_picture_tag">說明圖片 </string>
+    <string name="button_job_detail_live_chat">線上詢問</string>
+
+
+    <!--fragment_pro_progress.xml-->
+    <string name="button_edit_progress_item">編輯進度事項</string>
+    <string name="button_nav_back_proposal_list">回提案列表</string>
+    <string name="button_finish_this_task">任務完成</string>
+    <string name="textView_add_some_progress_items">隨時新增進度事項，讓案主掌握進度喔。</string>
 
 
 </resources>

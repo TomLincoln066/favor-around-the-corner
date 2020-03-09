@@ -26,8 +26,8 @@
             android:id="@+id/login_logo"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -43,10 +43,10 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="16dp"
             android:text="@string/fragment_textView_fb_log_in"
-            android:visibility="invisible"
             android:textAlignment="center"
             android:textColor="@color/gray_cccccc"
             android:textSize="18sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,11 +85,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
 
-    <!--    android:background="@drawable/facebook_ellipse_frame"-->

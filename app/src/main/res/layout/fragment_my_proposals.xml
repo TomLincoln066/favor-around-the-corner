@@ -6,6 +6,7 @@
 
 
     <data>
+
         <variable
             name="viewModel"
             type="com.tom.helper.proposallistfragment.ProposalListViewModel" />
@@ -22,13 +23,12 @@
             android:id="@+id/my_proposals_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:addProposal="@{viewModel.proposals}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:addProposal="@{viewModel.proposals}"
-            tools:listitem="@layout/item_proposal"
-            />
+            tools:listitem="@layout/item_proposal" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
