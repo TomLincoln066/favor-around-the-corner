@@ -604,9 +604,9 @@ object HelperRemoteDataSource : HelperDataSource {
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
 
-                .collection(PATH_MESSAGES)
+//                .collection(PATH_MESSAGES)
 
-
+                .collection(PATH_TASKS).document(task.id).collection(PATH_MESSAGES)
                 .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
                 .get()
 

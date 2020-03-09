@@ -161,22 +161,23 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
             return
         }
 
-
-        val message = FirebaseFirestore.getInstance().collection("messages")
-
-        val document = message.document(task.id)
-
         val user = FirebaseAuth.getInstance().currentUser!!
 
-        val userCurrentUser = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
+        val userCurrent = user.uid
 
+        val message = FirebaseFirestore.getInstance().collection("tasks")
+
+        val document = message.document(task.id).collection("messages").document(userCurrent)
+
+
+        val userCurrentUser = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
 
 
         val taskId = task.id
 
         val taskOnwerId = task.userId
 
-        val userCurrent = user.uid
+
 
 
         val data = Message(

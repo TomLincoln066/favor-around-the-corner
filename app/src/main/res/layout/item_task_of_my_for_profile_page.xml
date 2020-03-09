@@ -27,7 +27,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ecf3f9">
+        android:background="#ecf3f9"
+        android:layout_margin="10dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
@@ -37,7 +38,7 @@
             android:background="@color/blue_voyage"
             android:padding="6dp"
             app:cardCornerRadius="28dp"
-            app:cardElevation="6dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
