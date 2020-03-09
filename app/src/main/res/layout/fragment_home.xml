@@ -59,8 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/textView_no_data_yet"
-            android:visibility="@{viewModel.tasks.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+            android:text="@string/textView_no_data_yet_fragment_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

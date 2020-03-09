@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="proposal"
             type="com.tom.helper.source.Proposal" />
+
         <variable
             name="task"
             type="com.tom.helper.source.Task" />
@@ -28,17 +30,15 @@
             type="Boolean" />
 
 
-
     </data>
-
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6dp"
         android:layout_margin="6dp"
+        android:padding="6dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +59,6 @@
                 android:id="@+id/imageView_icon_proposal_checked"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-
                 android:src="@drawable/icon_checked"
                 android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.INVISIBLE }"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -71,18 +70,15 @@
                 android:id="@+id/image_item_proposal_picture"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:layout_marginStart="40dp"
-
                 android:background="@{proposal.status == -1 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == -1 }"
-                android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
-
-                android:visibility="@{userCurrentBoolean == true || viewModel.task.status == 0 ? View.GONE : View.VISIBLE}"
-
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
                 android:text="接受提案"
+                android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
+                android:visibility="@{userCurrentBoolean == true || viewModel.task.status == 0 ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
@@ -124,8 +120,8 @@
                 android:text="@{proposal.content}"
                 android:textColor="@color/black_3f3a3a"
                 android:textSize="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageView_proposal_icon_content"
                 app:layout_constraintTop_toBottomOf="@+id/text_proposal_person"
                 app:layout_constraintVertical_bias="0.18"
@@ -149,15 +145,12 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-
                 android:background="@{proposal.status == -1 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == -1 }"
-                android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
-
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusUnAccepted(proposal)}"
+                android:text="@string/imageButton_proposal_reject"
+                android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
                 android:visibility="@{userCurrentBoolean == true || viewModel.task.status == 0 ? View.GONE : View.VISIBLE}"
-
-                android:text="取消接受"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button_to_task_progress_sheet"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -170,14 +163,12 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-
                 android:background="@{proposal.status == 0 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == 0 }"
-                android:textColor="@{proposal.status == 0 ?  @color/linked_blue_light : @color/gray_999999}"
-
                 android:onClick="@{() -> viewModel.clickNavigateToProProgressFragment(proposal)}"
-                android:textAlignment="center"
                 android:text="@string/button_to_task_progress_sheet"
+                android:textAlignment="center"
+                android:textColor="@{proposal.status == 0 ?  @color/linked_blue_light : @color/gray_999999}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

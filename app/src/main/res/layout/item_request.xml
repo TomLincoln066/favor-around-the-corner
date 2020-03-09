@@ -25,6 +25,8 @@
 
         <import type="com.tom.helper.HelperApplication" />
 
+        <import type="android.view.View" />
+
 
     </data>
 
@@ -40,9 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@color/blue_voyage"
-
             app:cardCornerRadius="28dp"
-            app:cardElevation="6dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -86,10 +87,10 @@
                     android:text="@{task.taskCreator}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView_icon_position_item_request"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_icon_position_item_request"
+                    app:layout_constraintTop_toTopOf="@+id/imageView_icon_position_item_request"
                     tools:text="台北市信義區基隆路一段180號5F" />
 
                 <ImageView
@@ -99,8 +100,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/outline_monetization_on_black_24"
-                    app:layout_constraintStart_toStartOf="@+id/imageView2"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintStart_toStartOf="@+id/imageView_picture_of_request"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView_picture_of_request" />
 
 
                 <TextView
@@ -114,7 +115,7 @@
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView_item_request_price"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView_picture_of_request"
                     tools:text="1小時前" />
 
 
@@ -123,8 +124,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="invisible"
                     android:text="@{viewModel.convertIntToString(task.participantsID.size()-1)}"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="15dp"
@@ -139,8 +141,8 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:background="@drawable/bg_round_button_right"
-                    android:clickable="@{task.status!= 1}"
-                    android:enabled="@{isTaskOwner == false}"
+                    android:clickable="@{isTaskOwner == false}"
+                    android:visibility="@{task.status ==1 ? View.INVISIBLE :View.VISIBLE}"
                     android:onClick="@{() -> viewModel.clickNavigateToJobDetail(task)}"
                     android:text="@string/button_mission_detail"
                     android:textColor="@color/white"
@@ -156,12 +158,12 @@
                     android:layout_height="30dp"
                     android:background="@drawable/bg_button_rectangle"
                     android:clickable="@{task.status!= 1}"
+                    android:visibility="@{task.status ==1 ? View.INVISIBLE :View.VISIBLE}"
                     android:onClick="@{() -> viewModel.clickNavigateToProposalList(task)}"
-                    android:text="@string/button_mission_detail_proposal_total"
+                    app:proposalsCount="@{task.participantsID.size()-1}"
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/button_item_request_message" />
@@ -182,8 +184,8 @@
                     android:id="@+id/button_item_request_message"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_round_button_left"
+                    android:visibility="@{task.status ==1 ? View.INVISIBLE :View.VISIBLE}"
                     android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(task)}"
                     android:text="@string/button_item_request_message"
                     android:textColor="@color/white"
@@ -192,13 +194,14 @@
                     app:layout_constraintEnd_toStartOf="@+id/button_mission_detail_proposal_total"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_task_location"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView_icon_position_item_request"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView_picture_of_request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
                     app:imageUrl="@{task.image}"
@@ -208,7 +211,7 @@
                     app:srcCompat="@drawable/placeholder_image" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/imageView_icon_position_item_request"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="10dp"

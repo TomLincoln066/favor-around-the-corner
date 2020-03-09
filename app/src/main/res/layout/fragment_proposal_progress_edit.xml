@@ -44,7 +44,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="start|top"
-                    android:hint="Ex:已將手機送至指定Apple Store"
+                    android:hint="@string/editText_proposal_progress_item"
                     android:inputType="textMultiLine"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
@@ -52,15 +52,15 @@
                     android:textSize="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_add_new_progress_item" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView_add_new_progress_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="新增進度事項"
+                    android:text="@string/textView_add_new_progress_item"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
                     app:layout_constraintStart_toEndOf="@+id/imageView_icon_new_item"
@@ -71,10 +71,10 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/outline_playlist_add_black_24"
-                    app:layout_constraintBottom_toBottomOf="@id/textView5"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_add_new_progress_item"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView5"
-                    app:layout_constraintTop_toTopOf="@id/textView5" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_add_new_progress_item"
+                    app:layout_constraintTop_toTopOf="@id/textView_add_new_progress_item" />
 
 
                 <ImageView
@@ -86,7 +86,7 @@
                     android:src="@drawable/placeholder_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView_update_progress_pictures" />
 
                 <ImageButton
                     android:id="@+id/imageButton_choose_image"
@@ -114,7 +114,7 @@
                     android:layout_marginBottom="50dp"
                     android:background="@drawable/bg_round_button"
                     android:onClick="@{()->viewModel.submitProposalProgressItemContent()}"
-                    android:text="確認新增"
+                    android:text="@string/button_send_out_my_progress_item"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -123,12 +123,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView_preview" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textView_update_progress_pictures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="50dp"
-                    android:text="更新進度圖片"
+                    android:text="@string/textView_update_progress_pictures"
                     android:textColor="@color/black_3f3a3a"
                     android:textSize="20dp"
                     app:layout_constraintStart_toEndOf="@id/imageView_icon_update_picture"
@@ -139,10 +139,10 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/outline_add_photo_alternate_black_24"
-                    app:layout_constraintBottom_toBottomOf="@id/textView"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_update_progress_pictures"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textView"
-                    app:layout_constraintTop_toTopOf="@id/textView" />
+                    app:layout_constraintTop_toBottomOf="@id/textView_update_progress_pictures"
+                    app:layout_constraintTop_toTopOf="@id/textView_update_progress_pictures" />
 
                 <ProgressBar
                     android:layout_width="wrap_content"

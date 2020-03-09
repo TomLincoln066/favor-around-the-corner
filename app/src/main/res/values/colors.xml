@@ -50,12 +50,11 @@
 
     <!-- Yellow Series-->
     <color name="yellow_light">#FCF3CF</color>
-    <color name="yellow_medium">#F9E79F </color>
+    <color name="yellow_medium">#F9E79F</color>
     <color name="yellow_hard">#D4AC0D</color>
 
-<!-- Pink Series   -->
+    <!-- Pink Series   -->
     <color name="pink_light">#ffe4e1</color>
-
 
 
 </resources>

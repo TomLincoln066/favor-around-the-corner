@@ -179,3 +179,10 @@ fun bindApiErrorMessage(view: TextView, message: String?) {
         }
     }
 }
+
+
+//set the proposal's number into button text description
+@BindingAdapter("proposalsCount")
+fun bindMission(textView: TextView, missionCount:Int?){
+    missionCount?.let {
+        textView.text = HelperApplication.instance.getString(R.string.button_mission_detail_proposal_total,it) }}

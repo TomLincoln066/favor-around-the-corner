@@ -13,6 +13,10 @@
             name="task"
             type="com.tom.helper.source.Task" />
 
+        <variable
+            name="isTaskOwner"
+            type="Boolean" />
+
 
     </data>
 
@@ -269,6 +273,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_round_button"
                 android:letterSpacing="0.15"
+                android:clickable="@{isTaskOwner == false}"
                 android:text="@string/button_job_detail_send_proposal"
                 android:textColor="@color/white"
                 android:textSize="20dp"

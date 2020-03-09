@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import com.google.firebase.storage.StorageReference
+import com.tom.helper.HelperApplication
 import com.tom.helper.MainActivity
 
 
@@ -63,6 +64,9 @@ class JobDetailFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.task = task
+
+        binding.isTaskOwner = task.userId == HelperApplication.user.id
+
         binding.buttonJobDetailSendProposal.setOnClickListener {
 
 

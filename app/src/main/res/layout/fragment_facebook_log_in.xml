@@ -33,7 +33,7 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/close_login_window"
-            app:srcCompat="@drawable/logo_kraffier" />
+            app:srcCompat="@drawable/logo_kraffier_2x" />
 
         <TextView
             android:id="@+id/fragment_textView_fb_log_in"

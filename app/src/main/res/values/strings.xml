@@ -30,7 +30,7 @@
     <string name="textView_status">案件狀態 :</string>
     <string name="textView_status_numbers">-1 ~ 0</string>
     <string name="textView_task_price_blank">價錢 :</string>
-    <string name="button_mission_detail_proposal_total">目前提案</string>
+    <string name="button_mission_detail_proposal_total">檢視提案(%d)</string>
     <string name="button_mission_detail">任務細節</string>
 
     <string name="textView_post_request_title"><![CDATA[標題 >]]></string>
@@ -113,5 +113,26 @@
     <string name="button_finish_this_task">任務完成</string>
     <string name="textView_add_some_progress_items">隨時新增進度事項，讓案主掌握進度喔。</string>
 
+    <!--fragment_proposal_progress_edit-->
+    <string name="editText_proposal_progress_item">Ex:已將手機送至指定Apple Store</string>
+    <string name="textView_add_new_progress_item">新增進度事項</string>
+    <string name="button_send_out_my_progress_item">確認新增</string>
+    <string name="textView_update_progress_pictures">更新進度圖片</string>
+
+    <!--item_proposla.xml-->
+    <string name="imageButton_proposal_reject">取消接受</string>
+
+
+    <!-- fragment_home.xml-->
+    <string name="textView_no_data_yet_fragment_home">目前沒有任務</string>
+
+    <!--item_proposal_progress.xml-->
+    <string name="textView_person_sign_off_item_proposal_progress">已完成</string>
+    <string name="button_item_proposal_progress_complete">確認完成</string>
+
+    <!--item_task_of_my_for_profile_page.xml-->
+    <string name="textView_task_status_posting_profile_page">案件刊登中</string>
+    <string name="textView_task_status_on_going_profile_page">案件進行中</string>
+    <string name="textView_task_status_finished_profile_page">案件已結案</string>
 
 </resources>

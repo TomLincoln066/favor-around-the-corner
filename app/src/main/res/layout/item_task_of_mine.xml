@@ -20,7 +20,6 @@
             type="com.tom.helper.source.Message" />
 
 
-
     </data>
 
 
@@ -33,10 +32,10 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="6dp"
-            app:cardCornerRadius="28dp"
             android:layout_margin="8dp"
             android:background="@color/blue_voyage"
+            android:padding="6dp"
+            app:cardCornerRadius="28dp"
             app:cardElevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
