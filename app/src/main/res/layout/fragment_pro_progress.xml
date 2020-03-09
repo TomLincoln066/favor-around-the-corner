@@ -50,15 +50,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_round_button"
-
-                    android:visibility="@{viewModel.ableToNavToProgress == true ? View.VISIBLE : View.INVISIBLE}"
                     android:clickable="@{viewModel.ableToNavToProgress == true ? true : false}"
-
                     android:text="編輯進度事項"
                     android:textColor="@color/white"
                     android:textSize="20dp"
+                    android:visibility="@{viewModel.ableToNavToProgress == true ? View.VISIBLE : View.INVISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +82,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_round_button"
+                    android:onClick="@{()->viewModel.clickFinishThisTask(viewModel.proposalLive)}"
                     android:text="任務完成"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
 
+                    android:textSize="20dp"
                     android:visibility="@{viewModel.mediator ? View.VISIBLE : View.INVISIBLE}"
-                    android:onClick="@{()->viewModel.clickFinishThisTask(viewModel.proposalLive)}"
 
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -120,8 +119,7 @@
                     android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                     />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -143,13 +141,10 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/complete_icon"
                     android:visibility="@{viewModel.shouldCompletedImageShow == true ? View.VISIBLE : View.INVISIBLE}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    />
-
-
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -162,15 +157,4 @@
 </layout>
 
 
-
-<!--<androidx.recyclerview.widget.RecyclerView-->
-<!--android:id="@+id/progress_item_recyclerView"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="0dp"-->
-<!--android:layout_marginTop="30dp"-->
-<!--android:padding="8dp"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toTopOf="parent"-->
-<!--app:proProgressItems="@{viewModel.proposalProgressContents}" />-->
 

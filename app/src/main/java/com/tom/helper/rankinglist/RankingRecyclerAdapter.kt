@@ -1,5 +1,6 @@
 package com.tom.helper.rankinglist
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ class RankingRecyclerAdapter(
 
     }
 
-    class UserViewHolder(private var binding: ItemRankingListBinding) :
+    class UserViewHolder(val binding: ItemRankingListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: User, onClickListener: OnClickListener, viewModel: RankingListViewModel) {
@@ -79,6 +80,7 @@ class RankingRecyclerAdapter(
     /**
      * Replaces the contents of a view (invoked by the layout manager)
      */
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         Log.i("RankingRecyclerAdapter","USER $position = ${getItem(position)}" )
@@ -86,6 +88,8 @@ class RankingRecyclerAdapter(
         when (holder) {
             is UserViewHolder -> {
                 holder.bind((getItem(position)), onClickListener, viewModel)
+                //display ranking number
+                holder.binding.textViewRankingNumber.text = "${position + 1}"
             }
         }
     }
