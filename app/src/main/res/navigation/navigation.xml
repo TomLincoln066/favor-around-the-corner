@@ -119,6 +119,17 @@
     <action
         android:id="@+id/action_global_proposalProgressEditFragment"
         app:destination="@id/proposalProgressEditFragment" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.tom.helper.chatlist.ChatListFragment"
+        android:label="ChatListFragment" >
+        <argument
+            android:name="message"
+            app:argType="com.tom.helper.source.Message" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_chatListFragment"
+        app:destination="@id/chatListFragment" />
 
 
 </navigation>
