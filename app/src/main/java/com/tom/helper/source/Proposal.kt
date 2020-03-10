@@ -17,8 +17,11 @@ data class Proposal(
     val status : Int = -1,
     val taskID: String = "",
     val taskOnwerID: String = "",
-    val taskPrice:Long =  -1
-
+    val taskPrice:Long =  -1,
+    val firstStep:String = "",
+    val secondStep:String = "",
+    val thirdStep:String = "",
+    val fourthStep:String = ""
 
 ) : Parcelable
 

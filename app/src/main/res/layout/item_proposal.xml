@@ -60,7 +60,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/icon_checked"
-                android:visibility="@{proposal.status ==0 ? View.VISIBLE : View.INVISIBLE }"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,20 +68,19 @@
 
             <Button
                 android:id="@+id/image_item_proposal_picture"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 android:background="@{proposal.status == -1 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == -1 }"
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusAccepted(proposal)}"
                 android:text="接受提案"
                 android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
                 android:visibility="@{userCurrentBoolean == true || viewModel.task.status == 0 ? View.GONE : View.VISIBLE}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/button_to_task_progress_sheet"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton_proposal_reject"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
+                app:layout_constraintTop_toTopOf="@+id/button_to_task_progress_sheet" />
 
             <TextView
                 android:id="@+id/text_proposal_person"
@@ -115,6 +114,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
                 android:ellipsize="end"
                 android:text="@{proposal.content}"
@@ -124,9 +124,90 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageView_proposal_icon_content"
                 app:layout_constraintTop_toBottomOf="@+id/text_proposal_person"
-                app:layout_constraintVertical_bias="0.18"
+                app:layout_constraintVertical_bias="0.0"
                 tools:text="@string/editText_proposal_content" />
 
+
+            <TextView
+                android:id="@+id/text_item_proposal_step1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ellipsize="end"
+                android:text="@{proposal.firstStep}"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/textView_proposal_owner_steps"
+                tools:text="step 1" />
+
+            <TextView
+                android:id="@+id/text_item_proposal_step2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ellipsize="end"
+                android:text="@{proposal.secondStep}"
+                android:textColor="@color/black_3f3a3a"
+
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_step1"
+                tools:text="step 2" />
+
+            <TextView
+                android:id="@+id/text_item_proposal_step3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ellipsize="end"
+                android:text="@{proposal.thirdStep}"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="15dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_step2"
+                tools:text="step 3" />
+
+            <TextView
+                android:id="@+id/text_item_proposal_step4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ellipsize="end"
+                android:text="@{proposal.fourthStep}"
+                android:textColor="@color/black_3f3a3a"
+
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_step3"
+                tools:text="step 4" />
+
+
+            <TextView
+                android:id="@+id/text_item_proposal_referral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:ellipsize="end"
+                android:text="@{proposal.title}"
+                android:textColor="@color/black_3f3a3a"
+
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_step4"
+                tools:text="kraffier@gmail.com" />
 
             <ImageView
                 android:id="@+id/imageView_proposal_icon_content"
@@ -138,13 +219,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_item_proposal_content" />
 
+            <ImageView
+                android:id="@+id/imageView_proposal_icon_steps"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/baseline_low_priority_black_24"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_proposal_owner_steps"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView_proposal_owner_steps" />
+
+
+            <ImageView
+                android:id="@+id/imageView_proposal_icon_email"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/outline_markunread_black_24"
+                app:layout_constraintBottom_toBottomOf="@+id/text_item_proposal_referral"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_item_proposal_referral" />
+
 
             <Button
                 android:id="@+id/imageButton_proposal_reject"
-                android:layout_width="80dp"
+                android:layout_width="00dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 android:background="@{proposal.status == -1 ? @drawable/button_style : @drawable/button_style_gray}"
                 android:clickable="@{proposal.status == -1 }"
                 android:onClick="@{() -> viewModel.clickToGetOneProposalStatusUnAccepted(proposal)}"
@@ -152,28 +252,39 @@
                 android:textColor="@{proposal.status == -1 ?  @color/linked_blue_light : @color/gray_999999}"
                 android:visibility="@{userCurrentBoolean == true || viewModel.task.status == 0 ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button_to_task_progress_sheet"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/image_item_proposal_picture"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
+                app:layout_constraintTop_toTopOf="@+id/image_item_proposal_picture" />
 
             <Button
                 android:id="@+id/button_to_task_progress_sheet"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@{proposal.status == 0 ? @drawable/button_style : @drawable/button_style_gray}"
+                android:background="@drawable/bg_round_button"
+                android:visibility="@{proposal.status == 0 ? View.VISIBLE : View.GONE}"
                 android:clickable="@{proposal.status == 0 }"
                 android:onClick="@{() -> viewModel.clickNavigateToProProgressFragment(proposal)}"
                 android:text="@string/button_to_task_progress_sheet"
                 android:textAlignment="center"
-                android:textColor="@{proposal.status == 0 ?  @color/linked_blue_light : @color/gray_999999}"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageButton_proposal_reject"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_icon_proposal_checked" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_referral" />
+
+
+            <TextView
+                android:id="@+id/textView_proposal_owner_steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/textView_proposal_owner_steps"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@+id/text_item_proposal_content"
+                app:layout_constraintTop_toBottomOf="@+id/text_item_proposal_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

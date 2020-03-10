@@ -79,6 +79,7 @@
                     android:paddingEnd="8dp"
                     android:text="@={viewModel.proposalProvider}"
                     android:textSize="14dp"
+                    android:hint="kraffier@gmail.com"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +146,8 @@
                     android:paddingEnd="8dp"
                     android:textSize="14dp"
 
+                    android:text="@={viewModel.proposalFirstStep}"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -190,6 +193,8 @@
                     android:paddingEnd="8dp"
                     android:textSize="14dp"
 
+                    android:text="@={viewModel.proposalSecondStep}"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -212,6 +217,8 @@
                     android:paddingEnd="8dp"
                     android:textSize="14dp"
 
+                    android:text="@={viewModel.proposalThirdStep}"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -233,6 +240,8 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:textSize="14dp"
+
+                    android:text="@={viewModel.proposalFourthStep}"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

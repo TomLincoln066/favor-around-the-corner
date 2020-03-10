@@ -81,10 +81,10 @@
 
     <!-- Proposals Edit fragment-->
 
-    <string name="textView_proposal_sender_name">你的暱稱 ></string>
+    <string name="textView_proposal_sender_name">你的Email ></string>
     <string name="textView_proposal_request_content_tag">為甚麼要選我 ></string>
     <string name="button_proposal_send">送出</string>
-    <string name="editText_proposal_content">EX : 我有多年XXX的經驗, 以下連結是我過往的作品 www.YOURWEBPAGE.com, 這是我的聯絡方式 TEL : 09xx-xxx-185</string>
+    <string name="editText_proposal_content">EX : 我有多年XXX的經驗, 以下連結是我過往的作品 www.YOURWEBPAGE.com...</string>
 
     <!-- Proposals list fragment and item -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -119,9 +119,9 @@
     <string name="button_send_out_my_progress_item">確認新增</string>
     <string name="textView_update_progress_pictures">更新進度圖片</string>
 
-    <!--item_proposla.xml-->
+    <!--item_proposal.xml-->
     <string name="imageButton_proposal_reject">取消接受</string>
-
+    <string name="textView_proposal_owner_steps"><![CDATA[完成步驟 >]]></string>
 
     <!-- fragment_home.xml-->
     <string name="textView_no_data_yet_fragment_home">目前沒有任務</string>
@@ -134,5 +134,9 @@
     <string name="textView_task_status_posting_profile_page">案件刊登中</string>
     <string name="textView_task_status_on_going_profile_page">案件進行中</string>
     <string name="textView_task_status_finished_profile_page">案件已結案</string>
+
+
+
+
 
 </resources>

@@ -26,6 +26,12 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
 
     val proposalProvider = MutableLiveData<String>()
     val proposalContent = MutableLiveData<String>()
+
+    val proposalFirstStep = MutableLiveData<String>()
+    val proposalSecondStep = MutableLiveData<String>()
+    val proposalThirdStep = MutableLiveData<String>()
+    val proposalFourthStep = MutableLiveData<String>()
+
     val proposalAccepted = false
 
 
@@ -95,9 +101,26 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             return
         }
         if (proposalProvider.value == null || proposalProvider.value?.isEmpty() == true) {
-            _error.value = "Proposal Title cannot be empty"
+            _error.value = "Proposal Provider cannot be empty"
             return
         }
+        if (proposalFirstStep.value == null || proposalFirstStep.value?.isEmpty() == true) {
+            _error.value = "proposalFirstStep cannot be empty"
+            return
+        }
+        if (proposalSecondStep.value == null || proposalSecondStep.value?.isEmpty() == true) {
+            _error.value = "proposalSecondStep cannot be empty"
+            return
+        }
+        if (proposalThirdStep.value == null || proposalThirdStep.value?.isEmpty() == true) {
+            _error.value = "proposalThirdStep cannot be empty"
+            return
+        }
+        if (proposalFourthStep.value == null || proposalFourthStep.value?.isEmpty() == true) {
+            _error.value = "proposalFourthStep cannot be empty"
+            return
+        }
+
 
 
 //        val proposal = FirebaseFirestore.getInstance().collection("proposal")  have proposal input in the task collection
@@ -141,7 +164,11 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             userCurrent1,
             taskID = taskId,
             taskOnwerID = taskOnwerId,
-            taskPrice = taskPrice
+            taskPrice = taskPrice,
+            firstStep = proposalFirstStep.value!!,
+            secondStep = proposalSecondStep.value!!,
+            thirdStep = proposalThirdStep.value!!,
+            fourthStep = proposalFourthStep.value!!
         )
 
 
