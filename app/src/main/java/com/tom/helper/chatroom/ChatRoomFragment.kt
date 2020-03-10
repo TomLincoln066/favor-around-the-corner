@@ -1,4 +1,5 @@
 package com.tom.helper.chatroom
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,10 +24,6 @@ class ChatRoomFragment : Fragment() {
     }
 
 
-
-//    private val viewModel by viewModels<ChatRoomViewModel> { getVmFactory() }
-
-
     private lateinit var task: Task
 
 
@@ -49,8 +46,7 @@ class ChatRoomFragment : Fragment() {
             ChatRoomRecyclerAdapter(
                 ChatRoomRecyclerAdapter.OnClickListener {
 
-                    //press buttonMissionDetail of item_request.xml, and it'll navigate to job details fragment
-//                    findNavController().navigate(HomeFragmentDirections.actionGlobalJobDetailFragment(it))
+
                 },
                 viewModel
             )
@@ -62,11 +58,10 @@ class ChatRoomFragment : Fragment() {
         viewModel.getMessages()
 
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_chat_room, container, false)
+
         return binding.root
 
     }
-
 
 
 }

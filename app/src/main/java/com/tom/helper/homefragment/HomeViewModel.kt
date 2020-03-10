@@ -317,6 +317,33 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
+
+    private val _shouldNavigateToChatListFragment = MutableLiveData<Task>()
+    val shouldNavigateToChatListFragment: LiveData<Task>
+        get() = _shouldNavigateToChatListFragment
+
+
+    fun clickNavToChatListFragment(task: Task?) {
+        Log.d("Will", "clickNavToChatListFragment(), message=$message")
+        message?.let {
+            _shouldNavigateToChatListFragment.value = task
+        }
+    }
+
+
+    fun doneNavigatingToChatList() {
+        _shouldNavigateToChatListFragment.value = null
+    }
+
+
+
+
+
+
+
+
+
+
     fun Long.toDisplayTimePass(): String {
         val now = System.currentTimeMillis()
         val diff = (now - this) / 1000

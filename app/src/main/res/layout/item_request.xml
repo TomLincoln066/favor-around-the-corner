@@ -189,7 +189,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/bg_round_button_left"
                     android:visibility="@{task.status ==1 ? View.INVISIBLE :View.VISIBLE}"
-                    android:onClick="@{() -> viewModel.clickNavToChatRoomFragment(task)}"
+                    android:onClick="@{() -> viewModel.clickNavToChatListFragment(task)}"
                     android:text="@string/button_item_request_message"
                     android:textColor="@color/white"
                     android:textSize="12dp"

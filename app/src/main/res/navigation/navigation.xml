@@ -124,8 +124,8 @@
         android:name="com.tom.helper.chatlist.ChatListFragment"
         android:label="ChatListFragment" >
         <argument
-            android:name="message"
-            app:argType="com.tom.helper.source.Message" />
+            android:name="task"
+            app:argType="com.tom.helper.source.Task" />
     </fragment>
     <action
         android:id="@+id/action_global_chatListFragment"

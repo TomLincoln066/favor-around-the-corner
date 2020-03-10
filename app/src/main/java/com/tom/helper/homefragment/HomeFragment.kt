@@ -113,13 +113,27 @@ class HomeFragment : Fragment() {
 
 
         //handle when button_item_request_message in item_request.xml is pressed, will navigate to ChatRoomFragment(see HomeViewModel.kt)
-        viewModel.shouldNavigateToChatRoomFragment.observe(this, Observer {
+//        viewModel.shouldNavigateToChatRoomFragment.observe(this, Observer {
+//            it?.let {
+//
+//                findNavController().navigate(
+//                    HomeFragmentDirections.actionGlobalChatRoomFragment(it)
+//                )
+//                viewModel.doneNavigatingToChatRoom()
+//
+//            }
+//        })
+
+
+
+
+        viewModel.shouldNavigateToChatListFragment.observe(this, Observer {
             it?.let {
 
                 findNavController().navigate(
-                    HomeFragmentDirections.actionGlobalChatRoomFragment(it)
+                    HomeFragmentDirections.actionGlobalChatListFragment(it)
                 )
-                viewModel.doneNavigatingToChatRoom()
+                viewModel.doneNavigatingToChatList()
 
             }
         })

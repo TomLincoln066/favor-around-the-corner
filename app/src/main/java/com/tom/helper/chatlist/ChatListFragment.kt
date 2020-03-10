@@ -12,6 +12,14 @@ import com.tom.helper.R
 class ChatListFragment : Fragment() {
 
 
+//    private val viewModel by viewModels<ChatRoomViewModel> {
+//        getVmFactory(
+//            ChatRoomFragmentArgs.fromBundle(arguments!!).task
+//        )
+//    }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
