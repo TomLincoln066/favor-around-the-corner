@@ -99,4 +99,11 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
     override suspend fun getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal: Proposal): Result<List<Proposal>> {
         return remoteDataSource.getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal)
     }
+
+
+    override fun getMessagesFromDBLive(task: Task): LiveData<List<Message>> {
+        return remoteDataSource.getMessagesFromDBLive(task)
+    }
+
+
 }

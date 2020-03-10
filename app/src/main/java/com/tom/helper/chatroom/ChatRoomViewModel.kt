@@ -6,6 +6,9 @@ import androidx.databinding.InverseMethod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tom.helper.HelperApplication
@@ -15,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 
 class ChatRoomViewModel(private val repository: HelperRepository, private val task: Task) :
     ViewModel() {
@@ -23,7 +27,7 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
     val messageContent = MutableLiveData<String>()
 
 
-    private val _messages = MutableLiveData<List<Message>>()
+    private var _messages = MutableLiveData<List<Message>>()
 
     val messages: LiveData<List<Message>>
         get() = _messages
@@ -120,6 +124,14 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
     }
 
 
+
+    fun getMessagesLiveSnapShot() {
+
+        _messages = repository.getMessagesFromDBLive(task) as MutableLiveData<List<Message>>
+
+    }
+
+
     fun getMessages() {
 
         coroutineScope.launch {
@@ -163,21 +175,23 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
 
         val user = FirebaseAuth.getInstance().currentUser!!
 
+
         val userCurrent = user.uid
+
+        val photoUrl = user.photoUrl.toString()
 
         val message = FirebaseFirestore.getInstance().collection("tasks")
 
-        val document = message.document(task.id).collection("messages").document(userCurrent)
+//        val document = message.document(task.id).collection("messages").document(userCurrent)
+        val document = message.document(task.id).collection("messages").document()
 
 
-        val userCurrentUser = User(user!!.uid,user.displayName!!,user.email!!,0,0L)
+        val userCurrentUser = User(user.uid, user.displayName!!, user.email!!, 0, 0L,photoUrl)
 
 
         val taskId = task.id
 
         val taskOnwerId = task.userId
-
-
 
 
         val data = Message(
@@ -197,18 +211,48 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
         document.set(data)
             .addOnFailureListener {
                 Log.i("EXCEPTIONX", "exc = ${it.message}")
+                _status.value = LoadApiStatus.ERROR
             }.addOnSuccessListener {
 
-                Toast.makeText(
-                    HelperApplication.context,
-                    "新增訊息成功",
-                    Toast.LENGTH_SHORT
-                ).show()
+                _status.value = LoadApiStatus.DONE
+
+
+
+
                 Log.i("SUCCESS", "SU")
             }
 
 
     }
+
+
+
+
+
+
+    //handle converting date to string
+    fun convertLongToDateString(systemTime: Long): String {
+        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+            .format(systemTime).toString()
+    }
+
+    @InverseMethod("convertLongToDateString")
+    fun convertDateStringToLong(string: String): Long {
+        return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss").parse(string).time
+    }
+
+
+    fun RecyclerView.smoothSnapToPosition(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {
+        val smoothScroller = object : LinearSmoothScroller(this.context) {
+            override fun getVerticalSnapPreference(): Int = snapMode
+            override fun getHorizontalSnapPreference(): Int = snapMode
+        }
+        smoothScroller.targetPosition = position
+        layoutManager?.startSmoothScroll(smoothScroller)
+    }
+
+
+
 
 
 }

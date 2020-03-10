@@ -51,6 +51,8 @@ interface HelperRepository {
 
     suspend fun getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal: Proposal): Result<List<Proposal>>
 
+    fun getMessagesFromDBLive(task: Task):LiveData<List<Message>>
+
 
 //    suspend fun publish(article: Article): Result<Boolean>
 //

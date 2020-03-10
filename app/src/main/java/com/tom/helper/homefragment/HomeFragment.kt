@@ -133,28 +133,30 @@ class HomeFragment : Fragment() {
                 when (task.userId == HelperApplication.user.id) {
 
                     true -> {
-                        findNavController().navigate(
-                            HomeFragmentDirections.actionGlobalChatListFragment(it)
-                        )
-                        viewModel.doneNavigatingToChatList()
-                    }
-
-                    false -> {
-
 
                         findNavController().navigate(
-//                            HomeFragmentDirections.actionGlobalChatRoomFragment(it.id, HelperApplication.user.id)
+
                             HomeFragmentDirections.actionGlobalChatRoomFragment(it)
                         )
                         viewModel.doneNavigatingToChatList()
 
 
 
-                        Toast.makeText(
-                            HelperApplication.context,
-                            " 對話頁面",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    }
+
+
+
+                    false -> {
+
+
+                        findNavController().navigate(
+
+                            HomeFragmentDirections.actionGlobalChatRoomFragment(it)
+                        )
+                        viewModel.doneNavigatingToChatList()
+
+
+
 
                     }
 

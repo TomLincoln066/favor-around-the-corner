@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tom.helper.HelperApplication
 import com.tom.helper.databinding.FragmentChatRoomBinding
 import com.tom.helper.ext.getVmFactory
 import com.tom.helper.source.Task
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_chat_room.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -41,21 +46,38 @@ class ChatRoomFragment : Fragment() {
 
         binding.privateMessagesListOfUsersRecycler.layoutManager = LinearLayoutManager(context)
 
+//        binding.privateMessagesListOfUsersRecycler.scrollToPosition(viewModel.messages.value!!.size  )
+//        binding.privateMessagesListOfUsersRecycler.smoothScrollToPosition(viewModel.messages.count - 1 )
 
-        binding.privateMessagesListOfUsersRecycler.adapter =
+
+
+
+
+
+        val chatRoomRecyclerAdapter =
             ChatRoomRecyclerAdapter(
                 ChatRoomRecyclerAdapter.OnClickListener {
-
 
                 },
                 viewModel
             )
 
 
-//        viewModel.addMessages()
+        binding.privateMessagesListOfUsersRecycler.adapter = chatRoomRecyclerAdapter
 
 
-        viewModel.getMessages()
+
+//        viewModel.getMessages()
+
+        viewModel.getMessagesLiveSnapShot()
+        viewModel.messages.observe(this, Observer {
+            chatRoomRecyclerAdapter.submitList(it)
+        })
+
+
+        binding.privateMessagesListOfUsersRecycler.scrollToPosition(chatRoomRecyclerAdapter.getItemCount() -1 )
+
+
 
         // Inflate the layout for this fragment
 

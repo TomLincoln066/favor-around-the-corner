@@ -813,5 +813,31 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
+
+
+    //snapshot Message list
+    override fun getMessagesFromDBLive(task: Task): LiveData<List<Message>> {
+        val liveData = MutableLiveData<List<Message>>()
+        FirebaseFirestore.getInstance()
+            .collection(PATH_TASKS).document(task.id).collection(PATH_MESSAGES)
+            .orderBy(KEY_CREATED_TIME, Query.Direction.ASCENDING)
+            .addSnapshotListener { snapshot, exception ->
+                exception?.let {
+                }
+
+                val list = mutableListOf<Message>()
+                for (document in snapshot!!) {
+
+                    val message = document.toObject(Message::class.java)
+                    list.add(message)
+                    Log.d("Will", "getMessagesFromDBLive")
+                }
+
+                liveData.value = list
+            }
+        return liveData
+    }
+
+
 }
 

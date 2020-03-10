@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.tom.helper.HelperApplication
 import com.tom.helper.databinding.ItemMessageBinding
 import com.tom.helper.source.Message
 
@@ -23,6 +24,7 @@ class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener , val
 //            binding.viewModel = viewModel
 
             binding.message = message
+
 
             binding.root.setOnClickListener { onClickListener.onClick(message) }
             binding.executePendingBindings()

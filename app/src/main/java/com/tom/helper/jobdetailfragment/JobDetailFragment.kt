@@ -22,9 +22,13 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.google.firebase.storage.StorageReference
 import com.tom.helper.HelperApplication
 import com.tom.helper.MainActivity
+import com.tom.helper.source.Message
 
 
 /**
@@ -41,6 +45,13 @@ class JobDetailFragment : Fragment() {
 //    val gsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/project-help-db920.appspot.com/o/gift.jpg?alt=media&token=756aa4c2-1d6d-4b24-88fa-3c85a84dd083")
 //
 //    val GA = GlideApp.with(context!!).load(gsReference).into(imageView!!)
+
+    private val _message = MutableLiveData<Message>()
+
+    val message: LiveData<Message>
+        get() = _message
+
+
 
 
 
@@ -75,6 +86,52 @@ class JobDetailFragment : Fragment() {
 //            findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))
 
         }
+
+
+
+        viewModel.shouldNavigateToChatListFragment.observe(this, Observer {
+            it?.let { task ->
+
+                when (task.userId == HelperApplication.user.id) {
+
+                    true -> {
+
+                        findNavController().navigate(
+
+                            JobDetailFragmentDirections.actionGlobalChatRoomFragment(it)
+                        )
+                        viewModel.doneNavigatingToChatList()
+
+
+
+                    }
+
+
+
+                    false -> {
+
+
+                        findNavController().navigate(
+
+                            JobDetailFragmentDirections.actionGlobalChatRoomFragment(it)
+                        )
+                        viewModel.doneNavigatingToChatList()
+
+
+
+
+                    }
+
+
+                }
+
+
+            }
+        })
+
+
+
+
 
 
 

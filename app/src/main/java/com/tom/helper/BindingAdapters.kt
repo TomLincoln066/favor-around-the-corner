@@ -18,6 +18,7 @@ import com.tom.helper.proposallistfragment.ProposalListRecyclerAdapter
 import com.tom.helper.rankinglist.RankingRecyclerAdapter
 import com.tom.helper.source.*
 import com.tom.helper.taskprogressdialog.ProProgressRecyclerAdapter
+import java.text.SimpleDateFormat
 
 //fragment_home.xml in use
 @BindingAdapter("tasks")
@@ -43,6 +44,19 @@ fun bindRecyclerViewMessage(recyclerView: RecyclerView, homeItems: List<Message>
         }
     }
 }
+
+//fragment_home.xml in use
+@BindingAdapter("dialogs")
+fun bindRecyclerViewDialog(recyclerView: RecyclerView, homeItems: List<Message>?) {
+    homeItems?.let {
+        recyclerView.adapter?.apply {
+            when (this) {
+                is ChatRoomRecyclerAdapter -> submitList(it)
+            }
+        }
+    }
+}
+
 
 
 
@@ -187,3 +201,11 @@ fun bindApiErrorMessage(view: TextView, message: String?) {
 fun bindMission(textView: TextView, missionCount:Int?){
     missionCount?.let {
         textView.text = HelperApplication.instance.getString(R.string.button_mission_detail_proposal_total,it) }}
+
+
+
+@BindingAdapter("convertLongToDateString")
+fun bindConvertLongToDateString(textView: TextView, systemTime: Long) {
+    textView.text = SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
+        .format(systemTime).toString()
+}

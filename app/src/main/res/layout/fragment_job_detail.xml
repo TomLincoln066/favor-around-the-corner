@@ -212,7 +212,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@drawable/bg_round_button"
                     android:letterSpacing="0.15"
-                    android:onClick="@{()->viewModel.comingSoon()}"
+                    android:onClick="@{()->viewModel.clickNavToChatListFragment(task)}"
                     android:text="@string/button_job_detail_live_chat"
                     android:textColor="@color/white"
                     android:textSize="20dp"
