@@ -2,6 +2,7 @@ package com.tom.helper.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.tom.helper.chatlist.ChatListViewModel
 import com.tom.helper.chatroom.ChatRoomViewModel
 import com.tom.helper.proposaleditfragment.ProposalEditViewModel
 import com.tom.helper.proposallistfragment.ProposalListViewModel
@@ -29,6 +30,12 @@ class TaskViewModelFactory(
         if (modelClass.isAssignableFrom(ChatRoomViewModel::class.java)) {
             return ChatRoomViewModel(helperRepository, task) as T
         }
+
+        if (modelClass.isAssignableFrom(ChatListViewModel::class.java)) {
+            return ChatListViewModel(helperRepository, task) as T
+        }
+
+
 
 
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

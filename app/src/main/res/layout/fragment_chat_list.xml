@@ -38,12 +38,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
-
+            app:messages="@{viewModel.messages}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_chat_list" />
+            tools:listitem="@layout/item_chat_user" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

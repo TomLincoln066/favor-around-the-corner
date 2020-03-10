@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.tom.helper.chatlist.ChatListRecyclerAdapter
 import com.tom.helper.chatroom.ChatRoomRecyclerAdapter
 import com.tom.helper.homefragment.HomeRecyclerAdapter
 import com.tom.helper.profile.ProfileRecyclerAdapter
@@ -37,7 +38,7 @@ fun bindRecyclerViewMessage(recyclerView: RecyclerView, homeItems: List<Message>
     homeItems?.let {
         recyclerView.adapter?.apply {
             when (this) {
-                is ChatRoomRecyclerAdapter -> submitList(it)
+                is ChatListRecyclerAdapter -> submitList(it)
             }
         }
     }

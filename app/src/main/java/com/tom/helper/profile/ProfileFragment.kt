@@ -17,6 +17,7 @@ import com.tom.helper.MainActivity
 import com.tom.helper.R
 import com.tom.helper.databinding.FragmentProfileBinding
 import com.tom.helper.ext.getVmFactory
+import com.tom.helper.source.Task
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +27,8 @@ class ProfileFragment : Fragment() {
 
     private val viewModel by viewModels<ProfileViewModel>{getVmFactory()}
 
+
+    private lateinit var task: Task
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
