@@ -8,23 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tom.helper.databinding.ItemChatUserBinding
 import com.tom.helper.source.Message
 
-class ChatListRecyclerAdapter(private val onClickListener: OnClickListener , val viewModel: ChatListViewModel) :
+class ChatListRecyclerAdapter(
+    private val onClickListener: OnClickListener,
+    val viewModel: ChatListViewModel
+) :
     ListAdapter<Message, RecyclerView.ViewHolder>(DiffCallback) {
 
     class OnClickListener(val clickListener: (message: Message) -> Unit) {
         fun onClick(message: Message) = clickListener(message)
     }
 
-    class ChatListViewHolder(private var binding: ItemChatUserBinding):
+    class ChatListViewHolder(private var binding: ItemChatUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message, onClickListener: OnClickListener, viewModel: ChatListViewModel) {
 
-//            binding.viewModel = viewModel
 
             binding.message = message
 
-            binding.root.setOnClickListener { onClickListener.onClick(message)
+            binding.root.setOnClickListener {
+                onClickListener.onClick(message)
             }
             binding.executePendingBindings()
         }
@@ -34,6 +37,7 @@ class ChatListRecyclerAdapter(private val onClickListener: OnClickListener , val
         override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
             return oldItem === newItem
         }
+
         override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
             return oldItem.id == newItem.id
         }
@@ -45,7 +49,9 @@ class ChatListRecyclerAdapter(private val onClickListener: OnClickListener , val
         return when (viewType) {
             ITEM_VIEW_TYPE_MESSAGE -> ChatListViewHolder(
                 ItemChatUserBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }

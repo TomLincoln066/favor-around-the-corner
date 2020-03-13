@@ -61,20 +61,6 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
         viewModelJob.cancel()
     }
 
-    //To test Mock data display of item_message.xml on fragment_chat_room.xml
-    fun addMessages() {
-//        _messages.value = listOf(
-//            Message(
-//                "123", 12, "burger king", "wwww", null, null, ""
-//            ),
-//            Message("123", 12, "burger king", "wwww", null, null, "")
-//
-//
-//        )
-
-
-    }
-
 
     // handle taskPrice input type convert problem( Long to String and String to Long)
 
@@ -122,7 +108,6 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
 
 
     }
-
 
 
     fun getMessagesLiveSnapShot() {
@@ -182,11 +167,11 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
 
         val message = FirebaseFirestore.getInstance().collection("tasks")
 
-//        val document = message.document(task.id).collection("messages").document(userCurrent)
+
         val document = message.document(task.id).collection("messages").document()
 
 
-        val userCurrentUser = User(user.uid, user.displayName!!, user.email!!, 0, 0L,photoUrl)
+        val userCurrentUser = User(user.uid, user.displayName!!, user.email!!, 0, 0L, photoUrl)
 
 
         val taskId = task.id
@@ -226,10 +211,6 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
     }
 
 
-
-
-
-
     //handle converting date to string
     fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("MMM-dd-yyyy HH:mm:ss")
@@ -242,7 +223,10 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
     }
 
 
-    fun RecyclerView.smoothSnapToPosition(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {
+    fun RecyclerView.smoothSnapToPosition(
+        position: Int,
+        snapMode: Int = LinearSmoothScroller.SNAP_TO_START
+    ) {
         val smoothScroller = object : LinearSmoothScroller(this.context) {
             override fun getVerticalSnapPreference(): Int = snapMode
             override fun getHorizontalSnapPreference(): Int = snapMode
@@ -250,9 +234,6 @@ class ChatRoomViewModel(private val repository: HelperRepository, private val ta
         smoothScroller.targetPosition = position
         layoutManager?.startSmoothScroll(smoothScroller)
     }
-
-
-
 
 
 }

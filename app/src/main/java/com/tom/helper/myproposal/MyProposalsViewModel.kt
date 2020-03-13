@@ -22,46 +22,7 @@ class MyProposalsViewModel(private val repository: HelperRepository, private val
         get() = _proposals
 
 
-    //To test Mock data display of item_proposal on fragment_proposal_list.xml
-//    fun addProposal() {
-//        _proposals.value = listOf(
-//            Proposal(
-//                "123", 20000L, "I got your back"
-//            ),
-//            Proposal(
-//                "456", 10000000L
-//            ),
-//            Proposal(),
-//            Proposal(),
-//            Proposal()
-//        )
-//
-//
-//    }
 
-
-//    fun getProposalsResult() {
-//
-//        coroutineScope.launch {
-//            val result = repository.getProposals(task)
-//
-//            when (result) {
-//                is com.tom.helper.source.Result.Success -> {
-//                    _proposals.value = result.data
-//                }
-//
-//                is com.tom.helper.source.Result.Error -> {
-//                    result.exception
-//                }
-//
-//                is com.tom.helper.source.Result.Fail -> {
-//                    _error.value = result.error
-//                }
-//            }
-//
-//        }
-//
-//    }
 
 
     // error: The internal MutableLiveData that stores the error of the most recent request

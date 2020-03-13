@@ -25,25 +25,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
         get() = _profiles
 
 
-//    private val _ranks = MutableLiveData<List<Rank>>()
-//
-//    val ranks: LiveData<List<Rank>>
-//        get() = _ranks
-
-
-    //To test Mock data display of item_ranking_list on fragment_ranking_list.xml
-//    fun addRankUser() {
-//        _ranks.value = listOf(
-//            Rank(
-//                "123", "will", "burger king", 1000000),
-//            Rank("456", "Tom", "king", 1000),
-//            Rank("789", "Bill", "man", 20000),
-//            Rank("101112", "James", "computer expert", 10000)
-//
-//        )
-//
-//
-//    }
 
     //    for all tasks of mine
     fun getUsersList() {
@@ -68,12 +49,6 @@ class RankingListViewModel(private val repository: HelperRepository) : ViewModel
         }
 
     }
-
-
-
-
-
-
 
 
 

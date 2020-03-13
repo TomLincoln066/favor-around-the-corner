@@ -26,11 +26,14 @@ import com.tom.helper.source.Task
  */
 class ProProgressFragment : Fragment() {
 
-    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)}
+    private val viewModel by viewModels<ProProgressViewModel> {
+        getVmFactory(
+            ProProgressFragmentArgs.fromBundle(
+                arguments!!
+            ).proposal
+        )
+    }
 
-//    private val viewModel by viewModels<ProProgressViewModel> { getVmFactory() }
-
-//    getVmFactory(ProProgressFragmentArgs.fromBundle(arguments!!).proposal)
 
     private lateinit var proposalProgressContent: ProposalProgressContent
 
@@ -51,7 +54,6 @@ class ProProgressFragment : Fragment() {
         binding.progressItemRecyclerView.layoutManager = LinearLayoutManager(context)
 
 
-
         val proProgressRecyclerAdapter =
             ProProgressRecyclerAdapter(ProProgressRecyclerAdapter.OnClickListener {
 
@@ -60,19 +62,14 @@ class ProProgressFragment : Fragment() {
         binding.progressItemRecyclerView.adapter = proProgressRecyclerAdapter
 
 
-//        binding.progressItemRecyclerView.adapter =
-//            ProProgressRecyclerAdapter(
-//                ProProgressRecyclerAdapter.OnClickListener {
-//
-//                },
-//                viewModel
-//            )
-
-
         //  this is replaced by val ableToNavToProgress in ProProgressViewModel.kt
         binding.buttonEditProgressItem.setOnClickListener {
 
-            findNavController().navigate(ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(proposal))
+            findNavController().navigate(
+                ProProgressFragmentDirections.actionGlobalProposalProgressEditFragment(
+                    proposal
+                )
+            )
 
 
         }
@@ -82,15 +79,6 @@ class ProProgressFragment : Fragment() {
             findNavController().navigateUp()
 
         }
-
-
-
-//                viewModel.prepareMockProgress()
-
-
-
-
-//        viewModel.getProposalProgressItem(proposal)
 
 
         //snapshot proProgressItem list

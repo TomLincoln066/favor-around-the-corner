@@ -56,17 +56,16 @@ import java.text.SimpleDateFormat
  */
 class PostRequestFragment : Fragment() {
 
-    lateinit var binding : FragmentPostRequestBinding
+    lateinit var binding: FragmentPostRequestBinding
 
     // photo_v2
     private val REQUEST_TAKE_PHOTO = 1
 
 
-
     //  photo
 
-    private val MY_PERMISSIONS_CAMERA =20
-    private val TAKE_PHOTO_REQUEST =30
+    private val MY_PERMISSIONS_CAMERA = 20
+    private val TAKE_PHOTO_REQUEST = 30
 
 
     lateinit var currentPhotoPath: String
@@ -94,8 +93,9 @@ class PostRequestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        val binding = FragmentPostRequestBinding.inflate(inflater, container, false)
-         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_post_request ,container, false)
+
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_post_request, container, false)
 
 
         //handle changing the title while selecting PostRequestFragment
@@ -106,7 +106,7 @@ class PostRequestFragment : Fragment() {
         binding.viewModel = viewModel
 
 
-        //  storage
+        // storage
 
         firebaseStore = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
@@ -120,64 +120,24 @@ class PostRequestFragment : Fragment() {
 //            dispatchTakePictureIntent()
         }
 
-//        binding.btnUploadImage.setOnClickListener {
-//            uploadImage()
-//        }
 
-
-        //try to handle when button_post_request_send is clicked in fragment_post_request.xml is pressed, will navigate to Home Fragment
-//        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
-//            it?.let {
-//
-//                findNavController().navigate(PostRequestFragmentDirections.actionGlobalHomeFragment())
-//
-//                viewModel.doneNavigatingToHomeFragment()
-//
-//            }
-//        })
 
 
         viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
             if (it) {
                 findNavController().navigate(PostRequestFragmentDirections.actionGlobalHomeFragment())
             }
-//            (activity as MainActivity).navigationView.selectedItemId = R.id.fragment_home
+
         })
-//        viewModel.taskPictureUri1.observe(this, Observer {
-//            Log.d("", "taskPictureUri1 = $it")
-//        })
+
 
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_post_request, container, false)
+
         return binding.root
 
 
     }
 
-
-    // send some mock data to fireBase
-//    fun sendNewRequest() {
-//
-//
-//        val task = FirebaseFirestore.getInstance().collection("task")
-//
-//        val document = task.document()
-//
-//        val data = hashMapOf(
-//            "task_provider" to "Tom",
-//            "task_title" to "我的電腦crashes \n" +
-//                    "Help me!!! \"",
-//            "task_content" to " 我的電腦突然沒辦法開機，徵求勇士一名，酬勞另計。 ",
-//            "task_createTime" to Calendar.getInstance().timeInMillis,
-//            "task_price" to "20000",
-//            "task_id" to document.id
-//
-//        )
-//
-//        document.set(data as Map<String, Any>)
-//
-//
-//    }
 
     //photo_v2
 
@@ -224,10 +184,6 @@ class PostRequestFragment : Fragment() {
     }
 
 
-
-
-
-
     //photo
     private fun loadCamera() {
         val loadCameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -238,7 +194,7 @@ class PostRequestFragment : Fragment() {
             != PackageManager.PERMISSION_GRANTED
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    (activity as MainActivity) ,
+                    (activity as MainActivity),
                     Manifest.permission.CAMERA
                 )
             ) {
@@ -270,7 +226,6 @@ class PostRequestFragment : Fragment() {
     }
 
 
-
     //storage choose and upload pictures
 
     private fun launchGallery() {
@@ -292,12 +247,11 @@ class PostRequestFragment : Fragment() {
             filePath = data.data
 
 
-
             //photo_v2
 
 
-
-            val bitmap = filePath?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
+            val bitmap =
+                filePath?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
             binding.imagePreview.setImageBitmap(bitmap)
             viewModel.imageBitmap.value = bitmap
 
@@ -306,14 +260,13 @@ class PostRequestFragment : Fragment() {
             try {
                 Glide.with(this).load(filePath).into(image_preview)
 
-                viewModel.taskPictureUri1.value =filePath
-                Log.d("","viewModel.taskPictureUri1.value =filePath")
+                viewModel.taskPictureUri1.value = filePath
+                Log.d("", "viewModel.taskPictureUri1.value =filePath")
             } catch (e: IOException) {
-                Log.d("","${e.printStackTrace()}")
+                Log.d("", "${e.printStackTrace()}")
                 e.printStackTrace()
             }
         }
-
 
 
         //photo_v2
@@ -323,14 +276,11 @@ class PostRequestFragment : Fragment() {
             if (data == null) {
                 return
             }
-            val bitmap = photoURI?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
+            val bitmap =
+                photoURI?.getBitmap(binding.imagePreview.width, binding.imagePreview.height)
             binding.imagePreview.setImageBitmap(bitmap)
             viewModel.imageBitmap.value = bitmap
         }
-
-
-
-
 
 
         //photo
@@ -364,9 +314,6 @@ class PostRequestFragment : Fragment() {
         }
 
 
-
-
-
     }
 
     override fun onRequestPermissionsResult(
@@ -395,53 +342,6 @@ class PostRequestFragment : Fragment() {
     }
 
 
-//    private fun addUploadRecordToDb(uri: String) {
-//        val db = FirebaseFirestore.getInstance()
-//
-//
-//        val data = HashMap<String, Any>()
-//        data["imageUrl"] = uri
-//
-//        db.collection("posts")
-//
-//            .add(data)
-//            .addOnSuccessListener { documentReference ->
-//                Toast.makeText(context, "Saved to DB", Toast.LENGTH_LONG).show()
-//            }
-//            .addOnFailureListener { e ->
-//                Toast.makeText(context, "Error saving to DB", Toast.LENGTH_LONG).show()
-//            }
-//    }
-//
-//    private fun uploadImage() {
-//        if (filePath != null) {
-//            val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
-//            val uploadTask = ref?.putFile(filePath!!)
-//
-//            val urlTask =
-//                uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, com.google.android.gms.tasks.Task<Uri>> { task ->
-//                    if (!task.isSuccessful) {
-//                        task.exception?.let {
-//                            throw it
-//                        }
-//                    }
-//                    return@Continuation ref.downloadUrl
-//                })?.addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        val downloadUri = task.result
-//                        addUploadRecordToDb(downloadUri.toString())
-//                    } else {
-//                        // Handle failures
-//                    }
-//                }?.addOnFailureListener {
-//
-//                }
-//        } else {
-//            Toast.makeText(context, "Please Upload an Image", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
-
     //photo
 
 
@@ -449,16 +349,19 @@ class PostRequestFragment : Fragment() {
         var rotatedDegree = 0
         var stream = HelperApplication.context.contentResolver.openInputStream(this)
         /** GET IMAGE ORIENTATION */
-        if(stream != null) {
+        if (stream != null) {
             val exif = ExifInterface(stream)
-            rotatedDegree = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL).fromExifInterfaceOrientationToDegree()
+            rotatedDegree = exif.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL
+            ).fromExifInterfaceOrientationToDegree()
             stream.close()
         }
         /** GET IMAGE SIZE */
         stream = HelperApplication.context.contentResolver.openInputStream(this)
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        BitmapFactory.decodeStream(stream, null,options)
+        BitmapFactory.decodeStream(stream, null, options)
         try {
             stream?.close()
         } catch (e: NullPointerException) {
@@ -466,7 +369,7 @@ class PostRequestFragment : Fragment() {
             return null
         }
         // The resulting width and height of the bitmap
-        if(options.outWidth == -1 || options.outHeight == -1) return null
+        if (options.outWidth == -1 || options.outHeight == -1) return null
         var bitmapWidth = options.outWidth.toFloat()
         var bitmapHeight = options.outHeight.toFloat()
         if (rotatedDegree == 90) {
@@ -476,8 +379,8 @@ class PostRequestFragment : Fragment() {
             bitmapHeight = options.outWidth.toFloat()
         }
         var scale = 1
-        while(true) {
-            if(bitmapWidth / 2 < width || bitmapHeight / 2 < height)
+        while (true) {
+            if (bitmapWidth / 2 < width || bitmapHeight / 2 < height)
                 break;
             bitmapWidth /= 2
             bitmapHeight /= 2
@@ -508,30 +411,21 @@ class PostRequestFragment : Fragment() {
         }
         var adjustedBitmap = bitmap
         if (bmpWidth > 0) {
-            adjustedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+            adjustedBitmap =
+                Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
         return adjustedBitmap
     }
 
 
     fun Int.fromExifInterfaceOrientationToDegree(): Int {
-        return when(this) {
+        return when (this) {
             ExifInterface.ORIENTATION_ROTATE_90 -> 90
             ExifInterface.ORIENTATION_ROTATE_180 -> 180
             ExifInterface.ORIENTATION_ROTATE_270 -> 270
             else -> 0
         }
     }
-
-
-
-//    val storageRef = HelperApplication.container.fireStorage.reference
-//    val byteArrayOutput = ByteArrayOutputStream()
-//    Logger.i("imageBitmap.byteCount=${imageBitmap.byteCount}")
-//    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutput)
-//    val bytes = byteArrayOutput.toByteArray()
-//    val uploadTask = storageRef.child(bookID + "/cover.jpg").putBytes(bytes)
-
 
 
 

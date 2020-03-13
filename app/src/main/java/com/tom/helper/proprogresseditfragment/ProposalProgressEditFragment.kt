@@ -51,14 +51,18 @@ import java.util.*
 class ProposalProgressEditFragment : Fragment() {
 
 
-    lateinit var binding : FragmentProposalProgressEditBinding
+    lateinit var binding: FragmentProposalProgressEditBinding
 
     // camera
     lateinit var currentPhotoPath: String
-    private val MY_PERMISSIONS_CAMERA =20
-    private val TAKE_PHOTO_REQUEST =30
+    private val MY_PERMISSIONS_CAMERA = 20
+    private val TAKE_PHOTO_REQUEST = 30
 
-    private val viewModel by viewModels<ProposalProgressEditViewModel> { getVmFactory(ProposalProgressEditFragmentArgs.fromBundle(arguments!!).proposal) }
+    private val viewModel by viewModels<ProposalProgressEditViewModel> {
+        getVmFactory(
+            ProposalProgressEditFragmentArgs.fromBundle(arguments!!).proposal
+        )
+    }
 
 
 //    private val viewModel by viewModels<ProposalProgressEditViewModel> { getVmFactory() }
@@ -78,10 +82,6 @@ class ProposalProgressEditFragment : Fragment() {
     private var storageReference: StorageReference? = null
 
 
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -91,7 +91,12 @@ class ProposalProgressEditFragment : Fragment() {
         proposal = requireArguments().get("proposal") as Proposal
 
 //        val binding = FragmentProposalProgressEditBinding.inflate(inflater,container,false)
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_proposal_progress_edit, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_proposal_progress_edit,
+            container,
+            false
+        )
 
 
 
@@ -112,7 +117,6 @@ class ProposalProgressEditFragment : Fragment() {
         })
 
 
-
         //  upload image
 
         firebaseStore = FirebaseStorage.getInstance()
@@ -123,7 +127,7 @@ class ProposalProgressEditFragment : Fragment() {
         }
 
 
-        binding.imageButtonOpenCamera.setOnClickListener{
+        binding.imageButtonOpenCamera.setOnClickListener {
             loadCamera()
         }
 
@@ -134,11 +138,11 @@ class ProposalProgressEditFragment : Fragment() {
 
 
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_proposal_progress_edit, container, false)
+
         return binding.root
     }
 
-        // camera
+    // camera
 
 
     private var photoURI: Uri? = null
@@ -184,10 +188,6 @@ class ProposalProgressEditFragment : Fragment() {
     }
 
 
-
-
-
-
     //photo
     private fun loadCamera() {
         val loadCameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -198,7 +198,7 @@ class ProposalProgressEditFragment : Fragment() {
             != PackageManager.PERMISSION_GRANTED
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    (activity as MainActivity) ,
+                    (activity as MainActivity),
                     Manifest.permission.CAMERA
                 )
             ) {
@@ -230,12 +230,7 @@ class ProposalProgressEditFragment : Fragment() {
     }
 
 
-
-
-
-
     //camera
-
 
 
     private fun launchGallery() {
@@ -244,7 +239,6 @@ class ProposalProgressEditFragment : Fragment() {
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
     }
-
 
 
     //handle choosing images and display into imageview image_preview in fragment_proposal_progress_edit
@@ -258,10 +252,10 @@ class ProposalProgressEditFragment : Fragment() {
             filePath = data.data
 
 
-
             //photo_v2
 
-            val bitmap = filePath?.getBitmap(binding.imageViewPreview.width, binding.imageViewPreview.height)
+            val bitmap =
+                filePath?.getBitmap(binding.imageViewPreview.width, binding.imageViewPreview.height)
             binding.imageViewPreview.setImageBitmap(bitmap)
             viewModel.imageBitmap.value = bitmap
 
@@ -270,14 +264,13 @@ class ProposalProgressEditFragment : Fragment() {
             try {
                 Glide.with(this).load(filePath).into(imageView_preview)
 
-                viewModel.taskPictureUri1.value =filePath
-                Log.d("","viewModel.taskPictureUri1.value =filePath")
+                viewModel.taskPictureUri1.value = filePath
+                Log.d("", "viewModel.taskPictureUri1.value =filePath")
             } catch (e: IOException) {
-                Log.d("","${e.printStackTrace()}")
+                Log.d("", "${e.printStackTrace()}")
                 e.printStackTrace()
             }
         }
-
 
 
         //camera
@@ -287,7 +280,8 @@ class ProposalProgressEditFragment : Fragment() {
             if (data == null) {
                 return
             }
-            val bitmap = photoURI?.getBitmap(binding.imageViewPreview.width, binding.imageViewPreview.height)
+            val bitmap =
+                photoURI?.getBitmap(binding.imageViewPreview.width, binding.imageViewPreview.height)
             binding.imageViewPreview.setImageBitmap(bitmap)
             viewModel.imageBitmap.value = bitmap
         }
@@ -322,22 +316,7 @@ class ProposalProgressEditFragment : Fragment() {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
 
 
     //camera
@@ -369,28 +348,23 @@ class ProposalProgressEditFragment : Fragment() {
     }
 
 
-
-
-
-
-
-
-
-
     fun Uri.getBitmap(width: Int, height: Int): Bitmap? {
         var rotatedDegree = 0
         var stream = HelperApplication.context.contentResolver.openInputStream(this)
         /** GET IMAGE ORIENTATION */
-        if(stream != null) {
+        if (stream != null) {
             val exif = ExifInterface(stream)
-            rotatedDegree = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL).fromExifInterfaceOrientationToDegree()
+            rotatedDegree = exif.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL
+            ).fromExifInterfaceOrientationToDegree()
             stream.close()
         }
         /** GET IMAGE SIZE */
         stream = HelperApplication.context.contentResolver.openInputStream(this)
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        BitmapFactory.decodeStream(stream, null,options)
+        BitmapFactory.decodeStream(stream, null, options)
         try {
             stream?.close()
         } catch (e: NullPointerException) {
@@ -398,7 +372,7 @@ class ProposalProgressEditFragment : Fragment() {
             return null
         }
         // The resulting width and height of the bitmap
-        if(options.outWidth == -1 || options.outHeight == -1) return null
+        if (options.outWidth == -1 || options.outHeight == -1) return null
         var bitmapWidth = options.outWidth.toFloat()
         var bitmapHeight = options.outHeight.toFloat()
         if (rotatedDegree == 90) {
@@ -408,8 +382,8 @@ class ProposalProgressEditFragment : Fragment() {
             bitmapHeight = options.outWidth.toFloat()
         }
         var scale = 1
-        while(true) {
-            if(bitmapWidth / 2 < width || bitmapHeight / 2 < height)
+        while (true) {
+            if (bitmapWidth / 2 < width || bitmapHeight / 2 < height)
                 break;
             bitmapWidth /= 2
             bitmapHeight /= 2
@@ -440,22 +414,21 @@ class ProposalProgressEditFragment : Fragment() {
         }
         var adjustedBitmap = bitmap
         if (bmpWidth > 0) {
-            adjustedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+            adjustedBitmap =
+                Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
         return adjustedBitmap
     }
 
 
     fun Int.fromExifInterfaceOrientationToDegree(): Int {
-        return when(this) {
+        return when (this) {
             ExifInterface.ORIENTATION_ROTATE_90 -> 90
             ExifInterface.ORIENTATION_ROTATE_180 -> 180
             ExifInterface.ORIENTATION_ROTATE_270 -> 270
             else -> 0
         }
     }
-
-
 
 
 }

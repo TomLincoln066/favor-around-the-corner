@@ -144,10 +144,7 @@ class FacebookLogInBottomSheet : BottomSheetDialogFragment() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Will", "signInWithCredential:failure", task.exception)
-//                    Toast.makeText(
-//                        baseContext, "Authentication failed.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
+
                 }
 
             }

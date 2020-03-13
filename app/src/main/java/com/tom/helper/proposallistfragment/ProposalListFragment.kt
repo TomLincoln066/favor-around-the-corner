@@ -69,10 +69,6 @@ class ProposalListFragment : Fragment() {
         })
 
 
-//        viewModel.addProposal()
-
-
-//        viewModel.getProposalsResult()
 
 
         //Snapshot proposal lists observer for fragment ProposalLists
@@ -89,7 +85,7 @@ class ProposalListFragment : Fragment() {
 
 
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_proposal_list, container, false)
+
         return binding.root
     }
 

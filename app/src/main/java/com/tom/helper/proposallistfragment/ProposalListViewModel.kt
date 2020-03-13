@@ -87,10 +87,7 @@ class ProposalListViewModel(private val repository: HelperRepository, val task: 
         }
 
 
-//        when(proposal.status ){
-//            -1-> proposal.id
-//
-//        }
+
 
     }
 

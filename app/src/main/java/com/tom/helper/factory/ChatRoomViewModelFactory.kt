@@ -15,10 +15,6 @@ class ChatRoomViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
-//
-//        if (modelClass.isAssignableFrom(ChatRoomViewModel::class.java)) {
-//            return ChatRoomViewModel(helperRepository, taskID ,chatRoomID) as T
-//        }
 
 
 

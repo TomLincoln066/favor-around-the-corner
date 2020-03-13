@@ -140,20 +140,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-//        val crashButton = Button(this)
-//        crashButton.text = "Crash!"
-//        crashButton.setOnClickListener {
-//            Crashlytics.getInstance().crash() // Force a crash
-//        }
-//
-//        addContentView(crashButton, ViewGroup.LayoutParams(
-//            ViewGroup.LayoutParams.MATCH_PARENT,
-//            ViewGroup.LayoutParams.WRAP_CONTENT))
-//
-
-
-
-
     }
 
 
@@ -171,7 +157,6 @@ class MainActivity : AppCompatActivity() {
 //                binding.title.visibility = View.INVISIBLE
 //                binding.textViewTitleChangeable.visibility = View.VISIBLE
 //                binding.textViewTitleChangeable.text = "Kraffier"
-
 
 
             }
@@ -226,8 +211,6 @@ class MainActivity : AppCompatActivity() {
                 binding.textViewTitleChangeable.visibility = View.VISIBLE
                 binding.textViewTitleChangeable.text = "進度事項"
             }
-
-
 
 
         }

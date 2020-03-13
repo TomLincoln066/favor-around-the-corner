@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 
 // Concrete implementation to load Publisher sources.
 
-class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
-                                 private val localDataSource: HelperDataSource
+class DefaultHelperRepository(
+    private val remoteDataSource: HelperDataSource,
+    private val localDataSource: HelperDataSource
 ) : HelperRepository {
 
     override suspend fun login(id: String): Result<User> {
@@ -28,12 +29,15 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getFinishedTasks()
     }
 
-    override suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean>{
-        return remoteDataSource.editOneProposal(task,proposal)
+    override suspend fun editOneProposal(task: Task, proposal: Proposal): Result<Boolean> {
+        return remoteDataSource.editOneProposal(task, proposal)
     }
 
-    override suspend fun editOneProposalToUnaccepted(task: Task, proposal: Proposal): Result<Boolean>{
-        return remoteDataSource.editOneProposalToUnaccepted(task,proposal)
+    override suspend fun editOneProposalToUnaccepted(
+        task: Task,
+        proposal: Proposal
+    ): Result<Boolean> {
+        return remoteDataSource.editOneProposalToUnaccepted(task, proposal)
     }
 
     override suspend fun checkUser(): Result<Boolean> {
@@ -56,8 +60,14 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
         return remoteDataSource.getProposalProgressItem(proposal)
     }
 
-    override suspend fun editOneProposalProgressItemToFinished(proposal: Proposal,proposalProgressContent: ProposalProgressContent): Result<Boolean> {
-        return remoteDataSource.editOneProposalProgressItemToFinished(proposal,proposalProgressContent)
+    override suspend fun editOneProposalProgressItemToFinished(
+        proposal: Proposal,
+        proposalProgressContent: ProposalProgressContent
+    ): Result<Boolean> {
+        return remoteDataSource.editOneProposalProgressItemToFinished(
+            proposal,
+            proposalProgressContent
+        )
     }
 
 
@@ -82,7 +92,7 @@ class DefaultHelperRepository(private val remoteDataSource: HelperDataSource,
     }
 
     override suspend fun addTaskProposalOwnerID(task: Task, userID: String): Result<Boolean> {
-        return remoteDataSource.addTaskProposalOwnerID(task,userID)
+        return remoteDataSource.addTaskProposalOwnerID(task, userID)
     }
 
 

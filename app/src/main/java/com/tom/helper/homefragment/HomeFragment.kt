@@ -50,12 +50,7 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.homeRequestRecycler.layoutManager = LinearLayoutManager(context)
-//        binding.homeRequestRecycler.addItemDecoration(
-//            DividerItemDecoration(
-//                context,
-//                LinearLayoutManager.VERTICAL
-//            )
-//        )
+
 
         binding.homeRequestRecycler.adapter =
             HomeRecyclerAdapter(
@@ -114,17 +109,6 @@ class HomeFragment : Fragment() {
         })
 
 
-        //handle when button_item_request_message in item_request.xml is pressed, will navigate to ChatRoomFragment(see HomeViewModel.kt)
-//        viewModel.shouldNavigateToChatRoomFragment.observe(this, Observer {
-//            it?.let {
-//
-//                findNavController().navigate(
-//                    HomeFragmentDirections.actionGlobalChatRoomFragment(it)
-//                )
-//                viewModel.doneNavigatingToChatRoom()
-//
-//            }
-//        })
 
 
         viewModel.shouldNavigateToChatListFragment.observe(this, Observer {
@@ -141,9 +125,7 @@ class HomeFragment : Fragment() {
                         viewModel.doneNavigatingToChatList()
 
 
-
                     }
-
 
 
                     false -> {
@@ -156,8 +138,6 @@ class HomeFragment : Fragment() {
                         viewModel.doneNavigatingToChatList()
 
 
-
-
                     }
 
 
@@ -168,11 +148,7 @@ class HomeFragment : Fragment() {
         })
 
 
-        //if there's no BindingAdapters(tasks), I would need the following code to do submitList(it) job.
-//        viewModel.tasks.observe(this, Observer {
-//            (binding.homeRequestRecycler.adapter as? HomeRecyclerAdapter)?.submitList(it)
-//
-//        })
+
 
 
         binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -198,7 +174,7 @@ class HomeFragment : Fragment() {
 
         })
 
-//        viewModel.prepareTasks()
+
         viewModel.getTasksResult()
 
         //handle changing the title while selecting HomeFragment
@@ -208,18 +184,6 @@ class HomeFragment : Fragment() {
 //        return inflater.inflate(R.layout.fragment_home, container, false)
         return binding.root
     }
-
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        val viewPager = view.findViewById<ViewPager>(R.id.tab_layout_catalog_viewpager)
-//        viewPager.adapter = HomeViewPagerAdapter(childFragmentManager)
-//
-//        val tabLayout = view.findViewById<TabLayout>(R.id.tabs)
-//        tabLayout.setupWithViewPager(viewPager)
-//
-//    }
 
 
 }

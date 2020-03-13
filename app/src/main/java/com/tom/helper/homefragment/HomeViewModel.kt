@@ -24,8 +24,6 @@ import java.text.SimpleDateFormat
 class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
-
-
     private val _message = MutableLiveData<Message>()
 
     val message: LiveData<Message>
@@ -62,18 +60,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
 
     val status: LiveData<LoadApiStatus>
         get() = _status
-
-
-    //To test Mock data display of item_request on fragment_home.xml
-    fun prepareTasks() {
-        _tasks.value = listOf(
-//            Task("123", title = "My Computer Crashes",status = 1,createdTime = 20200130,taskCreator = "Tom", price = 20100,subContent = listOf("smash it","sit on it","let's do that again", "oh god it works now")),
-//            Task("456", title = "I need a ride to interview", subContent = listOf("kill it","sit on it","let's do that again", "oh god it works now")),
-//            Task("789", title = "Who want's to play UNO", subContent = listOf("go for it","sit on it","let's do that again", "oh god it works now"))
-            Task("789", title = "Who want's to play UNO")
-        )
-
-    }
 
 
     //try to handle when button_mission_detail in item_request.xml is pressed, will navigate to JobDetailFragment(see HomeFragment.kt)
@@ -298,7 +284,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
     private val _shouldNavigateToChatRoomFragment = MutableLiveData<Task>()
     val shouldNavigateToChatRoomFragment: LiveData<Task>
         get() = _shouldNavigateToChatRoomFragment
@@ -315,7 +300,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     fun doneNavigatingToChatRoom() {
         _shouldNavigateToChatRoomFragment.value = null
     }
-
 
 
     private val _shouldNavigateToChatListFragment = MutableLiveData<Task>()
@@ -336,23 +320,13 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
     }
 
 
-
-
-
-
-
-
-
-
     fun Long.toDisplayTimePass(): String {
         val now = System.currentTimeMillis()
         val diff = (now - this) / 1000
         val years = diff / (60 * 60 * 24 * 30 * 12)
         val months = diff / (60 * 60 * 24 * 30)
         val days = diff / (60 * 60 * 24)
-//    val hours = (diff - days * (60 * 60 * 24)) / (60 * 60)
         val hours = diff / (60 * 60)
-//    val minutes = (diff - days * (60 * 60 * 24) - hours * (60 * 60)) / 60
         val minutes = diff / (60)
         return when {
             years >= 1 -> "${years}年前"
@@ -372,7 +346,6 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
             Toast.LENGTH_SHORT
         ).show()
     }
-
 
 
     // handle status input type convert problem( Int to String and String to Int)

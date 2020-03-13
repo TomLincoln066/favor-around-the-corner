@@ -81,9 +81,9 @@ class JobDetailFragment : Fragment() {
         binding.buttonJobDetailSendProposal.setOnClickListener {
 
 
-            //requireArguments().get("task") as Task) : handle getting the task argument from fragment_job_detail * should try navArg<>() instead
+
             findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(task))
-//            findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))
+
 
         }
 
@@ -140,7 +140,7 @@ class JobDetailFragment : Fragment() {
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.JOBDETAILS)
 
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_job_detail, container, false)
+
         return binding.root
     }
 

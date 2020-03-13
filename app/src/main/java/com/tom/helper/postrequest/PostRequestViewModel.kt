@@ -92,68 +92,7 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
         shouldNavigateToHomeFragment.value = false
     }
 
-    //get editText's data and send out to firebase
-//    fun submitTask() {
-//
-//        _error.value = null
-//
-//        //check whether taskTitle.value is not valid
-//        if (taskContent.value == null || taskContent.value?.isEmpty() == true) {
-//            _error.value = "Task Content cannot be empty"
-//            return
-//        }
-//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
-//            _error.value = "Task Title cannot be empty"
-//            return
-//        }
-//        if (taskTitle.value == null || taskTitle.value?.isEmpty() == true) {
-//            _error.value = "Task Title not complete"
-//            return
-//        }
-//
-//        val db = FirebaseFirestore.getInstance()
-//
-//        val task = FirebaseFirestore.getInstance().collection("tasks")
-//
-//        val user = FirebaseAuth.getInstance().currentUser
-////        val user = FirebaseAuth.getInstance().currentUser
-//
-//        if (user == null || user.displayName == null || user.email == null) {
-//            return
-//        }
-//        val userCurrent = User(user.uid,user.displayName!!,user.email!!,0,0L)
-////        val userCurrent = user.uid
-//
-//        val document = task.document()
-//
-//
-//
-//        val data = Task(
-//            document.id,
-//            taskPrice.value!!,
-//            System.currentTimeMillis(),
-//            taskTitle.value!!,
-//            taskContent.value!!,
-//            userCurrent,
-//            taskProvider.value!!,
-//            taskStatus,
-//            listOf(),
-//            taskPictureUri1.value.toString()
-//        )
-//
-////        document.set(data as Map<String, Any>)
-//        document.set(data)
-//            //try to handle when button_post_request_send in fragment_post_request.xml is pressed, will show toast that says "Add Success"
-//            .addOnSuccessListener {
-//                shouldNavigateToHomeFragment.value = true
-//                Toast.makeText(HelperApplication.context, "Add Success", Toast.LENGTH_SHORT).show()
-//            }
-//
-//
-//
-//
-//
-//    }
+
 
 
     fun submitTask() {
@@ -270,18 +209,6 @@ class PostRequestViewModel(private val repository: HelperRepository) : ViewModel
     }
 
 
-    //try to handle when button_post_request_send is clicked in fragment_post_request.xml is pressed, will navigate to Home Fragment
-//    private val _shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
-//    val shouldNavigateToHomeFragment: LiveData<Boolean>
-//        get() = _shouldNavigateToHomeFragment
-//
-//    fun navToHomeFragment() {
-//        _shouldNavigateToHomeFragment.value = true
-//    }
-//
-//    fun doneNavigatingToHomeFragment() {
-//        _shouldNavigateToHomeFragment.value = null
-//    }
 
 
     // handle taskPrice input type convert problem( Long to String and String to Long)

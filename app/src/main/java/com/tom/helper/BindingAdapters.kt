@@ -58,9 +58,6 @@ fun bindRecyclerViewDialog(recyclerView: RecyclerView, homeItems: List<Message>?
 }
 
 
-
-
-
 //fragment_ranking_list in use
 @BindingAdapter("addUsers")
 fun bindRankingFragment(recyclerView: RecyclerView, homeItems: List<User>?) {
@@ -93,9 +90,6 @@ fun bindProfileFragment(recyclerView: RecyclerView, homeItems: List<Task>?) {
 }
 
 
-
-
-
 //fragment_proposal_list in use
 @BindingAdapter("addProposal")
 fun bindProposalFragment(recyclerView: RecyclerView, homeItems: List<Proposal>?) {
@@ -124,7 +118,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.placeholder_image)
-                    .error(R.drawable.placeholder_image))
+                    .error(R.drawable.placeholder_image)
+            )
             .into(imgView)
     }
 }
@@ -143,15 +138,18 @@ fun bindRoundImage(imgView: ImageView, imgUrl: String?) {
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.icons_36px_profile_normal)
-                    .error(R.drawable.icons_36px_profile_normal))
+                    .error(R.drawable.icons_36px_profile_normal)
+            )
             .into(imgView)
     }
 }
 
 
-
 @BindingAdapter("proProgressItems")
-fun bindProProgressRecyclerView(recyclerView: RecyclerView, homeItems: List<ProposalProgressContent>?) {
+fun bindProProgressRecyclerView(
+    recyclerView: RecyclerView,
+    homeItems: List<ProposalProgressContent>?
+) {
     homeItems?.let {
         recyclerView.adapter?.apply {
             when (this) {
@@ -162,17 +160,12 @@ fun bindProProgressRecyclerView(recyclerView: RecyclerView, homeItems: List<Prop
 }
 
 
-
-
-
-
-
 /**
  * According to [LoadApiStatus] to decide the visibility of [ProgressBar]
  */
 @BindingAdapter("setupApiStatus")
 fun bindApiStatus(view: ProgressBar, status: LoadApiStatus?) {
-    Log.d("bindApiStatus.status","${status}")
+    Log.d("bindApiStatus.status", "${status}")
     when (status) {
         LoadApiStatus.LOADING -> view.visibility = View.VISIBLE
         LoadApiStatus.DONE, LoadApiStatus.ERROR -> view.visibility = View.GONE
@@ -198,10 +191,12 @@ fun bindApiErrorMessage(view: TextView, message: String?) {
 
 //set the proposal's number into button text description
 @BindingAdapter("proposalsCount")
-fun bindMission(textView: TextView, missionCount:Int?){
+fun bindMission(textView: TextView, missionCount: Int?) {
     missionCount?.let {
-        textView.text = HelperApplication.instance.getString(R.string.button_mission_detail_proposal_total,it) }}
-
+        textView.text =
+            HelperApplication.instance.getString(R.string.button_mission_detail_proposal_total, it)
+    }
+}
 
 
 @BindingAdapter("convertLongToDateString")

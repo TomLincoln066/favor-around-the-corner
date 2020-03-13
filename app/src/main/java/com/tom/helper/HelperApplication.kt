@@ -29,6 +29,6 @@ class HelperApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        context =applicationContext
+        context = applicationContext
     }
 }

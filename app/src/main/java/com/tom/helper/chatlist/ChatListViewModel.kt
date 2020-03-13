@@ -25,8 +25,6 @@ class ChatListViewModel(private val repository: HelperRepository, private val ta
         get() = _message
 
 
-
-
     private val _messages = MutableLiveData<List<Message>>()
 
     val messages: LiveData<List<Message>>
@@ -80,14 +78,6 @@ class ChatListViewModel(private val repository: HelperRepository, private val ta
     }
 
 
-
-
-
-
-
-
-
-
     @InverseMethod("convertLongToString")
     fun convertStringToLong(value: String): Long {
         return try {
@@ -107,8 +97,6 @@ class ChatListViewModel(private val repository: HelperRepository, private val ta
     }
 
 
-
-
     fun getChatUser() {
 
         coroutineScope.launch {
@@ -117,7 +105,7 @@ class ChatListViewModel(private val repository: HelperRepository, private val ta
             when (result) {
                 is Result.Success -> {
                     _messages.value = result.data
-                    Log.d("getChatUser","getChatUser = ${_messages}")
+                    Log.d("getChatUser", "getChatUser = ${_messages}")
                 }
 
                 is Result.Error -> {
@@ -132,9 +120,6 @@ class ChatListViewModel(private val repository: HelperRepository, private val ta
         }
 
     }
-
-
-
 
 
 }

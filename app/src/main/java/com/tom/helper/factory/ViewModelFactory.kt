@@ -39,30 +39,16 @@ class ViewModelFactory constructor(
                 isAssignableFrom(RankingListViewModel::class.java) ->
                     RankingListViewModel(repository)
 
-//                isAssignableFrom(ProposalListViewModel::class.java) ->
-//                    ProposalListViewModel(repository)
 
                 isAssignableFrom(JobDetailViewModel::class.java) ->
                     JobDetailViewModel(repository)
 
-//                isAssignableFrom(ProposalEditViewModel::class.java) ->
-//                    ProposalEditViewModel(repository)
 
                 isAssignableFrom(MainActivityViewModel::class.java) ->
                     MainActivityViewModel(repository)
 
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel(repository)
-
-//                isAssignableFrom(ChatRoomViewModel::class.java) ->
-//                    ChatRoomViewModel(repository)
-
-//                isAssignableFrom(ProProgressViewModel::class.java) ->
-//                    ProProgressViewModel(repository)
-
-
-//                isAssignableFrom(ProposalProgressEditViewModel::class.java) ->
-//                    ProposalProgressEditViewModel(repository,)
 
 
                 else ->

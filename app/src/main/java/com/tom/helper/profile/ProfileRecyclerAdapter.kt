@@ -41,8 +41,6 @@ class ProfileRecyclerAdapter(
             })
              */
 
-//            binding.buttonMissionDetail.setOnClickListener { onClickListener.onClick(task) }
-
 
             binding.executePendingBindings()
 
@@ -78,7 +76,7 @@ class ProfileRecyclerAdapter(
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        Log.i("ProfileRecyclerAdapter","TASK $position = ${getItem(position)}" )
+        Log.i("ProfileRecyclerAdapter", "TASK $position = ${getItem(position)}")
 
         when (holder) {
             is TaskViewHolder -> {

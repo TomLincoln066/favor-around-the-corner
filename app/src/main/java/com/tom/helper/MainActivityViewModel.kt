@@ -13,11 +13,6 @@ import kotlinx.coroutines.launch
 class MainActivityViewModel(private val repository: HelperRepository) : ViewModel() {
 
 
-
-
-
-
-
     var checkUser = MutableLiveData<Boolean>()
 
     // status: The internal MutableLiveData that stores the status of the most recent request
@@ -43,7 +38,6 @@ class MainActivityViewModel(private val repository: HelperRepository) : ViewMode
 
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
 
 
     private val _profile = MutableLiveData<User>()
@@ -76,7 +70,6 @@ class MainActivityViewModel(private val repository: HelperRepository) : ViewMode
         }
 
     }
-
 
 
     fun checkUserResult() {

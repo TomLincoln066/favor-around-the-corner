@@ -11,7 +11,7 @@ class HomeViewPagerAdapter (fragmentManager: FragmentManager): FragmentPagerAdap
         when(position){
             0-> return HomeFragment()
             1-> return taskOnGoingFragment()
-//            2-> return CatalogAccessoryFragment()
+
             else -> return HomeFragment()
         }
     }

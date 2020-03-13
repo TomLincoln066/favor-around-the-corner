@@ -46,13 +46,6 @@ class ChatListFragment : Fragment() {
                 ChatListRecyclerAdapter.OnClickListener {
 
 
-//                        findNavController().navigate(
-//                            ChatListFragmentDirections.actionGlobalChatRoomFragment(it)
-//                        )
-//                        viewModel.doneNavigatingToChatRoom()
-
-
-
                 },
                 viewModel
             )

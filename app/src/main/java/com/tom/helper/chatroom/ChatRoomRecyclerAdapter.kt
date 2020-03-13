@@ -9,19 +9,21 @@ import com.tom.helper.HelperApplication
 import com.tom.helper.databinding.ItemMessageBinding
 import com.tom.helper.source.Message
 
-class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener , val viewModel: ChatRoomViewModel) :
+class ChatRoomRecyclerAdapter(
+    private val onClickListener: OnClickListener,
+    val viewModel: ChatRoomViewModel
+) :
     ListAdapter<Message, RecyclerView.ViewHolder>(DiffCallback) {
 
     class OnClickListener(val clickListener: (message: Message) -> Unit) {
         fun onClick(message: Message) = clickListener(message)
     }
 
-    class MessageViewHolder(private var binding: ItemMessageBinding):
+    class MessageViewHolder(private var binding: ItemMessageBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: Message, onClickListener: OnClickListener, viewModel: ChatRoomViewModel) {
 
-//            binding.viewModel = viewModel
 
             binding.message = message
 
@@ -35,6 +37,7 @@ class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener , val
         override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
             return oldItem === newItem
         }
+
         override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
             return oldItem.id == newItem.id
         }
@@ -46,7 +49,9 @@ class ChatRoomRecyclerAdapter(private val onClickListener: OnClickListener , val
         return when (viewType) {
             ITEM_VIEW_TYPE_MESSAGE -> MessageViewHolder(
                 ItemMessageBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false))
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }

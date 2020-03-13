@@ -28,25 +28,6 @@ class ProProgressViewModel(
         get() = _proposalProgressContents
 
 
-    //for mock progress item
-    fun prepareMockProgress() {
-
-        _proposalProgressContents.value = listOf(
-            ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
-            ,
-            ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
-            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
-            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
-            , ProposalProgressContent("1111", -1, false, "", -1, "", null, null, null, "", "")
-
-        )
-
-    }
-
-
-
-
-
     private val _proposals = MutableLiveData<List<Proposal>>()
 
     val proposals: LiveData<List<Proposal>>
@@ -279,12 +260,12 @@ class ProProgressViewModel(
         coroutineScope.launch {
             val result = repository.getProposalsOfStatusEqualToZeroAndAddValueToWinner(proposal)
 
-        _status.value = LoadApiStatus.LOADING
+            _status.value = LoadApiStatus.LOADING
 
             when (result) {
                 is com.tom.helper.source.Result.Success -> {
 
-                      _status.value = LoadApiStatus.DONE
+                    _status.value = LoadApiStatus.DONE
 
                 }
 
@@ -298,7 +279,6 @@ class ProProgressViewModel(
             }
 
         }
-
 
 
     }
@@ -321,11 +301,6 @@ class ProProgressViewModel(
     init {
         shouldNavigateToProfilePage.value = false
     }
-
-
-
-
-
 
 
 }

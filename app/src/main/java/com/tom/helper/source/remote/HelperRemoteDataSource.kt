@@ -813,8 +813,6 @@ object HelperRemoteDataSource : HelperDataSource {
         }
 
 
-
-
     //snapshot Message list
     override fun getMessagesFromDBLive(task: Task): LiveData<List<Message>> {
         val liveData = MutableLiveData<List<Message>>()

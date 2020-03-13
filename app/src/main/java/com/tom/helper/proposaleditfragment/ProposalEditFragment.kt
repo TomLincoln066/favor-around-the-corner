@@ -57,19 +57,6 @@ class ProposalEditFragment : Fragment() {
 
 
 
-        //testing
-//        viewModel.shouldNavigateToHomeFragment.observe(this, Observer {
-//            if(it){
-//
-//                findNavController().navigate(
-//                    ProposalEditFragmentDirections.actionGlobalHomeFragment()
-//                )
-//
-//            }
-//
-//
-//        })
-
 
 
 
@@ -90,17 +77,3 @@ class ProposalEditFragment : Fragment() {
 }
 
 
-//binding.buttonProposalSend.setOnClickListener {
-//
-//    //requireArguments().get("task") as Task) : handle getting the task argument from fragment_job_detail * should try navArg<>() instead
-//    // findNavController().navigate(JobDetailFragmentDirections.actionGlobalProposalEditFragment(navArgs<Task>()))
-
-
-//    findNavController().navigate(
-//        ProposalEditFragmentDirections.actionGlobalProposalListFragment(
-//
-//        )
-//    )
-//
-//
-//}

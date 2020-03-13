@@ -24,7 +24,7 @@ import com.tom.helper.ext.getVmFactory
 class RankingListFragment : Fragment() {
 
 
-    private val viewModel by viewModels<RankingListViewModel>{getVmFactory()}
+    private val viewModel by viewModels<RankingListViewModel> { getVmFactory() }
 
 
     override fun onCreateView(
@@ -32,7 +32,7 @@ class RankingListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding =FragmentRankingListBinding.inflate(inflater,container,false)
+        val binding = FragmentRankingListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -43,7 +43,7 @@ class RankingListFragment : Fragment() {
             RankingRecyclerAdapter(RankingRecyclerAdapter.OnClickListener {
                 //            Logger.d("click, it=$it")
                 //            viewModel.delete(it)
-            },viewModel)
+            }, viewModel)
 
 
 
@@ -58,12 +58,8 @@ class RankingListFragment : Fragment() {
 
 
 
-//        viewModel.prepareTaskTest()
-//        viewModel.getTasksOfMineResult()
 
         viewModel.getUsersList()
-
-
 
 
         //try to handle when button_mission_detail_proposal_total in item_request.xml is pressed, will navigate to ProposalListFragment(see HomeViewModel.kt)
@@ -82,25 +78,14 @@ class RankingListFragment : Fragment() {
         })
 
 
-
-
-
-
-
-
-
-
-
         //handle changing the title while selecting RankingListFragment
         (activity as MainActivity).setLogo(MainActivity.EnumCheck.RANKINGLIST)
 
 
-
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_ranking_list, container, false)
+
         return binding.root
     }
-
 
 
 }

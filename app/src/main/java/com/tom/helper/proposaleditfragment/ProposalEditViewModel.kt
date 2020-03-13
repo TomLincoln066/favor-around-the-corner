@@ -69,15 +69,9 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     val shouldNavigateToProposalListFragment = MutableLiveData<Boolean>()
 
 
-    //testing
-//    val shouldNavigateToHomeFragment = MutableLiveData<Boolean>()
-
-
     init {
 
         shouldNavigateToProposalListFragment.value = false
-
-//        shouldNavigateToHomeFragment.value = false
 
 
     }
@@ -122,7 +116,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         }
 
 
-
 //        val proposal = FirebaseFirestore.getInstance().collection("proposal")  have proposal input in the task collection
         val proposal = FirebaseFirestore.getInstance().collection("tasks")
 
@@ -133,7 +126,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         val document = proposal.document(task.id).collection("proposal").document(userCurrent)
 
 
-
         val taskId = task.id
 
         val taskOnwerId = task.userId
@@ -141,14 +133,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         val taskPrice = task.price
 
         val userCurrent1 = User(user!!.uid, user.displayName!!, user.email!!, 0, 0L)
-
-//        //handle when Navigate To ProposalListFragment change the status of this task from -1 to 0
-
-//        val status = FirebaseFirestore.getInstance()
-//
-//        val document1 = status.collection("tasks").document(task.id)
-//
-//        document1.update("status", 0)
 
 
         val data = Proposal(
@@ -180,7 +164,7 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
             }.addOnSuccessListener {
 
 
-//                shouldNavigateToHomeFragment.value = true
+                //                shouldNavigateToHomeFragment.value = true
 
                 shouldNavigateToProposalListFragment.value = true
 
@@ -197,12 +181,11 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
     }
 
 
-
-    fun addTaskProposalOwnerID(userID:String = HelperApplication.user.id) {
+    fun addTaskProposalOwnerID(userID: String = HelperApplication.user.id) {
 
         coroutineScope.launch {
 
-            when (val result = repository.addTaskProposalOwnerID(task,userID)) {
+            when (val result = repository.addTaskProposalOwnerID(task, userID)) {
                 is com.tom.helper.source.Result.Success -> {
 //                    _proposals.value = result.data
                 }
@@ -219,8 +202,6 @@ class ProposalEditViewModel(private val repository: HelperRepository, private va
         }
 
     }
-
-
 
 
     fun errorReceived() {

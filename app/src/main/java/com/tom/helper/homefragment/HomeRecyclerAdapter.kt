@@ -28,7 +28,7 @@ class HomeRecyclerAdapter(
      */
     class OnClickListener(val clickListener: (task: Task) -> Unit) {
         fun onClick(task: Task) = clickListener(task)
-//        fun onClick2(task: Task) = clickListener(task)
+
     }
 
     class TaskViewHolder(private var binding: ItemRequestBinding) :

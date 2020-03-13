@@ -46,13 +46,6 @@ class ChatRoomFragment : Fragment() {
 
         binding.privateMessagesListOfUsersRecycler.layoutManager = LinearLayoutManager(context)
 
-//        binding.privateMessagesListOfUsersRecycler.scrollToPosition(viewModel.messages.value!!.size  )
-//        binding.privateMessagesListOfUsersRecycler.smoothScrollToPosition(viewModel.messages.count - 1 )
-
-
-
-
-
 
         val chatRoomRecyclerAdapter =
             ChatRoomRecyclerAdapter(
@@ -67,7 +60,7 @@ class ChatRoomFragment : Fragment() {
 
 
 
-//        viewModel.getMessages()
+
 
         viewModel.getMessagesLiveSnapShot()
         viewModel.messages.observe(this, Observer {
@@ -75,8 +68,7 @@ class ChatRoomFragment : Fragment() {
         })
 
 
-        binding.privateMessagesListOfUsersRecycler.scrollToPosition(chatRoomRecyclerAdapter.getItemCount() -1 )
-
+        binding.privateMessagesListOfUsersRecycler.scrollToPosition(chatRoomRecyclerAdapter.getItemCount() - 1)
 
 
         // Inflate the layout for this fragment

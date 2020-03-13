@@ -42,21 +42,6 @@ class MyProposalsFragment : Fragment() {
             )
         )
 
-//        binding.myProposalsRecycler.adapter =
-//            MyProposalsAdapter(MyProposalsAdapter.OnClickListener {
-//
-//            },viewModel)
-
-
-//        viewModel.addProposal()
-//        viewModel.getProposalsResult()
-//        viewModel.getProposalsOfMineResult()
-
-
-
-
-
-
 
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_proposal_list, container, false)
