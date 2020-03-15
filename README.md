@@ -55,7 +55,12 @@
 * Android Studio 3.5.2
 * Gradle Version 5.4.1
 
+* min Sdk 24 
+
+
 ## Contacts
 Will Lo <br />
 wayland021920@gmail.com
+
+
 
