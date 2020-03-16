@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 // Concrete implementation to load Publisher sources.
 
-class DefaultHelperRepository(
+open class DefaultHelperRepository(
     private val remoteDataSource: HelperDataSource,
     private val localDataSource: HelperDataSource
 ) : HelperRepository {

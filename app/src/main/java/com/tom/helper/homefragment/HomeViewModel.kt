@@ -319,6 +319,22 @@ class HomeViewModel(private val repository: HelperRepository) : ViewModel() {
         _shouldNavigateToChatListFragment.value = null
     }
 
+    fun getDisplayTimePass(test: Long): String {
+        val diff = (test) / 1000
+        val years = diff / (60 * 60 * 24 * 30 * 12)
+        val months = diff / (60 * 60 * 24 * 30)
+        val days = diff / (60 * 60 * 24)
+        val hours = diff / (60 * 60)
+        val minutes = diff / (60)
+        return when {
+            years >= 1 -> "${years}年前"
+            months >= 1 -> "${months}個月前"
+            days >= 1 -> "${days}天前"
+            hours >= 1 -> "${hours}小時前"
+            minutes >= 1 -> "${minutes}分鐘前"
+            else -> "剛剛"
+        }
+    }
 
     fun Long.toDisplayTimePass(): String {
         val now = System.currentTimeMillis()
